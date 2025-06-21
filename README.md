@@ -54,7 +54,6 @@ Professional portfolio website showcasing my skills as a Creative Technologist a
 
 ### Quick Start
 
-```bash
 # Clone the repository
 git clone https://github.com/CBfrost/my-professional-portfolio.git
 
@@ -85,16 +84,24 @@ GitHub Pages
     Save and wait for deployment
 
 Your site will be available at: https://yourusername.github.io/my-professional-portfolio
+
 📁 Project Structure
 
 my-professional-portfolio/
 ├── index.html              # Main portfolio page
+|
 ├── cv.html                 # CV/Resume page
+|
 ├── README.md               # Project documentation
+|
 ├── .gitignore             # Git ignore file
+|
 └── assets/
+    |
     ├── css/
-    │   └── contact-form.css # Contact form styles
+    |   |
+    │   └── contact-form.css # Contact form styles 
+    |   |
     ├── js/
     │   └── main.js         # Main JavaScript file
     └── images/             # Image assets (optional)
