@@ -1,7 +1,7 @@
 // EmailJS Configuration
 (function() {
     // Initialize EmailJS
-    emailjs.init("0ddIwmOm8C-CfECw1"); 
+  emailjs.init("0ddIwmOm8C-CfECw1"); 
 })();
 
 // GSAP Animations
@@ -376,11 +376,16 @@ document.addEventListener('DOMContentLoaded', function() {
     const submitButton = document.getElementById('send-button');
     const successMessage = document.getElementById('success-message');
     
-    // Ensure button is visible on load
+    // Force button visibility on load
     if (submitButton) {
         submitButton.style.display = 'block';
         submitButton.style.visibility = 'visible';
-        console.log('Send button found and made visible');
+        submitButton.style.opacity = '1';
+        submitButton.style.position = 'relative';
+        submitButton.style.zIndex = '100';
+        console.log('Send button found and forced visible');
+    } else {
+        console.error('Send button not found');
     }
     
     contactForm.addEventListener('submit', async function(e) {
@@ -419,8 +424,18 @@ document.addEventListener('DOMContentLoaded', function() {
         
         try {
             // Simulate email sending (replace with actual EmailJS implementation)
-            await new Promise(resolve => setTimeout(resolve, 2000));
-            
+            const result = await emailjs.send(
+	        'service_jx2p8ct', 
+                'template_nkq8aon',
+      {
+                    from_name: `${formData.firstName} ${formData.lastName}`,
+                    from_email: formData.email,
+                    subject: formData.subject,
+                    message: formData.message,
+                    to_email: 'panashefrost@icloud.com'
+                }
+            );
+             
             // Success state
             submitButton.innerHTML = '<i class="fas fa-check mr-2"></i>Message Sent!';
             submitButton.classList.remove('loading');
@@ -486,119 +501,17 @@ document.addEventListener('DOMContentLoaded', function() {
             });
         }
     });
-});        
-        // Get form data
-        const formData = {
-            firstName: contactForm.firstName.value,
-            lastName: contactForm.lastName.value,
-            email: contactForm.email.value,
-            subject: contactForm.subject.value,
-            message: contactForm.message.value
-        };
-        
-        // Clear previous errors
-        Object.keys(formData).forEach(key => {
-            clearFieldError(key);
-        });
-        
-        // Validate form
-        const errors = validateForm(formData);
-        
-        if (Object.keys(errors).length > 0) {
-            // Show errors
-            Object.keys(errors).forEach(key => {
-                showFieldError(key, errors[key]);
-            });
-            return;
+
+    // Double-check button visibility after a short delay
+    setTimeout(() => {
+        const btn = document.getElementById('send-button');
+        if (btn) {
+            btn.style.display = 'block !important';
+            btn.style.visibility = 'visible !important';
+            btn.style.opacity = '1 !important';
+            console.log('Send button visibility double-checked');
         }
-        
-        // Show loading state
-        const originalText = submitButton.innerHTML;
-        submitButton.innerHTML = '<i class="fas fa-spinner fa-spin mr-2"></i>Sending...';
-        submitButton.disabled = true;
-        contactForm.classList.add('form-loading');
-        
-        try {
-            // Send email using EmailJS 
-            const result = await emailjs.send(
-                'service_jx2p8ct', 
-                'template_nkq8aon', 
-                {
-                    from_name: `${formData.firstName} ${formData.lastName}`,
-                    from_email: formData.email,
-                    subject: formData.subject,
-                    message: formData.message,
-                    to_email: 'panashefrost@icloud.com'
-                }
-            );
-            
-            // Success
-            submitButton.innerHTML = '<i class="fas fa-check mr-2"></i>Message Sent!';
-            submitButton.classList.add('button-success');
-            submitButton.style.background = 'linear-gradient(to right, #10b981, #059669)';
-            
-            // Show success message
-            successMessage.classList.add('show');
-            
-            // Reset form
-            contactForm.reset();
-            
-            // Clear success styling after delay
-            setTimeout(() => {
-                submitButton.innerHTML = originalText;
-                submitButton.disabled = false;
-                submitButton.classList.remove('button-success');
-                submitButton.style.background = '';
-                successMessage.classList.remove('show');
-                contactForm.classList.remove('form-loading');
-                
-                // Clear field success styling
-                Object.keys(formData).forEach(key => {
-                    const field = document.querySelector(`[name="${key}"]`);
-                    field.classList.remove('input-success');
-                });
-            }, 3000);
-            
-        } catch (error) {
-            console.error('Error sending email:', error);
-            
-            // Error state
-            submitButton.innerHTML = '<i class="fas fa-exclamation-triangle mr-2"></i>Error - Try Again';
-            submitButton.style.background = 'linear-gradient(to right, #ef4444, #dc2626)';
-            
-            setTimeout(() => {
-                submitButton.innerHTML = originalText;
-                submitButton.disabled = false;
-                submitButton.style.background = '';
-                contactForm.classList.remove('form-loading');
-            }, 3000);
-        }
-    });
-    
-    // Real-time validation
-    Object.keys({firstName: '', lastName: '', email: '', subject: '', message: ''}).forEach(fieldName => {
-        const field = document.querySelector(`[name="${fieldName}"]`);
-        if (field) {
-            field.addEventListener('blur', function() {
-                const value = this.value.trim();
-                if (value) {
-                    const errors = validateForm({
-                        firstName: fieldName === 'firstName' ? value : 'valid',
-                        lastName: fieldName === 'lastName' ? value : 'valid',
-                        email: fieldName === 'email' ? value : 'valid@example.com',
-                        subject: fieldName === 'subject' ? value : 'valid',
-                        message: fieldName === 'message' ? value : 'valid message here'
-                    });
-                    
-                    if (errors[fieldName]) {
-                        showFieldError(fieldName, errors[fieldName]);
-                    } else {
-                        clearFieldError(fieldName);
-                    }
-                }
-            });
-        }
-    });
+    }, 1000);
 });
 
 // Close modal when clicking outside
