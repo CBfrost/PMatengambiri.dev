@@ -186,43 +186,106 @@
             }
         }
         
-        /* Mobile-First Button Styles */
+        /* FIXED - Mobile-First Button Styles with Forced Visibility */
         .mobile-button {
-            min-height: 48px;
-            min-width: 48px;
-            font-size: 16px;
-            font-weight: 600;
-            transition: all 0.3s ease;
-            border-radius: 12px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
+            min-height: 48px !important;
+            min-width: 48px !important;
+            font-size: 16px !important;
+            font-weight: 600 !important;
+            transition: all 0.3s ease !important;
+            border-radius: 12px !important;
+            display: flex !important;
+            align-items: center !important;
+            justify-content: center !important;
+            text-align: center !important;
+            visibility: visible !important;
+            opacity: 1 !important;
+            position: relative !important;
+            z-index: 100 !important;
+            text-decoration: none !important;
+            cursor: pointer !important;
+            border: none !important;
+            outline: none !important;
+            box-sizing: border-box !important;
         }
         
         .mobile-button:active {
-            transform: scale(0.95);
+            transform: scale(0.95) !important;
+        }
+        
+        .mobile-button:focus {
+            outline: 2px solid rgba(0, 255, 255, 0.5) !important;
+            outline-offset: 2px !important;
         }
         
         /* Touch-friendly sizing */
         @media (max-width: 768px) {
             .mobile-button {
-                min-height: 52px;
-                font-size: 17px;
-                padding: 12px 20px;
+                min-height: 52px !important;
+                font-size: 17px !important;
+                padding: 12px 20px !important;
             }
         }
         
         /* Magnetic button effects (desktop only) */
         @media (min-width: 1024px) {
             .magnetic-button {
-                transition: all 0.3s cubic-bezier(0.23, 1, 0.320, 1);
+                transition: all 0.3s cubic-bezier(0.23, 1, 0.320, 1) !important;
             }
             
             .magnetic-button:hover {
-                transform: translateY(-5px);
-                box-shadow: 0 20px 40px rgba(0, 255, 255, 0.3);
+                transform: translateY(-5px) !important;
+                box-shadow: 0 20px 40px rgba(0, 255, 255, 0.3) !important;
             }
+        }
+        
+        /* Project Button Styles - Enhanced Visibility */
+        .project-btn-primary {
+            background: linear-gradient(135deg, #00ffff, #0066ff) !important;
+            color: #000000 !important;
+            font-weight: 700 !important;
+            box-shadow: 0 4px 15px rgba(0, 255, 255, 0.3) !important;
+        }
+        
+        .project-btn-secondary {
+            background: rgba(255, 255, 255, 0.1) !important;
+            color: #ffffff !important;
+            border: 1px solid rgba(255, 255, 255, 0.2) !important;
+            backdrop-filter: blur(10px) !important;
+        }
+        
+        .project-btn-disabled {
+            background: #6b7280 !important;
+            color: #ffffff !important;
+            cursor: not-allowed !important;
+        }
+        
+        @media (min-width: 1024px) {
+            .project-btn-primary:hover {
+                background: linear-gradient(135deg, #0066ff, #00ffff) !important;
+                transform: translateY(-2px) !important;
+                box-shadow: 0 8px 25px rgba(0, 255, 255, 0.5) !important;
+            }
+            
+            .project-btn-secondary:hover {
+                background: rgba(255, 255, 255, 0.2) !important;
+                transform: translateY(-2px) !important;
+            }
+        }
+        
+        /* Hero CTA Button Styles */
+        .hero-cta-primary {
+            background: linear-gradient(135deg, #00ffff 0%, #ff0080 50%, #8000ff 100%) !important;
+            color: #000000 !important;
+            font-weight: 700 !important;
+            text-shadow: none !important;
+        }
+        
+        .hero-cta-secondary {
+            background: rgba(255, 255, 255, 0.05) !important;
+            backdrop-filter: blur(20px) !important;
+            border: 1px solid rgba(255, 255, 255, 0.1) !important;
+            color: #ffffff !important;
         }
         
         /* Mobile Skills Grid */
@@ -679,103 +742,6 @@
             outline: none;
         }
 
-        /* Send Message Button - Mobile Optimized */
-        .mobile-send-btn {
-            width: 100%;
-            min-height: 56px;
-            background: linear-gradient(135deg, #00ffff 0%, #ff0080 50%, #8000ff 100%) !important;
-            color: white !important;
-            border: none !important;
-            border-radius: 12px !important;
-            font-size: 18px !important;
-            font-weight: 700 !important;
-            display: flex !important;
-            align-items: center !important;
-            justify-content: center !important;
-            cursor: pointer !important;
-            transition: all 0.3s ease !important;
-            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3) !important;
-            box-shadow: 0 4px 15px rgba(0, 255, 255, 0.3) !important;
-            position: relative !important;
-            overflow: hidden !important;
-        }
-
-        .mobile-send-btn::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(135deg, #ff0080 0%, #8000ff 50%, #00ffff 100%);
-            transition: left 0.5s ease;
-            z-index: -1;
-            border-radius: inherit;
-        }
-
-        .mobile-send-btn:active {
-            transform: scale(0.98);
-        }
-
-        @media (min-width: 1024px) {
-            .mobile-send-btn:hover::before {
-                left: 0;
-            }
-            
-            .mobile-send-btn:hover {
-                box-shadow: 0 8px 25px rgba(0, 255, 255, 0.5) !important;
-                transform: translateY(-2px) !important;
-            }
-        }
-
-        /* Button States */
-        .mobile-send-btn.loading {
-            pointer-events: none;
-            opacity: 0.8;
-            background: linear-gradient(135deg, #6b7280, #374151) !important;
-        }
-
-        .mobile-send-btn.success {
-            background: linear-gradient(135deg, #10b981, #059669) !important;
-            animation: buttonSuccess 0.6s ease-in-out;
-        }
-
-        .mobile-send-btn.error {
-            background: linear-gradient(135deg, #ef4444, #dc2626) !important;
-        }
-
-        @keyframes buttonSuccess {
-            0% { transform: scale(1); }
-            50% { transform: scale(1.05); }
-            100% { transform: scale(1); }
-        }
-
-        /* Success Message */
-        .mobile-success-message {
-            background: linear-gradient(135deg, #10B981, #059669);
-            border: 1px solid #34D399;
-            border-radius: 12px;
-            padding: 16px;
-            margin-top: 16px;
-            display: none;
-        }
-
-        .mobile-success-message.show {
-            display: block;
-            animation: slideIn 0.5s ease-out;
-        }
-
-        @keyframes slideIn {
-            from {
-                opacity: 0;
-                transform: translateY(-10px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
         /* Hide desktop navigation on mobile */
         @media (max-width: 767px) {
             .desktop-nav {
@@ -839,6 +805,13 @@
                 animation-iteration-count: 1 !important;
                 transition-duration: 0.01ms !important;
             }
+        }
+
+        /* Force button visibility on all devices */
+        button, .mobile-button, a.mobile-button {
+            display: flex !important;
+            visibility: visible !important;
+            opacity: 1 !important;
         }
     </style>
 </head>
@@ -934,19 +907,19 @@
                         (local or remote) to contribute innovative solutions.
                     </p>
                     
-                    <!-- CTA Buttons -->
+                    <!-- CTA Buttons - FIXED WITH PROPER CLASSES -->
                     <div class="flex flex-col sm:flex-row gap-4 max-w-lg mx-auto lg:mx-0">
-                        <a href="#projects" class="mobile-button magnetic-button bg-gradient-to-r from-neon-cyan via-neon-pink to-neon-purple px-6 py-3 rounded-full text-black font-bold">
+                        <a href="#projects" class="mobile-button magnetic-button hero-cta-primary px-6 py-3 rounded-full font-bold">
                             <i class="fas fa-rocket mr-2"></i>
                             Explore My Work
                         </a>
                         <div class="flex gap-3">
-                            <button onclick="viewCV()" class="mobile-button glass-morphism px-4 py-3 rounded-full font-semibold hover:bg-white/10 transition-all flex-1 sm:flex-initial">
+                            <button onclick="viewCV()" class="mobile-button hero-cta-secondary px-4 py-3 rounded-full font-semibold hover:bg-white/10 transition-all flex-1 sm:flex-initial">
                                 <i class="fas fa-eye mr-2"></i>
                                 <span class="hidden sm:inline">View CV</span>
                                 <span class="sm:hidden">CV</span>
                             </button>
-                            <button onclick="downloadCV()" class="mobile-button glass-morphism px-4 py-3 rounded-full font-semibold hover:bg-white/10 transition-all flex-1 sm:flex-initial">
+                            <button onclick="downloadCV()" class="mobile-button hero-cta-secondary px-4 py-3 rounded-full font-semibold hover:bg-white/10 transition-all flex-1 sm:flex-initial">
                                 <i class="fas fa-download mr-2"></i>
                                 <span class="hidden sm:inline">Download</span>
                                 <span class="sm:hidden">PDF</span>
@@ -1123,7 +1096,7 @@
 
     <div class="section-divider"></div>
 
-    <!-- Featured Projects Section - Mobile Optimized -->
+    <!-- Featured Projects Section - FIXED BUTTONS -->
     <section id="projects" class="mobile-section relative">
         <div class="absolute inset-0 opacity-5">
             <img src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=1920&h=1080&fit=crop" alt="Abstract Tech" class="w-full h-full object-cover">
@@ -1176,10 +1149,10 @@
                             <span class="bg-neon-cyan/20 text-neon-cyan px-2 py-1 rounded-full text-xs">Service Workers</span>
                         </div>
                         <div class="flex flex-col sm:flex-row gap-3">
-                            <a href="https://cbfrost.github.io/ecowatt-energy-platform" target="_blank" class="mobile-button bg-gradient-to-r from-neon-cyan to-electric-blue px-4 py-3 rounded-full text-black font-semibold text-center">
+                            <a href="https://cbfrost.github.io/ecowatt-energy-platform" target="_blank" class="mobile-button project-btn-primary px-4 py-3 rounded-full font-semibold text-center">
                                 <i class="fas fa-external-link-alt mr-2"></i>View Live
                             </a>
-                            <a href="https://github.com/CBfrost/ecowatt-energy-platform" target="_blank" class="mobile-button glass-morphism px-4 py-3 rounded-full text-center hover:bg-white/10 transition-colors">
+                            <a href="https://github.com/CBfrost/ecowatt-energy-platform" target="_blank" class="mobile-button project-btn-secondary px-4 py-3 rounded-full text-center transition-colors">
                                 <i class="fab fa-github mr-2"></i>Code
                             </a>
                         </div>
@@ -1227,10 +1200,10 @@
                             <span class="bg-neon-pink/20 text-neon-pink px-2 py-1 rounded-full text-xs">Real-time Sync</span>
                         </div>
                         <div class="flex flex-col sm:flex-row gap-3">
-                            <span class="mobile-button bg-gray-600 px-4 py-3 rounded-full text-white font-semibold text-center">
+                            <span class="mobile-button project-btn-disabled px-4 py-3 rounded-full font-semibold text-center">
                                 <i class="fas fa-lock mr-2"></i>Enterprise System
                             </span>
-                            <a href="#contact" class="mobile-button glass-morphism px-4 py-3 rounded-full text-center hover:bg-white/10 transition-colors">
+                            <a href="#contact" class="mobile-button project-btn-secondary px-4 py-3 rounded-full text-center transition-colors">
                                 <i class="fas fa-info-circle mr-2"></i>Learn More
                             </a>
                         </div>
@@ -1278,10 +1251,10 @@
                             <span class="bg-green-400/20 text-green-400 px-2 py-1 rounded-full text-xs">WebRTC</span>
                         </div>
                         <div class="flex flex-col sm:flex-row gap-3">
-                            <a href="https://github.com/CBfrost/stayhealthy-capstone" target="_blank" class="mobile-button bg-gradient-to-r from-green-400 to-teal-500 px-4 py-3 rounded-full text-black font-semibold text-center">
+                            <a href="https://github.com/CBfrost/stayhealthy-capstone" target="_blank" class="mobile-button project-btn-primary px-4 py-3 rounded-full font-semibold text-center" style="background: linear-gradient(135deg, #10b981, #059669) !important;">
                                 <i class="fab fa-github mr-2"></i>View Code
                             </a>
-                            <a href="#contact" class="mobile-button glass-morphism px-4 py-3 rounded-full text-center hover:bg-white/10 transition-colors">
+                            <a href="#contact" class="mobile-button project-btn-secondary px-4 py-3 rounded-full text-center transition-colors">
                                 <i class="fas fa-info-circle mr-2"></i>Case Study
                             </a>
                         </div>
@@ -1329,10 +1302,10 @@
                             <span class="bg-emerald-400/20 text-emerald-400 px-2 py-1 rounded-full text-xs">Responsive</span>
                         </div>
                         <div class="flex flex-col sm:flex-row gap-3">
-                            <a href="https://github.com/CBfrost/paradise-nursery" target="_blank" class="mobile-button bg-gradient-to-r from-emerald-400 to-green-500 px-4 py-3 rounded-full text-black font-semibold text-center">
+                            <a href="https://github.com/CBfrost/paradise-nursery" target="_blank" class="mobile-button project-btn-primary px-4 py-3 rounded-full font-semibold text-center" style="background: linear-gradient(135deg, #10b981, #059669) !important;">
                                 <i class="fab fa-github mr-2"></i>View Code
                             </a>
-                            <a href="#contact" class="mobile-button glass-morphism px-4 py-3 rounded-full text-center hover:bg-white/10 transition-colors">
+                            <a href="#contact" class="mobile-button project-btn-secondary px-4 py-3 rounded-full text-center transition-colors">
                                 <i class="fas fa-external-link-alt mr-2"></i>Demo
                             </a>
                         </div>
@@ -1387,11 +1360,11 @@
                     </div>
                     
                     <div class="flex flex-col sm:flex-row gap-4 justify-center mb-6 lg:mb-8">
-                        <a href="https://github.com/CBfrost" target="_blank" class="mobile-button magnetic-button bg-gradient-to-r from-neon-cyan via-neon-pink to-neon-purple px-8 py-3 rounded-full text-black font-bold">
+                        <a href="https://github.com/CBfrost" target="_blank" class="mobile-button magnetic-button hero-cta-primary px-8 py-3 rounded-full font-bold">
                             <i class="fab fa-github mr-2 text-lg lg:text-2xl"></i>
                             <span class="text-base lg:text-xl">Explore GitHub</span>
                         </a>
-                        <a href="https://github.com/CBfrost?tab=repositories" target="_blank" class="mobile-button glass-morphism px-8 py-3 rounded-full text-white font-semibold hover:bg-white/10 transition-all border border-white/20">
+                        <a href="https://github.com/CBfrost?tab=repositories" target="_blank" class="mobile-button project-btn-secondary px-8 py-3 rounded-full font-semibold transition-all">
                             <i class="fas fa-folder-open mr-2"></i>
                             <span class="text-base lg:text-xl">Browse Repos</span>
                         </a>
@@ -1609,7 +1582,7 @@
                                 <div>
                                     <p class="text-gray-400 text-xs lg:text-sm">Phone</p>
                                     <a href="tel:+27632269407" class="text-sm lg:text-lg hover:text-neon-cyan transition-colors">
-                                       
+                                        +27 632 269 407
                                     </a>
                                 </div>
                             </div>
@@ -1667,7 +1640,7 @@
                         </div>
                         
                         <!-- MOBILE-OPTIMIZED SEND MESSAGE BUTTON -->
-                        <button type="submit" id="send-button" class="mobile-send-btn">
+                        <button type="submit" id="send-button" class="mobile-button w-full min-height-56px bg-gradient-to-r from-neon-cyan via-neon-pink to-neon-purple text-black font-bold rounded-full">
                             <span class="relative z-10">
                                 <i class="fas fa-paper-plane mr-2"></i>
                                 Send Message
@@ -1715,10 +1688,10 @@
             <span class="cv-close" onclick="closeCVModal()">&times;</span>
             <iframe id="cvFrame" src="./cv.html" width="100%" height="600px" style="border: none; border-radius: 15px; background: white;"></iframe>
             <div class="flex flex-col sm:flex-row justify-center gap-3 lg:gap-4 mt-4 lg:mt-6">
-                <button onclick="downloadCV()" class="mobile-button bg-gradient-to-r from-neon-cyan to-neon-pink px-6 py-3 rounded-full text-black font-semibold">
+                <button onclick="downloadCV()" class="mobile-button project-btn-primary px-6 py-3 rounded-full font-semibold">
                     <i class="fas fa-download mr-2"></i>Download PDF
                 </button>
-                <button onclick="window.open('./cv.html', '_blank')" class="mobile-button glass-morphism px-6 py-3 rounded-full text-white font-semibold hover:bg-white/10 transition-colors">
+                <button onclick="window.open('./cv.html', '_blank')" class="mobile-button project-btn-secondary px-6 py-3 rounded-full font-semibold transition-colors">
                     <i class="fas fa-external-link-alt mr-2"></i>Full Screen
                 </button>
             </div>

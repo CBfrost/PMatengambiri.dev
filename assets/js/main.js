@@ -311,33 +311,48 @@ function closeCVModal() {
     }
 }
 
-// Download CV Function - COMPLETELY FIXED VERSION
+// COMPLETELY FIXED PDF DOWNLOAD FUNCTION
 async function downloadCV() {
     const progressBar = document.getElementById('updateProgress');
     
     try {
         // Show progress
-        if (progressBar) progressBar.style.width = '30%';
+        if (progressBar) progressBar.style.width = '20%';
         
-        console.log('🔄 Starting CV download...');
+        console.log('🔄 Starting PDF download...');
         
-        // For mobile devices, open in new tab (works better)
-        if (window.innerWidth < 768) {
-            if (progressBar) progressBar.style.width = '60%';
-            window.open('./cv.html', '_blank');
+        // Check device type and capabilities
+        const isMobile = window.innerWidth < 768;
+        const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent);
+        const isAndroid = /Android/.test(navigator.userAgent);
+        
+        if (progressBar) progressBar.style.width = '40%';
+        
+        // Mobile-specific handling
+        if (isMobile || isIOS || isAndroid) {
+            console.log('📱 Mobile device detected - opening CV in new tab');
+            
+            if (progressBar) progressBar.style.width = '70%';
+            
+            // For mobile devices, open in new tab for better UX
+            const newTab = window.open('./cv.html', '_blank');
+            
             if (progressBar) progressBar.style.width = '100%';
             
-            // Show user instruction
+            // Show user instruction after delay
             setTimeout(() => {
-                alert('📱 On mobile: Use your browser\'s share menu to save as PDF or print.');
+                if (confirm('📱 CV opened in new tab!\n\nTo save as PDF:\n• iOS: Tap share → Print → Pinch to zoom → Share as PDF\n• Android: Tap menu → Print → Save as PDF\n• Desktop: Press Ctrl+P → Save as PDF\n\nClick OK to continue.')) {
+                    console.log('✅ User acknowledged mobile PDF instructions');
+                }
                 if (progressBar) progressBar.style.width = '0%';
-            }, 500);
+            }, 1000);
+            
             return;
         }
         
-        // For desktop, check if html2pdf is available
+        // Desktop handling with html2pdf
         if (typeof html2pdf === 'undefined') {
-            console.warn('⚠️ html2pdf not available, opening in new tab');
+            console.warn('⚠️ html2pdf not available on desktop - fallback to new tab');
             window.open('./cv.html', '_blank');
             if (progressBar) progressBar.style.width = '0%';
             return;
@@ -345,35 +360,182 @@ async function downloadCV() {
         
         if (progressBar) progressBar.style.width = '60%';
         
-        // Create a temporary container for CV content
-        const response = await fetch('./cv.html');
-        const htmlContent = await response.text();
-        
-        // Create temporary div
-        const tempDiv = document.createElement('div');
-        tempDiv.innerHTML = htmlContent;
-        tempDiv.style.position = 'absolute';
-        tempDiv.style.left = '-9999px';
-        tempDiv.style.top = '-9999px';
-        tempDiv.style.width = '210mm';
-        tempDiv.style.background = 'white';
-        tempDiv.style.color = 'black';
-        
-        document.body.appendChild(tempDiv);
+        // Create a simple printable version for PDF generation
+        const printableContent = `
+            <!DOCTYPE html>
+            <html>
+            <head>
+                <meta charset="UTF-8">
+                <title>Panashe Matengambiri - CV</title>
+                <style>
+                    body { 
+                        font-family: 'Arial', sans-serif; 
+                        line-height: 1.4; 
+                        color: #333; 
+                        max-width: 800px; 
+                        margin: 0 auto; 
+                        padding: 20px;
+                        background: white;
+                    }
+                    h1 { color: #2563eb; font-size: 28px; margin-bottom: 5px; }
+                    h2 { color: #1e40af; font-size: 22px; margin-top: 25px; margin-bottom: 10px; border-bottom: 2px solid #e5e7eb; padding-bottom: 5px; }
+                    h3 { color: #374151; font-size: 18px; margin-top: 20px; margin-bottom: 8px; }
+                    .contact-info { background: #f8fafc; padding: 15px; border-radius: 8px; margin-bottom: 20px; }
+                    .contact-info div { margin-bottom: 5px; }
+                    .section { margin-bottom: 25px; }
+                    .experience-item { margin-bottom: 20px; padding-left: 15px; border-left: 3px solid #3b82f6; }
+                    .experience-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 5px; }
+                    .company { font-weight: 600; color: #1f2937; }
+                    .date { color: #6b7280; font-size: 14px; }
+                    .skills-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 10px; }
+                    .skill-item { background: #f1f5f9; padding: 8px 12px; border-radius: 5px; font-size: 14px; }
+                    ul { margin: 8px 0; padding-left: 20px; }
+                    li { margin-bottom: 3px; }
+                    .text-sm { font-size: 14px; }
+                    .text-gray-600 { color: #6b7280; }
+                    .mb-2 { margin-bottom: 8px; }
+                    .mb-4 { margin-bottom: 16px; }
+                </style>
+            </head>
+            <body>
+                <h1>PANASHE MATENGAMBIRI</h1>
+                <p style="font-size: 18px; color: #374151; margin-bottom: 20px;">Creative Technologist & UX Innovator</p>
+                
+                <div class="contact-info">
+                    <div><strong>Email:</strong> panashefrost@icloud.com</div>
+                    <div><strong>Phone:</strong> +27 632 269 407</div>
+                    <div><strong>Location:</strong> 138 Holkman Road, Paulshaulf, Sandton 2191, South Africa</div>
+                    <div><strong>LinkedIn:</strong> linkedin.com/in/panashematengambiri</div>
+                    <div><strong>GitHub:</strong> github.com/CBfrost</div>
+                </div>
+
+                <h2>PROFESSIONAL SUMMARY</h2>
+                <p>Passionate Information Systems student with hands-on experience in enterprise solutions, full-stack development, and user experience design. Seeking entry-level and intermediate opportunities to contribute innovative solutions while continuing professional growth.</p>
+
+                <h2>EDUCATION</h2>
+                <div class="experience-item">
+                    <div class="experience-header">
+                        <h3>BSc Information Systems</h3>
+                        <span class="date">Nov 2021 - Nov 2025 (Expected)</span>
+                    </div>
+                    <div class="company">Midlands State University, Zimbabwe</div>
+                    <ul>
+                        <li>Focus: Systems Analysis, Database Design, Software Development</li>
+                        <li>Relevant Coursework: Enterprise Systems, UX Design, Project Management</li>
+                        <li>Practical Experience: 3+ Industrial Attachments</li>
+                    </ul>
+                </div>
+
+                <h2>PROFESSIONAL EXPERIENCE</h2>
+                
+                <div class="experience-item">
+                    <div class="experience-header">
+                        <h3>Systems Development Intern</h3>
+                        <span class="date">May 2024 - Aug 2024</span>
+                    </div>
+                    <div class="company">DM Windscreens • Harare, Zimbabwe</div>
+                    <ul>
+                        <li><strong>ERP Implementation:</strong> Participated in Odoo ERP customization and deployment across 8 branch locations</li>
+                        <li><strong>UI/UX Design:</strong> Designed user-friendly interfaces reducing staff training time by 50%</li>
+                        <li><strong>Process Automation:</strong> Automated inventory management eliminating 80% of manual data entry</li>
+                        <li><strong>System Integration:</strong> Developed custom modules using Python and XML for automotive industry workflows</li>
+                        <li><strong>Training & Documentation:</strong> Created comprehensive user guides and conducted staff training sessions</li>
+                    </ul>
+                </div>
+
+                <div class="experience-item">
+                    <div class="experience-header">
+                        <h3>Freelance Web Developer & Designer</h3>
+                        <span class="date">Jan 2023 - Present</span>
+                    </div>
+                    <div class="company">Self-Employed • Remote</div>
+                    <ul>
+                        <li><strong>Client Projects:</strong> Delivered 15+ successful web development and design projects</li>
+                        <li><strong>Brand Development:</strong> Created complete brand identities including logos, color schemes, and style guides</li>
+                        <li><strong>Responsive Development:</strong> Built mobile-first websites with 99.9% uptime and optimal performance</li>
+                        <li><strong>Client Management:</strong> Maintained excellent client relationships with 100% project completion rate</li>
+                        <li><strong>Technology Stack:</strong> Specialized in React, Node.js, WordPress, and modern CSS frameworks</li>
+                    </ul>
+                </div>
+
+                <h2>KEY PROJECTS</h2>
+                
+                <div class="experience-item">
+                    <h3>EcoWatt AI Energy Platform</h3>
+                    <div class="text-sm text-gray-600 mb-2">Personal Project • 2024</div>
+                    <p>Progressive Web App for Zimbabwe's prepaid electricity management with AI-powered consumption forecasting, Bluetooth smart meter integration, and offline functionality.</p>
+                    <p><strong>Impact:</strong> Designed for 60K+ target users • 60% reduction in task completion time</p>
+                </div>
+
+                <div class="experience-item">
+                    <h3>AutoGlass Pro Platform</h3>
+                    <div class="text-sm text-gray-600 mb-2">Enterprise Project • DM Windscreens • 2024</div>
+                    <p>Comprehensive service management platform with real-time booking, mobile technician interfaces, and automated inventory tracking across 8 branch locations.</p>
+                    <p><strong>Impact:</strong> 70% booking time reduction • 35% customer satisfaction increase</p>
+                </div>
+
+                <h2>TECHNICAL SKILLS</h2>
+                <div class="skills-grid">
+                    <div class="skill-item"><strong>Languages:</strong> JavaScript/TypeScript, Python, HTML5/CSS3, SQL</div>
+                    <div class="skill-item"><strong>Frameworks:</strong> React/Next.js, Node.js/Express, TailwindCSS</div>
+                    <div class="skill-item"><strong>Design Tools:</strong> Figma, Sketch, Miro, Adobe Creative Suite</div>
+                    <div class="skill-item"><strong>Databases:</strong> PostgreSQL, MongoDB, MySQL</div>
+                    <div class="skill-item"><strong>Other:</strong> Git/GitHub, Odoo ERP, REST APIs, WebRTC</div>
+                </div>
+
+                <h2>CERTIFICATIONS</h2>
+                <ul>
+                    <li>Google UX Design Professional Certificate (Coursera, 2023)</li>
+                    <li>IBM Front-End Developer Professional Certificate (2024)</li>
+                    <li>Microsoft UX Design Professional Certificate (2024)</li>
+                    <li>CalArts UI/UX Design Specialization (2024)</li>
+                    <li>Figma, Sketch & Miro for UX Design (2024)</li>
+                </ul>
+
+                <h2>ACHIEVEMENTS</h2>
+                <ul>
+                    <li>Dean's List Recognition - Academic excellence in Information Systems (2023)</li>
+                    <li>Best Innovation Project - University Tech Competition (EcoWatt Platform, 2024)</li>
+                    <li>Outstanding Intern Award - DM Windscreens (Summer 2024)</li>
+                    <li>6+ Professional Certifications from Google, IBM, Microsoft, CalArts & more</li>
+                </ul>
+
+                <h2>LANGUAGES</h2>
+                <div class="skills-grid">
+                    <div class="skill-item">English (Native)</div>
+                    <div class="skill-item">Shona (Native)</div>
+                    <div class="skill-item">Afrikaans (Conversational)</div>
+                </div>
+            </body>
+            </html>
+        `;
         
         if (progressBar) progressBar.style.width = '80%';
         
-        // Generate PDF with optimized settings
+        // Create temporary element for PDF generation
+        const tempElement = document.createElement('div');
+        tempElement.innerHTML = printableContent;
+        tempElement.style.position = 'absolute';
+        tempElement.style.left = '-9999px';
+        tempElement.style.top = '-9999px';
+        tempElement.style.width = '210mm';
+        tempElement.style.background = 'white';
+        
+        document.body.appendChild(tempElement);
+        
+        // PDF generation options
         const opt = {
-            margin: [10, 10, 10, 10],
+            margin: [15, 15, 15, 15],
             filename: 'Panashe_Matengambiri_CV.pdf',
-            image: { type: 'jpeg', quality: 0.85 },
+            image: { type: 'jpeg', quality: 0.92 },
             html2canvas: { 
-                scale: 1.5,
+                scale: 1.2,
                 useCORS: true,
                 allowTaint: true,
                 backgroundColor: '#ffffff',
-                logging: false
+                logging: false,
+                width: 794,
+                height: 1123
             },
             jsPDF: { 
                 unit: 'mm', 
@@ -383,24 +545,26 @@ async function downloadCV() {
             }
         };
         
-        await html2pdf().set(opt).from(tempDiv).save();
+        // Generate and download PDF
+        await html2pdf().set(opt).from(tempElement.firstElementChild).save();
         
         // Clean up
-        document.body.removeChild(tempDiv);
+        document.body.removeChild(tempElement);
         
         if (progressBar) progressBar.style.width = '100%';
-        console.log('✅ CV downloaded successfully');
+        console.log('✅ CV PDF generated and downloaded successfully');
         
         // Reset progress bar
         setTimeout(() => {
             if (progressBar) progressBar.style.width = '0%';
-        }, 1000);
+        }, 1500);
         
     } catch (error) {
         console.error('❌ Error generating PDF:', error);
         
         // Fallback: Open CV in new tab
         console.log('🔄 Falling back to opening in new tab');
+        alert('PDF generation encountered an issue. Opening CV in new tab instead.\n\nYou can use your browser\'s print function (Ctrl+P) to save as PDF.');
         window.open('./cv.html', '_blank');
         
         // Reset progress bar
@@ -775,3 +939,4 @@ window.downloadCV = downloadCV;
 console.log('🚀 Portfolio JavaScript loaded successfully!');
 console.log('📧 Contact form ready');
 console.log('📄 CV functions initialized');
+console.log('🔧 Button visibility enhanced');
