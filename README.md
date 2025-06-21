@@ -54,7 +54,6 @@ Professional portfolio website showcasing my skills as a Creative Technologist a
 
 ### Quick Start
 
-```bash
 # Clone the repository
 git clone https://github.com/CBfrost/my-professional-portfolio.git
 
