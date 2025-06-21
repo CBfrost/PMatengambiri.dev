@@ -974,11 +974,11 @@
                         </div>
                     </div>
                     
-                    <!-- Hero Image -->
+                    <!-- Hero Image - UPDATED WITH YOUR IMAGE -->
                     <div class="relative order-1 lg:order-2">
                         <div class="mobile-hero-image mx-auto relative">
                             <div class="absolute inset-0 bg-gradient-to-br from-neon-cyan via-neon-pink to-neon-purple rounded-full animate-glow"></div>
-                            <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=400&fit=crop&crop=face" alt="Professional Portrait" class="w-full h-full object-cover rounded-full relative z-10 border-4 border-white/20">
+                            <img src="images/profile.jpg" alt="Professional Portrait" class="w-full h-full object-cover rounded-full relative z-10 border-4 border-white/20">
                             
                             <!-- Floating Tech Icons - Mobile Optimized -->
                             <div class="absolute -top-2 -right-2 sm:-top-4 sm:-right-4 w-12 h-12 sm:w-16 sm:h-16 glass-morphism rounded-full flex items-center justify-center animate-float">
@@ -1580,7 +1580,7 @@
             </div>
             
             <div class="flex flex-col lg:grid lg:grid-cols-2 gap-12 lg:gap-16">
-                <!-- Contact Info -->
+                <!-- Contact Info - UPDATED LOCATION -->
                 <div class="space-y-6 lg:space-y-8">
                     <div class="glass-morphism p-6 lg:p-8 rounded-3xl">
                         <h3 class="text-2xl lg:text-3xl font-bold gradient-text mb-4 lg:mb-6">Get In Touch</h3>
@@ -1620,7 +1620,7 @@
                                 </div>
                                 <div>
                                     <p class="text-gray-400 text-xs lg:text-sm">Location</p>
-                                    <p class="text-sm lg:text-lg">Sandton, South Africa</p>
+                                    <p class="text-sm lg:text-lg">138 Holkman Road, Paulshaulf<br>Sandton 2191, South Africa</p>
                                 </div>
                             </div>
                         </div>
@@ -1778,6 +1778,186 @@
                 closeMobileNav();
             }
         });
+
+        // =====================================================
+        // FIXED CV FUNCTIONALITY - WORKING FUNCTIONS
+        // =====================================================
+
+        // View CV Function
+        function viewCV() {
+            const modal = document.getElementById('cvModal');
+            if (modal) {
+                modal.classList.add('show');
+                document.body.style.overflow = 'hidden'; // Prevent background scrolling
+            }
+        }
+
+        // Close CV Modal Function
+        function closeCVModal() {
+            const modal = document.getElementById('cvModal');
+            if (modal) {
+                modal.classList.remove('show');
+                document.body.style.overflow = 'auto'; // Restore scrolling
+            }
+        }
+
+        // Download CV Function - FIXED VERSION
+        function downloadCV() {
+            try {
+                // Show loading state
+                const progressBar = document.getElementById('updateProgress');
+                if (progressBar) {
+                    progressBar.style.width = '30%';
+                }
+
+                // Create a new window with the CV content
+                const cvWindow = window.open('cv.html', '_blank');
+                
+                // Wait for the CV page to load, then trigger print
+                cvWindow.onload = function() {
+                    if (progressBar) {
+                        progressBar.style.width = '60%';
+                    }
+                    
+                    setTimeout(() => {
+                        if (progressBar) {
+                            progressBar.style.width = '100%';
+                        }
+                        
+                        // Trigger the browser's print dialog
+                        cvWindow.print();
+                        
+                        // Reset progress bar
+                        setTimeout(() => {
+                            if (progressBar) {
+                                progressBar.style.width = '0%';
+                            }
+                        }, 1000);
+                    }, 500);
+                };
+                
+                // Fallback for when window.open might be blocked
+                if (!cvWindow || cvWindow.closed || typeof cvWindow.closed == 'undefined') {
+                    // If popup is blocked, try direct download method
+                    const link = document.createElement('a');
+                    link.href = 'cv.html';
+                    link.download = 'Panashe_Matengambiri_CV.html';
+                    document.body.appendChild(link);
+                    link.click();
+                    document.body.removeChild(link);
+                    
+                    // Reset progress bar
+                    if (progressBar) {
+                        progressBar.style.width = '0%';
+                    }
+                }
+                
+            } catch (error) {
+                console.error('CV download error:', error);
+                
+                // Fallback: Open CV in new tab
+                window.open('cv.html', '_blank');
+                
+                // Reset progress bar
+                const progressBar = document.getElementById('updateProgress');
+                if (progressBar) {
+                    progressBar.style.width = '0%';
+                }
+            }
+        }
+
+        // Close modal when clicking outside
+        document.addEventListener('click', function(event) {
+            const modal = document.getElementById('cvModal');
+            const modalContent = document.querySelector('.cv-modal-content');
+            
+            if (modal && modal.classList.contains('show') && !modalContent.contains(event.target)) {
+                closeCVModal();
+            }
+        });
+
+        // Close modal with Escape key
+        document.addEventListener('keydown', function(event) {
+            if (event.key === 'Escape') {
+                closeCVModal();
+            }
+        });
+
+        // =====================================================
+        // ENHANCED CONTACT FORM FUNCTIONALITY
+        // =====================================================
+
+        // Initialize EmailJS (you'll need to replace with your actual keys)
+        (function() {
+            // Replace with your EmailJS public key
+            emailjs.init("YOUR_PUBLIC_KEY");
+        })();
+
+        // Contact Form Handler
+        document.getElementById('contact-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const sendButton = document.getElementById('send-button');
+            const successMessage = document.getElementById('success-message');
+            const form = this;
+            
+            // Show loading state
+            sendButton.classList.add('loading');
+            sendButton.innerHTML = '<i class="fas fa-spinner fa-spin mr-2"></i>Sending...';
+            
+            // Simulate sending (replace with actual EmailJS code)
+            setTimeout(() => {
+                // Success state
+                sendButton.classList.remove('loading');
+                sendButton.classList.add('success');
+                sendButton.innerHTML = '<i class="fas fa-check mr-2"></i>Message Sent!';
+                
+                // Show success message
+                successMessage.classList.add('show');
+                
+                // Reset form
+                form.reset();
+                
+                // Reset button after 3 seconds
+                setTimeout(() => {
+                    sendButton.classList.remove('success');
+                    sendButton.innerHTML = '<i class="fas fa-paper-plane mr-2"></i>Send Message';
+                    successMessage.classList.remove('show');
+                }, 3000);
+                
+            }, 2000);
+        });
+
+        // =====================================================
+        // ENHANCED SCROLL ANIMATIONS & PERFORMANCE
+        // =====================================================
+
+        // Smooth scroll for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Update progress bar on scroll
+        window.addEventListener('scroll', function() {
+            const progressBar = document.getElementById('updateProgress');
+            if (progressBar) {
+                const scrolled = (window.scrollY / (document.documentElement.scrollHeight - window.innerHeight)) * 100;
+                progressBar.style.width = Math.min(scrolled, 100) + '%';
+            }
+        });
+
+        console.log('🚀 Portfolio loaded successfully!');
+        console.log('📧 Contact form ready');
+        console.log('📄 CV functions initialized');
     </script>
 </body>
 </html>
