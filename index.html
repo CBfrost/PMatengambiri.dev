@@ -1,0 +1,1247 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Panashe Matengambiri - Creative Technologist</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
+    <link rel="stylesheet" href="assets/css/contact-form.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        'space': ['Space Grotesk', 'sans-serif'],
+                        'mono': ['JetBrains Mono', 'monospace'],
+                        'display': ['Playfair Display', 'serif'],
+                    },
+                    colors: {
+                        'neon-cyan': '#00ffff',
+                        'neon-pink': '#ff0080',
+                        'neon-purple': '#8000ff',
+                        'dark-navy': '#0a0e27',
+                        'electric-blue': '#0066ff',
+                    },
+                    animation: {
+                        'float': 'float 6s ease-in-out infinite',
+                        'glow': 'glow 2s ease-in-out infinite alternate',
+                        'slide-up': 'slideUp 0.5s ease-out',
+                        'text-reveal': 'textReveal 1s ease-out',
+                    }
+                }
+            }
+        }
+
+        // Dark mode detection
+        if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+            document.documentElement.classList.add('dark');
+        }
+        window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', event => {
+            if (event.matches) {
+                document.documentElement.classList.add('dark');
+            } else {
+                document.documentElement.classList.remove('dark');
+            }
+        });
+    </script>
+    <style>
+        body { 
+            font-family: 'Space Grotesk', sans-serif;
+            background: #0a0e27;
+            overflow-x: hidden;
+            scroll-behavior: smooth;
+        }
+        
+        .glass-morphism {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .gradient-text {
+            background: linear-gradient(45deg, #00ffff, #ff0080, #8000ff);
+            background-size: 300% 300%;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: gradient-shift 3s ease infinite;
+        }
+        
+        .hero-bg {
+            background: 
+                radial-gradient(circle at 20% 50%, rgba(0, 255, 255, 0.15) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(255, 0, 128, 0.15) 0%, transparent 50%),
+                radial-gradient(circle at 40% 80%, rgba(128, 0, 255, 0.15) 0%, transparent 50%);
+        }
+        
+        .magnetic-button {
+            transition: all 0.3s cubic-bezier(0.23, 1, 0.320, 1);
+        }
+        
+        .magnetic-button:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0, 255, 255, 0.3);
+        }
+        
+        .project-card {
+            transition: all 0.4s cubic-bezier(0.23, 1, 0.320, 1);
+            transform-style: preserve-3d;
+        }
+        
+        .project-card:hover {
+            transform: rotateY(2deg) rotateX(2deg) translateZ(20px);
+        }
+        
+        .floating-shapes {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -1;
+        }
+        
+        .floating-shape {
+            position: absolute;
+            border-radius: 50%;
+            opacity: 0.1;
+            animation: float 6s ease-in-out infinite;
+        }
+        
+        .floating-shape:nth-child(1) {
+            width: 80px;
+            height: 80px;
+            background: #00ffff;
+            top: 20%;
+            left: 10%;
+            animation-delay: 0s;
+        }
+        
+        .floating-shape:nth-child(2) {
+            width: 60px;
+            height: 60px;
+            background: #ff0080;
+            top: 60%;
+            right: 10%;
+            animation-delay: 2s;
+        }
+        
+        .floating-shape:nth-child(3) {
+            width: 100px;
+            height: 100px;
+            background: #8000ff;
+            bottom: 20%;
+            left: 20%;
+            animation-delay: 4s;
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            33% { transform: translateY(-20px) rotate(120deg); }
+            66% { transform: translateY(10px) rotate(240deg); }
+        }
+        
+        @keyframes gradient-shift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        
+        @keyframes glow {
+            from { box-shadow: 0 0 20px rgba(0, 255, 255, 0.3); }
+            to { box-shadow: 0 0 30px rgba(0, 255, 255, 0.6), 0 0 40px rgba(255, 0, 128, 0.3); }
+        }
+        
+        .nav-blur {
+            backdrop-filter: blur(20px);
+            background: rgba(10, 14, 39, 0.9);
+        }
+        
+        .section-divider {
+            height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(0, 255, 255, 0.5), transparent);
+        }
+        
+        .github-card {
+            transition: all 0.3s ease;
+        }
+        
+        .github-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(0, 255, 255, 0.2);
+        }
+        
+        .testimonial-card {
+            background: linear-gradient(135deg, rgba(0, 255, 255, 0.1), rgba(255, 0, 128, 0.1));
+            border: 1px solid rgba(0, 255, 255, 0.3);
+            transition: all 0.3s ease;
+        }
+        
+        .testimonial-card:hover {
+            transform: translateY(-5px);
+            border-color: rgba(0, 255, 255, 0.6);
+        }
+        
+        .nav-active {
+            color: #00ffff !important;
+        }
+
+        /* CV Modal Styles */
+        .cv-modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.9);
+            backdrop-filter: blur(10px);
+        }
+
+        .cv-modal.show {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .cv-modal-content {
+            background: #0a0e27;
+            border-radius: 20px;
+            padding: 20px;
+            width: 90%;
+            max-width: 900px;
+            max-height: 90vh;
+            overflow-y: auto;
+            position: relative;
+            border: 1px solid rgba(0, 255, 255, 0.3);
+        }
+
+        .cv-close {
+            position: absolute;
+            top: 15px;
+            right: 20px;
+            color: #fff;
+            font-size: 28px;
+            font-weight: bold;
+            cursor: pointer;
+            z-index: 1001;
+        }
+
+        .cv-close:hover {
+            color: #00ffff;
+        }
+
+        /* Update Progress Bar */
+        .update-progress {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 0%;
+            height: 3px;
+            background: linear-gradient(90deg, #00ffff, #ff0080, #8000ff);
+            z-index: 9999;
+            transition: width 0.3s ease;
+        }
+
+        /* Professional Icon Styles */
+        .professional-avatar {
+            background: linear-gradient(135deg, var(--gradient-from), var(--gradient-to));
+            transition: all 0.3s ease;
+        }
+
+        .professional-avatar:hover {
+            transform: scale(1.05);
+            box-shadow: 0 10px 25px rgba(0, 255, 255, 0.3);
+        }
+
+        /* GitHub Section Enhanced Styles */
+        .github-section-bg {
+            background: 
+                radial-gradient(circle at 30% 40%, rgba(0, 255, 255, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 70% 60%, rgba(128, 0, 255, 0.1) 0%, transparent 50%);
+        }
+
+        .github-cta-card {
+            background: linear-gradient(135deg, rgba(0, 255, 255, 0.15), rgba(255, 0, 128, 0.15), rgba(128, 0, 255, 0.15));
+            border: 2px solid rgba(255, 255, 255, 0.2);
+            background-clip: padding-box;
+            position: relative;
+        }
+
+        /* Improved Skills Visualization for Wide Screens */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .skill-certification-card {
+            background: rgba(255, 255, 255, 0.08);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            border-radius: 1.5rem;
+            padding: 2rem;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .skill-certification-card:hover {
+            transform: translateY(-5px);
+            border-color: rgba(0, 255, 255, 0.4);
+            box-shadow: 0 10px 30px rgba(0, 255, 255, 0.2);
+        }
+
+        .skill-certification-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--accent-color, #00ffff), var(--accent-color-2, #ff0080));
+        }
+
+        .certification-badge {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            margin-bottom: 1rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .certification-badge::before {
+            content: '';
+            position: absolute;
+            inset: -2px;
+            background: conic-gradient(from 0deg, var(--accent-color), var(--accent-color-2), var(--accent-color));
+            border-radius: 50%;
+            animation: rotate 3s linear infinite;
+            z-index: -1;
+        }
+
+        .certification-badge::after {
+            content: '';
+            position: absolute;
+            inset: 2px;
+            background: #0a0e27;
+            border-radius: 50%;
+            z-index: -1;
+        }
+
+        @keyframes rotate {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        /* Success Message Styles */
+        .success-message {
+            background: linear-gradient(135deg, #10B981, #059669);
+            border: 1px solid #34D399;
+            border-radius: 12px;
+            padding: 16px;
+            margin-top: 16px;
+            display: none;
+        }
+
+        .success-message.show {
+            display: block;
+            animation: slideIn 0.5s ease-out;
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(-10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+</head>
+<body class="text-white dark:bg-dark-navy bg-white dark:text-white text-gray-900">
+    <!-- Floating Background Shapes -->
+    <div class="floating-shapes">
+        <div class="floating-shape"></div>
+        <div class="floating-shape"></div>
+        <div class="floating-shape"></div>
+    </div>
+
+    <!-- Update Progress Bar -->
+    <div class="update-progress" id="updateProgress"></div>
+
+    <!-- Navigation -->
+    <nav class="fixed top-0 w-full z-50 nav-blur border-b border-white/10">
+        <div class="max-w-7xl mx-auto px-6 py-4">
+            <div class="flex justify-between items-center">
+                <div class="font-mono text-2xl font-bold gradient-text">PM</div>
+                <div class="hidden md:flex space-x-8">
+                    <a href="#home" class="nav-link hover:text-neon-cyan transition-colors">Home</a>
+                    <a href="#about" class="nav-link hover:text-neon-cyan transition-colors">About</a>
+                    <a href="#projects" class="nav-link hover:text-neon-cyan transition-colors">Projects</a>
+                    <a href="#github" class="nav-link hover:text-neon-cyan transition-colors">GitHub</a>
+                    <a href="#testimonials" class="nav-link hover:text-neon-cyan transition-colors">Testimonials</a>
+                    <a href="#contact" class="nav-link hover:text-neon-cyan transition-colors">Contact</a>
+                </div>
+                <div class="flex gap-3">
+                    <button onclick="viewCV()" class="magnetic-button bg-gradient-to-r from-neon-purple to-neon-pink px-6 py-2 rounded-full text-white font-semibold">
+                        <i class="fas fa-eye mr-2"></i>View CV
+                    </button>
+                    <a href="#contact" class="magnetic-button bg-gradient-to-r from-neon-cyan to-neon-pink px-6 py-2 rounded-full text-black font-semibold">
+                        Hire Me
+                    </a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="min-h-screen flex items-center hero-bg relative overflow-hidden">
+        <div class="absolute inset-0 opacity-20">
+            <img src="https://images.unsplash.com/photo-1518709268805-4e9042af2176?w=1920&h=1080&fit=crop" alt="Tech Background" class="w-full h-full object-cover">
+        </div>
+        <div class="max-w-7xl mx-auto px-6 py-20 relative z-10">
+            <div class="grid lg:grid-cols-2 gap-12 items-center">
+                <div class="space-y-8">
+                    <div class="space-y-4">
+                        <h1 class="text-6xl lg:text-8xl font-bold">
+                            <span class="gradient-text">PANASHE</span>
+                        </h1>
+                        <h2 class="text-4xl lg:text-6xl font-light">MATENGAMBIRI</h2>
+                        <div class="text-xl lg:text-2xl text-gray-300 font-mono">
+                            Creative Technologist & UX Innovator
+                        </div>
+                    </div>
+                    
+                    <p class="text-lg lg:text-xl leading-relaxed text-gray-300 max-w-2xl">
+                        Information Systems student passionate about creating intuitive digital experiences 
+                        that solve real-world problems. Currently seeking entry-level and intermediate opportunities 
+                        (local or remote) to contribute innovative solutions.
+                    </p>
+                    
+                    <div class="flex flex-col sm:flex-row gap-4">
+                        <a href="#projects" class="magnetic-button bg-gradient-to-r from-neon-cyan via-neon-pink to-neon-purple px-8 py-4 rounded-full text-black font-bold text-lg inline-flex items-center justify-center">
+                            <i class="fas fa-rocket mr-2"></i>
+                            Explore My Work
+                        </a>
+                        <div class="flex gap-3">
+                            <button onclick="viewCV()" class="glass-morphism px-6 py-4 rounded-full font-semibold text-lg hover:bg-white/10 transition-all inline-flex items-center justify-center">
+                                <i class="fas fa-eye mr-2"></i>
+                                View CV
+                            </button>
+                            <button onclick="downloadCV()" class="glass-morphism px-6 py-4 rounded-full font-semibold text-lg hover:bg-white/10 transition-all inline-flex items-center justify-center">
+                                <i class="fas fa-download mr-2"></i>
+                                Download CV
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <div class="flex gap-6 pt-4">
+                        <a href="mailto:panashefrost@icloud.com" class="text-3xl hover:text-neon-cyan transition-colors">
+                            <i class="fas fa-envelope"></i>
+                        </a>
+                        <a href="https://linkedin.com/in/panashematengambiri" target="_blank" class="text-3xl hover:text-neon-cyan transition-colors">
+                            <i class="fab fa-linkedin"></i>
+                        </a>
+                        <a href="https://github.com/CBfrost" target="_blank" class="text-3xl hover:text-neon-cyan transition-colors">
+                            <i class="fab fa-github"></i>
+                        </a>
+                        <a href="https://behance.net/panashematenga" target="_blank" class="text-3xl hover:text-neon-cyan transition-colors">
+                            <i class="fab fa-behance"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="relative">
+                    <div class="w-96 h-96 mx-auto relative">
+                        <div class="absolute inset-0 bg-gradient-to-br from-neon-cyan via-neon-pink to-neon-purple rounded-full animate-glow"></div>
+                        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=400&fit=crop&crop=face" alt="Professional Portrait" class="w-full h-full object-cover rounded-full relative z-10 border-4 border-white/20">
+                        
+                        <!-- Floating Tech Icons -->
+                        <div class="absolute -top-4 -right-4 w-16 h-16 glass-morphism rounded-full flex items-center justify-center animate-float">
+                            <i class="fab fa-figma text-2xl text-neon-pink"></i>
+                        </div>
+                        <div class="absolute -bottom-4 -left-4 w-16 h-16 glass-morphism rounded-full flex items-center justify-center animate-float" style="animation-delay: 2s;">
+                            <i class="fab fa-react text-2xl text-neon-cyan"></i>
+                        </div>
+                        <div class="absolute top-1/2 -left-8 w-12 h-12 glass-morphism rounded-full flex items-center justify-center animate-float" style="animation-delay: 4s;">
+                            <i class="fas fa-code text-lg text-neon-purple"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="section-divider"></div>
+
+    <!-- About Section -->
+    <section id="about" class="py-20 relative">
+        <div class="absolute inset-0 opacity-10">
+            <img src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=1920&h=1080&fit=crop" alt="Space Tech" class="w-full h-full object-cover">
+        </div>
+        <div class="max-w-7xl mx-auto px-6 relative z-10">
+            <div class="text-center mb-16">
+                <h2 class="text-5xl lg:text-7xl font-bold gradient-text mb-6">About Me</h2>
+                <p class="text-xl text-gray-300 max-w-3xl mx-auto">
+                    A passionate technologist on a mission to create digital experiences that matter
+                </p>
+            </div>
+            
+            <div class="grid lg:grid-cols-2 gap-16 items-center">
+                <div class="space-y-8">
+                    <div class="glass-morphism p-8 rounded-3xl">
+                        <h3 class="text-3xl font-bold text-neon-cyan mb-4">My Journey</h3>
+                        <p class="text-lg leading-relaxed text-gray-300 mb-4">
+                            Currently pursuing my BSc in Information Systems at Midlands State University 
+                            (graduating November 2025). My journey in tech started with curiosity and 
+                            has evolved into a passion for creating meaningful digital solutions.
+                        </p>
+                        <p class="text-lg leading-relaxed text-gray-300">
+                            Through multiple internships and freelance projects, I've gained hands-on experience 
+                            in enterprise systems, user experience design, and full-stack development. 
+                            I'm particularly passionate about bridging the gap between beautiful design and 
+                            powerful functionality.
+                        </p>
+                    </div>
+                    
+                    <div class="grid grid-cols-2 gap-6">
+                        <div class="glass-morphism p-6 rounded-2xl text-center">
+                            <div class="text-4xl font-bold gradient-text mb-2">6+</div>
+                            <div class="text-gray-300">Certifications</div>
+                        </div>
+                        <div class="glass-morphism p-6 rounded-2xl text-center">
+                            <div class="text-4xl font-bold gradient-text mb-2">15+</div>
+                            <div class="text-gray-300">Projects</div>
+                        </div>
+                        <div class="glass-morphism p-6 rounded-2xl text-center">
+                            <div class="text-4xl font-bold gradient-text mb-2">3+</div>
+                            <div class="text-gray-300">Internships</div>
+                        </div>
+                        <div class="glass-morphism p-6 rounded-2xl text-center">
+                            <div class="text-4xl font-bold gradient-text mb-2">60K+</div>
+                            <div class="text-gray-300">Users Impacted</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Updated Skills & Certifications Section -->
+                <div class="space-y-6">
+                    <h3 class="text-3xl font-bold text-center gradient-text mb-8">Skills & Certifications</h3>
+                    
+                    <div class="skills-grid">
+                        <!-- Google UX Design -->
+                        <div class="skill-certification-card" style="--accent-color: #4285F4; --accent-color-2: #34A853;">
+                            <div class="certification-badge" style="background: linear-gradient(135deg, #4285F4, #34A853);">
+                                <i class="fab fa-google text-white text-xl"></i>
+                            </div>
+                            <h4 class="text-lg font-bold text-white mb-2">Google UX Design</h4>
+                            <p class="text-sm text-gray-300 mb-2">Professional Certificate</p>
+                            <div class="text-xs text-gray-400">Empathize • Define • Ideate • Prototype • Test</div>
+                        </div>
+
+                        <!-- IBM Front-End Developer -->
+                        <div class="skill-certification-card" style="--accent-color: #1261FE; --accent-color-2: #0530AD;">
+                            <div class="certification-badge" style="background: linear-gradient(135deg, #1261FE, #0530AD);">
+                                <i class="fas fa-laptop-code text-white text-xl"></i>
+                            </div>
+                            <h4 class="text-lg font-bold text-white mb-2">IBM Front-End</h4>
+                            <p class="text-sm text-gray-300 mb-2">Professional Certificate</p>
+                            <div class="text-xs text-gray-400">React • JavaScript • HTML/CSS • Git</div>
+                        </div>
+
+                        <!-- Microsoft UX Design -->
+                        <div class="skill-certification-card" style="--accent-color: #00BCF2; --accent-color-2: #0078D4;">
+                            <div class="certification-badge" style="background: linear-gradient(135deg, #00BCF2, #0078D4);">
+                                <i class="fab fa-microsoft text-white text-xl"></i>
+                            </div>
+                            <h4 class="text-lg font-bold text-white mb-2">Microsoft UX</h4>
+                            <p class="text-sm text-gray-300 mb-2">Professional Certificate</p>
+                            <div class="text-xs text-gray-400">Accessibility • Collaboration • AI-Enhanced UX</div>
+                        </div>
+
+                        <!-- CalArts UI/UX Design -->
+                        <div class="skill-certification-card" style="--accent-color: #FF6B35; --accent-color-2: #F7931E;">
+                            <div class="certification-badge" style="background: linear-gradient(135deg, #FF6B35, #F7931E);">
+                                <i class="fas fa-palette text-white text-xl"></i>
+                            </div>
+                            <h4 class="text-lg font-bold text-white mb-2">CalArts UI/UX</h4>
+                            <p class="text-sm text-gray-300 mb-2">Specialization</p>
+                            <div class="text-xs text-gray-400">Visual Elements • Strategy • Wireframes</div>
+                        </div>
+
+                        <!-- Figma, Sketch & Miro -->
+                        <div class="skill-certification-card" style="--accent-color: #F24E1E; --accent-color-2: #A259FF;">
+                            <div class="certification-badge" style="background: linear-gradient(135deg, #F24E1E, #A259FF);">
+                                <i class="fab fa-figma text-white text-xl"></i>
+                            </div>
+                            <h4 class="text-lg font-bold text-white mb-2">Design Toolkit</h4>
+                            <p class="text-sm text-gray-300 mb-2">Professional Certificate</p>
+                            <div class="text-xs text-gray-400">Figma • Sketch • Miro • User Testing</div>
+                        </div>
+
+                        <!-- Information Systems -->
+                        <div class="skill-certification-card" style="--accent-color: #00ffff; --accent-color-2: #ff0080;">
+                            <div class="certification-badge" style="background: linear-gradient(135deg, #00ffff, #ff0080);">
+                                <i class="fas fa-graduation-cap text-white text-xl"></i>
+                            </div>
+                            <h4 class="text-lg font-bold text-white mb-2">BSc IS</h4>
+                            <p class="text-sm text-gray-300 mb-2">Midlands State Uni</p>
+                            <div class="text-xs text-gray-400">Systems Analysis • DB Design • In Progress</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="section-divider"></div>
+
+    <!-- Featured Projects Section -->
+    <section id="projects" class="py-20 relative">
+        <div class="absolute inset-0 opacity-5">
+            <img src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=1920&h=1080&fit=crop" alt="Abstract Tech" class="w-full h-full object-cover">
+        </div>
+        <div class="max-w-7xl mx-auto px-6 relative z-10">
+            <div class="text-center mb-16">
+                <h2 class="text-5xl lg:text-7xl font-bold gradient-text mb-6">Featured Projects</h2>
+                <p class="text-xl text-gray-300">Real-world solutions showcasing technical expertise and business impact</p>
+            </div>
+            
+            <div class="grid lg:grid-cols-2 gap-12">
+                <!-- EcoWatt Project -->
+                <div class="project-card glass-morphism rounded-3xl overflow-hidden">
+                    <div class="relative h-64">
+                        <img src="https://images.unsplash.com/photo-1559827260-dc66d52bef19?w=600&h=400&fit=crop" alt="Energy Management" class="w-full h-full object-cover">
+                        <div class="absolute inset-0 bg-gradient-to-t from-dark-navy/80 to-transparent"></div>
+                        <div class="absolute top-4 right-4">
+                            <span class="bg-gradient-to-r from-green-400 to-blue-500 px-3 py-1 rounded-full text-sm font-semibold">Personal Project</span>
+                        </div>
+                        <div class="absolute bottom-4 left-4">
+                            <div class="flex items-center gap-2">
+                                <i class="fas fa-users text-neon-cyan"></i>
+                                <span class="text-white text-sm">60K+ Target Users</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="p-8">
+                        <h3 class="text-2xl font-bold mb-4 gradient-text">EcoWatt AI Energy Platform</h3>
+                        <p class="text-gray-300 mb-4">
+                            <strong>The Challenge:</strong> Zimbabwe's prepaid electricity system lacks user-friendly management tools, 
+                            leading to unexpected power cuts and inefficient energy consumption.
+                        </p>
+                        <p class="text-gray-300 mb-6">
+                            <strong>My Solution:</strong> Developed a Progressive Web App with AI-powered consumption forecasting, 
+                            Bluetooth smart meter integration, and mobile payment capabilities. Features real-time analytics, 
+                            personalized recommendations, and offline functionality for reliable access.
+                        </p>
+                        <div class="bg-dark-navy/30 p-4 rounded-xl mb-6">
+                            <h4 class="text-neon-cyan font-semibold mb-2">Key Achievements:</h4>
+                            <ul class="text-sm text-gray-300 space-y-1">
+                                <li>• Designed intuitive mobile-first interface reducing user task completion time by 60%</li>
+                                <li>• Implemented Chart.js visualizations for consumption pattern analysis</li>
+                                <li>• Built offline-capable PWA with service workers for 99.9% uptime</li>
+                                <li>• Created responsive design system supporting 5 local languages</li>
+                            </ul>
+                        </div>
+                        <div class="flex flex-wrap gap-2 mb-6">
+                            <span class="bg-neon-cyan/20 text-neon-cyan px-3 py-1 rounded-full text-sm">Progressive Web App</span>
+                            <span class="bg-neon-cyan/20 text-neon-cyan px-3 py-1 rounded-full text-sm">Chart.js</span>
+                            <span class="bg-neon-cyan/20 text-neon-cyan px-3 py-1 rounded-full text-sm">Bluetooth API</span>
+                            <span class="bg-neon-cyan/20 text-neon-cyan px-3 py-1 rounded-full text-sm">Service Workers</span>
+                        </div>
+                        <div class="flex gap-4">
+                            <a href="https://cbfrost.github.io/ecowatt-energy-platform" target="_blank" class="flex-1 bg-gradient-to-r from-neon-cyan to-electric-blue px-6 py-3 rounded-full text-black font-semibold text-center hover:scale-105 transition-transform">
+                                <i class="fas fa-external-link-alt mr-2"></i>View Live
+                            </a>
+                            <a href="https://github.com/CBfrost/ecowatt-energy-platform" target="_blank" class="flex-1 glass-morphism px-6 py-3 rounded-full text-center hover:bg-white/10 transition-colors">
+                                <i class="fab fa-github mr-2"></i>Code
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- AutoGlass Management -->
+                <div class="project-card glass-morphism rounded-3xl overflow-hidden">
+                    <div class="relative h-64">
+                        <img src="https://images.unsplash.com/photo-1449824913935-59a10b8d2000?w=600&h=400&fit=crop" alt="Automotive" class="w-full h-full object-cover">
+                        <div class="absolute inset-0 bg-gradient-to-t from-dark-navy/80 to-transparent"></div>
+                        <div class="absolute top-4 right-4">
+                            <span class="bg-gradient-to-r from-purple-400 to-pink-500 px-3 py-1 rounded-full text-sm font-semibold">Enterprise Project</span>
+                        </div>
+                        <div class="absolute bottom-4 left-4">
+                            <div class="flex items-center gap-2">
+                                <i class="fas fa-building text-neon-pink"></i>
+                                <span class="text-white text-sm">8 Branch Deployment</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="p-8">
+                        <h3 class="text-2xl font-bold mb-4 gradient-text">AutoGlass Pro Platform</h3>
+                        <p class="text-gray-300 mb-4">
+                            <strong>The Challenge:</strong> DM Windscreens needed a unified system to manage service bookings, 
+                            inventory, and technician schedules across 8 branch locations with real-time synchronization.
+                        </p>
+                        <p class="text-gray-300 mb-6">
+                            <strong>My Contribution:</strong> Collaborated on developing a comprehensive service management platform 
+                            with real-time booking system, mobile technician interfaces, and automated inventory tracking. 
+                            Focused on UI/UX design and frontend implementation.
+                        </p>
+                        <div class="bg-dark-navy/30 p-4 rounded-xl mb-6">
+                            <h4 class="text-neon-pink font-semibold mb-2">Business Impact:</h4>
+                            <ul class="text-sm text-gray-300 space-y-1">
+                                <li>• Reduced booking time from 15 minutes to 4 minutes (70% improvement)</li>
+                                <li>• Increased customer satisfaction scores by 35%</li>
+                                <li>• Streamlined inventory management reducing waste by 25%</li>
+                                <li>• Enhanced mobile technician productivity by 40%</li>
+                            </ul>
+                        </div>
+                        <div class="flex flex-wrap gap-2 mb-6">
+                            <span class="bg-neon-pink/20 text-neon-pink px-3 py-1 rounded-full text-sm">React</span>
+                            <span class="bg-neon-pink/20 text-neon-pink px-3 py-1 rounded-full text-sm">Node.js</span>
+                            <span class="bg-neon-pink/20 text-neon-pink px-3 py-1 rounded-full text-sm">PostgreSQL</span>
+                            <span class="bg-neon-pink/20 text-neon-pink px-3 py-1 rounded-full text-sm">Real-time Sync</span>
+                        </div>
+                        <div class="flex gap-4">
+                            <span class="flex-1 bg-gray-600 px-6 py-3 rounded-full text-white font-semibold text-center">
+                                <i class="fas fa-lock mr-2"></i>Enterprise System
+                            </span>
+                            <a href="#contact" class="flex-1 glass-morphism px-6 py-3 rounded-full text-center hover:bg-white/10 transition-colors">
+                                <i class="fas fa-info-circle mr-2"></i>Learn More
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- StayHealthy Capstone -->
+                <div class="project-card glass-morphism rounded-3xl overflow-hidden">
+                    <div class="relative h-64">
+                        <img src="https://images.unsplash.com/photo-1559757148-5c350d0d3c56?w=600&h=400&fit=crop" alt="Healthcare" class="w-full h-full object-cover">
+                        <div class="absolute inset-0 bg-gradient-to-t from-dark-navy/80 to-transparent"></div>
+                        <div class="absolute top-4 right-4">
+                            <span class="bg-gradient-to-r from-green-400 to-teal-500 px-3 py-1 rounded-full text-sm font-semibold">Capstone Project</span>
+                        </div>
+                        <div class="absolute bottom-4 left-4">
+                            <div class="flex items-center gap-2">
+                                <i class="fas fa-heartbeat text-green-400"></i>
+                                <span class="text-white text-sm">Healthcare Management</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="p-8">
+                        <h3 class="text-2xl font-bold mb-4 gradient-text">StayHealthy Healthcare Platform</h3>
+                        <p class="text-gray-300 mb-4">
+                            <strong>The Challenge:</strong> Developing a comprehensive healthcare management system that connects 
+                            patients, doctors, and healthcare providers in a seamless digital ecosystem.
+                        </p>
+                        <p class="text-gray-300 mb-6">
+                            <strong>My Solution:</strong> Built a full-stack healthcare platform with appointment scheduling, 
+                            patient records management, telemedicine capabilities, and real-time health monitoring dashboards.
+                        </p>
+                        <div class="bg-dark-navy/30 p-4 rounded-xl mb-6">
+                            <h4 class="text-green-400 font-semibold mb-2">Key Features:</h4>
+                            <ul class="text-sm text-gray-300 space-y-1">
+                                <li>• Secure patient data management with HIPAA compliance considerations</li>
+                                <li>• Real-time appointment scheduling and video consultation integration</li>
+                                <li>• Interactive health dashboards with data visualization</li>
+                                <li>• Mobile-responsive design for accessibility across devices</li>
+                            </ul>
+                        </div>
+                        <div class="flex flex-wrap gap-2 mb-6">
+                            <span class="bg-green-400/20 text-green-400 px-3 py-1 rounded-full text-sm">React</span>
+                            <span class="bg-green-400/20 text-green-400 px-3 py-1 rounded-full text-sm">Node.js</span>
+                            <span class="bg-green-400/20 text-green-400 px-3 py-1 rounded-full text-sm">MongoDB</span>
+                            <span class="bg-green-400/20 text-green-400 px-3 py-1 rounded-full text-sm">WebRTC</span>
+                        </div>
+                        <div class="flex gap-4">
+                            <a href="https://github.com/CBfrost/stayhealthy-capstone" target="_blank" class="flex-1 bg-gradient-to-r from-green-400 to-teal-500 px-6 py-3 rounded-full text-black font-semibold text-center hover:scale-105 transition-transform">
+                                <i class="fab fa-github mr-2"></i>View Code
+                            </a>
+                            <a href="#contact" class="flex-1 glass-morphism px-6 py-3 rounded-full text-center hover:bg-white/10 transition-colors">
+                                <i class="fas fa-info-circle mr-2"></i>Case Study
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Paradise Nursery -->
+                <div class="project-card glass-morphism rounded-3xl overflow-hidden">
+                    <div class="relative h-64">
+                        <img src="https://images.unsplash.com/photo-1416879595882-3373a0480b5b?w=600&h=400&fit=crop" alt="Plants Nursery" class="w-full h-full object-cover">
+                        <div class="absolute inset-0 bg-gradient-to-t from-dark-navy/80 to-transparent"></div>
+                        <div class="absolute top-4 right-4">
+                            <span class="bg-gradient-to-r from-emerald-400 to-green-500 px-3 py-1 rounded-full text-sm font-semibold">E-Commerce</span>
+                        </div>
+                        <div class="absolute bottom-4 left-4">
+                            <div class="flex items-center gap-2">
+                                <i class="fas fa-seedling text-emerald-400"></i>
+                                <span class="text-white text-sm">Plant E-Commerce</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="p-8">
+                        <h3 class="text-2xl font-bold mb-4 gradient-text">Paradise Nursery E-Commerce</h3>
+                        <p class="text-gray-300 mb-4">
+                            <strong>The Goal:</strong> Create an engaging e-commerce platform for plant enthusiasts with 
+                            intuitive navigation, detailed plant care information, and seamless shopping experience.
+                        </p>
+                        <p class="text-gray-300 mb-6">
+                            <strong>The Result:</strong> Developed a responsive plant nursery website with interactive plant 
+                            catalog, shopping cart functionality, care guides, and customer review system. Features beautiful 
+                            plant imagery and user-friendly interface design.
+                        </p>
+                        <div class="bg-dark-navy/30 p-4 rounded-xl mb-6">
+                            <h4 class="text-emerald-400 font-semibold mb-2">Features:</h4>
+                            <ul class="text-sm text-gray-300 space-y-1">
+                                <li>• Interactive plant catalog with detailed information and care guides</li>
+                                <li>• Shopping cart and checkout system with order management</li>
+                                <li>• Plant care reminder system and maintenance tips</li>
+                                <li>• Customer review and rating system for plants</li>
+                            </ul>
+                        </div>
+                        <div class="flex flex-wrap gap-2 mb-6">
+                            <span class="bg-emerald-400/20 text-emerald-400 px-3 py-1 rounded-full text-sm">JavaScript</span>
+                            <span class="bg-emerald-400/20 text-emerald-400 px-3 py-1 rounded-full text-sm">HTML5/CSS3</span>
+                            <span class="bg-emerald-400/20 text-emerald-400 px-3 py-1 rounded-full text-sm">Local Storage</span>
+                            <span class="bg-emerald-400/20 text-emerald-400 px-3 py-1 rounded-full text-sm">Responsive</span>
+                        </div>
+                        <div class="flex gap-4">
+                            <a href="https://github.com/CBfrost/paradise-nursery" target="_blank" class="flex-1 bg-gradient-to-r from-emerald-400 to-green-500 px-6 py-3 rounded-full text-black font-semibold text-center hover:scale-105 transition-transform">
+                                <i class="fab fa-github mr-2"></i>View Code
+                            </a>
+                            <a href="#contact" class="flex-1 glass-morphism px-6 py-3 rounded-full text-center hover:bg-white/10 transition-colors">
+                                <i class="fas fa-external-link-alt mr-2"></i>Demo
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="section-divider"></div>
+
+    <!-- GitHub Projects Section -->
+    <section id="github" class="py-20 relative github-section-bg">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-5xl lg:text-7xl font-bold gradient-text mb-6">GitHub Projects</h2>
+                <p class="text-xl text-gray-300">Explore my latest open-source contributions and personal projects</p>
+            </div>
+            
+            <div id="github-projects" class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-16">
+                <!-- GitHub projects will be loaded here dynamically -->
+            </div>
+            
+            <!-- Enhanced GitHub Repository CTA Section -->
+            <div class="text-center">
+                <div class="github-cta-card glass-morphism p-12 rounded-3xl inline-block max-w-4xl">
+                    <div class="mb-8">
+                        <div class="inline-flex items-center justify-center w-20 h-20 rounded-full bg-gradient-to-br from-neon-cyan via-neon-pink to-neon-purple mb-6">
+                            <i class="fab fa-github text-3xl text-white"></i>
+                        </div>
+                        <h3 class="text-3xl font-bold gradient-text mb-4">Discover More on GitHub</h3>
+                        <p class="text-lg text-white mb-6 max-w-2xl mx-auto leading-relaxed">
+                            Dive deeper into my development journey with complete project repositories, detailed documentation, 
+                            contribution history, and collaborative coding experiments. See how I approach problem-solving 
+                            and stay current with modern technologies.
+                        </p>
+                        
+                        <!-- GitHub Stats Preview - ACCESSIBILITY IMPROVED -->
+                        <div class="grid md:grid-cols-3 gap-6 mb-8">
+                            <div class="bg-dark-navy/50 p-4 rounded-xl border border-neon-cyan/30">
+                                <div class="text-2xl font-bold text-white mb-1">12+</div>
+                                <div class="text-sm text-gray-200 font-medium">Repositories</div>
+                            </div>
+                            <div class="bg-dark-navy/50 p-4 rounded-xl border border-neon-pink/30">
+                                <div class="text-2xl font-bold text-white mb-1">200+</div>
+                                <div class="text-sm text-gray-200 font-medium">Commits</div>
+                            </div>
+                            <div class="bg-dark-navy/50 p-4 rounded-xl border border-neon-purple/30">
+                                <div class="text-2xl font-bold text-white mb-1">15+</div>
+                                <div class="text-sm text-gray-200 font-medium">Languages</div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                        <a href="https://github.com/CBfrost" target="_blank" class="magnetic-button bg-gradient-to-r from-neon-cyan via-neon-pink to-neon-purple px-12 py-4 rounded-full text-black font-bold text-xl inline-flex items-center justify-center">
+                            <i class="fab fa-github mr-3 text-2xl"></i>
+                            Explore GitHub Profile
+                        </a>
+                        <a href="https://github.com/CBfrost?tab=repositories" target="_blank" class="glass-morphism px-12 py-4 rounded-full text-white font-semibold text-xl hover:bg-white/10 transition-all inline-flex items-center justify-center border border-white/20">
+                            <i class="fas fa-folder-open mr-3"></i>
+                            Browse Repositories
+                        </a>
+                    </div>
+                    
+                    <!-- Quick Project Links - ACCESSIBILITY IMPROVED -->
+                    <div class="mt-8 pt-8 border-t border-white/20">
+                        <p class="text-gray-200 mb-4 font-medium">🚀 Featured Repositories:</p>
+                        <div class="flex flex-wrap justify-center gap-3">
+                            <a href="https://github.com/CBfrost/ecowatt-energy-platform" target="_blank" class="bg-neon-cyan/30 text-white px-4 py-2 rounded-full text-sm hover:bg-neon-cyan/40 transition-colors border border-neon-cyan/40">
+                                EcoWatt Platform
+                            </a>
+                            <a href="https://github.com/CBfrost/stayhealthy-capstone" target="_blank" class="bg-neon-pink/30 text-white px-4 py-2 rounded-full text-sm hover:bg-neon-pink/40 transition-colors border border-neon-pink/40">
+                                StayHealthy Healthcare
+                            </a>
+                            <a href="https://github.com/CBfrost/portfolio-website" target="_blank" class="bg-neon-purple/30 text-white px-4 py-2 rounded-full text-sm hover:bg-neon-purple/40 transition-colors border border-neon-purple/40">
+                                Portfolio Website
+                            </a>
+                            <a href="https://github.com/CBfrost/paradise-nursery" target="_blank" class="bg-emerald-400/30 text-white px-4 py-2 rounded-full text-sm hover:bg-emerald-400/40 transition-colors border border-emerald-400/40">
+                                Paradise Nursery
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="section-divider"></div>
+
+    <!-- Testimonials Section -->
+    <section id="testimonials" class="py-20 relative">
+        <div class="absolute inset-0 opacity-5">
+            <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=1920&h=1080&fit=crop" alt="Team Work" class="w-full h-full object-cover">
+        </div>
+        <div class="max-w-7xl mx-auto px-6 relative z-10">
+            <div class="text-center mb-16">
+                <h2 class="text-5xl lg:text-7xl font-bold gradient-text mb-6">What People Say</h2>
+                <p class="text-xl text-gray-300">Feedback from colleagues, supervisors, and clients</p>
+            </div>
+            
+            <div class="grid lg:grid-cols-3 gap-8">
+                <!-- Testimonial 1 - IT Supervisor -->
+                <div class="testimonial-card rounded-3xl p-8">
+                    <div class="flex items-center mb-6">
+                        <div class="professional-avatar w-16 h-16 rounded-full flex items-center justify-center mr-4" style="--gradient-from: #00ffff; --gradient-to: #0066ff;">
+                            <i class="fas fa-user-tie text-2xl text-white"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-white">Ms. Y. Mushambi</h4>
+                            <p class="text-neon-cyan text-sm">IT Supervisor, DM Windscreens</p>
+                        </div>
+                    </div>
+                    <div class="flex text-yellow-400 mb-4">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <p class="text-gray-300 italic mb-4">
+                        "Panashe demonstrated exceptional problem-solving skills during our ERP implementation. 
+                        His ability to translate complex technical requirements into user-friendly interfaces 
+                        was invaluable to our team."
+                    </p>
+                    <p class="text-sm text-gray-400">
+                        "He consistently exceeded expectations and showed remarkable adaptability when 
+                        working with different stakeholders across our 8 branch locations."
+                    </p>
+                </div>
+                
+                <!-- Testimonial 2 - Business Owner -->
+                <div class="testimonial-card rounded-3xl p-8">
+                    <div class="flex items-center mb-6">
+                        <div class="professional-avatar w-16 h-16 rounded-full flex items-center justify-center mr-4" style="--gradient-from: #ff0080; --gradient-to: #8000ff;">
+                            <i class="fas fa-briefcase text-2xl text-white"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-white">Mr. R. Chiriya</h4>
+                            <p class="text-neon-pink text-sm">Owner, RNC Windscreens</p>
+                        </div>
+                    </div>
+                    <div class="flex text-yellow-400 mb-4">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <p class="text-gray-300 italic mb-4">
+                        "Working with Panashe was a game-changer for our startup. His design skills and 
+                        technical expertise helped us establish a professional online presence that 
+                        significantly improved our customer engagement."
+                    </p>
+                    <p class="text-sm text-gray-400">
+                        "The brand identity and website he created perfectly captured our vision and 
+                        helped us stand out in a competitive market."
+                    </p>
+                </div>
+                
+                <!-- Testimonial 3 - Client -->
+                <div class="testimonial-card rounded-3xl p-8">
+                    <div class="flex items-center mb-6">
+                        <div class="professional-avatar w-16 h-16 rounded-full flex items-center justify-center mr-4" style="--gradient-from: #8000ff; --gradient-to: #00ffff;">
+                            <i class="fas fa-user-check text-2xl text-white"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-white">Sarah Mitchell</h4>
+                            <p class="text-neon-purple text-sm">Freelance Client</p>
+                        </div>
+                    </div>
+                    <div class="flex text-yellow-400 mb-4">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <p class="text-gray-300 italic mb-4">
+                        "Panashe delivered exactly what we needed - a modern, responsive website that 
+                        our customers love. His attention to detail and commitment to quality is 
+                        impressive for someone so early in their career."
+                    </p>
+                    <p class="text-sm text-gray-400">
+                        "Communication was excellent throughout the project, and he delivered on time 
+                        and within budget. I would definitely work with him again."
+                    </p>
+                </div>
+            </div>
+            
+            <!-- Additional testimonials row -->
+            <div class="grid lg:grid-cols-2 gap-8 mt-8">
+                <!-- Testimonial 4 - Academic -->
+                <div class="testimonial-card rounded-3xl p-8">
+                    <div class="flex items-center mb-6">
+                        <div class="professional-avatar w-16 h-16 rounded-full flex items-center justify-center mr-4" style="--gradient-from: #00ffff; --gradient-to: #ff0080;">
+                            <i class="fas fa-graduation-cap text-2xl text-white"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-white">Dr. M. Zhou</h4>
+                            <p class="text-neon-cyan text-sm">Academic Supervisor, MSU</p>
+                        </div>
+                    </div>
+                    <div class="flex text-yellow-400 mb-4">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <p class="text-gray-300 italic">
+                        "Panashe consistently demonstrates strong analytical thinking and practical application 
+                        of theoretical concepts. His work during industrial attachments shows remarkable 
+                        professional growth and technical competency."
+                    </p>
+                </div>
+                
+                <!-- Testimonial 5 - Project Manager -->
+                <div class="testimonial-card rounded-3xl p-8">
+                    <div class="flex items-center mb-6">
+                        <div class="professional-avatar w-16 h-16 rounded-full flex items-center justify-center mr-4" style="--gradient-from: #ff0080; --gradient-to: #00ffff;">
+                            <i class="fas fa-tasks text-2xl text-white"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-white">Jennifer Adams</h4>
+                            <p class="text-neon-pink text-sm">Project Manager</p>
+                        </div>
+                    </div>
+                    <div class="flex text-yellow-400 mb-4">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <p class="text-gray-300 italic">
+                        "What impresses me most about Panashe is his eagerness to learn and his collaborative 
+                        approach. He actively seeks feedback and consistently delivers high-quality work. 
+                        A valuable addition to any team."
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="section-divider"></div>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-20 relative">
+        <div class="absolute inset-0 opacity-10">
+            <img src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?w=1920&h=1080&fit=crop" alt="Communication" class="w-full h-full object-cover">
+        </div>
+        <div class="max-w-7xl mx-auto px-6 relative z-10">
+            <div class="text-center mb-16">
+                <h2 class="text-5xl lg:text-7xl font-bold gradient-text mb-6">Let's Create Together</h2>
+                <p class="text-xl text-gray-300">Ready to bring your next project to life?</p>
+            </div>
+            
+            <div class="grid lg:grid-cols-2 gap-16">
+                <!-- Contact Info -->
+                <div class="space-y-8">
+                    <div class="glass-morphism p-8 rounded-3xl">
+                        <h3 class="text-3xl font-bold gradient-text mb-6">Get In Touch</h3>
+                        <p class="text-lg text-gray-300 mb-8">
+                            I'm currently seeking entry-level and intermediate opportunities (local or remote) where I can contribute 
+                            my skills while continuing to learn and grow.
+                        </p>
+                        
+                        <div class="space-y-6">
+                            <div class="flex items-center group">
+                                <div class="w-12 h-12 bg-gradient-to-br from-neon-cyan to-electric-blue rounded-xl flex items-center justify-center mr-4 group-hover:scale-110 transition-transform">
+                                    <i class="fas fa-envelope text-white"></i>
+                                </div>
+                                <div>
+                                    <p class="text-gray-400 text-sm">Email</p>
+                                    <a href="mailto:panashefrost@icloud.com" class="text-lg hover:text-neon-cyan transition-colors">
+                                        panashefrost@icloud.com
+                                    </a>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-center group">
+                                <div class="w-12 h-12 bg-gradient-to-br from-neon-pink to-neon-purple rounded-xl flex items-center justify-center mr-4 group-hover:scale-110 transition-transform">
+                                    <i class="fas fa-phone text-white"></i>
+                                </div>
+                                <div>
+                                    <p class="text-gray-400 text-sm">Phone</p>
+                                    <a href="tel:+27632269407" class="text-lg hover:text-neon-cyan transition-colors">
+                                        +27 632 269 407
+                                    </a>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-center group">
+                                <div class="w-12 h-12 bg-gradient-to-br from-green-400 to-blue-500 rounded-xl flex items-center justify-center mr-4 group-hover:scale-110 transition-transform">
+                                    <i class="fas fa-map-marker-alt text-white"></i>
+                                </div>
+                                <div>
+                                    <p class="text-gray-400 text-sm">Location</p>
+                                    <p class="text-lg">138 Holkam Road, Paulshof, Sandton 2191, South Africa</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="mt-8 pt-8 border-t border-white/10">
+                            <p class="text-gray-400 mb-4">Available for:</p>
+                            <div class="flex flex-wrap gap-3">
+                                <span class="bg-neon-cyan/20 text-neon-cyan px-4 py-2 rounded-full text-sm">Entry-Level Positions</span>
+                                <span class="bg-neon-pink/20 text-neon-pink px-4 py-2 rounded-full text-sm">Intermediate Roles</span>
+                                <span class="bg-neon-purple/20 text-neon-purple px-4 py-2 rounded-full text-sm">Remote Work</span>
+                                <span class="bg-emerald-400/20 text-emerald-400 px-4 py-2 rounded-full text-sm">Freelance Projects</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Contact Form -->
+                <div class="glass-morphism p-8 rounded-3xl">
+                    <form class="space-y-6" id="contact-form">
+                        <div class="grid grid-cols-2 gap-4">
+                            <div>
+                                <label class="block text-sm font-semibold text-gray-300 mb-2">First Name</label>
+                                <input type="text" name="firstName" required class="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-xl focus:border-neon-cyan focus:outline-none transition-colors text-white placeholder-gray-400 text-base" placeholder="John">
+                            </div>
+                            <div>
+                                <label class="block text-sm font-semibold text-gray-300 mb-2">Last Name</label>
+                                <input type="text" name="lastName" required class="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-xl focus:border-neon-cyan focus:outline-none transition-colors text-white placeholder-gray-400 text-base" placeholder="Doe">
+                            </div>
+                        </div>
+                        
+                        <div>
+                            <label class="block text-sm font-semibold text-gray-300 mb-2">Email</label>
+                            <input type="email" name="email" required class="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-xl focus:border-neon-cyan focus:outline-none transition-colors text-white placeholder-gray-400 text-base" placeholder="john@company.com">
+                        </div>
+                        
+                        <div>
+                            <label class="block text-sm font-semibold text-gray-300 mb-2">Subject</label>
+                            <input type="text" name="subject" required class="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-xl focus:border-neon-cyan focus:outline-none transition-colors text-white placeholder-gray-400 text-base" placeholder="Let's work together">
+                        </div>
+                        
+                        <div>
+                            <label class="block text-sm font-semibold text-gray-300 mb-2">Message</label>
+                            <textarea name="message" rows="5" required class="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-xl focus:border-neon-cyan focus:outline-none transition-colors text-white placeholder-gray-400 resize-none text-base" placeholder="Tell me about your project or opportunity..."></textarea>
+                        </div>
+                        
+                        <button type="submit" class="w-full magnetic-button bg-gradient-to-r from-neon-cyan via-neon-pink to-neon-purple px-8 py-4 rounded-xl text-black font-bold text-lg">
+                            <i class="fas fa-paper-plane mr-2"></i>
+                            Send Message
+                        </button>
+                        
+                        <!-- Success Message -->
+                        <div id="success-message" class="success-message">
+                            <div class="flex items-center">
+                                <i class="fas fa-check-circle text-white text-xl mr-3"></i>
+                                <div>
+                                    <h4 class="text-white font-semibold">Message Sent Successfully!</h4>
+                                    <p class="text-green-100 text-sm">Thank you for reaching out. I'll get back to you within 24 hours.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            
+            <!-- Social Links -->
+            <div class="text-center mt-16">
+                <p class="text-gray-400 mb-6">Connect with me on social media</p>
+                <div class="flex justify-center gap-6">
+                    <a href="https://linkedin.com/in/panashematengambiri" target="_blank" class="w-16 h-16 glass-morphism rounded-2xl flex items-center justify-center text-2xl hover:text-neon-cyan hover:scale-110 transition-all">
+                        <i class="fab fa-linkedin"></i>
+                    </a>
+                    <a href="https://github.com/CBfrost" target="_blank" class="w-16 h-16 glass-morphism rounded-2xl flex items-center justify-center text-2xl hover:text-neon-cyan hover:scale-110 transition-all">
+                        <i class="fab fa-github"></i>
+                    </a>
+                    <a href="https://behance.net/panashematenga" target="_blank" class="w-16 h-16 glass-morphism rounded-2xl flex items-center justify-center text-2xl hover:text-neon-cyan hover:scale-110 transition-all">
+                        <i class="fab fa-behance"></i>
+                    </a>
+                    <a href="mailto:panashefrost@icloud.com" class="w-16 h-16 glass-morphism rounded-2xl flex items-center justify-center text-2xl hover:text-neon-cyan hover:scale-110 transition-all">
+                        <i class="fas fa-envelope"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CV Modal -->
+    <div id="cvModal" class="cv-modal">
+        <div class="cv-modal-content">
+            <span class="cv-close" onclick="closeCVModal()">×</span>
+            <iframe id="cvFrame" src="cv.html" width="100%" height="600px" style="border: none; border-radius: 15px;"></iframe>
+            <div class="flex justify-center gap-4 mt-6">
+                <button onclick="downloadCV()" class="bg-gradient-to-r from-neon-cyan to-neon-pink px-8 py-3 rounded-full text-black font-semibold">
+                    <i class="fas fa-download mr-2"></i>Download PDF
+                </button>
+                <button onclick="window.open('cv.html', '_blank')" class="glass-morphism px-8 py-3 rounded-full text-white font-semibold hover:bg-white/10 transition-colors">
+                    <i class="fas fa-external-link-alt mr-2"></i>Full Screen
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="py-12 border-t border-white/10">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="flex flex-col lg:flex-row justify-between items-center">
+                <div class="mb-6 lg:mb-0">
+                    <div class="font-mono text-2xl font-bold gradient-text mb-2">PANASHE MATENGAMBIRI</div>
+                    <p class="text-gray-400">Creative Technologist & UX Innovator</p>
+                </div>
+                <div class="text-center lg:text-right">
+                    <p class="text-gray-400 mb-2">© 2024 Panashe Matengambiri</p>
+                    <p class="text-sm text-gray-500">Available for entry-level & intermediate opportunities (local & remote)</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Include Main JavaScript -->
+    <script src="assets/js/main.js"></script>
+</body>
+</html>

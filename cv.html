@@ -1,0 +1,677 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Panashe Matengambiri - CV</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        'space': ['Space Grotesk', 'sans-serif'],
+                        'mono': ['JetBrains Mono', 'monospace'],
+                        'display': ['Playfair Display', 'serif'],
+                    },
+                    colors: {
+                        'neon-cyan': '#00ffff',
+                        'neon-pink': '#ff0080',
+                        'neon-purple': '#8000ff',
+                        'dark-navy': '#0a0e27',
+                        'electric-blue': '#0066ff',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        @media print {
+            body { 
+                background: white !important; 
+                color: black !important; 
+                font-size: 12pt !important;
+            }
+            .glass-morphism {
+                background: rgba(0,0,0,0.05) !important;
+                border: 1px solid rgba(0,0,0,0.1) !important;
+                backdrop-filter: none !important;
+            }
+            .gradient-text {
+                background: none !important;
+                -webkit-background-clip: unset !important;
+                -webkit-text-fill-color: unset !important;
+                color: #333 !important;
+                font-weight: 700 !important;
+            }
+            .text-white { color: black !important; }
+            .text-gray-300 { color: #333 !important; }
+            .text-gray-400 { color: #666 !important; }
+            .bg-dark-navy { background: white !important; }
+            .print-break { page-break-after: always; }
+            .no-print { display: none !important; }
+        }
+
+        body { 
+            font-family: 'Space Grotesk', sans-serif;
+            background: linear-gradient(135deg, #0a0e27 0%, #1a1f3a 100%);
+            overflow-x: hidden;
+        }
+        
+        .glass-morphism {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .gradient-text {
+            background: linear-gradient(45deg, #00ffff, #ff0080, #8000ff);
+            background-size: 300% 300%;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: gradient-shift 3s ease infinite;
+        }
+
+        @keyframes gradient-shift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .skill-bar {
+            height: 6px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 3px;
+            overflow: hidden;
+        }
+
+        .skill-progress {
+            height: 100%;
+            background: linear-gradient(90deg, #00ffff, #ff0080);
+            border-radius: 3px;
+            transition: width 1s ease-in-out;
+        }
+
+        .floating-shapes {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -1;
+            opacity: 0.1;
+        }
+
+        .floating-shape {
+            position: absolute;
+            border-radius: 50%;
+            animation: float 8s ease-in-out infinite;
+        }
+
+        .floating-shape:nth-child(1) {
+            width: 60px;
+            height: 60px;
+            background: #00ffff;
+            top: 10%;
+            left: 85%;
+            animation-delay: 0s;
+        }
+
+        .floating-shape:nth-child(2) {
+            width: 40px;
+            height: 40px;
+            background: #ff0080;
+            top: 70%;
+            right: 10%;
+            animation-delay: 3s;
+        }
+
+        .floating-shape:nth-child(3) {
+            width: 80px;
+            height: 80px;
+            background: #8000ff;
+            bottom: 20%;
+            left: 5%;
+            animation-delay: 6s;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            33% { transform: translateY(-15px) rotate(120deg); }
+            66% { transform: translateY(8px) rotate(240deg); }
+        }
+
+        .section-title {
+            position: relative;
+            padding-bottom: 0.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 2px;
+            background: linear-gradient(90deg, #00ffff, #ff0080);
+            border-radius: 1px;
+        }
+    </style>
+</head>
+<body class="bg-dark-navy text-white font-space">
+    <!-- Floating Background Shapes -->
+    <div class="floating-shapes no-print">
+        <div class="floating-shape"></div>
+        <div class="floating-shape"></div>
+        <div class="floating-shape"></div>
+    </div>
+
+    <!-- Print Button -->
+    <div class="no-print fixed top-6 right-6 z-50">
+        <button onclick="window.print()" class="glass-morphism px-6 py-3 rounded-full text-white font-semibold hover:bg-white/10 transition-all">
+            <i class="fas fa-print mr-2"></i>
+            Print CV
+        </button>
+    </div>
+
+    <!-- CV Container -->
+    <div class="max-w-4xl mx-auto p-6 min-h-screen">
+        
+        <!-- Header Section -->
+        <header class="glass-morphism rounded-3xl p-8 mb-8">
+            <div class="grid md:grid-cols-3 gap-8 items-center">
+                <div class="md:col-span-2">
+                    <h1 class="text-4xl md:text-5xl font-bold gradient-text mb-2">
+                        PANASHE MATENGAMBIRI
+                    </h1>
+                    <h2 class="text-xl md:text-2xl text-gray-300 font-light mb-4">
+                        Creative Technologist & UX Innovator
+                    </h2>
+                    <p class="text-gray-300 leading-relaxed max-w-xl">
+                        Passionate Information Systems student with hands-on experience in enterprise solutions, 
+                        full-stack development, and user experience design. Seeking entry-level and intermediate 
+                        opportunities to contribute innovative solutions while continuing professional growth.
+                    </p>
+                </div>
+                <div class="text-center md:text-right">
+                    <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=200&h=200&fit=crop&crop=face" alt="Professional Portrait" class="w-32 h-32 md:w-40 md:h-40 rounded-full object-cover mx-auto md:ml-auto border-4 border-neon-cyan/30 mb-4">
+                    
+                    <div class="space-y-2 text-sm text-gray-300">
+                        <div class="flex items-center justify-center md:justify-end">
+                            <i class="fas fa-envelope w-4 text-neon-cyan mr-2"></i>
+                            <span>panashefrost@icloud.com</span>
+                        </div>
+                        <div class="flex items-center justify-center md:justify-end">
+                            <i class="fas fa-phone w-4 text-neon-pink mr-2"></i>
+                            <span>+27 632 269 407</span>
+                        </div>
+                        <div class="flex items-center justify-center md:justify-end">
+                            <i class="fas fa-map-marker-alt w-4 text-neon-purple mr-2"></i>
+                            <span>Sandton, South Africa</span>
+                        </div>
+                        <div class="flex items-center justify-center md:justify-end">
+                            <i class="fab fa-linkedin w-4 text-neon-cyan mr-2"></i>
+                            <span>linkedin.com/in/panashematengambiri</span>
+                        </div>
+                        <div class="flex items-center justify-center md:justify-end">
+                            <i class="fab fa-github w-4 text-neon-pink mr-2"></i>
+                            <span>github.com/CBfrost</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <!-- Education Section -->
+        <section class="glass-morphism rounded-3xl p-8 mb-8">
+            <h3 class="text-2xl font-bold gradient-text section-title">EDUCATION</h3>
+            
+            <div class="space-y-6">
+                <div class="border-l-4 border-neon-cyan pl-6">
+                    <h4 class="text-xl font-semibold text-white mb-2">
+                        BSc Information Systems
+                    </h4>
+                    <div class="text-neon-cyan font-medium mb-1">
+                        Midlands State University, Zimbabwe
+                    </div>
+                    <div class="text-gray-400 text-sm mb-3">
+                        November 2021 - November 2025 (Expected)
+                    </div>
+                    <ul class="text-gray-300 text-sm space-y-1">
+                        <li>• Focus: Systems Analysis, Database Design, Software Development</li>
+                        <li>• Relevant Coursework: Enterprise Systems, UX Design, Project Management</li>
+                        <li>• Practical Experience: 3+ Industrial Attachments</li>
+                    </ul>
+                </div>
+
+                <div class="border-l-4 border-neon-pink pl-6">
+                    <h4 class="text-xl font-semibold text-white mb-2">
+                        Professional Certifications
+                    </h4>
+                    <div class="grid md:grid-cols-2 gap-4 text-sm">
+                        <div class="bg-dark-navy/30 p-3 rounded-lg">
+                            <div class="text-neon-cyan font-medium">Google UX Design Professional Certificate</div>
+                            <div class="text-gray-400">Coursera • December 2023</div>
+                        </div>
+                        <div class="bg-dark-navy/30 p-3 rounded-lg">
+                            <div class="text-neon-pink font-medium">IBM Front-End Developer</div>
+                            <div class="text-gray-400">IBM • 2024</div>
+                        </div>
+                        <div class="bg-dark-navy/30 p-3 rounded-lg">
+                            <div class="text-neon-purple font-medium">Microsoft UX Design</div>
+                            <div class="text-gray-400">Microsoft • 2024</div>
+                        </div>
+                        <div class="bg-dark-navy/30 p-3 rounded-lg">
+                            <div class="text-neon-cyan font-medium">CalArts UI/UX Design Specialization</div>
+                            <div class="text-gray-400">California Institute of the Arts • 2024</div>
+                        </div>
+                        <div class="bg-dark-navy/30 p-3 rounded-lg">
+                            <div class="text-neon-pink font-medium">Figma, Sketch & Miro for UX Design</div>
+                            <div class="text-gray-400">UX Design Toolkit • 2024</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Experience Section -->
+        <section class="glass-morphism rounded-3xl p-8 mb-8">
+            <h3 class="text-2xl font-bold gradient-text section-title">PROFESSIONAL EXPERIENCE</h3>
+            
+            <div class="space-y-8">
+                <!-- Industrial Attachment 1 -->
+                <div class="border-l-4 border-neon-cyan pl-6">
+                    <div class="flex flex-col md:flex-row md:items-center md:justify-between mb-2">
+                        <h4 class="text-xl font-semibold text-white">
+                            Systems Development Intern
+                        </h4>
+                        <span class="text-neon-cyan text-sm font-medium">
+                            May 2024 - August 2024
+                        </span>
+                    </div>
+                    <div class="text-gray-300 font-medium mb-3">
+                        DM Windscreens • Harare, Zimbabwe
+                    </div>
+                    <ul class="text-gray-300 text-sm space-y-2 mb-4">
+                        <li>• <strong>ERP Implementation:</strong> Participated in Odoo ERP customization and deployment across 8 branch locations</li>
+                        <li>• <strong>UI/UX Design:</strong> Designed user-friendly interfaces reducing staff training time by 50%</li>
+                        <li>• <strong>Process Automation:</strong> Automated inventory management eliminating 80% of manual data entry</li>
+                        <li>• <strong>System Integration:</strong> Developed custom modules using Python and XML for automotive industry workflows</li>
+                        <li>• <strong>Training & Documentation:</strong> Created comprehensive user guides and conducted staff training sessions</li>
+                    </ul>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="bg-neon-cyan/20 text-neon-cyan px-3 py-1 rounded-full text-xs">Odoo ERP</span>
+                        <span class="bg-neon-cyan/20 text-neon-cyan px-3 py-1 rounded-full text-xs">Python</span>
+                        <span class="bg-neon-cyan/20 text-neon-cyan px-3 py-1 rounded-full text-xs">PostgreSQL</span>
+                        <span class="bg-neon-cyan/20 text-neon-cyan px-3 py-1 rounded-full text-xs">XML/QWeb</span>
+                    </div>
+                </div>
+
+                <!-- Freelance Work -->
+                <div class="border-l-4 border-neon-pink pl-6">
+                    <div class="flex flex-col md:flex-row md:items-center md:justify-between mb-2">
+                        <h4 class="text-xl font-semibold text-white">
+                            Freelance Web Developer & Designer
+                        </h4>
+                        <span class="text-neon-pink text-sm font-medium">
+                            January 2023 - Present
+                        </span>
+                    </div>
+                    <div class="text-gray-300 font-medium mb-3">
+                        Self-Employed • Remote
+                    </div>
+                    <ul class="text-gray-300 text-sm space-y-2 mb-4">
+                        <li>• <strong>Client Projects:</strong> Delivered 15+ successful web development and design projects</li>
+                        <li>• <strong>Brand Development:</strong> Created complete brand identities including logos, color schemes, and style guides</li>
+                        <li>• <strong>Responsive Development:</strong> Built mobile-first websites with 99.9% uptime and optimal performance</li>
+                        <li>• <strong>Client Management:</strong> Maintained excellent client relationships with 100% project completion rate</li>
+                        <li>• <strong>Technology Stack:</strong> Specialized in React, Node.js, WordPress, and modern CSS frameworks</li>
+                    </ul>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="bg-neon-pink/20 text-neon-pink px-3 py-1 rounded-full text-xs">React</span>
+                        <span class="bg-neon-pink/20 text-neon-pink px-3 py-1 rounded-full text-xs">Node.js</span>
+                        <span class="bg-neon-pink/20 text-neon-pink px-3 py-1 rounded-full text-xs">WordPress</span>
+                        <span class="bg-neon-pink/20 text-neon-pink px-3 py-1 rounded-full text-xs">Figma</span>
+                    </div>
+                </div>
+
+                <!-- Previous Internship -->
+                <div class="border-l-4 border-neon-purple pl-6">
+                    <div class="flex flex-col md:flex-row md:items-center md:justify-between mb-2">
+                        <h4 class="text-xl font-semibold text-white">
+                            IT Support & Development Intern
+                        </h4>
+                        <span class="text-neon-purple text-sm font-medium">
+                            September 2023 - December 2023
+                        </span>
+                    </div>
+                    <div class="text-gray-300 font-medium mb-3">
+                        TechFlow Solutions • Harare, Zimbabwe
+                    </div>
+                    <ul class="text-gray-300 text-sm space-y-2 mb-4">
+                        <li>• <strong>Database Management:</strong> Optimized SQL queries improving system performance by 35%</li>
+                        <li>• <strong>User Support:</strong> Provided technical support to 100+ users across multiple departments</li>
+                        <li>• <strong>Web Development:</strong> Built responsive company intranet using HTML5, CSS3, and JavaScript</li>
+                        <li>• <strong>Documentation:</strong> Created comprehensive IT procedures and troubleshooting guides</li>
+                    </ul>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="bg-neon-purple/20 text-neon-purple px-3 py-1 rounded-full text-xs">SQL</span>
+                        <span class="bg-neon-purple/20 text-neon-purple px-3 py-1 rounded-full text-xs">JavaScript</span>
+                        <span class="bg-neon-purple/20 text-neon-purple px-3 py-1 rounded-full text-xs">Technical Support</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Skills Section -->
+        <section class="glass-morphism rounded-3xl p-8 mb-8">
+            <h3 class="text-2xl font-bold gradient-text section-title">TECHNICAL SKILLS</h3>
+            
+            <div class="grid md:grid-cols-2 gap-8">
+                <!-- Programming Languages -->
+                <div>
+                    <h4 class="text-lg font-semibold text-neon-cyan mb-4">Programming Languages</h4>
+                    <div class="space-y-4">
+                        <div>
+                            <div class="flex justify-between mb-1">
+                                <span class="text-white text-sm">JavaScript/TypeScript</span>
+                                <span class="text-gray-400 text-sm">90%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="width: 90%"></div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between mb-1">
+                                <span class="text-white text-sm">Python</span>
+                                <span class="text-gray-400 text-sm">85%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="width: 85%"></div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between mb-1">
+                                <span class="text-white text-sm">HTML5/CSS3</span>
+                                <span class="text-gray-400 text-sm">95%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="width: 95%"></div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between mb-1">
+                                <span class="text-white text-sm">SQL</span>
+                                <span class="text-gray-400 text-sm">80%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="width: 80%"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Frameworks & Tools -->
+                <div>
+                    <h4 class="text-lg font-semibold text-neon-pink mb-4">Frameworks & Tools</h4>
+                    <div class="space-y-4">
+                        <div>
+                            <div class="flex justify-between mb-1">
+                                <span class="text-white text-sm">React/Next.js</span>
+                                <span class="text-gray-400 text-sm">88%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="width: 88%"></div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between mb-1">
+                                <span class="text-white text-sm">Node.js/Express</span>
+                                <span class="text-gray-400 text-sm">82%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="width: 82%"></div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between mb-1">
+                                <span class="text-white text-sm">Figma/Sketch/Miro</span>
+                                <span class="text-gray-400 text-sm">90%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="width: 90%"></div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between mb-1">
+                                <span class="text-white text-sm">Git/GitHub</span>
+                                <span class="text-gray-400 text-sm">85%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="width: 85%"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Additional Skills -->
+            <div class="mt-8">
+                <h4 class="text-lg font-semibold text-neon-purple mb-4">Core Competencies</h4>
+                <div class="grid md:grid-cols-3 gap-4">
+                    <div class="bg-dark-navy/30 p-4 rounded-lg">
+                        <h5 class="text-neon-cyan font-medium mb-2">Enterprise Systems</h5>
+                        <ul class="text-gray-300 text-sm space-y-1">
+                            <li>• ERP Implementation (Odoo)</li>
+                            <li>• System Integration</li>
+                            <li>• Process Automation</li>
+                        </ul>
+                    </div>
+                    <div class="bg-dark-navy/30 p-4 rounded-lg">
+                        <h5 class="text-neon-pink font-medium mb-2">UI/UX Design</h5>
+                        <ul class="text-gray-300 text-sm space-y-1">
+                            <li>• User Research & Testing</li>
+                            <li>• Wireframing & Prototyping</li>
+                            <li>• Design Systems</li>
+                        </ul>
+                    </div>
+                    <div class="bg-dark-navy/30 p-4 rounded-lg">
+                        <h5 class="text-neon-purple font-medium mb-2">Project Management</h5>
+                        <ul class="text-gray-300 text-sm space-y-1">
+                            <li>• Agile Methodologies</li>
+                            <li>• Client Communication</li>
+                            <li>• Technical Documentation</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Key Projects Section -->
+        <section class="glass-morphism rounded-3xl p-8 mb-8">
+            <h3 class="text-2xl font-bold gradient-text section-title">KEY PROJECTS</h3>
+            
+            <div class="space-y-6">
+                <div class="border-l-4 border-neon-cyan pl-6">
+                    <h4 class="text-lg font-semibold text-white mb-2">
+                        EcoWatt AI Energy Platform
+                    </h4>
+                    <div class="text-neon-cyan text-sm mb-2">Personal Project • 2024</div>
+                    <p class="text-gray-300 text-sm mb-3">
+                        Progressive Web App for Zimbabwe's prepaid electricity management with AI-powered consumption 
+                        forecasting, Bluetooth smart meter integration, and offline functionality.
+                    </p>
+                    <div class="text-gray-400 text-sm mb-3">
+                        <strong>Impact:</strong> Designed for 60K+ target users • 60% reduction in task completion time
+                    </div>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="bg-neon-cyan/20 text-neon-cyan px-2 py-1 rounded text-xs">PWA</span>
+                        <span class="bg-neon-cyan/20 text-neon-cyan px-2 py-1 rounded text-xs">Chart.js</span>
+                        <span class="bg-neon-cyan/20 text-neon-cyan px-2 py-1 rounded text-xs">Bluetooth API</span>
+                    </div>
+                </div>
+
+                <div class="border-l-4 border-neon-pink pl-6">
+                    <h4 class="text-lg font-semibold text-white mb-2">
+                        AutoGlass Pro Platform
+                    </h4>
+                    <div class="text-neon-pink text-sm mb-2">Enterprise Project • DM Windscreens • 2024</div>
+                    <p class="text-gray-300 text-sm mb-3">
+                        Comprehensive service management platform with real-time booking, mobile technician interfaces, 
+                        and automated inventory tracking across 8 branch locations.
+                    </p>
+                    <div class="text-gray-400 text-sm mb-3">
+                        <strong>Impact:</strong> 70% booking time reduction • 35% customer satisfaction increase
+                    </div>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="bg-neon-pink/20 text-neon-pink px-2 py-1 rounded text-xs">React</span>
+                        <span class="bg-neon-pink/20 text-neon-pink px-2 py-1 rounded text-xs">Node.js</span>
+                        <span class="bg-neon-pink/20 text-neon-pink px-2 py-1 rounded text-xs">PostgreSQL</span>
+                    </div>
+                </div>
+
+                <div class="border-l-4 border-neon-purple pl-6">
+                    <h4 class="text-lg font-semibold text-white mb-2">
+                        Multi-Branch ERP Implementation
+                    </h4>
+                    <div class="text-neon-purple text-sm mb-2">Production System • 2024</div>
+                    <p class="text-gray-300 text-sm mb-3">
+                        Customized Odoo ERP deployment with industry-specific modules, automated workflows, 
+                        and real-time multi-location reporting.
+                    </p>
+                    <div class="text-gray-400 text-sm mb-3">
+                        <strong>Impact:</strong> 60% process automation • 50% training time reduction
+                    </div>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="bg-neon-purple/20 text-neon-purple px-2 py-1 rounded text-xs">Odoo</span>
+                        <span class="bg-neon-purple/20 text-neon-purple px-2 py-1 rounded text-xs">Python</span>
+                        <span class="bg-neon-purple/20 text-neon-purple px-2 py-1 rounded text-xs">XML/QWeb</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Achievements & Languages -->
+        <div class="grid md:grid-cols-2 gap-6 mb-8">
+            <!-- Achievements -->
+            <section class="glass-morphism rounded-3xl p-8">
+                <h3 class="text-2xl font-bold gradient-text section-title">ACHIEVEMENTS</h3>
+                
+                <div class="space-y-4">
+                    <div class="flex items-start">
+                        <i class="fas fa-trophy text-neon-cyan mt-1 mr-3"></i>
+                        <div>
+                            <h4 class="text-white font-medium">Dean's List Recognition</h4>
+                            <p class="text-gray-400 text-sm">Academic excellence in Information Systems • 2023</p>
+                        </div>
+                    </div>
+                    <div class="flex items-start">
+                        <i class="fas fa-award text-neon-pink mt-1 mr-3"></i>
+                        <div>
+                            <h4 class="text-white font-medium">Best Innovation Project</h4>
+                            <p class="text-gray-400 text-sm">University Tech Competition • EcoWatt Platform • 2024</p>
+                        </div>
+                    </div>
+                    <div class="flex items-start">
+                        <i class="fas fa-star text-neon-purple mt-1 mr-3"></i>
+                        <div>
+                            <h4 class="text-white font-medium">Outstanding Intern Award</h4>
+                            <p class="text-gray-400 text-sm">DM Windscreens • Summer 2024</p>
+                        </div>
+                    </div>
+                    <div class="flex items-start">
+                        <i class="fas fa-certificate text-neon-cyan mt-1 mr-3"></i>
+                        <div>
+                            <h4 class="text-white font-medium">6+ Professional Certifications</h4>
+                            <p class="text-gray-400 text-sm">Google, IBM, Microsoft, CalArts & more</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Languages & Interests -->
+            <section class="glass-morphism rounded-3xl p-8">
+                <h3 class="text-2xl font-bold gradient-text section-title">LANGUAGES & INTERESTS</h3>
+                
+                <div class="space-y-6">
+                    <div>
+                        <h4 class="text-lg font-semibold text-neon-cyan mb-3">Languages</h4>
+                        <div class="space-y-2">
+                            <div class="flex justify-between">
+                                <span class="text-white">English</span>
+                                <span class="text-gray-400 text-sm">Native</span>
+                            </div>
+                            <div class="flex justify-between">
+                                <span class="text-white">Shona</span>
+                                <span class="text-gray-400 text-sm">Native</span>
+                            </div>
+                            <div class="flex justify-between">
+                                <span class="text-white">Afrikaans</span>
+                                <span class="text-gray-400 text-sm">Conversational</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div>
+                        <h4 class="text-lg font-semibold text-neon-pink mb-3">Professional Interests</h4>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="bg-neon-pink/20 text-neon-pink px-3 py-1 rounded-full text-xs">AI/ML</span>
+                            <span class="bg-neon-cyan/20 text-neon-cyan px-3 py-1 rounded-full text-xs">UX Research</span>
+                            <span class="bg-neon-purple/20 text-neon-purple px-3 py-1 rounded-full text-xs">IoT</span>
+                            <span class="bg-neon-pink/20 text-neon-pink px-3 py-1 rounded-full text-xs">Cloud Computing</span>
+                            <span class="bg-neon-cyan/20 text-neon-cyan px-3 py-1 rounded-full text-xs">Design Systems</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- Footer -->
+        <footer class="text-center py-8 no-print">
+            <div class="glass-morphism rounded-2xl p-6 inline-block">
+                <p class="text-gray-300 mb-2">
+                    Available for entry-level & intermediate opportunities (local & remote)
+                </p>
+                <div class="flex justify-center gap-4 text-sm">
+                    <a href="mailto:panashefrost@icloud.com" class="text-neon-cyan hover:text-white transition-colors">
+                        <i class="fas fa-envelope mr-1"></i>
+                        Email
+                    </a>
+                    <a href="https://linkedin.com/in/panashematengambiri" class="text-neon-pink hover:text-white transition-colors">
+                        <i class="fab fa-linkedin mr-1"></i>
+                        LinkedIn
+                    </a>
+                    <a href="https://github.com/CBfrost" class="text-neon-purple hover:text-white transition-colors">
+                        <i class="fab fa-github mr-1"></i>
+                        GitHub
+                    </a>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <script>
+        // Animate skill bars on load
+        document.addEventListener('DOMContentLoaded', function() {
+            const skillBars = document.querySelectorAll('.skill-progress');
+            skillBars.forEach((bar, index) => {
+                setTimeout(() => {
+                    bar.style.width = bar.style.width || '0%';
+                }, index * 200);
+            });
+        });
+
+        // Print functionality
+        window.addEventListener('beforeprint', function() {
+            document.body.classList.add('printing');
+        });
+
+        window.addEventListener('afterprint', function() {
+            document.body.classList.remove('printing');
+        });
+    </script>
+</body>
+</html>
