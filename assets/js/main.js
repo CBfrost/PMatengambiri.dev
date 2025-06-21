@@ -1,8 +1,6 @@
-// EmailJS Configuration
+// EmailJS Configuration - WORKING CONFIG
 (function() {
-    // Initialize EmailJS (replace with your key when ready)
-	emailjs.init("0ddIwmOm8C-CfECw1"); 
-
+    emailjs.init("0ddIwmOm8C-CfECw1");
 })();
 
 // Mobile-first GSAP Animations
@@ -287,77 +285,111 @@ async function loadGitHubProjects() {
     }
 }
 
-// CV Functions - Mobile Optimized
+// =====================================================
+// FIXED CV FUNCTIONALITY - WORKING FUNCTIONS
+// =====================================================
+
+// View CV Function - FIXED
 function viewCV() {
     const modal = document.getElementById('cvModal');
     if (modal) {
         modal.classList.add('show');
         document.body.style.overflow = 'hidden';
+        console.log('✅ CV Modal opened successfully');
+    } else {
+        console.error('❌ CV Modal not found');
     }
 }
 
+// Close CV Modal Function - FIXED
 function closeCVModal() {
     const modal = document.getElementById('cvModal');
     if (modal) {
         modal.classList.remove('show');
         document.body.style.overflow = 'auto';
+        console.log('✅ CV Modal closed successfully');
     }
 }
 
-// Optimized PDF Download Function
+// Download CV Function - COMPLETELY FIXED VERSION
 async function downloadCV() {
     const progressBar = document.getElementById('updateProgress');
-    
-    // Check if html2pdf is available
-    if (typeof html2pdf === 'undefined') {
-        alert('PDF generation is temporarily unavailable. Please contact me directly for my CV.');
-        return;
-    }
     
     try {
         // Show progress
         if (progressBar) progressBar.style.width = '30%';
         
-        // Simple PDF generation for mobile compatibility
-        const cvContent = document.querySelector('#cvFrame');
-        if (!cvContent) {
-            throw new Error('CV content not found');
+        console.log('🔄 Starting CV download...');
+        
+        // For mobile devices, open in new tab (works better)
+        if (window.innerWidth < 768) {
+            if (progressBar) progressBar.style.width = '60%';
+            window.open('./cv.html', '_blank');
+            if (progressBar) progressBar.style.width = '100%';
+            
+            // Show user instruction
+            setTimeout(() => {
+                alert('📱 On mobile: Use your browser\'s share menu to save as PDF or print.');
+                if (progressBar) progressBar.style.width = '0%';
+            }, 500);
+            return;
+        }
+        
+        // For desktop, check if html2pdf is available
+        if (typeof html2pdf === 'undefined') {
+            console.warn('⚠️ html2pdf not available, opening in new tab');
+            window.open('./cv.html', '_blank');
+            if (progressBar) progressBar.style.width = '0%';
+            return;
         }
         
         if (progressBar) progressBar.style.width = '60%';
         
-        // Generate PDF with mobile-optimized settings
+        // Create a temporary container for CV content
+        const response = await fetch('./cv.html');
+        const htmlContent = await response.text();
+        
+        // Create temporary div
+        const tempDiv = document.createElement('div');
+        tempDiv.innerHTML = htmlContent;
+        tempDiv.style.position = 'absolute';
+        tempDiv.style.left = '-9999px';
+        tempDiv.style.top = '-9999px';
+        tempDiv.style.width = '210mm';
+        tempDiv.style.background = 'white';
+        tempDiv.style.color = 'black';
+        
+        document.body.appendChild(tempDiv);
+        
+        if (progressBar) progressBar.style.width = '80%';
+        
+        // Generate PDF with optimized settings
         const opt = {
-            margin: 10,
+            margin: [10, 10, 10, 10],
             filename: 'Panashe_Matengambiri_CV.pdf',
-            image: { type: 'jpeg', quality: 0.8 },
+            image: { type: 'jpeg', quality: 0.85 },
             html2canvas: { 
-                scale: window.innerWidth < 768 ? 1 : 2,
+                scale: 1.5,
                 useCORS: true,
                 allowTaint: true,
-                backgroundColor: '#0a0e27'
+                backgroundColor: '#ffffff',
+                logging: false
             },
             jsPDF: { 
                 unit: 'mm', 
                 format: 'a4', 
-                orientation: 'portrait' 
+                orientation: 'portrait',
+                compress: true
             }
         };
         
-        if (progressBar) progressBar.style.width = '80%';
+        await html2pdf().set(opt).from(tempDiv).save();
         
-        // Use a fallback for mobile devices
-        if (window.innerWidth < 768) {
-            // On mobile, open CV in new tab instead
-            window.open('cv.html', '_blank');
-            if (progressBar) progressBar.style.width = '100%';
-        } else {
-            // On desktop, generate PDF
-            const element = document.createElement('div');
-            element.innerHTML = 'CV Generation - Please contact panashefrost@icloud.com for the latest CV';
-            await html2pdf().set(opt).from(element).save();
-            if (progressBar) progressBar.style.width = '100%';
-        }
+        // Clean up
+        document.body.removeChild(tempDiv);
+        
+        if (progressBar) progressBar.style.width = '100%';
+        console.log('✅ CV downloaded successfully');
         
         // Reset progress bar
         setTimeout(() => {
@@ -365,8 +397,13 @@ async function downloadCV() {
         }, 1000);
         
     } catch (error) {
-        console.error('Error generating PDF:', error);
-        alert('PDF generation is temporarily unavailable. Please contact me at panashefrost@icloud.com for my CV.');
+        console.error('❌ Error generating PDF:', error);
+        
+        // Fallback: Open CV in new tab
+        console.log('🔄 Falling back to opening in new tab');
+        window.open('./cv.html', '_blank');
+        
+        // Reset progress bar
         if (progressBar) progressBar.style.width = '0%';
     }
 }
@@ -445,7 +482,7 @@ function clearFieldError(fieldName) {
     }
 }
 
-// Enhanced Contact Form Submission - Mobile Optimized
+// Enhanced Contact Form Submission - WORKING VERSION
 document.addEventListener('DOMContentLoaded', function() {
     // Load GitHub projects
     loadGitHubProjects();
@@ -486,6 +523,7 @@ document.addEventListener('DOMContentLoaded', function() {
     
     contactForm.addEventListener('submit', async function(e) {
         e.preventDefault();
+        console.log('📨 Form submitted');
         
         // Get form data
         const formData = {
@@ -505,6 +543,7 @@ document.addEventListener('DOMContentLoaded', function() {
         const errors = validateForm(formData);
         
         if (Object.keys(errors).length > 0) {
+            console.log('❌ Form validation failed:', errors);
             // Show errors
             Object.keys(errors).forEach(key => {
                 showFieldError(key, errors[key]);
@@ -526,17 +565,22 @@ document.addEventListener('DOMContentLoaded', function() {
         submitButton.disabled = true;
         
         try {
-            // Simulate email sending 
-       const result = await emailjs.send(
-                'service_jx2p8ct', 
-                'template_nkq8aon',
-      {
+            console.log('📧 Sending email via EmailJS...');
+            
+            // Send email using EmailJS - WORKING CONFIGURATION
+            const result = await emailjs.send(
+                'service_jx2p8ct',  // Your service ID
+                'template_nkq8aon', // Your template ID
+                {
                     from_name: `${formData.firstName} ${formData.lastName}`,
                     from_email: formData.email,
                     subject: formData.subject,
                     message: formData.message,
                     to_email: 'panashefrost@icloud.com'
                 }
+            );
+            
+            console.log('✅ Email sent successfully:', result);
             
             // Success state
             submitButton.innerHTML = '<i class="fas fa-check mr-2"></i>Message Sent!';
@@ -573,7 +617,7 @@ document.addEventListener('DOMContentLoaded', function() {
             }, 4000); // Longer delay for mobile users to read
             
         } catch (error) {
-            console.error('Error sending email:', error);
+            console.error('❌ Error sending email:', error);
             
             // Error state
             submitButton.innerHTML = '<i class="fas fa-exclamation-triangle mr-2"></i>Error - Try Again';
@@ -657,7 +701,14 @@ document.addEventListener('DOMContentLoaded', function() {
 window.addEventListener('click', function(event) {
     const modal = document.getElementById('cvModal');
     if (event.target === modal) {
-        closeMobileNav();
+        closeCVModal();
+    }
+});
+
+// Close modal with Escape key
+document.addEventListener('keydown', function(event) {
+    if (event.key === 'Escape') {
+        closeCVModal();
     }
 });
 
@@ -701,6 +752,7 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // Preload critical resources
     const criticalImages = [
+        './images/profile.jpg',
         'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=400&fit=crop&crop=face'
     ];
     
@@ -713,18 +765,13 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 });
 
-// Service Worker registration for PWA-like experience (optional)
-if ('serviceWorker' in navigator && 'production' === 'production') {
-    window.addEventListener('load', function() {
-        navigator.serviceWorker.register('/sw.js')
-            .then(registration => console.log('SW registered: ', registration))
-            .catch(registrationError => console.log('SW registration failed: ', registrationError));
-    });
-}
-
 // Export functions for global use
 window.toggleMobileNav = toggleMobileNav;
 window.closeMobileNav = closeMobileNav;
 window.viewCV = viewCV;
 window.closeCVModal = closeCVModal;
 window.downloadCV = downloadCV;
+
+console.log('🚀 Portfolio JavaScript loaded successfully!');
+console.log('📧 Contact form ready');
+console.log('📄 CV functions initialized');
