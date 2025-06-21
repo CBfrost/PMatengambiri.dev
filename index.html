@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Panashe Matengambiri - Creative Technologist</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -28,11 +28,20 @@
                         'dark-navy': '#0a0e27',
                         'electric-blue': '#0066ff',
                     },
+                    screens: {
+                        'xs': '320px',
+                        'sm': '640px',
+                        'md': '768px',
+                        'lg': '1024px',
+                        'xl': '1280px',
+                        '2xl': '1536px',
+                    },
                     animation: {
                         'float': 'float 6s ease-in-out infinite',
                         'glow': 'glow 2s ease-in-out infinite alternate',
                         'slide-up': 'slideUp 0.5s ease-out',
                         'text-reveal': 'textReveal 1s ease-out',
+                        'mobile-bounce': 'mobileBounce 2s ease-in-out infinite',
                     }
                 }
             }
@@ -51,19 +60,29 @@
         });
     </script>
     <style>
+        /* Base Styles - Mobile First */
+        * {
+            -webkit-tap-highlight-color: transparent;
+            -webkit-touch-callout: none;
+        }
+        
         body { 
             font-family: 'Space Grotesk', sans-serif;
             background: #0a0e27;
             overflow-x: hidden;
             scroll-behavior: smooth;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
         }
         
+        /* Glass Morphism */
         .glass-morphism {
             background: rgba(255, 255, 255, 0.05);
             backdrop-filter: blur(20px);
             border: 1px solid rgba(255, 255, 255, 0.1);
         }
         
+        /* Gradient Text */
         .gradient-text {
             background: linear-gradient(45deg, #00ffff, #ff0080, #8000ff);
             background-size: 300% 300%;
@@ -73,6 +92,7 @@
             animation: gradient-shift 3s ease infinite;
         }
         
+        /* Hero Background */
         .hero-bg {
             background: 
                 radial-gradient(circle at 20% 50%, rgba(0, 255, 255, 0.15) 0%, transparent 50%),
@@ -80,24 +100,218 @@
                 radial-gradient(circle at 40% 80%, rgba(128, 0, 255, 0.15) 0%, transparent 50%);
         }
         
-        .magnetic-button {
-            transition: all 0.3s cubic-bezier(0.23, 1, 0.320, 1);
+        /* Mobile Navigation */
+        .mobile-nav {
+            transform: translateX(100%);
+            transition: transform 0.3s ease-in-out;
         }
         
-        .magnetic-button:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 20px 40px rgba(0, 255, 255, 0.3);
+        .mobile-nav.open {
+            transform: translateX(0);
         }
         
-        .project-card {
-            transition: all 0.4s cubic-bezier(0.23, 1, 0.320, 1);
-            transform-style: preserve-3d;
+        /* Mobile Menu Toggle */
+        .hamburger {
+            display: flex;
+            flex-direction: column;
+            cursor: pointer;
+            padding: 8px;
         }
         
-        .project-card:hover {
-            transform: rotateY(2deg) rotateX(2deg) translateZ(20px);
+        .hamburger span {
+            width: 25px;
+            height: 3px;
+            background: white;
+            margin: 3px 0;
+            transition: 0.3s;
+            border-radius: 2px;
         }
         
+        .hamburger.open span:nth-child(1) {
+            transform: rotate(-45deg) translate(-5px, 6px);
+        }
+        
+        .hamburger.open span:nth-child(2) {
+            opacity: 0;
+        }
+        
+        .hamburger.open span:nth-child(3) {
+            transform: rotate(45deg) translate(-5px, -6px);
+        }
+        
+        /* Responsive Typography */
+        .hero-title {
+            font-size: 3rem;
+            line-height: 1.1;
+        }
+        
+        .hero-subtitle {
+            font-size: 2rem;
+            line-height: 1.2;
+        }
+        
+        @media (min-width: 640px) {
+            .hero-title {
+                font-size: 4rem;
+            }
+            .hero-subtitle {
+                font-size: 2.5rem;
+            }
+        }
+        
+        @media (min-width: 768px) {
+            .hero-title {
+                font-size: 5rem;
+            }
+            .hero-subtitle {
+                font-size: 3rem;
+            }
+        }
+        
+        @media (min-width: 1024px) {
+            .hero-title {
+                font-size: 6rem;
+            }
+            .hero-subtitle {
+                font-size: 4rem;
+            }
+        }
+        
+        @media (min-width: 1280px) {
+            .hero-title {
+                font-size: 8rem;
+            }
+            .hero-subtitle {
+                font-size: 6rem;
+            }
+        }
+        
+        /* Mobile-First Button Styles */
+        .mobile-button {
+            min-height: 48px;
+            min-width: 48px;
+            font-size: 16px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+        }
+        
+        .mobile-button:active {
+            transform: scale(0.95);
+        }
+        
+        /* Touch-friendly sizing */
+        @media (max-width: 768px) {
+            .mobile-button {
+                min-height: 52px;
+                font-size: 17px;
+                padding: 12px 20px;
+            }
+        }
+        
+        /* Magnetic button effects (desktop only) */
+        @media (min-width: 1024px) {
+            .magnetic-button {
+                transition: all 0.3s cubic-bezier(0.23, 1, 0.320, 1);
+            }
+            
+            .magnetic-button:hover {
+                transform: translateY(-5px);
+                box-shadow: 0 20px 40px rgba(0, 255, 255, 0.3);
+            }
+        }
+        
+        /* Mobile Skills Grid */
+        .mobile-skills-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1rem;
+        }
+        
+        @media (min-width: 640px) {
+            .mobile-skills-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 1.5rem;
+            }
+        }
+        
+        @media (min-width: 1024px) {
+            .mobile-skills-grid {
+                grid-template-columns: repeat(3, 1fr);
+                gap: 2rem;
+            }
+        }
+        
+        /* Mobile Project Cards */
+        .mobile-project-card {
+            transition: all 0.3s ease;
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 1.5rem;
+            overflow: hidden;
+        }
+        
+        @media (max-width: 768px) {
+            .mobile-project-card {
+                margin-bottom: 2rem;
+            }
+        }
+        
+        @media (min-width: 1024px) {
+            .mobile-project-card:hover {
+                transform: rotateY(2deg) rotateX(2deg) translateZ(20px);
+            }
+        }
+        
+        /* Mobile Navigation Blur */
+        .nav-blur {
+            backdrop-filter: blur(20px);
+            background: rgba(10, 14, 39, 0.95);
+        }
+        
+        /* Section Spacing */
+        .mobile-section {
+            padding: 3rem 1rem;
+        }
+        
+        @media (min-width: 640px) {
+            .mobile-section {
+                padding: 4rem 1.5rem;
+            }
+        }
+        
+        @media (min-width: 1024px) {
+            .mobile-section {
+                padding: 5rem 2rem;
+            }
+        }
+        
+        /* Mobile Image Optimization */
+        .mobile-hero-image {
+            width: 250px;
+            height: 250px;
+        }
+        
+        @media (min-width: 640px) {
+            .mobile-hero-image {
+                width: 300px;
+                height: 300px;
+            }
+        }
+        
+        @media (min-width: 1024px) {
+            .mobile-hero-image {
+                width: 384px;
+                height: 384px;
+            }
+        }
+        
+        /* Floating Shapes - Responsive */
         .floating-shapes {
             position: fixed;
             width: 100%;
@@ -114,8 +328,8 @@
         }
         
         .floating-shape:nth-child(1) {
-            width: 80px;
-            height: 80px;
+            width: 40px;
+            height: 40px;
             background: #00ffff;
             top: 20%;
             left: 10%;
@@ -123,8 +337,8 @@
         }
         
         .floating-shape:nth-child(2) {
-            width: 60px;
-            height: 60px;
+            width: 30px;
+            height: 30px;
             background: #ff0080;
             top: 60%;
             right: 10%;
@@ -132,14 +346,45 @@
         }
         
         .floating-shape:nth-child(3) {
-            width: 100px;
-            height: 100px;
+            width: 50px;
+            height: 50px;
             background: #8000ff;
             bottom: 20%;
             left: 20%;
             animation-delay: 4s;
         }
         
+        @media (min-width: 768px) {
+            .floating-shape:nth-child(1) {
+                width: 60px;
+                height: 60px;
+            }
+            .floating-shape:nth-child(2) {
+                width: 45px;
+                height: 45px;
+            }
+            .floating-shape:nth-child(3) {
+                width: 75px;
+                height: 75px;
+            }
+        }
+        
+        @media (min-width: 1024px) {
+            .floating-shape:nth-child(1) {
+                width: 80px;
+                height: 80px;
+            }
+            .floating-shape:nth-child(2) {
+                width: 60px;
+                height: 60px;
+            }
+            .floating-shape:nth-child(3) {
+                width: 100px;
+                height: 100px;
+            }
+        }
+        
+        /* Animations */
         @keyframes float {
             0%, 100% { transform: translateY(0px) rotate(0deg); }
             33% { transform: translateY(-20px) rotate(120deg); }
@@ -157,41 +402,37 @@
             to { box-shadow: 0 0 30px rgba(0, 255, 255, 0.6), 0 0 40px rgba(255, 0, 128, 0.3); }
         }
         
-        .nav-blur {
-            backdrop-filter: blur(20px);
-            background: rgba(10, 14, 39, 0.9);
+        @keyframes mobileBounce {
+            0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+            40% { transform: translateY(-10px); }
+            60% { transform: translateY(-5px); }
         }
         
+        /* Section Divider */
         .section-divider {
             height: 1px;
             background: linear-gradient(90deg, transparent, rgba(0, 255, 255, 0.5), transparent);
+            margin: 2rem 0;
         }
         
-        .github-card {
-            transition: all 0.3s ease;
-        }
-        
-        .github-card:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 20px 40px rgba(0, 255, 255, 0.2);
-        }
-        
-        .testimonial-card {
+        /* Mobile Testimonial Cards */
+        .mobile-testimonial-card {
             background: linear-gradient(135deg, rgba(0, 255, 255, 0.1), rgba(255, 0, 128, 0.1));
             border: 1px solid rgba(0, 255, 255, 0.3);
+            border-radius: 1.5rem;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
             transition: all 0.3s ease;
         }
         
-        .testimonial-card:hover {
-            transform: translateY(-5px);
-            border-color: rgba(0, 255, 255, 0.6);
+        @media (min-width: 1024px) {
+            .mobile-testimonial-card:hover {
+                transform: translateY(-5px);
+                border-color: rgba(0, 255, 255, 0.6);
+            }
         }
         
-        .nav-active {
-            color: #00ffff !important;
-        }
-
-        /* CV Modal Styles */
+        /* CV Modal - Mobile Optimized */
         .cv-modal {
             display: none;
             position: fixed;
@@ -208,13 +449,14 @@
             display: flex;
             align-items: center;
             justify-content: center;
+            padding: 1rem;
         }
 
         .cv-modal-content {
             background: #0a0e27;
             border-radius: 20px;
-            padding: 20px;
-            width: 90%;
+            padding: 1rem;
+            width: 100%;
             max-width: 900px;
             max-height: 90vh;
             overflow-y: auto;
@@ -231,6 +473,12 @@
             font-weight: bold;
             cursor: pointer;
             z-index: 1001;
+            padding: 5px;
+            min-width: 40px;
+            min-height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
 
         .cv-close:hover {
@@ -255,9 +503,11 @@
             transition: all 0.3s ease;
         }
 
-        .professional-avatar:hover {
-            transform: scale(1.05);
-            box-shadow: 0 10px 25px rgba(0, 255, 255, 0.3);
+        @media (min-width: 1024px) {
+            .professional-avatar:hover {
+                transform: scale(1.05);
+                box-shadow: 0 10px 25px rgba(0, 255, 255, 0.3);
+            }
         }
 
         /* GitHub Section Enhanced Styles */
@@ -274,33 +524,43 @@
             position: relative;
         }
 
-        /* Improved Skills Visualization for Wide Screens */
-        .skills-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-            max-width: 1200px;
-            margin: 0 auto;
+        /* Mobile GitHub Cards */
+        .mobile-github-card {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 1rem;
+            padding: 1.5rem;
+            transition: all 0.3s ease;
         }
 
-        .skill-certification-card {
+        @media (min-width: 1024px) {
+            .mobile-github-card:hover {
+                transform: translateY(-8px);
+                box-shadow: 0 20px 40px rgba(0, 255, 255, 0.2);
+            }
+        }
+
+        /* Skill Certification Cards - Mobile Optimized */
+        .mobile-skill-card {
             background: rgba(255, 255, 255, 0.08);
             backdrop-filter: blur(20px);
             border: 1px solid rgba(255, 255, 255, 0.15);
             border-radius: 1.5rem;
-            padding: 2rem;
+            padding: 1.5rem;
             transition: all 0.3s ease;
             position: relative;
             overflow: hidden;
+            text-align: center;
+        }
+        
+        @media (min-width: 768px) {
+            .mobile-skill-card {
+                padding: 2rem;
+            }
         }
 
-        .skill-certification-card:hover {
-            transform: translateY(-5px);
-            border-color: rgba(0, 255, 255, 0.4);
-            box-shadow: 0 10px 30px rgba(0, 255, 255, 0.2);
-        }
-
-        .skill-certification-card::before {
+        .mobile-skill-card::before {
             content: '';
             position: absolute;
             top: 0;
@@ -310,16 +570,31 @@
             background: linear-gradient(90deg, var(--accent-color, #00ffff), var(--accent-color-2, #ff0080));
         }
 
+        @media (min-width: 1024px) {
+            .mobile-skill-card:hover {
+                transform: translateY(-5px);
+                border-color: rgba(0, 255, 255, 0.4);
+                box-shadow: 0 10px 30px rgba(0, 255, 255, 0.2);
+            }
+        }
+
         .certification-badge {
             display: inline-flex;
             align-items: center;
             justify-content: center;
-            width: 60px;
-            height: 60px;
+            width: 50px;
+            height: 50px;
             border-radius: 50%;
             margin-bottom: 1rem;
             position: relative;
             overflow: hidden;
+        }
+        
+        @media (min-width: 768px) {
+            .certification-badge {
+                width: 60px;
+                height: 60px;
+            }
         }
 
         .certification-badge::before {
@@ -346,22 +621,86 @@
             100% { transform: rotate(360deg); }
         }
 
-        /* Send Message Button Enhanced Styles */
-        .send-message-btn {
+        /* Mobile Contact Form */
+        .mobile-contact-form {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 1.5rem;
+            padding: 1.5rem;
+        }
+        
+        @media (min-width: 768px) {
+            .mobile-contact-form {
+                padding: 2rem;
+            }
+        }
+
+        /* Mobile Form Inputs */
+        .mobile-input {
+            width: 100%;
+            min-height: 48px;
+            padding: 12px 16px;
+            font-size: 16px; /* Prevent zoom on iOS */
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+            color: white;
+            transition: all 0.3s ease;
+        }
+
+        .mobile-input:focus {
+            border-color: #00ffff;
+            box-shadow: 0 0 0 1px #00ffff, 0 0 20px rgba(0, 255, 255, 0.2);
+            outline: none;
+        }
+
+        .mobile-input::placeholder {
+            color: rgba(255, 255, 255, 0.5);
+        }
+
+        /* Mobile Textarea */
+        .mobile-textarea {
+            width: 100%;
+            min-height: 120px;
+            padding: 12px 16px;
+            font-size: 16px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+            color: white;
+            resize: vertical;
+            transition: all 0.3s ease;
+        }
+
+        .mobile-textarea:focus {
+            border-color: #00ffff;
+            box-shadow: 0 0 0 1px #00ffff, 0 0 20px rgba(0, 255, 255, 0.2);
+            outline: none;
+        }
+
+        /* Send Message Button - Mobile Optimized */
+        .mobile-send-btn {
+            width: 100%;
+            min-height: 56px;
             background: linear-gradient(135deg, #00ffff 0%, #ff0080 50%, #8000ff 100%) !important;
             color: white !important;
             border: none !important;
-            box-shadow: 0 4px 15px rgba(0, 255, 255, 0.3);
-            position: relative;
-            z-index: 1;
+            border-radius: 12px !important;
+            font-size: 18px !important;
+            font-weight: 700 !important;
+            display: flex !important;
+            align-items: center !important;
+            justify-content: center !important;
             cursor: pointer !important;
-            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
-            display: block !important;
-            visibility: visible !important;
-            opacity: 1 !important;
+            transition: all 0.3s ease !important;
+            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3) !important;
+            box-shadow: 0 4px 15px rgba(0, 255, 255, 0.3) !important;
+            position: relative !important;
+            overflow: hidden !important;
         }
 
-        .send-message-btn::before {
+        .mobile-send-btn::before {
             content: '';
             position: absolute;
             top: 0;
@@ -374,33 +713,34 @@
             border-radius: inherit;
         }
 
-        .send-message-btn:hover::before {
-            left: 0;
+        .mobile-send-btn:active {
+            transform: scale(0.98);
         }
 
-        .send-message-btn:hover {
-            box-shadow: 0 8px 25px rgba(0, 255, 255, 0.5) !important;
-            transform: translateY(-2px) !important;
-        }
-
-        .send-message-btn:active {
-            transform: translateY(0) !important;
-            box-shadow: 0 4px 15px rgba(0, 255, 255, 0.3) !important;
+        @media (min-width: 1024px) {
+            .mobile-send-btn:hover::before {
+                left: 0;
+            }
+            
+            .mobile-send-btn:hover {
+                box-shadow: 0 8px 25px rgba(0, 255, 255, 0.5) !important;
+                transform: translateY(-2px) !important;
+            }
         }
 
         /* Button States */
-        .send-message-btn.loading {
+        .mobile-send-btn.loading {
             pointer-events: none;
             opacity: 0.8;
             background: linear-gradient(135deg, #6b7280, #374151) !important;
         }
 
-        .send-message-btn.success {
+        .mobile-send-btn.success {
             background: linear-gradient(135deg, #10b981, #059669) !important;
             animation: buttonSuccess 0.6s ease-in-out;
         }
 
-        .send-message-btn.error {
+        .mobile-send-btn.error {
             background: linear-gradient(135deg, #ef4444, #dc2626) !important;
         }
 
@@ -410,8 +750,8 @@
             100% { transform: scale(1); }
         }
 
-        /* Success Message Styles */
-        .success-message {
+        /* Success Message */
+        .mobile-success-message {
             background: linear-gradient(135deg, #10B981, #059669);
             border: 1px solid #34D399;
             border-radius: 12px;
@@ -420,7 +760,7 @@
             display: none;
         }
 
-        .success-message.show {
+        .mobile-success-message.show {
             display: block;
             animation: slideIn 0.5s ease-out;
         }
@@ -436,14 +776,73 @@
             }
         }
 
-        /* Spinning loader animation */
-        @keyframes spin {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
+        /* Hide desktop navigation on mobile */
+        @media (max-width: 767px) {
+            .desktop-nav {
+                display: none;
+            }
+        }
+
+        /* Hide mobile navigation on desktop */
+        @media (min-width: 768px) {
+            .mobile-nav {
+                display: none;
+            }
+            .hamburger {
+                display: none;
+            }
+        }
+
+        /* Social Icons - Touch Optimized */
+        .mobile-social-icon {
+            width: 48px;
+            height: 48px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 12px;
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            color: white;
+            font-size: 20px;
+            transition: all 0.3s ease;
+            text-decoration: none;
+        }
+
+        @media (min-width: 768px) {
+            .mobile-social-icon {
+                width: 64px;
+                height: 64px;
+                font-size: 24px;
+                border-radius: 16px;
+            }
+        }
+
+        @media (min-width: 1024px) {
+            .mobile-social-icon:hover {
+                color: #00ffff;
+                transform: scale(1.1);
+                box-shadow: 0 10px 25px rgba(0, 255, 255, 0.3);
+            }
+        }
+
+        /* Performance Optimizations */
+        img {
+            loading: lazy;
+        }
+
+        /* Reduce motion for accessibility */
+        @media (prefers-reduced-motion: reduce) {
+            * {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+            }
         }
     </style>
 </head>
-<body class="text-white dark:bg-dark-navy bg-white dark:text-white text-gray-900">
+<body class="text-white bg-dark-navy font-space">
     <!-- Floating Background Shapes -->
     <div class="floating-shapes">
         <div class="floating-shape"></div>
@@ -454,12 +853,15 @@
     <!-- Update Progress Bar -->
     <div class="update-progress" id="updateProgress"></div>
 
-    <!-- Navigation -->
+    <!-- Mobile-First Navigation -->
     <nav class="fixed top-0 w-full z-50 nav-blur border-b border-white/10">
-        <div class="max-w-7xl mx-auto px-6 py-4">
+        <div class="max-w-7xl mx-auto px-4 py-3">
             <div class="flex justify-between items-center">
-                <div class="font-mono text-2xl font-bold gradient-text">PM</div>
-                <div class="hidden md:flex space-x-8">
+                <!-- Logo -->
+                <div class="font-mono text-xl font-bold gradient-text">PM</div>
+                
+                <!-- Desktop Navigation -->
+                <div class="desktop-nav hidden md:flex space-x-6 lg:space-x-8">
                     <a href="#home" class="nav-link hover:text-neon-cyan transition-colors">Home</a>
                     <a href="#about" class="nav-link hover:text-neon-cyan transition-colors">About</a>
                     <a href="#projects" class="nav-link hover:text-neon-cyan transition-colors">Projects</a>
@@ -467,11 +869,41 @@
                     <a href="#testimonials" class="nav-link hover:text-neon-cyan transition-colors">Testimonials</a>
                     <a href="#contact" class="nav-link hover:text-neon-cyan transition-colors">Contact</a>
                 </div>
-                <div class="flex gap-3">
-                    <button onclick="viewCV()" class="magnetic-button bg-gradient-to-r from-neon-purple to-neon-pink px-6 py-2 rounded-full text-white font-semibold">
+                
+                <!-- Desktop CTA Buttons -->
+                <div class="hidden md:flex gap-2 lg:gap-3">
+                    <button onclick="viewCV()" class="mobile-button magnetic-button bg-gradient-to-r from-neon-purple to-neon-pink px-4 py-2 rounded-full text-white font-semibold text-sm">
                         <i class="fas fa-eye mr-2"></i>View CV
                     </button>
-                    <a href="#contact" class="magnetic-button bg-gradient-to-r from-neon-cyan to-neon-pink px-6 py-2 rounded-full text-black font-semibold">
+                    <a href="#contact" class="mobile-button magnetic-button bg-gradient-to-r from-neon-cyan to-neon-pink px-4 py-2 rounded-full text-black font-semibold text-sm">
+                        Hire Me
+                    </a>
+                </div>
+                
+                <!-- Mobile Hamburger -->
+                <div class="hamburger md:hidden" onclick="toggleMobileNav()">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Mobile Navigation Menu -->
+        <div class="mobile-nav fixed top-0 right-0 w-full h-screen bg-dark-navy z-40 md:hidden">
+            <div class="flex flex-col items-center justify-center h-full space-y-8 text-center">
+                <a href="#home" class="text-2xl font-semibold hover:text-neon-cyan transition-colors" onclick="closeMobileNav()">Home</a>
+                <a href="#about" class="text-2xl font-semibold hover:text-neon-cyan transition-colors" onclick="closeMobileNav()">About</a>
+                <a href="#projects" class="text-2xl font-semibold hover:text-neon-cyan transition-colors" onclick="closeMobileNav()">Projects</a>
+                <a href="#github" class="text-2xl font-semibold hover:text-neon-cyan transition-colors" onclick="closeMobileNav()">GitHub</a>
+                <a href="#testimonials" class="text-2xl font-semibold hover:text-neon-cyan transition-colors" onclick="closeMobileNav()">Testimonials</a>
+                <a href="#contact" class="text-2xl font-semibold hover:text-neon-cyan transition-colors" onclick="closeMobileNav()">Contact</a>
+                
+                <div class="flex flex-col gap-4 mt-8">
+                    <button onclick="viewCV(); closeMobileNav();" class="mobile-button bg-gradient-to-r from-neon-purple to-neon-pink px-8 py-3 rounded-full text-white font-semibold">
+                        <i class="fas fa-eye mr-2"></i>View CV
+                    </button>
+                    <a href="#contact" onclick="closeMobileNav()" class="mobile-button bg-gradient-to-r from-neon-cyan to-neon-pink px-8 py-3 rounded-full text-black font-semibold">
                         Hire Me
                     </a>
                 </div>
@@ -479,77 +911,85 @@
         </div>
     </nav>
 
-    <!-- Hero Section -->
+    <!-- Hero Section - Mobile Optimized -->
     <section id="home" class="min-h-screen flex items-center hero-bg relative overflow-hidden">
         <div class="absolute inset-0 opacity-20">
             <img src="https://images.unsplash.com/photo-1518709268805-4e9042af2176?w=1920&h=1080&fit=crop" alt="Tech Background" class="w-full h-full object-cover">
         </div>
-        <div class="max-w-7xl mx-auto px-6 py-20 relative z-10">
-            <div class="grid lg:grid-cols-2 gap-12 items-center">
-                <div class="space-y-8">
-                    <div class="space-y-4">
-                        <h1 class="text-6xl lg:text-8xl font-bold">
-                            <span class="gradient-text">PANASHE</span>
-                        </h1>
-                        <h2 class="text-4xl lg:text-6xl font-light">MATENGAMBIRI</h2>
-                        <div class="text-xl lg:text-2xl text-gray-300 font-mono">
-                            Creative Technologist & UX Innovator
+        <div class="w-full px-4 sm:px-6 py-20 relative z-10">
+            <div class="max-w-7xl mx-auto">
+                <div class="flex flex-col lg:grid lg:grid-cols-2 gap-8 lg:gap-12 items-center">
+                    <!-- Text Content -->
+                    <div class="text-center lg:text-left space-y-6 lg:space-y-8 order-2 lg:order-1">
+                        <div class="space-y-4">
+                            <h1 class="hero-title font-bold">
+                                <span class="gradient-text">PANASHE</span>
+                            </h1>
+                            <h2 class="hero-subtitle font-light">MATENGAMBIRI</h2>
+                            <div class="text-lg sm:text-xl lg:text-2xl text-gray-300 font-mono">
+                                Creative Technologist & UX Innovator
+                            </div>
                         </div>
-                    </div>
-                    
-                    <p class="text-lg lg:text-xl leading-relaxed text-gray-300 max-w-2xl">
-                        Information Systems student passionate about creating intuitive digital experiences 
-                        that solve real-world problems. Currently seeking entry-level and intermediate opportunities 
-                        (local or remote) to contribute innovative solutions.
-                    </p>
-                    
-                    <div class="flex flex-col sm:flex-row gap-4">
-                        <a href="#projects" class="magnetic-button bg-gradient-to-r from-neon-cyan via-neon-pink to-neon-purple px-8 py-4 rounded-full text-black font-bold text-lg inline-flex items-center justify-center">
-                            <i class="fas fa-rocket mr-2"></i>
-                            Explore My Work
-                        </a>
-                        <div class="flex gap-3">
-                            <button onclick="viewCV()" class="glass-morphism px-6 py-4 rounded-full font-semibold text-lg hover:bg-white/10 transition-all inline-flex items-center justify-center">
-                                <i class="fas fa-eye mr-2"></i>
-                                View CV
-                            </button>
-                            <button onclick="downloadCV()" class="glass-morphism px-6 py-4 rounded-full font-semibold text-lg hover:bg-white/10 transition-all inline-flex items-center justify-center">
-                                <i class="fas fa-download mr-2"></i>
-                                Download CV
-                            </button>
-                        </div>
-                    </div>
-                    
-                    <div class="flex gap-6 pt-4">
-                        <a href="mailto:panashefrost@icloud.com" class="text-3xl hover:text-neon-cyan transition-colors">
-                            <i class="fas fa-envelope"></i>
-                        </a>
-                        <a href="https://linkedin.com/in/panashematengambiri" target="_blank" class="text-3xl hover:text-neon-cyan transition-colors">
-                            <i class="fab fa-linkedin"></i>
-                        </a>
-                        <a href="https://github.com/CBfrost" target="_blank" class="text-3xl hover:text-neon-cyan transition-colors">
-                            <i class="fab fa-github"></i>
-                        </a>
-                        <a href="https://behance.net/panashematenga" target="_blank" class="text-3xl hover:text-neon-cyan transition-colors">
-                            <i class="fab fa-behance"></i>
-                        </a>
-                    </div>
-                </div>
-                
-                <div class="relative">
-                    <div class="w-96 h-96 mx-auto relative">
-                        <div class="absolute inset-0 bg-gradient-to-br from-neon-cyan via-neon-pink to-neon-purple rounded-full animate-glow"></div>
-                        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=400&fit=crop&crop=face" alt="Professional Portrait" class="w-full h-full object-cover rounded-full relative z-10 border-4 border-white/20">
                         
-                        <!-- Floating Tech Icons -->
-                        <div class="absolute -top-4 -right-4 w-16 h-16 glass-morphism rounded-full flex items-center justify-center animate-float">
-                            <i class="fab fa-figma text-2xl text-neon-pink"></i>
+                        <p class="text-base sm:text-lg lg:text-xl leading-relaxed text-gray-300 max-w-2xl mx-auto lg:mx-0">
+                            Information Systems student passionate about creating intuitive digital experiences 
+                            that solve real-world problems. Currently seeking entry-level and intermediate opportunities 
+                            (local or remote) to contribute innovative solutions.
+                        </p>
+                        
+                        <!-- CTA Buttons -->
+                        <div class="flex flex-col sm:flex-row gap-4 max-w-lg mx-auto lg:mx-0">
+                            <a href="#projects" class="mobile-button magnetic-button bg-gradient-to-r from-neon-cyan via-neon-pink to-neon-purple px-6 py-3 rounded-full text-black font-bold">
+                                <i class="fas fa-rocket mr-2"></i>
+                                Explore My Work
+                            </a>
+                            <div class="flex gap-3">
+                                <button onclick="viewCV()" class="mobile-button glass-morphism px-4 py-3 rounded-full font-semibold hover:bg-white/10 transition-all flex-1 sm:flex-initial">
+                                    <i class="fas fa-eye mr-2"></i>
+                                    <span class="hidden sm:inline">View CV</span>
+                                    <span class="sm:hidden">CV</span>
+                                </button>
+                                <button onclick="downloadCV()" class="mobile-button glass-morphism px-4 py-3 rounded-full font-semibold hover:bg-white/10 transition-all flex-1 sm:flex-initial">
+                                    <i class="fas fa-download mr-2"></i>
+                                    <span class="hidden sm:inline">Download</span>
+                                    <span class="sm:hidden">PDF</span>
+                                </button>
+                            </div>
                         </div>
-                        <div class="absolute -bottom-4 -left-4 w-16 h-16 glass-morphism rounded-full flex items-center justify-center animate-float" style="animation-delay: 2s;">
-                            <i class="fab fa-react text-2xl text-neon-cyan"></i>
+                        
+                        <!-- Social Links -->
+                        <div class="flex justify-center lg:justify-start gap-4 pt-4">
+                            <a href="mailto:panashefrost@icloud.com" class="mobile-social-icon">
+                                <i class="fas fa-envelope"></i>
+                            </a>
+                            <a href="https://linkedin.com/in/panashematengambiri" target="_blank" class="mobile-social-icon">
+                                <i class="fab fa-linkedin"></i>
+                            </a>
+                            <a href="https://github.com/CBfrost" target="_blank" class="mobile-social-icon">
+                                <i class="fab fa-github"></i>
+                            </a>
+                            <a href="https://behance.net/panashematenga" target="_blank" class="mobile-social-icon">
+                                <i class="fab fa-behance"></i>
+                            </a>
                         </div>
-                        <div class="absolute top-1/2 -left-8 w-12 h-12 glass-morphism rounded-full flex items-center justify-center animate-float" style="animation-delay: 4s;">
-                            <i class="fas fa-code text-lg text-neon-purple"></i>
+                    </div>
+                    
+                    <!-- Hero Image -->
+                    <div class="relative order-1 lg:order-2">
+                        <div class="mobile-hero-image mx-auto relative">
+                            <div class="absolute inset-0 bg-gradient-to-br from-neon-cyan via-neon-pink to-neon-purple rounded-full animate-glow"></div>
+                            <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=400&fit=crop&crop=face" alt="Professional Portrait" class="w-full h-full object-cover rounded-full relative z-10 border-4 border-white/20">
+                            
+                            <!-- Floating Tech Icons - Mobile Optimized -->
+                            <div class="absolute -top-2 -right-2 sm:-top-4 sm:-right-4 w-12 h-12 sm:w-16 sm:h-16 glass-morphism rounded-full flex items-center justify-center animate-float">
+                                <i class="fab fa-figma text-lg sm:text-2xl text-neon-pink"></i>
+                            </div>
+                            <div class="absolute -bottom-2 -left-2 sm:-bottom-4 sm:-left-4 w-12 h-12 sm:w-16 sm:h-16 glass-morphism rounded-full flex items-center justify-center animate-float" style="animation-delay: 2s;">
+                                <i class="fab fa-react text-lg sm:text-2xl text-neon-cyan"></i>
+                            </div>
+                            <div class="absolute top-1/2 -left-6 sm:-left-8 w-10 h-10 sm:w-12 sm:h-12 glass-morphism rounded-full flex items-center justify-center animate-float" style="animation-delay: 4s;">
+                                <i class="fas fa-code text-sm sm:text-lg text-neon-purple"></i>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -559,29 +999,30 @@
 
     <div class="section-divider"></div>
 
-    <!-- About Section -->
-    <section id="about" class="py-20 relative">
+    <!-- About Section - Mobile Optimized -->
+    <section id="about" class="mobile-section relative">
         <div class="absolute inset-0 opacity-10">
             <img src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=1920&h=1080&fit=crop" alt="Space Tech" class="w-full h-full object-cover">
         </div>
-        <div class="max-w-7xl mx-auto px-6 relative z-10">
-            <div class="text-center mb-16">
-                <h2 class="text-5xl lg:text-7xl font-bold gradient-text mb-6">About Me</h2>
-                <p class="text-xl text-gray-300 max-w-3xl mx-auto">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 relative z-10">
+            <div class="text-center mb-12 lg:mb-16">
+                <h2 class="text-4xl sm:text-5xl lg:text-7xl font-bold gradient-text mb-4 lg:mb-6">About Me</h2>
+                <p class="text-lg sm:text-xl text-gray-300 max-w-3xl mx-auto">
                     A passionate technologist on a mission to create digital experiences that matter
                 </p>
             </div>
             
-            <div class="grid lg:grid-cols-2 gap-16 items-center">
-                <div class="space-y-8">
-                    <div class="glass-morphism p-8 rounded-3xl">
-                        <h3 class="text-3xl font-bold text-neon-cyan mb-4">My Journey</h3>
-                        <p class="text-lg leading-relaxed text-gray-300 mb-4">
+            <div class="flex flex-col lg:grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+                <!-- Journey Content -->
+                <div class="space-y-6 lg:space-y-8">
+                    <div class="glass-morphism p-6 lg:p-8 rounded-3xl">
+                        <h3 class="text-2xl lg:text-3xl font-bold text-neon-cyan mb-4">My Journey</h3>
+                        <p class="text-base lg:text-lg leading-relaxed text-gray-300 mb-4">
                             Currently pursuing my BSc in Information Systems at Midlands State University 
                             (graduating November 2025). My journey in tech started with curiosity and 
                             has evolved into a passion for creating meaningful digital solutions.
                         </p>
-                        <p class="text-lg leading-relaxed text-gray-300">
+                        <p class="text-base lg:text-lg leading-relaxed text-gray-300">
                             Through multiple internships and freelance projects, I've gained hands-on experience 
                             in enterprise systems, user experience design, and full-stack development. 
                             I'm particularly passionate about bridging the gap between beautiful design and 
@@ -589,88 +1030,89 @@
                         </p>
                     </div>
                     
-                    <div class="grid grid-cols-2 gap-6">
-                        <div class="glass-morphism p-6 rounded-2xl text-center">
-                            <div class="text-4xl font-bold gradient-text mb-2">6+</div>
-                            <div class="text-gray-300">Certifications</div>
+                    <!-- Stats Grid -->
+                    <div class="grid grid-cols-2 gap-4 lg:gap-6">
+                        <div class="glass-morphism p-4 lg:p-6 rounded-2xl text-center">
+                            <div class="text-3xl lg:text-4xl font-bold gradient-text mb-2">6+</div>
+                            <div class="text-sm lg:text-base text-gray-300">Certifications</div>
                         </div>
-                        <div class="glass-morphism p-6 rounded-2xl text-center">
-                            <div class="text-4xl font-bold gradient-text mb-2">15+</div>
-                            <div class="text-gray-300">Projects</div>
+                        <div class="glass-morphism p-4 lg:p-6 rounded-2xl text-center">
+                            <div class="text-3xl lg:text-4xl font-bold gradient-text mb-2">15+</div>
+                            <div class="text-sm lg:text-base text-gray-300">Projects</div>
                         </div>
-                        <div class="glass-morphism p-6 rounded-2xl text-center">
-                            <div class="text-4xl font-bold gradient-text mb-2">3+</div>
-                            <div class="text-gray-300">Internships</div>
+                        <div class="glass-morphism p-4 lg:p-6 rounded-2xl text-center">
+                            <div class="text-3xl lg:text-4xl font-bold gradient-text mb-2">3+</div>
+                            <div class="text-sm lg:text-base text-gray-300">Internships</div>
                         </div>
-                        <div class="glass-morphism p-6 rounded-2xl text-center">
-                            <div class="text-4xl font-bold gradient-text mb-2">60K+</div>
-                            <div class="text-gray-300">Users Impacted</div>
+                        <div class="glass-morphism p-4 lg:p-6 rounded-2xl text-center">
+                            <div class="text-3xl lg:text-4xl font-bold gradient-text mb-2">60K+</div>
+                            <div class="text-sm lg:text-base text-gray-300">Users Impacted</div>
                         </div>
                     </div>
                 </div>
                 
-                <!-- Updated Skills & Certifications Section -->
+                <!-- Skills & Certifications Section - Mobile Optimized -->
                 <div class="space-y-6">
-                    <h3 class="text-3xl font-bold text-center gradient-text mb-8">Skills & Certifications</h3>
+                    <h3 class="text-2xl lg:text-3xl font-bold text-center gradient-text mb-6 lg:mb-8">Skills & Certifications</h3>
                     
-                    <div class="skills-grid">
+                    <div class="mobile-skills-grid">
                         <!-- Google UX Design -->
-                        <div class="skill-certification-card" style="--accent-color: #4285F4; --accent-color-2: #34A853;">
+                        <div class="mobile-skill-card" style="--accent-color: #4285F4; --accent-color-2: #34A853;">
                             <div class="certification-badge" style="background: linear-gradient(135deg, #4285F4, #34A853);">
-                                <i class="fab fa-google text-white text-xl"></i>
+                                <i class="fab fa-google text-white text-lg sm:text-xl"></i>
                             </div>
-                            <h4 class="text-lg font-bold text-white mb-2">Google UX Design</h4>
-                            <p class="text-sm text-gray-300 mb-2">Professional Certificate</p>
+                            <h4 class="text-base lg:text-lg font-bold text-white mb-2">Google UX Design</h4>
+                            <p class="text-xs lg:text-sm text-gray-300 mb-2">Professional Certificate</p>
                             <div class="text-xs text-gray-400">Empathize • Define • Ideate • Prototype • Test</div>
                         </div>
 
                         <!-- IBM Front-End Developer -->
-                        <div class="skill-certification-card" style="--accent-color: #1261FE; --accent-color-2: #0530AD;">
+                        <div class="mobile-skill-card" style="--accent-color: #1261FE; --accent-color-2: #0530AD;">
                             <div class="certification-badge" style="background: linear-gradient(135deg, #1261FE, #0530AD);">
-                                <i class="fas fa-laptop-code text-white text-xl"></i>
+                                <i class="fas fa-laptop-code text-white text-lg sm:text-xl"></i>
                             </div>
-                            <h4 class="text-lg font-bold text-white mb-2">IBM Front-End</h4>
-                            <p class="text-sm text-gray-300 mb-2">Professional Certificate</p>
+                            <h4 class="text-base lg:text-lg font-bold text-white mb-2">IBM Front-End</h4>
+                            <p class="text-xs lg:text-sm text-gray-300 mb-2">Professional Certificate</p>
                             <div class="text-xs text-gray-400">React • JavaScript • HTML/CSS • Git</div>
                         </div>
 
                         <!-- Microsoft UX Design -->
-                        <div class="skill-certification-card" style="--accent-color: #00BCF2; --accent-color-2: #0078D4;">
+                        <div class="mobile-skill-card" style="--accent-color: #00BCF2; --accent-color-2: #0078D4;">
                             <div class="certification-badge" style="background: linear-gradient(135deg, #00BCF2, #0078D4);">
-                                <i class="fab fa-microsoft text-white text-xl"></i>
+                                <i class="fab fa-microsoft text-white text-lg sm:text-xl"></i>
                             </div>
-                            <h4 class="text-lg font-bold text-white mb-2">Microsoft UX</h4>
-                            <p class="text-sm text-gray-300 mb-2">Professional Certificate</p>
+                            <h4 class="text-base lg:text-lg font-bold text-white mb-2">Microsoft UX</h4>
+                            <p class="text-xs lg:text-sm text-gray-300 mb-2">Professional Certificate</p>
                             <div class="text-xs text-gray-400">Accessibility • Collaboration • AI-Enhanced UX</div>
                         </div>
 
                         <!-- CalArts UI/UX Design -->
-                        <div class="skill-certification-card" style="--accent-color: #FF6B35; --accent-color-2: #F7931E;">
+                        <div class="mobile-skill-card" style="--accent-color: #FF6B35; --accent-color-2: #F7931E;">
                             <div class="certification-badge" style="background: linear-gradient(135deg, #FF6B35, #F7931E);">
-                                <i class="fas fa-palette text-white text-xl"></i>
+                                <i class="fas fa-palette text-white text-lg sm:text-xl"></i>
                             </div>
-                            <h4 class="text-lg font-bold text-white mb-2">CalArts UI/UX</h4>
-                            <p class="text-sm text-gray-300 mb-2">Specialization</p>
+                            <h4 class="text-base lg:text-lg font-bold text-white mb-2">CalArts UI/UX</h4>
+                            <p class="text-xs lg:text-sm text-gray-300 mb-2">Specialization</p>
                             <div class="text-xs text-gray-400">Visual Elements • Strategy • Wireframes</div>
                         </div>
 
                         <!-- Figma, Sketch & Miro -->
-                        <div class="skill-certification-card" style="--accent-color: #F24E1E; --accent-color-2: #A259FF;">
+                        <div class="mobile-skill-card" style="--accent-color: #F24E1E; --accent-color-2: #A259FF;">
                             <div class="certification-badge" style="background: linear-gradient(135deg, #F24E1E, #A259FF);">
-                                <i class="fab fa-figma text-white text-xl"></i>
+                                <i class="fab fa-figma text-white text-lg sm:text-xl"></i>
                             </div>
-                            <h4 class="text-lg font-bold text-white mb-2">Design Toolkit</h4>
-                            <p class="text-sm text-gray-300 mb-2">Professional Certificate</p>
+                            <h4 class="text-base lg:text-lg font-bold text-white mb-2">Design Toolkit</h4>
+                            <p class="text-xs lg:text-sm text-gray-300 mb-2">Professional Certificate</p>
                             <div class="text-xs text-gray-400">Figma • Sketch • Miro • User Testing</div>
                         </div>
 
                         <!-- Information Systems -->
-                        <div class="skill-certification-card" style="--accent-color: #00ffff; --accent-color-2: #ff0080;">
+                        <div class="mobile-skill-card" style="--accent-color: #00ffff; --accent-color-2: #ff0080;">
                             <div class="certification-badge" style="background: linear-gradient(135deg, #00ffff, #ff0080);">
-                                <i class="fas fa-graduation-cap text-white text-xl"></i>
+                                <i class="fas fa-graduation-cap text-white text-lg sm:text-xl"></i>
                             </div>
-                            <h4 class="text-lg font-bold text-white mb-2">BSc IS</h4>
-                            <p class="text-sm text-gray-300 mb-2">Midlands State Uni</p>
+                            <h4 class="text-base lg:text-lg font-bold text-white mb-2">BSc IS</h4>
+                            <p class="text-xs lg:text-sm text-gray-300 mb-2">Midlands State Uni</p>
                             <div class="text-xs text-gray-400">Systems Analysis • DB Design • In Progress</div>
                         </div>
                     </div>
@@ -681,64 +1123,63 @@
 
     <div class="section-divider"></div>
 
-    <!-- Featured Projects Section -->
-    <section id="projects" class="py-20 relative">
+    <!-- Featured Projects Section - Mobile Optimized -->
+    <section id="projects" class="mobile-section relative">
         <div class="absolute inset-0 opacity-5">
             <img src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=1920&h=1080&fit=crop" alt="Abstract Tech" class="w-full h-full object-cover">
         </div>
-        <div class="max-w-7xl mx-auto px-6 relative z-10">
-            <div class="text-center mb-16">
-                <h2 class="text-5xl lg:text-7xl font-bold gradient-text mb-6">Featured Projects</h2>
-                <p class="text-xl text-gray-300">Real-world solutions showcasing technical expertise and business impact</p>
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 relative z-10">
+            <div class="text-center mb-12 lg:mb-16">
+                <h2 class="text-4xl sm:text-5xl lg:text-7xl font-bold gradient-text mb-4 lg:mb-6">Featured Projects</h2>
+                <p class="text-lg sm:text-xl text-gray-300">Real-world solutions showcasing technical expertise and business impact</p>
             </div>
             
-            <div class="grid lg:grid-cols-2 gap-12">
+            <div class="flex flex-col lg:grid lg:grid-cols-2 gap-8 lg:gap-12">
                 <!-- EcoWatt Project -->
-                <div class="project-card glass-morphism rounded-3xl overflow-hidden">
-                    <div class="relative h-64">
+                <div class="mobile-project-card">
+                    <div class="relative h-48 sm:h-56 lg:h-64">
                         <img src="https://images.unsplash.com/photo-1559827260-dc66d52bef19?w=600&h=400&fit=crop" alt="Energy Management" class="w-full h-full object-cover">
                         <div class="absolute inset-0 bg-gradient-to-t from-dark-navy/80 to-transparent"></div>
                         <div class="absolute top-4 right-4">
-                            <span class="bg-gradient-to-r from-green-400 to-blue-500 px-3 py-1 rounded-full text-sm font-semibold">Personal Project</span>
+                            <span class="bg-gradient-to-r from-green-400 to-blue-500 px-3 py-1 rounded-full text-xs sm:text-sm font-semibold">Personal Project</span>
                         </div>
                         <div class="absolute bottom-4 left-4">
                             <div class="flex items-center gap-2">
                                 <i class="fas fa-users text-neon-cyan"></i>
-                                <span class="text-white text-sm">60K+ Target Users</span>
+                                <span class="text-white text-xs sm:text-sm">60K+ Target Users</span>
                             </div>
                         </div>
                     </div>
-                    <div class="p-8">
-                        <h3 class="text-2xl font-bold mb-4 gradient-text">EcoWatt AI Energy Platform</h3>
-                        <p class="text-gray-300 mb-4">
+                    <div class="p-6 lg:p-8">
+                        <h3 class="text-xl lg:text-2xl font-bold mb-4 gradient-text">EcoWatt AI Energy Platform</h3>
+                        <p class="text-sm lg:text-base text-gray-300 mb-4">
                             <strong>The Challenge:</strong> Zimbabwe's prepaid electricity system lacks user-friendly management tools, 
                             leading to unexpected power cuts and inefficient energy consumption.
                         </p>
-                        <p class="text-gray-300 mb-6">
+                        <p class="text-sm lg:text-base text-gray-300 mb-6">
                             <strong>My Solution:</strong> Developed a Progressive Web App with AI-powered consumption forecasting, 
-                            Bluetooth smart meter integration, and mobile payment capabilities. Features real-time analytics, 
-                            personalized recommendations, and offline functionality for reliable access.
+                            Bluetooth smart meter integration, and mobile payment capabilities.
                         </p>
                         <div class="bg-dark-navy/30 p-4 rounded-xl mb-6">
-                            <h4 class="text-neon-cyan font-semibold mb-2">Key Achievements:</h4>
-                            <ul class="text-sm text-gray-300 space-y-1">
-                                <li>• Designed intuitive mobile-first interface reducing user task completion time by 60%</li>
-                                <li>• Implemented Chart.js visualizations for consumption pattern analysis</li>
-                                <li>• Built offline-capable PWA with service workers for 99.9% uptime</li>
-                                <li>• Created responsive design system supporting 5 local languages</li>
+                            <h4 class="text-neon-cyan font-semibold mb-2 text-sm lg:text-base">Key Achievements:</h4>
+                            <ul class="text-xs lg:text-sm text-gray-300 space-y-1">
+                                <li>• 60% reduction in task completion time</li>
+                                <li>• Chart.js visualizations for consumption analysis</li>
+                                <li>• 99.9% uptime with service workers</li>
+                                <li>• 5 local languages support</li>
                             </ul>
                         </div>
                         <div class="flex flex-wrap gap-2 mb-6">
-                            <span class="bg-neon-cyan/20 text-neon-cyan px-3 py-1 rounded-full text-sm">Progressive Web App</span>
-                            <span class="bg-neon-cyan/20 text-neon-cyan px-3 py-1 rounded-full text-sm">Chart.js</span>
-                            <span class="bg-neon-cyan/20 text-neon-cyan px-3 py-1 rounded-full text-sm">Bluetooth API</span>
-                            <span class="bg-neon-cyan/20 text-neon-cyan px-3 py-1 rounded-full text-sm">Service Workers</span>
+                            <span class="bg-neon-cyan/20 text-neon-cyan px-2 py-1 rounded-full text-xs">PWA</span>
+                            <span class="bg-neon-cyan/20 text-neon-cyan px-2 py-1 rounded-full text-xs">Chart.js</span>
+                            <span class="bg-neon-cyan/20 text-neon-cyan px-2 py-1 rounded-full text-xs">Bluetooth API</span>
+                            <span class="bg-neon-cyan/20 text-neon-cyan px-2 py-1 rounded-full text-xs">Service Workers</span>
                         </div>
-                        <div class="flex gap-4">
-                            <a href="https://cbfrost.github.io/ecowatt-energy-platform" target="_blank" class="flex-1 bg-gradient-to-r from-neon-cyan to-electric-blue px-6 py-3 rounded-full text-black font-semibold text-center hover:scale-105 transition-transform">
+                        <div class="flex flex-col sm:flex-row gap-3">
+                            <a href="https://cbfrost.github.io/ecowatt-energy-platform" target="_blank" class="mobile-button bg-gradient-to-r from-neon-cyan to-electric-blue px-4 py-3 rounded-full text-black font-semibold text-center">
                                 <i class="fas fa-external-link-alt mr-2"></i>View Live
                             </a>
-                            <a href="https://github.com/CBfrost/ecowatt-energy-platform" target="_blank" class="flex-1 glass-morphism px-6 py-3 rounded-full text-center hover:bg-white/10 transition-colors">
+                            <a href="https://github.com/CBfrost/ecowatt-energy-platform" target="_blank" class="mobile-button glass-morphism px-4 py-3 rounded-full text-center hover:bg-white/10 transition-colors">
                                 <i class="fab fa-github mr-2"></i>Code
                             </a>
                         </div>
@@ -746,51 +1187,50 @@
                 </div>
                 
                 <!-- AutoGlass Management -->
-                <div class="project-card glass-morphism rounded-3xl overflow-hidden">
-                    <div class="relative h-64">
+                <div class="mobile-project-card">
+                    <div class="relative h-48 sm:h-56 lg:h-64">
                         <img src="https://images.unsplash.com/photo-1449824913935-59a10b8d2000?w=600&h=400&fit=crop" alt="Automotive" class="w-full h-full object-cover">
                         <div class="absolute inset-0 bg-gradient-to-t from-dark-navy/80 to-transparent"></div>
                         <div class="absolute top-4 right-4">
-                            <span class="bg-gradient-to-r from-purple-400 to-pink-500 px-3 py-1 rounded-full text-sm font-semibold">Enterprise Project</span>
+                            <span class="bg-gradient-to-r from-purple-400 to-pink-500 px-3 py-1 rounded-full text-xs sm:text-sm font-semibold">Enterprise Project</span>
                         </div>
                         <div class="absolute bottom-4 left-4">
                             <div class="flex items-center gap-2">
                                 <i class="fas fa-building text-neon-pink"></i>
-                                <span class="text-white text-sm">8 Branch Deployment</span>
+                                <span class="text-white text-xs sm:text-sm">8 Branch Deployment</span>
                             </div>
                         </div>
                     </div>
-                    <div class="p-8">
-                        <h3 class="text-2xl font-bold mb-4 gradient-text">AutoGlass Pro Platform</h3>
-                        <p class="text-gray-300 mb-4">
+                    <div class="p-6 lg:p-8">
+                        <h3 class="text-xl lg:text-2xl font-bold mb-4 gradient-text">AutoGlass Pro Platform</h3>
+                        <p class="text-sm lg:text-base text-gray-300 mb-4">
                             <strong>The Challenge:</strong> DM Windscreens needed a unified system to manage service bookings, 
-                            inventory, and technician schedules across 8 branch locations with real-time synchronization.
+                            inventory, and technician schedules across 8 branch locations.
                         </p>
-                        <p class="text-gray-300 mb-6">
+                        <p class="text-sm lg:text-base text-gray-300 mb-6">
                             <strong>My Contribution:</strong> Collaborated on developing a comprehensive service management platform 
-                            with real-time booking system, mobile technician interfaces, and automated inventory tracking. 
-                            Focused on UI/UX design and frontend implementation.
+                            with real-time booking system and mobile technician interfaces.
                         </p>
                         <div class="bg-dark-navy/30 p-4 rounded-xl mb-6">
-                            <h4 class="text-neon-pink font-semibold mb-2">Business Impact:</h4>
-                            <ul class="text-sm text-gray-300 space-y-1">
-                                <li>• Reduced booking time from 15 minutes to 4 minutes (70% improvement)</li>
-                                <li>• Increased customer satisfaction scores by 35%</li>
-                                <li>• Streamlined inventory management reducing waste by 25%</li>
-                                <li>• Enhanced mobile technician productivity by 40%</li>
+                            <h4 class="text-neon-pink font-semibold mb-2 text-sm lg:text-base">Business Impact:</h4>
+                            <ul class="text-xs lg:text-sm text-gray-300 space-y-1">
+                                <li>• 70% booking time reduction (15min → 4min)</li>
+                                <li>• 35% customer satisfaction increase</li>
+                                <li>• 25% inventory waste reduction</li>
+                                <li>• 40% mobile technician productivity boost</li>
                             </ul>
                         </div>
                         <div class="flex flex-wrap gap-2 mb-6">
-                            <span class="bg-neon-pink/20 text-neon-pink px-3 py-1 rounded-full text-sm">React</span>
-                            <span class="bg-neon-pink/20 text-neon-pink px-3 py-1 rounded-full text-sm">Node.js</span>
-                            <span class="bg-neon-pink/20 text-neon-pink px-3 py-1 rounded-full text-sm">PostgreSQL</span>
-                            <span class="bg-neon-pink/20 text-neon-pink px-3 py-1 rounded-full text-sm">Real-time Sync</span>
+                            <span class="bg-neon-pink/20 text-neon-pink px-2 py-1 rounded-full text-xs">React</span>
+                            <span class="bg-neon-pink/20 text-neon-pink px-2 py-1 rounded-full text-xs">Node.js</span>
+                            <span class="bg-neon-pink/20 text-neon-pink px-2 py-1 rounded-full text-xs">PostgreSQL</span>
+                            <span class="bg-neon-pink/20 text-neon-pink px-2 py-1 rounded-full text-xs">Real-time Sync</span>
                         </div>
-                        <div class="flex gap-4">
-                            <span class="flex-1 bg-gray-600 px-6 py-3 rounded-full text-white font-semibold text-center">
+                        <div class="flex flex-col sm:flex-row gap-3">
+                            <span class="mobile-button bg-gray-600 px-4 py-3 rounded-full text-white font-semibold text-center">
                                 <i class="fas fa-lock mr-2"></i>Enterprise System
                             </span>
-                            <a href="#contact" class="flex-1 glass-morphism px-6 py-3 rounded-full text-center hover:bg-white/10 transition-colors">
+                            <a href="#contact" class="mobile-button glass-morphism px-4 py-3 rounded-full text-center hover:bg-white/10 transition-colors">
                                 <i class="fas fa-info-circle mr-2"></i>Learn More
                             </a>
                         </div>
@@ -798,50 +1238,50 @@
                 </div>
                 
                 <!-- StayHealthy Capstone -->
-                <div class="project-card glass-morphism rounded-3xl overflow-hidden">
-                    <div class="relative h-64">
+                <div class="mobile-project-card">
+                    <div class="relative h-48 sm:h-56 lg:h-64">
                         <img src="https://images.unsplash.com/photo-1559757148-5c350d0d3c56?w=600&h=400&fit=crop" alt="Healthcare" class="w-full h-full object-cover">
                         <div class="absolute inset-0 bg-gradient-to-t from-dark-navy/80 to-transparent"></div>
                         <div class="absolute top-4 right-4">
-                            <span class="bg-gradient-to-r from-green-400 to-teal-500 px-3 py-1 rounded-full text-sm font-semibold">Capstone Project</span>
+                            <span class="bg-gradient-to-r from-green-400 to-teal-500 px-3 py-1 rounded-full text-xs sm:text-sm font-semibold">Capstone Project</span>
                         </div>
                         <div class="absolute bottom-4 left-4">
                             <div class="flex items-center gap-2">
                                 <i class="fas fa-heartbeat text-green-400"></i>
-                                <span class="text-white text-sm">Healthcare Management</span>
+                                <span class="text-white text-xs sm:text-sm">Healthcare Management</span>
                             </div>
                         </div>
                     </div>
-                    <div class="p-8">
-                        <h3 class="text-2xl font-bold mb-4 gradient-text">StayHealthy Healthcare Platform</h3>
-                        <p class="text-gray-300 mb-4">
+                    <div class="p-6 lg:p-8">
+                        <h3 class="text-xl lg:text-2xl font-bold mb-4 gradient-text">StayHealthy Healthcare Platform</h3>
+                        <p class="text-sm lg:text-base text-gray-300 mb-4">
                             <strong>The Challenge:</strong> Developing a comprehensive healthcare management system that connects 
                             patients, doctors, and healthcare providers in a seamless digital ecosystem.
                         </p>
-                        <p class="text-gray-300 mb-6">
+                        <p class="text-sm lg:text-base text-gray-300 mb-6">
                             <strong>My Solution:</strong> Built a full-stack healthcare platform with appointment scheduling, 
-                            patient records management, telemedicine capabilities, and real-time health monitoring dashboards.
+                            patient records management, and telemedicine capabilities.
                         </p>
                         <div class="bg-dark-navy/30 p-4 rounded-xl mb-6">
-                            <h4 class="text-green-400 font-semibold mb-2">Key Features:</h4>
-                            <ul class="text-sm text-gray-300 space-y-1">
-                                <li>• Secure patient data management with HIPAA compliance considerations</li>
-                                <li>• Real-time appointment scheduling and video consultation integration</li>
-                                <li>• Interactive health dashboards with data visualization</li>
-                                <li>• Mobile-responsive design for accessibility across devices</li>
+                            <h4 class="text-green-400 font-semibold mb-2 text-sm lg:text-base">Key Features:</h4>
+                            <ul class="text-xs lg:text-sm text-gray-300 space-y-1">
+                                <li>• HIPAA compliance considerations</li>
+                                <li>• Real-time appointment scheduling</li>
+                                <li>• Interactive health dashboards</li>
+                                <li>• Mobile-responsive design</li>
                             </ul>
                         </div>
                         <div class="flex flex-wrap gap-2 mb-6">
-                            <span class="bg-green-400/20 text-green-400 px-3 py-1 rounded-full text-sm">React</span>
-                            <span class="bg-green-400/20 text-green-400 px-3 py-1 rounded-full text-sm">Node.js</span>
-                            <span class="bg-green-400/20 text-green-400 px-3 py-1 rounded-full text-sm">MongoDB</span>
-                            <span class="bg-green-400/20 text-green-400 px-3 py-1 rounded-full text-sm">WebRTC</span>
+                            <span class="bg-green-400/20 text-green-400 px-2 py-1 rounded-full text-xs">React</span>
+                            <span class="bg-green-400/20 text-green-400 px-2 py-1 rounded-full text-xs">Node.js</span>
+                            <span class="bg-green-400/20 text-green-400 px-2 py-1 rounded-full text-xs">MongoDB</span>
+                            <span class="bg-green-400/20 text-green-400 px-2 py-1 rounded-full text-xs">WebRTC</span>
                         </div>
-                        <div class="flex gap-4">
-                            <a href="https://github.com/CBfrost/stayhealthy-capstone" target="_blank" class="flex-1 bg-gradient-to-r from-green-400 to-teal-500 px-6 py-3 rounded-full text-black font-semibold text-center hover:scale-105 transition-transform">
+                        <div class="flex flex-col sm:flex-row gap-3">
+                            <a href="https://github.com/CBfrost/stayhealthy-capstone" target="_blank" class="mobile-button bg-gradient-to-r from-green-400 to-teal-500 px-4 py-3 rounded-full text-black font-semibold text-center">
                                 <i class="fab fa-github mr-2"></i>View Code
                             </a>
-                            <a href="#contact" class="flex-1 glass-morphism px-6 py-3 rounded-full text-center hover:bg-white/10 transition-colors">
+                            <a href="#contact" class="mobile-button glass-morphism px-4 py-3 rounded-full text-center hover:bg-white/10 transition-colors">
                                 <i class="fas fa-info-circle mr-2"></i>Case Study
                             </a>
                         </div>
@@ -849,51 +1289,50 @@
                 </div>
                 
                 <!-- Paradise Nursery -->
-                <div class="project-card glass-morphism rounded-3xl overflow-hidden">
-                    <div class="relative h-64">
+                <div class="mobile-project-card">
+                    <div class="relative h-48 sm:h-56 lg:h-64">
                         <img src="https://images.unsplash.com/photo-1416879595882-3373a0480b5b?w=600&h=400&fit=crop" alt="Plants Nursery" class="w-full h-full object-cover">
                         <div class="absolute inset-0 bg-gradient-to-t from-dark-navy/80 to-transparent"></div>
                         <div class="absolute top-4 right-4">
-                            <span class="bg-gradient-to-r from-emerald-400 to-green-500 px-3 py-1 rounded-full text-sm font-semibold">E-Commerce</span>
+                            <span class="bg-gradient-to-r from-emerald-400 to-green-500 px-3 py-1 rounded-full text-xs sm:text-sm font-semibold">E-Commerce</span>
                         </div>
                         <div class="absolute bottom-4 left-4">
                             <div class="flex items-center gap-2">
                                 <i class="fas fa-seedling text-emerald-400"></i>
-                                <span class="text-white text-sm">Plant E-Commerce</span>
+                                <span class="text-white text-xs sm:text-sm">Plant E-Commerce</span>
                             </div>
                         </div>
                     </div>
-                    <div class="p-8">
-                        <h3 class="text-2xl font-bold mb-4 gradient-text">Paradise Nursery E-Commerce</h3>
-                        <p class="text-gray-300 mb-4">
+                    <div class="p-6 lg:p-8">
+                        <h3 class="text-xl lg:text-2xl font-bold mb-4 gradient-text">Paradise Nursery E-Commerce</h3>
+                        <p class="text-sm lg:text-base text-gray-300 mb-4">
                             <strong>The Goal:</strong> Create an engaging e-commerce platform for plant enthusiasts with 
-                            intuitive navigation, detailed plant care information, and seamless shopping experience.
+                            intuitive navigation and detailed plant care information.
                         </p>
-                        <p class="text-gray-300 mb-6">
+                        <p class="text-sm lg:text-base text-gray-300 mb-6">
                             <strong>The Result:</strong> Developed a responsive plant nursery website with interactive plant 
-                            catalog, shopping cart functionality, care guides, and customer review system. Features beautiful 
-                            plant imagery and user-friendly interface design.
+                            catalog, shopping cart functionality, and care guides.
                         </p>
                         <div class="bg-dark-navy/30 p-4 rounded-xl mb-6">
-                            <h4 class="text-emerald-400 font-semibold mb-2">Features:</h4>
-                            <ul class="text-sm text-gray-300 space-y-1">
-                                <li>• Interactive plant catalog with detailed information and care guides</li>
-                                <li>• Shopping cart and checkout system with order management</li>
-                                <li>• Plant care reminder system and maintenance tips</li>
-                                <li>• Customer review and rating system for plants</li>
+                            <h4 class="text-emerald-400 font-semibold mb-2 text-sm lg:text-base">Features:</h4>
+                            <ul class="text-xs lg:text-sm text-gray-300 space-y-1">
+                                <li>• Interactive plant catalog</li>
+                                <li>• Shopping cart & checkout system</li>
+                                <li>• Plant care reminder system</li>
+                                <li>• Customer review system</li>
                             </ul>
                         </div>
                         <div class="flex flex-wrap gap-2 mb-6">
-                            <span class="bg-emerald-400/20 text-emerald-400 px-3 py-1 rounded-full text-sm">JavaScript</span>
-                            <span class="bg-emerald-400/20 text-emerald-400 px-3 py-1 rounded-full text-sm">HTML5/CSS3</span>
-                            <span class="bg-emerald-400/20 text-emerald-400 px-3 py-1 rounded-full text-sm">Local Storage</span>
-                            <span class="bg-emerald-400/20 text-emerald-400 px-3 py-1 rounded-full text-sm">Responsive</span>
+                            <span class="bg-emerald-400/20 text-emerald-400 px-2 py-1 rounded-full text-xs">JavaScript</span>
+                            <span class="bg-emerald-400/20 text-emerald-400 px-2 py-1 rounded-full text-xs">HTML5/CSS3</span>
+                            <span class="bg-emerald-400/20 text-emerald-400 px-2 py-1 rounded-full text-xs">Local Storage</span>
+                            <span class="bg-emerald-400/20 text-emerald-400 px-2 py-1 rounded-full text-xs">Responsive</span>
                         </div>
-                        <div class="flex gap-4">
-                            <a href="https://github.com/CBfrost/paradise-nursery" target="_blank" class="flex-1 bg-gradient-to-r from-emerald-400 to-green-500 px-6 py-3 rounded-full text-black font-semibold text-center hover:scale-105 transition-transform">
+                        <div class="flex flex-col sm:flex-row gap-3">
+                            <a href="https://github.com/CBfrost/paradise-nursery" target="_blank" class="mobile-button bg-gradient-to-r from-emerald-400 to-green-500 px-4 py-3 rounded-full text-black font-semibold text-center">
                                 <i class="fab fa-github mr-2"></i>View Code
                             </a>
-                            <a href="#contact" class="flex-1 glass-morphism px-6 py-3 rounded-full text-center hover:bg-white/10 transition-colors">
+                            <a href="#contact" class="mobile-button glass-morphism px-4 py-3 rounded-full text-center hover:bg-white/10 transition-colors">
                                 <i class="fas fa-external-link-alt mr-2"></i>Demo
                             </a>
                         </div>
@@ -905,74 +1344,73 @@
 
     <div class="section-divider"></div>
 
-    <!-- GitHub Projects Section -->
-    <section id="github" class="py-20 relative github-section-bg">
-        <div class="max-w-7xl mx-auto px-6">
-            <div class="text-center mb-16">
-                <h2 class="text-5xl lg:text-7xl font-bold gradient-text mb-6">GitHub Projects</h2>
-                <p class="text-xl text-gray-300">Explore my latest open-source contributions and personal projects</p>
+    <!-- GitHub Projects Section - Mobile Optimized -->
+    <section id="github" class="mobile-section relative github-section-bg">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6">
+            <div class="text-center mb-12 lg:mb-16">
+                <h2 class="text-4xl sm:text-5xl lg:text-7xl font-bold gradient-text mb-4 lg:mb-6">GitHub Projects</h2>
+                <p class="text-lg sm:text-xl text-gray-300">Explore my latest open-source contributions and personal projects</p>
             </div>
             
-            <div id="github-projects" class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-16">
+            <div id="github-projects" class="mobile-skills-grid mb-12 lg:mb-16">
                 <!-- GitHub projects will be loaded here dynamically -->
             </div>
             
             <!-- Enhanced GitHub Repository CTA Section -->
             <div class="text-center">
-                <div class="github-cta-card glass-morphism p-12 rounded-3xl inline-block max-w-4xl">
-                    <div class="mb-8">
-                        <div class="inline-flex items-center justify-center w-20 h-20 rounded-full bg-gradient-to-br from-neon-cyan via-neon-pink to-neon-purple mb-6">
-                            <i class="fab fa-github text-3xl text-white"></i>
+                <div class="github-cta-card glass-morphism p-6 lg:p-12 rounded-3xl inline-block max-w-4xl">
+                    <div class="mb-6 lg:mb-8">
+                        <div class="inline-flex items-center justify-center w-16 h-16 lg:w-20 lg:h-20 rounded-full bg-gradient-to-br from-neon-cyan via-neon-pink to-neon-purple mb-4 lg:mb-6">
+                            <i class="fab fa-github text-2xl lg:text-3xl text-white"></i>
                         </div>
-                        <h3 class="text-3xl font-bold gradient-text mb-4">Discover More on GitHub</h3>
-                        <p class="text-lg text-white mb-6 max-w-2xl mx-auto leading-relaxed">
+                        <h3 class="text-2xl lg:text-3xl font-bold gradient-text mb-4">Discover More on GitHub</h3>
+                        <p class="text-base lg:text-lg text-white mb-6 max-w-2xl mx-auto leading-relaxed">
                             Dive deeper into my development journey with complete project repositories, detailed documentation, 
-                            contribution history, and collaborative coding experiments. See how I approach problem-solving 
-                            and stay current with modern technologies.
+                            and collaborative coding experiments.
                         </p>
                         
-                        <!-- GitHub Stats Preview - ACCESSIBILITY IMPROVED -->
-                        <div class="grid md:grid-cols-3 gap-6 mb-8">
-                            <div class="bg-dark-navy/50 p-4 rounded-xl border border-neon-cyan/30">
-                                <div class="text-2xl font-bold text-white mb-1">12+</div>
-                                <div class="text-sm text-gray-200 font-medium">Repositories</div>
+                        <!-- GitHub Stats Preview -->
+                        <div class="grid grid-cols-3 gap-3 lg:gap-6 mb-6 lg:mb-8">
+                            <div class="bg-dark-navy/50 p-3 lg:p-4 rounded-xl border border-neon-cyan/30">
+                                <div class="text-xl lg:text-2xl font-bold text-white mb-1">12+</div>
+                                <div class="text-xs lg:text-sm text-gray-200 font-medium">Repositories</div>
                             </div>
-                            <div class="bg-dark-navy/50 p-4 rounded-xl border border-neon-pink/30">
-                                <div class="text-2xl font-bold text-white mb-1">200+</div>
-                                <div class="text-sm text-gray-200 font-medium">Commits</div>
+                            <div class="bg-dark-navy/50 p-3 lg:p-4 rounded-xl border border-neon-pink/30">
+                                <div class="text-xl lg:text-2xl font-bold text-white mb-1">200+</div>
+                                <div class="text-xs lg:text-sm text-gray-200 font-medium">Commits</div>
                             </div>
-                            <div class="bg-dark-navy/50 p-4 rounded-xl border border-neon-purple/30">
-                                <div class="text-2xl font-bold text-white mb-1">15+</div>
-                                <div class="text-sm text-gray-200 font-medium">Languages</div>
+                            <div class="bg-dark-navy/50 p-3 lg:p-4 rounded-xl border border-neon-purple/30">
+                                <div class="text-xl lg:text-2xl font-bold text-white mb-1">15+</div>
+                                <div class="text-xs lg:text-sm text-gray-200 font-medium">Languages</div>
                             </div>
                         </div>
                     </div>
                     
-                    <div class="flex flex-col sm:flex-row gap-4 justify-center">
-                        <a href="https://github.com/CBfrost" target="_blank" class="magnetic-button bg-gradient-to-r from-neon-cyan via-neon-pink to-neon-purple px-12 py-4 rounded-full text-black font-bold text-xl inline-flex items-center justify-center">
-                            <i class="fab fa-github mr-3 text-2xl"></i>
-                            Explore GitHub Profile
+                    <div class="flex flex-col sm:flex-row gap-4 justify-center mb-6 lg:mb-8">
+                        <a href="https://github.com/CBfrost" target="_blank" class="mobile-button magnetic-button bg-gradient-to-r from-neon-cyan via-neon-pink to-neon-purple px-8 py-3 rounded-full text-black font-bold">
+                            <i class="fab fa-github mr-2 text-lg lg:text-2xl"></i>
+                            <span class="text-base lg:text-xl">Explore GitHub</span>
                         </a>
-                        <a href="https://github.com/CBfrost?tab=repositories" target="_blank" class="glass-morphism px-12 py-4 rounded-full text-white font-semibold text-xl hover:bg-white/10 transition-all inline-flex items-center justify-center border border-white/20">
-                            <i class="fas fa-folder-open mr-3"></i>
-                            Browse Repositories
+                        <a href="https://github.com/CBfrost?tab=repositories" target="_blank" class="mobile-button glass-morphism px-8 py-3 rounded-full text-white font-semibold hover:bg-white/10 transition-all border border-white/20">
+                            <i class="fas fa-folder-open mr-2"></i>
+                            <span class="text-base lg:text-xl">Browse Repos</span>
                         </a>
                     </div>
                     
-                    <!-- Quick Project Links - ACCESSIBILITY IMPROVED -->
-                    <div class="mt-8 pt-8 border-t border-white/20">
-                        <p class="text-gray-200 mb-4 font-medium">🚀 Featured Repositories:</p>
-                        <div class="flex flex-wrap justify-center gap-3">
-                            <a href="https://github.com/CBfrost/ecowatt-energy-platform" target="_blank" class="bg-neon-cyan/30 text-white px-4 py-2 rounded-full text-sm hover:bg-neon-cyan/40 transition-colors border border-neon-cyan/40">
+                    <!-- Quick Project Links -->
+                    <div class="pt-6 lg:pt-8 border-t border-white/20">
+                        <p class="text-gray-200 mb-4 font-medium text-sm lg:text-base">🚀 Featured Repositories:</p>
+                        <div class="flex flex-wrap justify-center gap-2">
+                            <a href="https://github.com/CBfrost/ecowatt-energy-platform" target="_blank" class="bg-neon-cyan/30 text-white px-3 py-2 rounded-full text-xs hover:bg-neon-cyan/40 transition-colors border border-neon-cyan/40">
                                 EcoWatt Platform
                             </a>
-                            <a href="https://github.com/CBfrost/stayhealthy-capstone" target="_blank" class="bg-neon-pink/30 text-white px-4 py-2 rounded-full text-sm hover:bg-neon-pink/40 transition-colors border border-neon-pink/40">
+                            <a href="https://github.com/CBfrost/stayhealthy-capstone" target="_blank" class="bg-neon-pink/30 text-white px-3 py-2 rounded-full text-xs hover:bg-neon-pink/40 transition-colors border border-neon-pink/40">
                                 StayHealthy Healthcare
                             </a>
-                            <a href="https://github.com/CBfrost/my-professional-portfolio" target="_blank" class="bg-neon-purple/30 text-white px-4 py-2 rounded-full text-sm hover:bg-neon-purple/40 transition-colors border border-neon-purple/40">
+                            <a href="https://github.com/CBfrost/my-professional-portfolio" target="_blank" class="bg-neon-purple/30 text-white px-3 py-2 rounded-full text-xs hover:bg-neon-purple/40 transition-colors border border-neon-purple/40">
                                 Portfolio Website
                             </a>
-                            <a href="https://github.com/CBfrost/paradise-nursery" target="_blank" class="bg-emerald-400/30 text-white px-4 py-2 rounded-full text-sm hover:bg-emerald-400/40 transition-colors border border-emerald-400/40">
+                            <a href="https://github.com/CBfrost/paradise-nursery" target="_blank" class="bg-emerald-400/30 text-white px-3 py-2 rounded-full text-xs hover:bg-emerald-400/40 transition-colors border border-emerald-400/40">
                                 Paradise Nursery
                             </a>
                         </div>
@@ -984,127 +1422,116 @@
 
     <div class="section-divider"></div>
 
-    <!-- Testimonials Section -->
-    <section id="testimonials" class="py-20 relative">
+    <!-- Testimonials Section - Mobile Optimized -->
+    <section id="testimonials" class="mobile-section relative">
         <div class="absolute inset-0 opacity-5">
             <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=1920&h=1080&fit=crop" alt="Team Work" class="w-full h-full object-cover">
         </div>
-        <div class="max-w-7xl mx-auto px-6 relative z-10">
-            <div class="text-center mb-16">
-                <h2 class="text-5xl lg:text-7xl font-bold gradient-text mb-6">What People Say</h2>
-                <p class="text-xl text-gray-300">Feedback from colleagues, supervisors, and clients</p>
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 relative z-10">
+            <div class="text-center mb-12 lg:mb-16">
+                <h2 class="text-4xl sm:text-5xl lg:text-7xl font-bold gradient-text mb-4 lg:mb-6">What People Say</h2>
+                <p class="text-lg sm:text-xl text-gray-300">Feedback from colleagues, supervisors, and clients</p>
             </div>
             
-            <div class="grid lg:grid-cols-3 gap-8">
+            <!-- Mobile-First Testimonials Layout -->
+            <div class="space-y-6 lg:grid lg:grid-cols-3 lg:gap-8 lg:space-y-0">
                 <!-- Testimonial 1 - IT Supervisor -->
-                <div class="testimonial-card rounded-3xl p-8">
-                    <div class="flex items-center mb-6">
-                        <div class="professional-avatar w-16 h-16 rounded-full flex items-center justify-center mr-4" style="--gradient-from: #00ffff; --gradient-to: #0066ff;">
-                            <i class="fas fa-user-tie text-2xl text-white"></i>
+                <div class="mobile-testimonial-card">
+                    <div class="flex items-center mb-4 lg:mb-6">
+                        <div class="professional-avatar w-12 h-12 lg:w-16 lg:h-16 rounded-full flex items-center justify-center mr-3 lg:mr-4" style="--gradient-from: #00ffff; --gradient-to: #0066ff;">
+                            <i class="fas fa-user-tie text-lg lg:text-2xl text-white"></i>
                         </div>
                         <div>
-                            <h4 class="font-bold text-white">Ms. Y. Mushambi</h4>
-                            <p class="text-neon-cyan text-sm">IT Supervisor, DM Windscreens</p>
+                            <h4 class="font-bold text-white text-sm lg:text-base">Ms. Y. Mushambi</h4>
+                            <p class="text-neon-cyan text-xs lg:text-sm">IT Supervisor, DM Windscreens</p>
                         </div>
                     </div>
-                    <div class="flex text-yellow-400 mb-4">
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
+                    <div class="flex text-yellow-400 mb-3 lg:mb-4">
+                        <i class="fas fa-star text-sm"></i>
+                        <i class="fas fa-star text-sm"></i>
+                        <i class="fas fa-star text-sm"></i>
+                        <i class="fas fa-star text-sm"></i>
+                        <i class="fas fa-star text-sm"></i>
                     </div>
-                    <p class="text-gray-300 italic mb-4">
+                    <p class="text-gray-300 italic mb-3 lg:mb-4 text-sm lg:text-base">
                         "Panashe demonstrated exceptional problem-solving skills during our ERP implementation. 
                         His ability to translate complex technical requirements into user-friendly interfaces 
                         was invaluable to our team."
                     </p>
-                    <p class="text-sm text-gray-400">
-                        "He consistently exceeded expectations and showed remarkable adaptability when 
-                        working with different stakeholders across our 8 branch locations."
-                    </p>
                 </div>
                 
                 <!-- Testimonial 2 - Business Owner -->
-                <div class="testimonial-card rounded-3xl p-8">
-                    <div class="flex items-center mb-6">
-                        <div class="professional-avatar w-16 h-16 rounded-full flex items-center justify-center mr-4" style="--gradient-from: #ff0080; --gradient-to: #8000ff;">
-                            <i class="fas fa-briefcase text-2xl text-white"></i>
+                <div class="mobile-testimonial-card">
+                    <div class="flex items-center mb-4 lg:mb-6">
+                        <div class="professional-avatar w-12 h-12 lg:w-16 lg:h-16 rounded-full flex items-center justify-center mr-3 lg:mr-4" style="--gradient-from: #ff0080; --gradient-to: #8000ff;">
+                            <i class="fas fa-briefcase text-lg lg:text-2xl text-white"></i>
                         </div>
                         <div>
-                            <h4 class="font-bold text-white">Mr. R. Chiriya</h4>
-                            <p class="text-neon-pink text-sm">Owner, RNC Windscreens</p>
+                            <h4 class="font-bold text-white text-sm lg:text-base">Mr. R. Chiriya</h4>
+                            <p class="text-neon-pink text-xs lg:text-sm">Owner, RNC Windscreens</p>
                         </div>
                     </div>
-                    <div class="flex text-yellow-400 mb-4">
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
+                    <div class="flex text-yellow-400 mb-3 lg:mb-4">
+                        <i class="fas fa-star text-sm"></i>
+                        <i class="fas fa-star text-sm"></i>
+                        <i class="fas fa-star text-sm"></i>
+                        <i class="fas fa-star text-sm"></i>
+                        <i class="fas fa-star text-sm"></i>
                     </div>
-                    <p class="text-gray-300 italic mb-4">
+                    <p class="text-gray-300 italic mb-3 lg:mb-4 text-sm lg:text-base">
                         "Working with Panashe was a game-changer for our startup. His design skills and 
                         technical expertise helped us establish a professional online presence that 
                         significantly improved our customer engagement."
                     </p>
-                    <p class="text-sm text-gray-400">
-                        "The brand identity and website he created perfectly captured our vision and 
-                        helped us stand out in a competitive market."
-                    </p>
                 </div>
                 
                 <!-- Testimonial 3 - Client -->
-                <div class="testimonial-card rounded-3xl p-8">
-                    <div class="flex items-center mb-6">
-                        <div class="professional-avatar w-16 h-16 rounded-full flex items-center justify-center mr-4" style="--gradient-from: #8000ff; --gradient-to: #00ffff;">
-                            <i class="fas fa-user-check text-2xl text-white"></i>
+                <div class="mobile-testimonial-card">
+                    <div class="flex items-center mb-4 lg:mb-6">
+                        <div class="professional-avatar w-12 h-12 lg:w-16 lg:h-16 rounded-full flex items-center justify-center mr-3 lg:mr-4" style="--gradient-from: #8000ff; --gradient-to: #00ffff;">
+                            <i class="fas fa-user-check text-lg lg:text-2xl text-white"></i>
                         </div>
                         <div>
-                            <h4 class="font-bold text-white">Sarah Mitchell</h4>
-                            <p class="text-neon-purple text-sm">Freelance Client</p>
+                            <h4 class="font-bold text-white text-sm lg:text-base">Sarah Mitchell</h4>
+                            <p class="text-neon-purple text-xs lg:text-sm">Freelance Client</p>
                         </div>
                     </div>
-                    <div class="flex text-yellow-400 mb-4">
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
+                    <div class="flex text-yellow-400 mb-3 lg:mb-4">
+                        <i class="fas fa-star text-sm"></i>
+                        <i class="fas fa-star text-sm"></i>
+                        <i class="fas fa-star text-sm"></i>
+                        <i class="fas fa-star text-sm"></i>
+                        <i class="fas fa-star text-sm"></i>
                     </div>
-                    <p class="text-gray-300 italic mb-4">
+                    <p class="text-gray-300 italic mb-3 lg:mb-4 text-sm lg:text-base">
                         "Panashe delivered exactly what we needed - a modern, responsive website that 
                         our customers love. His attention to detail and commitment to quality is 
                         impressive for someone so early in their career."
-                    </p>
-                    <p class="text-sm text-gray-400">
-                        "Communication was excellent throughout the project, and he delivered on time 
-                        and within budget. I would definitely work with him again."
                     </p>
                 </div>
             </div>
             
             <!-- Additional testimonials row -->
-            <div class="grid lg:grid-cols-2 gap-8 mt-8">
+            <div class="mt-6 lg:mt-8 space-y-6 lg:grid lg:grid-cols-2 lg:gap-8 lg:space-y-0">
                 <!-- Testimonial 4 - Academic -->
-                <div class="testimonial-card rounded-3xl p-8">
-                    <div class="flex items-center mb-6">
-                        <div class="professional-avatar w-16 h-16 rounded-full flex items-center justify-center mr-4" style="--gradient-from: #00ffff; --gradient-to: #ff0080;">
-                            <i class="fas fa-graduation-cap text-2xl text-white"></i>
+                <div class="mobile-testimonial-card">
+                    <div class="flex items-center mb-4 lg:mb-6">
+                        <div class="professional-avatar w-12 h-12 lg:w-16 lg:h-16 rounded-full flex items-center justify-center mr-3 lg:mr-4" style="--gradient-from: #00ffff; --gradient-to: #ff0080;">
+                            <i class="fas fa-graduation-cap text-lg lg:text-2xl text-white"></i>
                         </div>
                         <div>
-                            <h4 class="font-bold text-white">Dr. M. Zhou</h4>
-                            <p class="text-neon-cyan text-sm">Academic Supervisor, MSU</p>
+                            <h4 class="font-bold text-white text-sm lg:text-base">Dr. M. Zhou</h4>
+                            <p class="text-neon-cyan text-xs lg:text-sm">Academic Supervisor, MSU</p>
                         </div>
                     </div>
-                    <div class="flex text-yellow-400 mb-4">
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
+                    <div class="flex text-yellow-400 mb-3 lg:mb-4">
+                        <i class="fas fa-star text-sm"></i>
+                        <i class="fas fa-star text-sm"></i>
+                        <i class="fas fa-star text-sm"></i>
+                        <i class="fas fa-star text-sm"></i>
+                        <i class="fas fa-star text-sm"></i>
                     </div>
-                    <p class="text-gray-300 italic">
+                    <p class="text-gray-300 italic text-sm lg:text-base">
                         "Panashe consistently demonstrates strong analytical thinking and practical application 
                         of theoretical concepts. His work during industrial attachments shows remarkable 
                         professional growth and technical competency."
@@ -1112,24 +1539,24 @@
                 </div>
                 
                 <!-- Testimonial 5 - Project Manager -->
-                <div class="testimonial-card rounded-3xl p-8">
-                    <div class="flex items-center mb-6">
-                        <div class="professional-avatar w-16 h-16 rounded-full flex items-center justify-center mr-4" style="--gradient-from: #ff0080; --gradient-to: #00ffff;">
-                            <i class="fas fa-tasks text-2xl text-white"></i>
+                <div class="mobile-testimonial-card">
+                    <div class="flex items-center mb-4 lg:mb-6">
+                        <div class="professional-avatar w-12 h-12 lg:w-16 lg:h-16 rounded-full flex items-center justify-center mr-3 lg:mr-4" style="--gradient-from: #ff0080; --gradient-to: #00ffff;">
+                            <i class="fas fa-tasks text-lg lg:text-2xl text-white"></i>
                         </div>
                         <div>
-                            <h4 class="font-bold text-white">Jennifer Adams</h4>
-                            <p class="text-neon-pink text-sm">Project Manager</p>
+                            <h4 class="font-bold text-white text-sm lg:text-base">Jennifer Adams</h4>
+                            <p class="text-neon-pink text-xs lg:text-sm">Project Manager</p>
                         </div>
                     </div>
-                    <div class="flex text-yellow-400 mb-4">
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
+                    <div class="flex text-yellow-400 mb-3 lg:mb-4">
+                        <i class="fas fa-star text-sm"></i>
+                        <i class="fas fa-star text-sm"></i>
+                        <i class="fas fa-star text-sm"></i>
+                        <i class="fas fa-star text-sm"></i>
+                        <i class="fas fa-star text-sm"></i>
                     </div>
-                    <p class="text-gray-300 italic">
+                    <p class="text-gray-300 italic text-sm lg:text-base">
                         "What impresses me most about Panashe is his eagerness to learn and his collaborative 
                         approach. He actively seeks feedback and consistently delivers high-quality work. 
                         A valuable addition to any team."
@@ -1141,106 +1568,106 @@
 
     <div class="section-divider"></div>
 
-    <!-- Contact Section -->
-    <section id="contact" class="py-20 relative">
+    <!-- Contact Section - Mobile Optimized -->
+    <section id="contact" class="mobile-section relative">
         <div class="absolute inset-0 opacity-10">
             <img src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?w=1920&h=1080&fit=crop" alt="Communication" class="w-full h-full object-cover">
         </div>
-        <div class="max-w-7xl mx-auto px-6 relative z-10">
-            <div class="text-center mb-16">
-                <h2 class="text-5xl lg:text-7xl font-bold gradient-text mb-6">Let's Create Together</h2>
-                <p class="text-xl text-gray-300">Ready to bring your next project to life?</p>
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 relative z-10">
+            <div class="text-center mb-12 lg:mb-16">
+                <h2 class="text-4xl sm:text-5xl lg:text-7xl font-bold gradient-text mb-4 lg:mb-6">Let's Create Together</h2>
+                <p class="text-lg sm:text-xl text-gray-300">Ready to bring your next project to life?</p>
             </div>
             
-            <div class="grid lg:grid-cols-2 gap-16">
+            <div class="flex flex-col lg:grid lg:grid-cols-2 gap-12 lg:gap-16">
                 <!-- Contact Info -->
-                <div class="space-y-8">
-                    <div class="glass-morphism p-8 rounded-3xl">
-                        <h3 class="text-3xl font-bold gradient-text mb-6">Get In Touch</h3>
-                        <p class="text-lg text-gray-300 mb-8">
+                <div class="space-y-6 lg:space-y-8">
+                    <div class="glass-morphism p-6 lg:p-8 rounded-3xl">
+                        <h3 class="text-2xl lg:text-3xl font-bold gradient-text mb-4 lg:mb-6">Get In Touch</h3>
+                        <p class="text-base lg:text-lg text-gray-300 mb-6 lg:mb-8">
                             I'm currently seeking entry-level and intermediate opportunities (local or remote) where I can contribute 
                             my skills while continuing to learn and grow.
                         </p>
                         
-                        <div class="space-y-6">
+                        <div class="space-y-4 lg:space-y-6">
                             <div class="flex items-center group">
-                                <div class="w-12 h-12 bg-gradient-to-br from-neon-cyan to-electric-blue rounded-xl flex items-center justify-center mr-4 group-hover:scale-110 transition-transform">
-                                    <i class="fas fa-envelope text-white"></i>
+                                <div class="w-10 h-10 lg:w-12 lg:h-12 bg-gradient-to-br from-neon-cyan to-electric-blue rounded-xl flex items-center justify-center mr-3 lg:mr-4 group-hover:scale-110 transition-transform">
+                                    <i class="fas fa-envelope text-white text-sm lg:text-base"></i>
                                 </div>
                                 <div>
-                                    <p class="text-gray-400 text-sm">Email</p>
-                                    <a href="mailto:panashefrost@icloud.com" class="text-lg hover:text-neon-cyan transition-colors">
+                                    <p class="text-gray-400 text-xs lg:text-sm">Email</p>
+                                    <a href="mailto:panashefrost@icloud.com" class="text-sm lg:text-lg hover:text-neon-cyan transition-colors">
                                         panashefrost@icloud.com
                                     </a>
                                 </div>
                             </div>
                             
                             <div class="flex items-center group">
-                                <div class="w-12 h-12 bg-gradient-to-br from-neon-pink to-neon-purple rounded-xl flex items-center justify-center mr-4 group-hover:scale-110 transition-transform">
-                                    <i class="fas fa-phone text-white"></i>
+                                <div class="w-10 h-10 lg:w-12 lg:h-12 bg-gradient-to-br from-neon-pink to-neon-purple rounded-xl flex items-center justify-center mr-3 lg:mr-4 group-hover:scale-110 transition-transform">
+                                    <i class="fas fa-phone text-white text-sm lg:text-base"></i>
                                 </div>
                                 <div>
-                                    <p class="text-gray-400 text-sm">Phone</p>
-                                    <a href="tel:+27632269407" class="text-lg hover:text-neon-cyan transition-colors">
+                                    <p class="text-gray-400 text-xs lg:text-sm">Phone</p>
+                                    <a href="tel:+27632269407" class="text-sm lg:text-lg hover:text-neon-cyan transition-colors">
                                         +27 632 269 407
                                     </a>
                                 </div>
                             </div>
                             
                             <div class="flex items-center group">
-                                <div class="w-12 h-12 bg-gradient-to-br from-green-400 to-blue-500 rounded-xl flex items-center justify-center mr-4 group-hover:scale-110 transition-transform">
-                                    <i class="fas fa-map-marker-alt text-white"></i>
+                                <div class="w-10 h-10 lg:w-12 lg:h-12 bg-gradient-to-br from-green-400 to-blue-500 rounded-xl flex items-center justify-center mr-3 lg:mr-4 group-hover:scale-110 transition-transform">
+                                    <i class="fas fa-map-marker-alt text-white text-sm lg:text-base"></i>
                                 </div>
                                 <div>
-                                    <p class="text-gray-400 text-sm">Location</p>
-                                    <p class="text-lg">138 Holkam Road, Paulshof, Sandton 2191, South Africa</p>
+                                    <p class="text-gray-400 text-xs lg:text-sm">Location</p>
+                                    <p class="text-sm lg:text-lg">Sandton, South Africa</p>
                                 </div>
                             </div>
                         </div>
                         
-                        <div class="mt-8 pt-8 border-t border-white/10">
-                            <p class="text-gray-400 mb-4">Available for:</p>
-                            <div class="flex flex-wrap gap-3">
-                                <span class="bg-neon-cyan/20 text-neon-cyan px-4 py-2 rounded-full text-sm">Entry-Level Positions</span>
-                                <span class="bg-neon-pink/20 text-neon-pink px-4 py-2 rounded-full text-sm">Intermediate Roles</span>
-                                <span class="bg-neon-purple/20 text-neon-purple px-4 py-2 rounded-full text-sm">Remote Work</span>
-                                <span class="bg-emerald-400/20 text-emerald-400 px-4 py-2 rounded-full text-sm">Freelance Projects</span>
+                        <div class="mt-6 lg:mt-8 pt-6 lg:pt-8 border-t border-white/10">
+                            <p class="text-gray-400 mb-3 lg:mb-4 text-sm lg:text-base">Available for:</p>
+                            <div class="flex flex-wrap gap-2 lg:gap-3">
+                                <span class="bg-neon-cyan/20 text-neon-cyan px-3 py-1 rounded-full text-xs">Entry-Level</span>
+                                <span class="bg-neon-pink/20 text-neon-pink px-3 py-1 rounded-full text-xs">Intermediate</span>
+                                <span class="bg-neon-purple/20 text-neon-purple px-3 py-1 rounded-full text-xs">Remote Work</span>
+                                <span class="bg-emerald-400/20 text-emerald-400 px-3 py-1 rounded-full text-xs">Freelance</span>
                             </div>
                         </div>
                     </div>
                 </div>
                 
-                <!-- Contact Form -->
-                <div class="glass-morphism p-8 rounded-3xl">
-                    <form class="space-y-6" id="contact-form">
-                        <div class="grid grid-cols-2 gap-4">
+                <!-- Contact Form - Mobile Optimized -->
+                <div class="mobile-contact-form">
+                    <form class="space-y-4 lg:space-y-6" id="contact-form">
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
                             <div>
                                 <label class="block text-sm font-semibold text-gray-300 mb-2">First Name</label>
-                                <input type="text" name="firstName" required class="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-xl focus:border-neon-cyan focus:outline-none transition-colors text-white placeholder-gray-400 text-base" placeholder="John">
+                                <input type="text" name="firstName" required class="mobile-input" placeholder="John">
                             </div>
                             <div>
                                 <label class="block text-sm font-semibold text-gray-300 mb-2">Last Name</label>
-                                <input type="text" name="lastName" required class="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-xl focus:border-neon-cyan focus:outline-none transition-colors text-white placeholder-gray-400 text-base" placeholder="Doe">
+                                <input type="text" name="lastName" required class="mobile-input" placeholder="Doe">
                             </div>
                         </div>
                         
                         <div>
                             <label class="block text-sm font-semibold text-gray-300 mb-2">Email</label>
-                            <input type="email" name="email" required class="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-xl focus:border-neon-cyan focus:outline-none transition-colors text-white placeholder-gray-400 text-base" placeholder="john@company.com">
+                            <input type="email" name="email" required class="mobile-input" placeholder="john@company.com">
                         </div>
                         
                         <div>
                             <label class="block text-sm font-semibold text-gray-300 mb-2">Subject</label>
-                            <input type="text" name="subject" required class="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-xl focus:border-neon-cyan focus:outline-none transition-colors text-white placeholder-gray-400 text-base" placeholder="Let's work together">
+                            <input type="text" name="subject" required class="mobile-input" placeholder="Let's work together">
                         </div>
                         
                         <div>
                             <label class="block text-sm font-semibold text-gray-300 mb-2">Message</label>
-                            <textarea name="message" rows="5" required class="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-xl focus:border-neon-cyan focus:outline-none transition-colors text-white placeholder-gray-400 resize-none text-base" placeholder="Tell me about your project or opportunity..."></textarea>
+                            <textarea name="message" rows="5" required class="mobile-textarea" placeholder="Tell me about your project or opportunity..."></textarea>
                         </div>
                         
-                        <!-- FIXED SEND MESSAGE BUTTON -->
-                        <button type="submit" id="send-button" class="send-message-btn w-full px-8 py-4 rounded-xl font-bold text-lg relative overflow-hidden transition-all duration-300 hover:scale-105 hover:shadow-2xl">
+                        <!-- MOBILE-OPTIMIZED SEND MESSAGE BUTTON -->
+                        <button type="submit" id="send-button" class="mobile-send-btn">
                             <span class="relative z-10">
                                 <i class="fas fa-paper-plane mr-2"></i>
                                 Send Message
@@ -1248,7 +1675,7 @@
                         </button>
                         
                         <!-- Success Message -->
-                        <div id="success-message" class="success-message">
+                        <div id="success-message" class="mobile-success-message">
                             <div class="flex items-center">
                                 <i class="fas fa-check-circle text-white text-xl mr-3"></i>
                                 <div>
@@ -1261,20 +1688,20 @@
                 </div>
             </div>
             
-            <!-- Social Links -->
-            <div class="text-center mt-16">
-                <p class="text-gray-400 mb-6">Connect with me on social media</p>
-                <div class="flex justify-center gap-6">
-                    <a href="https://linkedin.com/in/panashematengambiri" target="_blank" class="w-16 h-16 glass-morphism rounded-2xl flex items-center justify-center text-2xl hover:text-neon-cyan hover:scale-110 transition-all">
+            <!-- Social Links - Mobile Optimized -->
+            <div class="text-center mt-12 lg:mt-16">
+                <p class="text-gray-400 mb-4 lg:mb-6 text-sm lg:text-base">Connect with me on social media</p>
+                <div class="flex justify-center gap-4 lg:gap-6">
+                    <a href="https://linkedin.com/in/panashematengambiri" target="_blank" class="mobile-social-icon">
                         <i class="fab fa-linkedin"></i>
                     </a>
-                    <a href="https://github.com/CBfrost" target="_blank" class="w-16 h-16 glass-morphism rounded-2xl flex items-center justify-center text-2xl hover:text-neon-cyan hover:scale-110 transition-all">
+                    <a href="https://github.com/CBfrost" target="_blank" class="mobile-social-icon">
                         <i class="fab fa-github"></i>
                     </a>
-                    <a href="https://behance.net/panashematenga" target="_blank" class="w-16 h-16 glass-morphism rounded-2xl flex items-center justify-center text-2xl hover:text-neon-cyan hover:scale-110 transition-all">
+                    <a href="https://behance.net/panashematenga" target="_blank" class="mobile-social-icon">
                         <i class="fab fa-behance"></i>
                     </a>
-                    <a href="mailto:panashefrost@icloud.com" class="w-16 h-16 glass-morphism rounded-2xl flex items-center justify-center text-2xl hover:text-neon-cyan hover:scale-110 transition-all">
+                    <a href="mailto:panashefrost@icloud.com" class="mobile-social-icon">
                         <i class="fas fa-envelope"></i>
                     </a>
                 </div>
@@ -1282,33 +1709,33 @@
         </div>
     </section>
 
-    <!-- CV Modal -->
+    <!-- CV Modal - Mobile Optimized -->
     <div id="cvModal" class="cv-modal">
         <div class="cv-modal-content">
             <span class="cv-close" onclick="closeCVModal()">×</span>
             <iframe id="cvFrame" src="cv.html" width="100%" height="600px" style="border: none; border-radius: 15px;"></iframe>
-            <div class="flex justify-center gap-4 mt-6">
-                <button onclick="downloadCV()" class="bg-gradient-to-r from-neon-cyan to-neon-pink px-8 py-3 rounded-full text-black font-semibold">
+            <div class="flex flex-col sm:flex-row justify-center gap-3 lg:gap-4 mt-4 lg:mt-6">
+                <button onclick="downloadCV()" class="mobile-button bg-gradient-to-r from-neon-cyan to-neon-pink px-6 py-3 rounded-full text-black font-semibold">
                     <i class="fas fa-download mr-2"></i>Download PDF
                 </button>
-                <button onclick="window.open('cv.html', '_blank')" class="glass-morphism px-8 py-3 rounded-full text-white font-semibold hover:bg-white/10 transition-colors">
+                <button onclick="window.open('cv.html', '_blank')" class="mobile-button glass-morphism px-6 py-3 rounded-full text-white font-semibold hover:bg-white/10 transition-colors">
                     <i class="fas fa-external-link-alt mr-2"></i>Full Screen
                 </button>
             </div>
         </div>
     </div>
 
-    <!-- Footer -->
-    <footer class="py-12 border-t border-white/10">
-        <div class="max-w-7xl mx-auto px-6">
-            <div class="flex flex-col lg:flex-row justify-between items-center">
-                <div class="mb-6 lg:mb-0">
-                    <div class="font-mono text-2xl font-bold gradient-text mb-2">PANASHE MATENGAMBIRI</div>
-                    <p class="text-gray-400">Creative Technologist & UX Innovator</p>
+    <!-- Footer - Mobile Optimized -->
+    <footer class="py-8 lg:py-12 border-t border-white/10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6">
+            <div class="flex flex-col lg:flex-row justify-between items-center text-center lg:text-left">
+                <div class="mb-4 lg:mb-0">
+                    <div class="font-mono text-xl lg:text-2xl font-bold gradient-text mb-2">PANASHE MATENGAMBIRI</div>
+                    <p class="text-gray-400 text-sm lg:text-base">Creative Technologist & UX Innovator</p>
                 </div>
-                <div class="text-center lg:text-right">
-                    <p class="text-gray-400 mb-2">© 2024 Panashe Matengambiri</p>
-                    <p class="text-sm text-gray-500">Available for entry-level & intermediate opportunities (local & remote)</p>
+                <div>
+                    <p class="text-gray-400 mb-1 lg:mb-2 text-sm lg:text-base">© 2024 Panashe Matengambiri</p>
+                    <p class="text-xs lg:text-sm text-gray-500">Available for entry-level & intermediate opportunities (local & remote)</p>
                 </div>
             </div>
         </div>
@@ -1316,5 +1743,41 @@
 
     <!-- Include Main JavaScript -->
     <script src="assets/js/main.js"></script>
+    
+    <!-- Mobile Navigation JavaScript -->
+    <script>
+        function toggleMobileNav() {
+            const mobileNav = document.querySelector('.mobile-nav');
+            const hamburger = document.querySelector('.hamburger');
+            
+            mobileNav.classList.toggle('open');
+            hamburger.classList.toggle('open');
+        }
+        
+        function closeMobileNav() {
+            const mobileNav = document.querySelector('.mobile-nav');
+            const hamburger = document.querySelector('.hamburger');
+            
+            mobileNav.classList.remove('open');
+            hamburger.classList.remove('open');
+        }
+        
+        // Close mobile nav when clicking outside
+        document.addEventListener('click', function(event) {
+            const mobileNav = document.querySelector('.mobile-nav');
+            const hamburger = document.querySelector('.hamburger');
+            
+            if (!mobileNav.contains(event.target) && !hamburger.contains(event.target)) {
+                closeMobileNav();
+            }
+        });
+        
+        // Close mobile nav on resize to desktop
+        window.addEventListener('resize', function() {
+            if (window.innerWidth >= 768) {
+                closeMobileNav();
+            }
+        });
+    </script>
 </body>
 </html>
