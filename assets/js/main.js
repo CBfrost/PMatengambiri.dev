@@ -373,12 +373,120 @@ document.addEventListener('DOMContentLoaded', function() {
     loadGitHubProjects();
     
     const contactForm = document.getElementById('contact-form');
-    const submitButton = contactForm.querySelector('button[type="submit"]');
+    const submitButton = document.getElementById('send-button');
     const successMessage = document.getElementById('success-message');
+    
+    // Ensure button is visible on load
+    if (submitButton) {
+        submitButton.style.display = 'block';
+        submitButton.style.visibility = 'visible';
+        console.log('Send button found and made visible');
+    }
     
     contactForm.addEventListener('submit', async function(e) {
         e.preventDefault();
         
+        // Get form data
+        const formData = {
+            firstName: contactForm.firstName.value,
+            lastName: contactForm.lastName.value,
+            email: contactForm.email.value,
+            subject: contactForm.subject.value,
+            message: contactForm.message.value
+        };
+        
+        // Clear previous errors
+        Object.keys(formData).forEach(key => {
+            clearFieldError(key);
+        });
+        
+        // Validate form
+        const errors = validateForm(formData);
+        
+        if (Object.keys(errors).length > 0) {
+            // Show errors
+            Object.keys(errors).forEach(key => {
+                showFieldError(key, errors[key]);
+            });
+            return;
+        }
+        
+        // Show loading state
+        const originalHTML = submitButton.innerHTML;
+        submitButton.innerHTML = '<i class="fas fa-spinner fa-spin mr-2"></i>Sending...';
+        submitButton.classList.add('loading');
+        submitButton.disabled = true;
+        
+        try {
+            // Simulate email sending (replace with actual EmailJS implementation)
+            await new Promise(resolve => setTimeout(resolve, 2000));
+            
+            // Success state
+            submitButton.innerHTML = '<i class="fas fa-check mr-2"></i>Message Sent!';
+            submitButton.classList.remove('loading');
+            submitButton.classList.add('success');
+            
+            // Show success message
+            successMessage.classList.add('show');
+            
+            // Reset form
+            contactForm.reset();
+            
+            // Reset button after delay
+            setTimeout(() => {
+                submitButton.innerHTML = originalHTML;
+                submitButton.classList.remove('success');
+                submitButton.disabled = false;
+                successMessage.classList.remove('show');
+                
+                // Clear field success styling
+                Object.keys(formData).forEach(key => {
+                    const field = document.querySelector(`[name="${key}"]`);
+                    if (field) field.classList.remove('input-success');
+                });
+            }, 3000);
+            
+        } catch (error) {
+            console.error('Error sending email:', error);
+            
+            // Error state
+            submitButton.innerHTML = '<i class="fas fa-exclamation-triangle mr-2"></i>Error - Try Again';
+            submitButton.classList.remove('loading');
+            submitButton.classList.add('error');
+            
+            setTimeout(() => {
+                submitButton.innerHTML = originalHTML;
+                submitButton.classList.remove('error');
+                submitButton.disabled = false;
+            }, 3000);
+        }
+    });
+    
+    // Real-time validation
+    Object.keys({firstName: '', lastName: '', email: '', subject: '', message: ''}).forEach(fieldName => {
+        const field = document.querySelector(`[name="${fieldName}"]`);
+        if (field) {
+            field.addEventListener('blur', function() {
+                const value = this.value.trim();
+                if (value) {
+                    const errors = validateForm({
+                        firstName: fieldName === 'firstName' ? value : 'valid',
+                        lastName: fieldName === 'lastName' ? value : 'valid',
+                        email: fieldName === 'email' ? value : 'valid@example.com',
+                        subject: fieldName === 'subject' ? value : 'valid',
+                        message: fieldName === 'message' ? value : 'valid message here'
+                    });
+                    
+                    if (errors[fieldName]) {
+                        showFieldError(fieldName, errors[fieldName]);
+                    } else {
+                        clearFieldError(fieldName);
+                    }
+                }
+            });
+        }
+    });
+});        
         // Get form data
         const formData = {
             firstName: contactForm.firstName.value,

@@ -12,6 +12,76 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
     <link rel="stylesheet" href="assets/css/contact-form.css">
+/* Send Message Button Styles */
+.send-message-btn {
+    background: linear-gradient(135deg, #00ffff 0%, #ff0080 50%, #8000ff 100%);
+    color: white !important;
+    border: none;
+    box-shadow: 0 4px 15px rgba(0, 255, 255, 0.3);
+    position: relative;
+    z-index: 1;
+}
+
+.send-message-btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, #ff0080 0%, #8000ff 50%, #00ffff 100%);
+    transition: left 0.5s ease;
+    z-index: -1;
+}
+
+.send-message-btn:hover::before {
+    left: 0;
+}
+
+.send-message-btn:hover {
+    box-shadow: 0 8px 25px rgba(0, 255, 255, 0.5);
+    transform: translateY(-2px);
+}
+
+.send-message-btn:active {
+    transform: translateY(0);
+    box-shadow: 0 4px 15px rgba(0, 255, 255, 0.3);
+}
+
+/* Loading state */
+.send-message-btn.loading {
+    pointer-events: none;
+    opacity: 0.8;
+}
+
+.send-message-btn.loading::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 20px;
+    height: 20px;
+    margin: -10px 0 0 -10px;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    border-top: 2px solid white;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* Success state */
+.send-message-btn.success {
+    background: linear-gradient(135deg, #10b981, #059669) !important;
+}
+
+/* Error state */
+.send-message-btn.error {
+    background: linear-gradient(135deg, #ef4444, #dc2626) !important;
+}
     <script>
         tailwind.config = {
             theme: {
@@ -1140,6 +1210,75 @@
                     </div>
                 </div>
                 
+<!-- Contact Section -->
+    <section id="contact" class="py-20 relative">
+        <div class="absolute inset-0 opacity-10">
+            <img src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?w=1920&h=1080&fit=crop" alt="Communication" class="w-full h-full object-cover">
+        </div>
+        <div class="max-w-7xl mx-auto px-6 relative z-10">
+            <div class="text-center mb-16">
+                <h2 class="text-5xl lg:text-7xl font-bold gradient-text mb-6">Let's Create Together</h2>
+                <p class="text-xl text-gray-300">Ready to bring your next project to life?</p>
+            </div>
+            
+            <div class="grid lg:grid-cols-2 gap-16">
+                <!-- Contact Info -->
+                <div class="space-y-8">
+                    <div class="glass-morphism p-8 rounded-3xl">
+                        <h3 class="text-3xl font-bold gradient-text mb-6">Get In Touch</h3>
+                        <p class="text-lg text-gray-300 mb-8">
+                            I'm currently seeking entry-level and intermediate opportunities (local or remote) where I can contribute 
+                            my skills while continuing to learn and grow.
+                        </p>
+                        
+                        <div class="space-y-6">
+                            <div class="flex items-center group">
+                                <div class="w-12 h-12 bg-gradient-to-br from-neon-cyan to-electric-blue rounded-xl flex items-center justify-center mr-4 group-hover:scale-110 transition-transform">
+                                    <i class="fas fa-envelope text-white"></i>
+                                </div>
+                                <div>
+                                    <p class="text-gray-400 text-sm">Email</p>
+                                    <a href="mailto:panashefrost@icloud.com" class="text-lg hover:text-neon-cyan transition-colors">
+                                        panashefrost@icloud.com
+                                    </a>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-center group">
+                                <div class="w-12 h-12 bg-gradient-to-br from-neon-pink to-neon-purple rounded-xl flex items-center justify-center mr-4 group-hover:scale-110 transition-transform">
+                                    <i class="fas fa-phone text-white"></i>
+                                </div>
+                                <div>
+                                    <p class="text-gray-400 text-sm">Phone</p>
+                                    <a href="tel:+27632269407" class="text-lg hover:text-neon-cyan transition-colors">
+                                        +27 632 269 407
+                                    </a>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-center group">
+                                <div class="w-12 h-12 bg-gradient-to-br from-green-400 to-blue-500 rounded-xl flex items-center justify-center mr-4 group-hover:scale-110 transition-transform">
+                                    <i class="fas fa-map-marker-alt text-white"></i>
+                                </div>
+                                <div>
+                                    <p class="text-gray-400 text-sm">Location</p>
+                                    <p class="text-lg">138 Holkam Road, Paulshof, Sandton 2191, South Africa</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="mt-8 pt-8 border-t border-white/10">
+                            <p class="text-gray-400 mb-4">Available for:</p>
+                            <div class="flex flex-wrap gap-3">
+                                <span class="bg-neon-cyan/20 text-neon-cyan px-4 py-2 rounded-full text-sm">Entry-Level Positions</span>
+                                <span class="bg-neon-pink/20 text-neon-pink px-4 py-2 rounded-full text-sm">Intermediate Roles</span>
+                                <span class="bg-neon-purple/20 text-neon-purple px-4 py-2 rounded-full text-sm">Remote Work</span>
+                                <span class="bg-emerald-400/20 text-emerald-400 px-4 py-2 rounded-full text-sm">Freelance Projects</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
                 <!-- Contact Form -->
                 <div class="glass-morphism p-8 rounded-3xl">
                     <form class="space-y-6" id="contact-form">
@@ -1169,9 +1308,12 @@
                             <textarea name="message" rows="5" required class="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-xl focus:border-neon-cyan focus:outline-none transition-colors text-white placeholder-gray-400 resize-none text-base" placeholder="Tell me about your project or opportunity..."></textarea>
                         </div>
                         
-                        <button type="submit" class="w-full magnetic-button bg-gradient-to-r from-neon-cyan via-neon-pink to-neon-purple px-8 py-4 rounded-xl text-black font-bold text-lg">
-                            <i class="fas fa-paper-plane mr-2"></i>
-                            Send Message
+                        <!-- FIXED SEND MESSAGE BUTTON -->
+                        <button type="submit" id="send-button" class="send-message-btn w-full px-8 py-4 rounded-xl font-bold text-lg relative overflow-hidden transition-all duration-300 hover:scale-105 hover:shadow-2xl">
+                            <span class="relative z-10">
+                                <i class="fas fa-paper-plane mr-2"></i>
+                                Send Message
+                            </span>
                         </button>
                         
                         <!-- Success Message -->
