@@ -86,6 +86,7 @@ GitHub Pages
 Your site will be available at: https://yourusername.github.io/my-professional-portfolio
 📁 Project Structure
 
+.. bash
 my-professional-portfolio/
 ├── index.html              # Main portfolio page
 ├── cv.html                 # CV/Resume page
