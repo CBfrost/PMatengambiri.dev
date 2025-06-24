@@ -1,0 +1,13 @@
+# Ignore actual certificate PDFs (keep structure but not content)
+*.pdf
+
+# Keep preview images and thumbnails for web display
+!*preview*.jpg
+!*preview*.png
+!*thumb*.jpg
+!*thumb*.png
+
+# Keep structure files
+!README.md
+!certificate-mapping.json
+!.gitignore
