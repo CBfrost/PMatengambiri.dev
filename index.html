@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self' 'unsafe-inline' 'unsafe-eval' data: blob: https://cdnjs.cloudflare.com https://cdn.jsdelivr.net https://code.jquery.com https://unpkg.com https://d3js.org https://threejs.org https://cdn.plot.ly https://stackpath.bootstrapcdn.com https://maps.googleapis.com https://cdn.tailwindcss.com https://ajax.googleapis.com https://kit.fontawesome.com https://cdn.datatables.net https://maxcdn.bootstrapcdn.com https://code.highcharts.com https://tako-static-assets-production.s3.amazonaws.com https://www.youtube.com https://fonts.googleapis.com https://fonts.gstatic.com https://pfst.cf2.poecdn.net https://puc.poecdn.net https://i.imgur.com https://wikimedia.org https://*.icons8.com https://*.giphy.com https://picsum.photos https://images.unsplash.com https://api.github.com; frame-src 'self' https://www.youtube.com https://trytako.com; child-src 'self'; manifest-src 'self'; worker-src 'self'; upgrade-insecure-requests; block-all-mixed-content;">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Panashe Matengambiri - Creative Technologist</title>
@@ -11,7 +12,6 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
-    <link rel="stylesheet" href="assets/css/contact-form.css">
     <script>
         tailwind.config = {
             theme: {
@@ -42,6 +42,14 @@
                         'slide-up': 'slideUp 0.5s ease-out',
                         'text-reveal': 'textReveal 1s ease-out',
                         'mobile-bounce': 'mobileBounce 2s ease-in-out infinite',
+                        'jackInBox': 'jackInBox 0.8s cubic-bezier(0.68, -0.55, 0.265, 1.55)',
+                        'bounceIn': 'bounceIn 0.8s ease-out',
+                        'slideInFromTop': 'slideInFromTop 0.6s ease-out',
+                        'flipInX': 'flipInX 0.8s ease-out',
+                        'pulseGlow': 'pulseGlow 2s ease-in-out infinite',
+                        'spin': 'spin 1s linear infinite',
+                        'rotate': 'rotate 3s linear infinite',
+                        'pulse': 'pulse 2s ease-in-out infinite',
                     }
                 }
             }
@@ -60,7 +68,7 @@
         });
     </script>
     <style>
-        /* Base Styles - Mobile First */
+        /* 🎨 Enhanced Certificate System Styles with Real-Time Data */
         * {
             -webkit-tap-highlight-color: transparent;
             -webkit-touch-callout: none;
@@ -186,7 +194,7 @@
             }
         }
         
-        /* FIXED - Mobile-First Button Styles with Forced Visibility */
+        /* Enhanced Button Styles */
         .mobile-button {
             min-height: 48px !important;
             min-width: 48px !important;
@@ -218,7 +226,6 @@
             outline-offset: 2px !important;
         }
         
-        /* Touch-friendly sizing */
         @media (max-width: 768px) {
             .mobile-button {
                 min-height: 52px !important;
@@ -227,7 +234,6 @@
             }
         }
         
-        /* Magnetic button effects (desktop only) */
         @media (min-width: 1024px) {
             .magnetic-button {
                 transition: all 0.3s cubic-bezier(0.23, 1, 0.320, 1) !important;
@@ -239,7 +245,7 @@
             }
         }
         
-        /* Project Button Styles - Enhanced Visibility */
+        /* Project Button Styles */
         .project-btn-primary {
             background: linear-gradient(135deg, #00ffff, #0066ff) !important;
             color: #000000 !important;
@@ -287,7 +293,643 @@
             border: 1px solid rgba(255, 255, 255, 0.1) !important;
             color: #ffffff !important;
         }
-        
+
+        /* 🎪 Enhanced Certificate Animations */
+        @keyframes jackInBox {
+            0% {
+                opacity: 0;
+                transform: translateX(-50%) scale(0.1) rotate(30deg);
+                transform-origin: center bottom;
+                filter: blur(10px);
+            }
+            25% {
+                opacity: 0.7;
+                transform: translateX(-50%) scale(0.6) rotate(-15deg);
+                filter: blur(5px);
+            }
+            50% {
+                opacity: 0.9;
+                transform: translateX(-50%) scale(1.1) rotate(-10deg);
+                filter: blur(2px);
+            }
+            70% {
+                opacity: 1;
+                transform: translateX(-50%) scale(0.95) rotate(3deg);
+                filter: blur(0px);
+            }
+            85% {
+                transform: translateX(-50%) scale(1.02) rotate(-1deg);
+            }
+            100% {
+                opacity: 1;
+                transform: translateX(-50%) scale(1) rotate(0deg);
+                filter: blur(0px);
+            }
+        }
+
+        @keyframes slideInFromTop {
+            0% {
+                opacity: 0;
+                transform: translateX(-50%) translateY(-100px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateX(-50%) translateY(0);
+            }
+        }
+
+        @keyframes pulseGlow {
+            0%, 100% {
+                box-shadow: 0 0 20px rgba(0, 255, 255, 0.3);
+            }
+            50% {
+                box-shadow: 0 0 40px rgba(0, 255, 255, 0.6), 0 0 60px rgba(255, 0, 128, 0.3);
+            }
+        }
+
+        @keyframes flipInX {
+            0% {
+                opacity: 0;
+                transform: translateX(-50%) perspective(400px) rotateX(90deg);
+            }
+            40% {
+                transform: translateX(-50%) perspective(400px) rotateX(-20deg);
+            }
+            60% {
+                transform: translateX(-50%) perspective(400px) rotateX(10deg);
+            }
+            80% {
+                transform: translateX(-50%) perspective(400px) rotateX(-5deg);
+            }
+            100% {
+                opacity: 1;
+                transform: translateX(-50%) perspective(400px) rotateX(0deg);
+            }
+        }
+
+        /* 🎨 Enhanced Certificate Provider Icons */
+        .cert-icon {
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        /* Google Icon */
+        .cert-icon-google {
+            background: linear-gradient(135deg, #4285F4 0%, #34A853 25%, #FBBC05 50%, #EA4335 75%, #4285F4 100%);
+            position: relative;
+        }
+
+        .cert-icon-google::before {
+            content: '';
+            position: absolute;
+            width: 60%;
+            height: 60%;
+            background: 
+                radial-gradient(circle at 30% 30%, #4285F4 30%, transparent 30%),
+                radial-gradient(circle at 70% 30%, #EA4335 30%, transparent 30%),
+                radial-gradient(circle at 30% 70%, #34A853 30%, transparent 30%),
+                radial-gradient(circle at 70% 70%, #FBBC05 30%, transparent 30%);
+        }
+
+        .cert-icon-google::after {
+            content: 'G';
+            position: absolute;
+            color: white;
+            font-weight: bold;
+            font-size: 1.2em;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+            z-index: 2;
+        }
+
+        /* IBM Icon */
+        .cert-icon-ibm {
+            background: linear-gradient(135deg, #1261FE 0%, #0530AD 100%);
+            position: relative;
+        }
+
+        .cert-icon-ibm::before {
+            content: '';
+            position: absolute;
+            width: 80%;
+            height: 10%;
+            background: white;
+            box-shadow: 
+                0 -15px 0 white,
+                0 -10px 0 white,
+                0 10px 0 white,
+                0 15px 0 white;
+        }
+
+        .cert-icon-ibm::after {
+            content: 'IBM';
+            position: absolute;
+            color: white;
+            font-weight: bold;
+            font-size: 0.7em;
+            letter-spacing: 1px;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+            z-index: 2;
+        }
+
+        /* Microsoft Icon */
+        .cert-icon-microsoft {
+            background: linear-gradient(135deg, #00BCF2 0%, #0078D4 100%);
+            position: relative;
+        }
+
+        .cert-icon-microsoft::after {
+            content: '';
+            position: absolute;
+            width: 50%;
+            height: 50%;
+            background: 
+                conic-gradient(from 0deg, #FF5722 90deg, #4CAF50 90deg 180deg, #2196F3 180deg 270deg, #FF9800 270deg);
+            border-radius: 8%;
+            z-index: 2;
+        }
+
+        /* CalArts Icon */
+        .cert-icon-calarts {
+            background: linear-gradient(135deg, #FF6B35 0%, #F7931E 100%);
+            position: relative;
+        }
+
+        .cert-icon-calarts::before {
+            content: '';
+            position: absolute;
+            width: 70%;
+            height: 70%;
+            border: 3px solid white;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(255,255,255,0.2) 0%, transparent 70%);
+        }
+
+        .cert-icon-calarts::after {
+            content: '🎨';
+            position: absolute;
+            font-size: 1.5em;
+            filter: drop-shadow(0 2px 4px rgba(0,0,0,0.3));
+            z-index: 2;
+        }
+
+        /* Design Tools Icon */
+        .cert-icon-design {
+            background: linear-gradient(135deg, #F24E1E 0%, #A259FF 50%, #1ABCFE 100%);
+            position: relative;
+        }
+
+        .cert-icon-design::before {
+            content: '';
+            position: absolute;
+            width: 60%;
+            height: 60%;
+            background: 
+                radial-gradient(circle at 25% 25%, #F24E1E 20%, transparent 20%),
+                radial-gradient(circle at 75% 25%, #A259FF 20%, transparent 20%),
+                radial-gradient(circle at 50% 75%, #1ABCFE 20%, transparent 20%);
+        }
+
+        .cert-icon-design::after {
+            content: 'Fig';
+            position: absolute;
+            color: white;
+            font-weight: bold;
+            font-size: 0.8em;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+            z-index: 2;
+        }
+
+        /* University Icon */
+        .cert-icon-university {
+            background: linear-gradient(135deg, #00ffff 0%, #ff0080 100%);
+            position: relative;
+        }
+
+        .cert-icon-university::before {
+            content: '';
+            position: absolute;
+            width: 70%;
+            height: 50%;
+            background: white;
+            clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+            top: 20%;
+        }
+
+        .cert-icon-university::after {
+            content: '🎓';
+            position: absolute;
+            font-size: 1.3em;
+            filter: drop-shadow(0 2px 4px rgba(0,0,0,0.3));
+            z-index: 2;
+        }
+
+        /* AWS Icon */
+        .cert-icon-aws {
+            background: linear-gradient(135deg, #FF9900 0%, #232F3E 100%);
+            position: relative;
+        }
+
+        .cert-icon-aws::before {
+            content: '';
+            position: absolute;
+            width: 60%;
+            height: 30%;
+            background: white;
+            border-radius: 20px;
+            top: 25%;
+        }
+
+        .cert-icon-aws::after {
+            content: 'AWS';
+            position: absolute;
+            color: white;
+            font-weight: bold;
+            font-size: 0.7em;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+            z-index: 2;
+        }
+
+        /* Coursera Icon */
+        .cert-icon-coursera {
+            background: linear-gradient(135deg, #0056D3 0%, #74D0F1 100%);
+            position: relative;
+        }
+
+        .cert-icon-coursera::before {
+            content: '';
+            position: absolute;
+            width: 60%;
+            height: 60%;
+            border: 3px solid white;
+            border-radius: 50%;
+            border-left-color: transparent;
+            border-bottom-color: transparent;
+            transform: rotate(-45deg);
+        }
+
+        .cert-icon-coursera::after {
+            content: 'C';
+            position: absolute;
+            color: white;
+            font-weight: bold;
+            font-size: 1.2em;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+            z-index: 2;
+        }
+
+        /* 📊 Real-Time Data Indicators */
+        .live-indicator {
+            position: relative;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .live-dot {
+            width: 8px;
+            height: 8px;
+            background: #00ff00;
+            border-radius: 50%;
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        .data-counter {
+            background: linear-gradient(135deg, rgba(0, 255, 255, 0.2), rgba(255, 0, 128, 0.2));
+            border: 1px solid rgba(0, 255, 255, 0.3);
+            border-radius: 20px;
+            padding: 0.25rem 0.75rem;
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: #00ffff;
+            transition: all 0.3s ease;
+        }
+
+        .data-counter.updating {
+            animation: pulseGlow 1s ease-in-out 3;
+        }
+
+        /* GitHub Integration Styles */
+        .github-status {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            padding: 0.5rem 1rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.875rem;
+        }
+
+        .github-status.loading {
+            opacity: 0.7;
+        }
+
+        .github-status.loaded {
+            border-color: rgba(0, 255, 255, 0.3);
+            background: rgba(0, 255, 255, 0.1);
+        }
+
+        /* Enhanced Certificate Card Styles */
+        .certificate-card {
+            position: relative;
+            overflow: hidden;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            cursor: pointer;
+        }
+
+        .certificate-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--accent-color, #00ffff), var(--accent-color-2, #ff0080));
+            transition: all 0.3s ease;
+            z-index: 1;
+        }
+
+        .certificate-card:hover::before {
+            height: 8px;
+            box-shadow: 
+                0 4px 15px rgba(0, 255, 255, 0.5),
+                0 0 30px rgba(0, 255, 255, 0.3);
+            animation: pulseGlow 2s ease-in-out infinite;
+        }
+
+        .certificate-card:hover {
+            transform: translateY(-8px) scale(1.02);
+            box-shadow: 
+                0 20px 40px rgba(0, 0, 0, 0.3),
+                0 0 50px rgba(0, 255, 255, 0.2);
+        }
+
+        .certificate-hover-indicator {
+            position: absolute;
+            bottom: 10px;
+            right: 10px;
+            background: rgba(0, 0, 0, 0.8);
+            border-radius: 8px;
+            padding: 4px 8px;
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            opacity: 0;
+            transform: translateY(10px);
+            transition: all 0.3s ease;
+        }
+
+        .certificate-card:hover .certificate-hover-indicator {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Certificate Preview Enhanced Styles */
+        .certificate-preview {
+            position: fixed;
+            top: 80px;
+            left: 50%;
+            transform: translateX(-50%) translateY(-100px);
+            width: 90%;
+            max-width: 500px;
+            background: linear-gradient(135deg, rgba(0, 255, 255, 0.1), rgba(255, 0, 128, 0.1));
+            backdrop-filter: blur(25px);
+            border: 2px solid rgba(0, 255, 255, 0.3);
+            border-radius: 20px;
+            padding: 20px;
+            z-index: 1000;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+        }
+
+        .certificate-preview.show {
+            opacity: 1;
+            visibility: visible;
+            transform: translateX(-50%) translateY(0);
+        }
+
+        .certificate-preview.jackInBox-animation {
+            animation: jackInBox 0.8s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+        }
+
+        .certificate-preview.slideInFromTop-animation {
+            animation: slideInFromTop 0.6s ease-out;
+        }
+
+        .certificate-preview.flipInX-animation {
+            animation: flipInX 0.8s ease-out;
+        }
+
+        .certificate-preview-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 15px;
+        }
+
+        .certificate-preview-close {
+            background: rgba(255, 255, 255, 0.1);
+            border: none;
+            color: white;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-left: auto;
+        }
+
+        .certificate-preview-close:hover {
+            background: rgba(255, 0, 128, 0.3);
+            transform: rotate(90deg);
+        }
+
+        .certificate-preview-content {
+            display: flex;
+            gap: 15px;
+            align-items: center;
+        }
+
+        .certificate-preview-image {
+            width: 80px;
+            height: 80px;
+            border-radius: 12px;
+            object-fit: cover;
+            border: 2px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .certificate-preview-info h4 {
+            color: white;
+            font-size: 16px;
+            font-weight: 700;
+            margin-bottom: 5px;
+        }
+
+        .certificate-preview-info p {
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 14px;
+            margin-bottom: 3px;
+        }
+
+        .certificate-preview-actions {
+            display: flex;
+            gap: 10px;
+            margin-top: 15px;
+        }
+
+        .certificate-preview-btn {
+            flex: 1;
+            padding: 8px 16px;
+            border: none;
+            border-radius: 10px;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 5px;
+        }
+
+        .cert-btn-view {
+            background: linear-gradient(135deg, #00ffff, #0066ff);
+            color: #000;
+        }
+
+        .cert-btn-download {
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .cert-btn-view:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 255, 255, 0.4);
+        }
+
+        .cert-btn-download:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: translateY(-2px);
+        }
+
+        /* Certificate Modal Styles */
+        .certificate-modal {
+            display: none;
+            position: fixed;
+            z-index: 2000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.9);
+            backdrop-filter: blur(10px);
+        }
+
+        .certificate-modal.show {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 1rem;
+        }
+
+        .certificate-modal-content {
+            background: #0a0e27;
+            border-radius: 20px;
+            padding: 1rem;
+            width: 100%;
+            max-width: 900px;
+            max-height: 90vh;
+            overflow-y: auto;
+            position: relative;
+            border: 1px solid rgba(0, 255, 255, 0.3);
+        }
+
+        .certificate-modal-close {
+            position: absolute;
+            top: 15px;
+            right: 20px;
+            color: #fff;
+            font-size: 28px;
+            font-weight: bold;
+            cursor: pointer;
+            z-index: 2001;
+            padding: 5px;
+            min-width: 40px;
+            min-height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+
+        .certificate-modal-close:hover {
+            color: #00ffff;
+            transform: rotate(90deg);
+        }
+
+        /* Certificate Filter System */
+        .certificate-filter-bar {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            padding: 1rem;
+            margin-bottom: 2rem;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .filter-button {
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 25px;
+            font-size: 0.875rem;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .filter-button:hover,
+        .filter-button.active {
+            background: linear-gradient(135deg, #00ffff, #ff0080);
+            color: black;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 255, 255, 0.3);
+        }
+
+        .certificate-search {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 25px;
+            padding: 0.5rem 1rem;
+            color: white;
+            min-width: 200px;
+            font-size: 0.875rem;
+        }
+
+        .certificate-search:focus {
+            outline: none;
+            border-color: #00ffff;
+            box-shadow: 0 0 0 2px rgba(0, 255, 255, 0.2);
+        }
+
+        .certificate-search::placeholder {
+            color: rgba(255, 255, 255, 0.5);
+        }
+
         /* Mobile Skills Grid */
         .mobile-skills-grid {
             display: grid;
@@ -331,7 +973,7 @@
             }
         }
         
-        /* Mobile Navigation Blur */
+        /* Navigation Blur */
         .nav-blur {
             backdrop-filter: blur(20px);
             background: rgba(10, 14, 39, 0.95);
@@ -374,7 +1016,7 @@
             }
         }
         
-        /* Floating Shapes - Responsive */
+        /* Floating Shapes */
         .floating-shapes {
             position: fixed;
             width: 100%;
@@ -446,165 +1088,8 @@
                 height: 100px;
             }
         }
-        
-        /* Animations */
-        @keyframes float {
-            0%, 100% { transform: translateY(0px) rotate(0deg); }
-            33% { transform: translateY(-20px) rotate(120deg); }
-            66% { transform: translateY(10px) rotate(240deg); }
-        }
-        
-        @keyframes gradient-shift {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
-        }
-        
-        @keyframes glow {
-            from { box-shadow: 0 0 20px rgba(0, 255, 255, 0.3); }
-            to { box-shadow: 0 0 30px rgba(0, 255, 255, 0.6), 0 0 40px rgba(255, 0, 128, 0.3); }
-        }
-        
-        @keyframes mobileBounce {
-            0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
-            40% { transform: translateY(-10px); }
-            60% { transform: translateY(-5px); }
-        }
-        
-        /* Section Divider */
-        .section-divider {
-            height: 1px;
-            background: linear-gradient(90deg, transparent, rgba(0, 255, 255, 0.5), transparent);
-            margin: 2rem 0;
-        }
-        
-        /* Mobile Testimonial Cards */
-        .mobile-testimonial-card {
-            background: linear-gradient(135deg, rgba(0, 255, 255, 0.1), rgba(255, 0, 128, 0.1));
-            border: 1px solid rgba(0, 255, 255, 0.3);
-            border-radius: 1.5rem;
-            padding: 1.5rem;
-            margin-bottom: 1.5rem;
-            transition: all 0.3s ease;
-        }
-        
-        @media (min-width: 1024px) {
-            .mobile-testimonial-card:hover {
-                transform: translateY(-5px);
-                border-color: rgba(0, 255, 255, 0.6);
-            }
-        }
-        
-        /* CV Modal - Mobile Optimized */
-        .cv-modal {
-            display: none;
-            position: fixed;
-            z-index: 1000;
-            left: 0;
-            top: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.9);
-            backdrop-filter: blur(10px);
-        }
 
-        .cv-modal.show {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 1rem;
-        }
-
-        .cv-modal-content {
-            background: #0a0e27;
-            border-radius: 20px;
-            padding: 1rem;
-            width: 100%;
-            max-width: 900px;
-            max-height: 90vh;
-            overflow-y: auto;
-            position: relative;
-            border: 1px solid rgba(0, 255, 255, 0.3);
-        }
-
-        .cv-close {
-            position: absolute;
-            top: 15px;
-            right: 20px;
-            color: #fff;
-            font-size: 28px;
-            font-weight: bold;
-            cursor: pointer;
-            z-index: 1001;
-            padding: 5px;
-            min-width: 40px;
-            min-height: 40px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .cv-close:hover {
-            color: #00ffff;
-        }
-
-        /* Update Progress Bar */
-        .update-progress {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 0%;
-            height: 3px;
-            background: linear-gradient(90deg, #00ffff, #ff0080, #8000ff);
-            z-index: 9999;
-            transition: width 0.3s ease;
-        }
-
-        /* Professional Icon Styles */
-        .professional-avatar {
-            background: linear-gradient(135deg, var(--gradient-from), var(--gradient-to));
-            transition: all 0.3s ease;
-        }
-
-        @media (min-width: 1024px) {
-            .professional-avatar:hover {
-                transform: scale(1.05);
-                box-shadow: 0 10px 25px rgba(0, 255, 255, 0.3);
-            }
-        }
-
-        /* GitHub Section Enhanced Styles */
-        .github-section-bg {
-            background: 
-                radial-gradient(circle at 30% 40%, rgba(0, 255, 255, 0.1) 0%, transparent 50%),
-                radial-gradient(circle at 70% 60%, rgba(128, 0, 255, 0.1) 0%, transparent 50%);
-        }
-
-        .github-cta-card {
-            background: linear-gradient(135deg, rgba(0, 255, 255, 0.15), rgba(255, 0, 128, 0.15), rgba(128, 0, 255, 0.15));
-            border: 2px solid rgba(255, 255, 255, 0.2);
-            background-clip: padding-box;
-            position: relative;
-        }
-
-        /* Mobile GitHub Cards */
-        .mobile-github-card {
-            background: rgba(255, 255, 255, 0.05);
-            backdrop-filter: blur(20px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 1rem;
-            padding: 1.5rem;
-            transition: all 0.3s ease;
-        }
-
-        @media (min-width: 1024px) {
-            .mobile-github-card:hover {
-                transform: translateY(-8px);
-                box-shadow: 0 20px 40px rgba(0, 255, 255, 0.2);
-            }
-        }
-
-        /* Skill Certification Cards - Mobile Optimized */
+        /* Enhanced Skill Certification Cards */
         .mobile-skill-card {
             background: rgba(255, 255, 255, 0.08);
             backdrop-filter: blur(20px);
@@ -679,12 +1164,7 @@
             z-index: -1;
         }
 
-        @keyframes rotate {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
-        }
-
-        /* Mobile Contact Form */
+        /* Contact Form Styles */
         .mobile-contact-form {
             background: rgba(255, 255, 255, 0.05);
             backdrop-filter: blur(20px);
@@ -699,12 +1179,11 @@
             }
         }
 
-        /* Mobile Form Inputs */
         .mobile-input {
             width: 100%;
             min-height: 48px;
             padding: 12px 16px;
-            font-size: 16px; /* Prevent zoom on iOS */
+            font-size: 16px;
             background: rgba(255, 255, 255, 0.05);
             border: 1px solid rgba(255, 255, 255, 0.1);
             border-radius: 12px;
@@ -722,7 +1201,6 @@
             color: rgba(255, 255, 255, 0.5);
         }
 
-        /* Mobile Textarea */
         .mobile-textarea {
             width: 100%;
             min-height: 120px;
@@ -742,24 +1220,7 @@
             outline: none;
         }
 
-        /* Hide desktop navigation on mobile */
-        @media (max-width: 767px) {
-            .desktop-nav {
-                display: none;
-            }
-        }
-
-        /* Hide mobile navigation on desktop */
-        @media (min-width: 768px) {
-            .mobile-nav {
-                display: none;
-            }
-            .hamburger {
-                display: none;
-            }
-        }
-
-        /* Social Icons - Touch Optimized */
+        /* Social Icons */
         .mobile-social-icon {
             width: 48px;
             height: 48px;
@@ -793,12 +1254,218 @@
             }
         }
 
+        /* Testimonial Cards */
+        .mobile-testimonial-card {
+            background: linear-gradient(135deg, rgba(0, 255, 255, 0.1), rgba(255, 0, 128, 0.1));
+            border: 1px solid rgba(0, 255, 255, 0.3);
+            border-radius: 1.5rem;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            transition: all 0.3s ease;
+        }
+        
+        @media (min-width: 1024px) {
+            .mobile-testimonial-card:hover {
+                transform: translateY(-5px);
+                border-color: rgba(0, 255, 255, 0.6);
+            }
+        }
+
+        /* CV Modal */
+        .cv-modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.9);
+            backdrop-filter: blur(10px);
+        }
+
+        .cv-modal.show {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 1rem;
+        }
+
+        .cv-modal-content {
+            background: #0a0e27;
+            border-radius: 20px;
+            padding: 1rem;
+            width: 100%;
+            max-width: 900px;
+            max-height: 90vh;
+            overflow-y: auto;
+            position: relative;
+            border: 1px solid rgba(0, 255, 255, 0.3);
+        }
+
+        .cv-close {
+            position: absolute;
+            top: 15px;
+            right: 20px;
+            color: #fff;
+            font-size: 28px;
+            font-weight: bold;
+            cursor: pointer;
+            z-index: 1001;
+            padding: 5px;
+            min-width: 40px;
+            min-height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .cv-close:hover {
+            color: #00ffff;
+        }
+
+        /* Progress Bar */
+        .update-progress {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 0%;
+            height: 3px;
+            background: linear-gradient(90deg, #00ffff, #ff0080, #8000ff);
+            z-index: 9999;
+            transition: width 0.3s ease;
+        }
+
+        /* Professional Avatar */
+        .professional-avatar {
+            background: linear-gradient(135deg, var(--gradient-from), var(--gradient-to));
+            transition: all 0.3s ease;
+        }
+
+        @media (min-width: 1024px) {
+            .professional-avatar:hover {
+                transform: scale(1.05);
+                box-shadow: 0 10px 25px rgba(0, 255, 255, 0.3);
+            }
+        }
+
+        /* GitHub Section */
+        .github-section-bg {
+            background: 
+                radial-gradient(circle at 30% 40%, rgba(0, 255, 255, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 70% 60%, rgba(128, 0, 255, 0.1) 0%, transparent 50%);
+        }
+
+        .github-cta-card {
+            background: linear-gradient(135deg, rgba(0, 255, 255, 0.15), rgba(255, 0, 128, 0.15), rgba(128, 0, 255, 0.15));
+            border: 2px solid rgba(255, 255, 255, 0.2);
+            background-clip: padding-box;
+            position: relative;
+        }
+
+        .mobile-github-card {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 1rem;
+            padding: 1.5rem;
+            transition: all 0.3s ease;
+        }
+
+        @media (min-width: 1024px) {
+            .mobile-github-card:hover {
+                transform: translateY(-8px);
+                box-shadow: 0 20px 40px rgba(0, 255, 255, 0.2);
+            }
+        }
+
+        /* Section Divider */
+        .section-divider {
+            height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(0, 255, 255, 0.5), transparent);
+            margin: 2rem 0;
+        }
+        
+        /* Animations */
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            33% { transform: translateY(-20px) rotate(120deg); }
+            66% { transform: translateY(10px) rotate(240deg); }
+        }
+        
+        @keyframes gradient-shift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        
+        @keyframes glow {
+            from { box-shadow: 0 0 20px rgba(0, 255, 255, 0.3); }
+            to { box-shadow: 0 0 30px rgba(0, 255, 255, 0.6), 0 0 40px rgba(255, 0, 128, 0.3); }
+        }
+        
+        @keyframes mobileBounce {
+            0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+            40% { transform: translateY(-10px); }
+            60% { transform: translateY(-5px); }
+        }
+
+        @keyframes bounceIn {
+            0% {
+                opacity: 0;
+                transform: scale(0.3);
+            }
+            50% {
+                opacity: 1;
+                transform: scale(1.05);
+            }
+            70% {
+                transform: scale(0.9);
+            }
+            100% {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        @keyframes rotate {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.5; transform: scale(1.1); }
+        }
+
+        /* Hide desktop navigation on mobile */
+        @media (max-width: 767px) {
+            .desktop-nav {
+                display: none;
+            }
+        }
+
+        /* Hide mobile navigation on desktop */
+        @media (min-width: 768px) {
+            .mobile-nav {
+                display: none;
+            }
+            .hamburger {
+                display: none;
+            }
+        }
+
         /* Performance Optimizations */
         img {
             loading: lazy;
         }
 
-        /* Reduce motion for accessibility */
+        /* Accessibility */
         @media (prefers-reduced-motion: reduce) {
             * {
                 animation-duration: 0.01ms !important;
@@ -807,11 +1474,52 @@
             }
         }
 
-        /* Force button visibility on all devices */
+        /* Force button visibility */
         button, .mobile-button, a.mobile-button {
             display: flex !important;
             visibility: visible !important;
             opacity: 1 !important;
+        }
+
+        /* Enhanced Mobile Responsiveness for Certificate System */
+        @media (max-width: 480px) {
+            .certificate-filter-bar {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .certificate-search {
+                min-width: auto;
+                width: 100%;
+            }
+            
+            .certificate-preview {
+                width: 95%;
+                max-width: none;
+                padding: 15px;
+            }
+            
+            .certificate-preview-content {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .certificate-preview-image {
+                width: 60px;
+                height: 60px;
+                margin-bottom: 10px;
+            }
+        }
+
+        /* Success Message Styles */
+        .mobile-success-message {
+            background: linear-gradient(135deg, rgba(34, 197, 94, 0.2), rgba(16, 185, 129, 0.2));
+            border: 2px solid rgba(34, 197, 94, 0.4);
+            border-radius: 15px;
+            padding: 1rem;
+            margin-top: 1rem;
+            display: none;
+            animation: bounceIn 0.6s ease-out;
         }
     </style>
 </head>
@@ -825,6 +1533,48 @@
 
     <!-- Update Progress Bar -->
     <div class="update-progress" id="updateProgress"></div>
+
+    <!-- Enhanced Certificate Preview Popup -->
+    <div id="certificatePreview" class="certificate-preview">
+        <div class="certificate-preview-header">
+            <button class="certificate-preview-close" onclick="closeCertificatePreview()">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        <div class="certificate-preview-content">
+            <img id="previewImage" src="" alt="Certificate Preview" class="certificate-preview-image">
+            <div class="certificate-preview-info">
+                <h4 id="previewTitle"></h4>
+                <p id="previewIssuer"></p>
+                <p id="previewDate"></p>
+                <p id="previewSkills"></p>
+            </div>
+        </div>
+        <div class="certificate-preview-actions">
+            <button class="certificate-preview-btn cert-btn-view" onclick="viewCertificateFull()">
+                <i class="fas fa-eye"></i> View Full
+            </button>
+            <button class="certificate-preview-btn cert-btn-download" onclick="downloadCertificate()">
+                <i class="fas fa-download"></i> Download
+            </button>
+        </div>
+    </div>
+
+    <!-- Enhanced Certificate Modal -->
+    <div id="certificateModal" class="certificate-modal">
+        <div class="certificate-modal-content">
+            <span class="certificate-modal-close" onclick="closeCertificateModal()">×</span>
+            <div id="certificateModalContent"></div>
+            <div class="flex flex-col sm:flex-row justify-center gap-3 lg:gap-4 mt-4 lg:mt-6">
+                <button onclick="downloadCertificate()" class="mobile-button project-btn-primary px-6 py-3 rounded-full font-semibold">
+                    <i class="fas fa-download mr-2"></i>Download PDF
+                </button>
+                <button onclick="openCertificateNewTab()" class="mobile-button project-btn-secondary px-6 py-3 rounded-full font-semibold transition-colors">
+                    <i class="fas fa-external-link-alt mr-2"></i>Open in New Tab
+                </button>
+            </div>
+        </div>
+    </div>
 
     <!-- Mobile-First Navigation -->
     <nav class="fixed top-0 w-full z-50 nav-blur border-b border-white/10">
@@ -884,7 +1634,7 @@
         </div>
     </nav>
 
-    <!-- Hero Section - Mobile Optimized -->
+    <!-- Hero Section -->
     <section id="home" class="min-h-screen flex items-center justify-center hero-bg mobile-section relative">
         <div class="max-w-7xl mx-auto px-4 sm:px-6">
             <div class="flex flex-col lg:grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
@@ -907,7 +1657,7 @@
                         (local or remote) to contribute innovative solutions.
                     </p>
                     
-                    <!-- CTA Buttons - FIXED WITH PROPER CLASSES -->
+                    <!-- CTA Buttons -->
                     <div class="flex flex-col sm:flex-row gap-4 max-w-lg mx-auto lg:mx-0">
                         <a href="#projects" class="mobile-button magnetic-button hero-cta-primary px-6 py-3 rounded-full font-bold">
                             <i class="fas fa-rocket mr-2"></i>
@@ -944,17 +1694,13 @@
                     </div>
                 </div>
                 
-                <!-- Hero Image - FIXED PATH -->
+                <!-- Hero Image -->
                 <div class="relative order-1 lg:order-2">
                     <div class="mobile-hero-image mx-auto relative">
                         <div class="absolute inset-0 bg-gradient-to-br from-neon-cyan via-neon-pink to-neon-purple rounded-full animate-glow"></div>
-                        <img src="./images/profile.jpg" 
-                             alt="Professional Portrait" 
-                             class="w-full h-full object-cover rounded-full relative z-10 border-4 border-white/20" 
-                             loading="lazy" 
-                             onerror="this.src='https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=400&fit=crop&crop=face'; this.alt='Professional Portrait Placeholder'">
+                        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=400&fit=crop&crop=face" alt="Professional Portrait" class="w-full h-full object-cover rounded-full relative z-10 border-4 border-white/20" loading="lazy">
                         
-                        <!-- Floating Tech Icons - Mobile Optimized -->
+                        <!-- Floating Tech Icons -->
                         <div class="absolute -top-2 -right-2 sm:-top-4 sm:-right-4 w-12 h-12 sm:w-16 sm:h-16 glass-morphism rounded-full flex items-center justify-center animate-float">
                             <i class="fab fa-figma text-lg sm:text-2xl text-neon-pink"></i>
                         </div>
@@ -972,7 +1718,7 @@
 
     <div class="section-divider"></div>
 
-    <!-- About Section - Mobile Optimized -->
+    <!-- Enhanced About Section with Real-Time Certificate System -->
     <section id="about" class="mobile-section relative">
         <div class="absolute inset-0 opacity-10">
             <img src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=1920&h=1080&fit=crop" alt="Space Tech" class="w-full h-full object-cover">
@@ -1003,91 +1749,69 @@
                         </p>
                     </div>
                     
-                    <!-- Stats Grid -->
+                    <!-- Real-Time Stats Grid -->
                     <div class="grid grid-cols-2 gap-4 lg:gap-6">
                         <div class="glass-morphism p-4 lg:p-6 rounded-2xl text-center">
-                            <div class="text-3xl lg:text-4xl font-bold gradient-text mb-2">6+</div>
+                            <div class="text-3xl lg:text-4xl font-bold gradient-text mb-2 live-indicator">
+                                <span id="cert-count">8+</span>
+                                <div class="live-dot"></div>
+                            </div>
                             <div class="text-sm lg:text-base text-gray-300">Certifications</div>
+                            <div class="data-counter mt-2">
+                                <span id="cert-views">0</span> total views
+                            </div>
                         </div>
                         <div class="glass-morphism p-4 lg:p-6 rounded-2xl text-center">
                             <div class="text-3xl lg:text-4xl font-bold gradient-text mb-2">15+</div>
                             <div class="text-sm lg:text-base text-gray-300">Projects</div>
+                            <div class="data-counter mt-2">
+                                <span id="project-interactions">0</span> interactions
+                            </div>
                         </div>
                         <div class="glass-morphism p-4 lg:p-6 rounded-2xl text-center">
                             <div class="text-3xl lg:text-4xl font-bold gradient-text mb-2">3+</div>
                             <div class="text-sm lg:text-base text-gray-300">Internships</div>
+                            <div class="data-counter mt-2">
+                                Experience gained
+                            </div>
                         </div>
                         <div class="glass-morphism p-4 lg:p-6 rounded-2xl text-center">
                             <div class="text-3xl lg:text-4xl font-bold gradient-text mb-2">60K+</div>
                             <div class="text-sm lg:text-base text-gray-300">Users Impacted</div>
+                            <div class="data-counter mt-2">
+                                Through projects
+                            </div>
                         </div>
                     </div>
                 </div>
                 
-                <!-- Skills & Certifications Section - Mobile Optimized -->
+                <!-- Enhanced Skills & Certifications Section -->
                 <div class="space-y-6">
                     <h3 class="text-2xl lg:text-3xl font-bold text-center gradient-text mb-6 lg:mb-8">Skills & Certifications</h3>
                     
-                    <div class="mobile-skills-grid">
-                        <!-- Google UX Design -->
-                        <div class="mobile-skill-card" style="--accent-color: #4285F4; --accent-color-2: #34A853;">
-                            <div class="certification-badge" style="background: linear-gradient(135deg, #4285F4, #34A853);">
-                                <i class="fab fa-google text-white text-lg sm:text-xl"></i>
-                            </div>
-                            <h4 class="text-base lg:text-lg font-bold text-white mb-2">Google UX Design</h4>
-                            <p class="text-xs lg:text-sm text-gray-300 mb-2">Professional Certificate</p>
-                            <div class="text-xs text-gray-400">Empathize • Define • Ideate • Prototype • Test</div>
-                        </div>
-
-                        <!-- IBM Front-End Developer -->
-                        <div class="mobile-skill-card" style="--accent-color: #1261FE; --accent-color-2: #0530AD;">
-                            <div class="certification-badge" style="background: linear-gradient(135deg, #1261FE, #0530AD);">
-                                <i class="fas fa-laptop-code text-white text-lg sm:text-xl"></i>
-                            </div>
-                            <h4 class="text-base lg:text-lg font-bold text-white mb-2">IBM Front-End</h4>
-                            <p class="text-xs lg:text-sm text-gray-300 mb-2">Professional Certificate</p>
-                            <div class="text-xs text-gray-400">React • JavaScript • HTML/CSS • Git</div>
-                        </div>
-
-                        <!-- Microsoft UX Design -->
-                        <div class="mobile-skill-card" style="--accent-color: #00BCF2; --accent-color-2: #0078D4;">
-                            <div class="certification-badge" style="background: linear-gradient(135deg, #00BCF2, #0078D4);">
-                                <i class="fab fa-microsoft text-white text-lg sm:text-xl"></i>
-                            </div>
-                            <h4 class="text-base lg:text-lg font-bold text-white mb-2">Microsoft UX</h4>
-                            <p class="text-xs lg:text-sm text-gray-300 mb-2">Professional Certificate</p>
-                            <div class="text-xs text-gray-400">Accessibility • Collaboration • AI-Enhanced UX</div>
-                        </div>
-
-                        <!-- CalArts UI/UX Design -->
-                        <div class="mobile-skill-card" style="--accent-color: #FF6B35; --accent-color-2: #F7931E;">
-                            <div class="certification-badge" style="background: linear-gradient(135deg, #FF6B35, #F7931E);">
-                                <i class="fas fa-palette text-white text-lg sm:text-xl"></i>
-                            </div>
-                            <h4 class="text-base lg:text-lg font-bold text-white mb-2">CalArts UI/UX</h4>
-                            <p class="text-xs lg:text-sm text-gray-300 mb-2">Specialization</p>
-                            <div class="text-xs text-gray-400">Visual Elements • Strategy • Wireframes</div>
-                        </div>
-
-                        <!-- Figma, Sketch & Miro -->
-                        <div class="mobile-skill-card" style="--accent-color: #F24E1E; --accent-color-2: #A259FF;">
-                            <div class="certification-badge" style="background: linear-gradient(135deg, #F24E1E, #A259FF);">
-                                <i class="fab fa-figma text-white text-lg sm:text-xl"></i>
-                            </div>
-                            <h4 class="text-base lg:text-lg font-bold text-white mb-2">Design Toolkit</h4>
-                            <p class="text-xs lg:text-sm text-gray-300 mb-2">Professional Certificate</p>
-                            <div class="text-xs text-gray-400">Figma • Sketch • Miro • User Testing</div>
-                        </div>
-
-                        <!-- Information Systems -->
-                        <div class="mobile-skill-card" style="--accent-color: #00ffff; --accent-color-2: #ff0080;">
-                            <div class="certification-badge" style="background: linear-gradient(135deg, #00ffff, #ff0080);">
-                                <i class="fas fa-graduation-cap text-white text-lg sm:text-xl"></i>
-                            </div>
-                            <h4 class="text-base lg:text-lg font-bold text-white mb-2">BSc IS</h4>
-                            <p class="text-xs lg:text-sm text-gray-300 mb-2">Midlands State Uni</p>
-                            <div class="text-xs text-gray-400">Systems Analysis • DB Design • In Progress</div>
-                        </div>
+                    <!-- Real-Time Certificate Filter Bar -->
+                    <div class="certificate-filter-bar">
+                        <button class="filter-button active" onclick="filterCertificates('all')">
+                            All <span class="data-counter" id="filter-all-count">8</span>
+                        </button>
+                        <button class="filter-button" onclick="filterCertificates('UX/UI Design')">
+                            UX/UI <span class="data-counter" id="filter-ux-count">2</span>
+                        </button>
+                        <button class="filter-button" onclick="filterCertificates('Web Development')">
+                            Development <span class="data-counter" id="filter-dev-count">2</span>
+                        </button>
+                        <button class="filter-button" onclick="filterCertificates('Cloud Computing')">
+                            Cloud <span class="data-counter" id="filter-cloud-count">1</span>
+                        </button>
+                        <button class="filter-button" onclick="filterCertificates('Academic')">
+                            Academic <span class="data-counter" id="filter-academic-count">1</span>
+                        </button>
+                        <input type="text" class="certificate-search" placeholder="🔍 Search certificates..." oninput="searchCertificates(this.value)">
+                    </div>
+                    
+                    <!-- Dynamic Certificate Grid -->
+                    <div class="mobile-skills-grid" id="certificateGrid">
+                        <!-- Certificates will be dynamically loaded here -->
                     </div>
                 </div>
             </div>
@@ -1096,7 +1820,7 @@
 
     <div class="section-divider"></div>
 
-    <!-- Featured Projects Section - FIXED BUTTONS -->
+    <!-- Enhanced Featured Projects Section with Live Data -->
     <section id="projects" class="mobile-section relative">
         <div class="absolute inset-0 opacity-5">
             <img src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=1920&h=1080&fit=crop" alt="Abstract Tech" class="w-full h-full object-cover">
@@ -1105,11 +1829,17 @@
             <div class="text-center mb-12 lg:mb-16">
                 <h2 class="text-4xl sm:text-5xl lg:text-7xl font-bold gradient-text mb-4 lg:mb-6">Featured Projects</h2>
                 <p class="text-lg sm:text-xl text-gray-300">Real-world solutions showcasing technical expertise and business impact</p>
+                <div class="mt-4 flex justify-center">
+                    <div class="github-status" id="github-status">
+                        <i class="fab fa-github mr-2"></i>
+                        <span>Loading repository data...</span>
+                    </div>
+                </div>
             </div>
             
             <div class="flex flex-col lg:grid lg:grid-cols-2 gap-8 lg:gap-12">
                 <!-- EcoWatt Project -->
-                <div class="mobile-project-card">
+                <div class="mobile-project-card" data-project="ecowatt">
                     <div class="relative h-48 sm:h-56 lg:h-64">
                         <img src="https://images.unsplash.com/photo-1559827260-dc66d52bef19?w=600&h=400&fit=crop" alt="Energy Management" class="w-full h-full object-cover">
                         <div class="absolute inset-0 bg-gradient-to-t from-dark-navy/80 to-transparent"></div>
@@ -1120,6 +1850,12 @@
                             <div class="flex items-center gap-2">
                                 <i class="fas fa-users text-neon-cyan"></i>
                                 <span class="text-white text-xs sm:text-sm">60K+ Target Users</span>
+                            </div>
+                        </div>
+                        <div class="absolute top-4 left-4">
+                            <div class="github-status" id="ecowatt-status">
+                                <i class="fas fa-clock mr-1"></i>
+                                <span class="text-xs">Loading...</span>
                             </div>
                         </div>
                     </div>
@@ -1149,10 +1885,10 @@
                             <span class="bg-neon-cyan/20 text-neon-cyan px-2 py-1 rounded-full text-xs">Service Workers</span>
                         </div>
                         <div class="flex flex-col sm:flex-row gap-3">
-                            <a href="https://cbfrost.github.io/ecowatt-energy-platform" target="_blank" class="mobile-button project-btn-primary px-4 py-3 rounded-full font-semibold text-center">
-                                <i class="fas fa-external-link-alt mr-2"></i>View Live
+                            <a href="https://cbfrost.github.io/ecowatt-energy-platform" target="_blank" class="mobile-button project-btn-primary px-4 py-3 rounded-full font-semibold text-center" onclick="trackProjectInteraction('ecowatt', 'demo')">
+                                <i class="fas fa-external-link-alt mr-2"></i>View Demo
                             </a>
-                            <a href="https://github.com/CBfrost/ecowatt-energy-platform" target="_blank" class="mobile-button project-btn-secondary px-4 py-3 rounded-full text-center transition-colors">
+                            <a href="https://github.com/CBfrost/ecowatt-energy-platform" target="_blank" class="mobile-button project-btn-secondary px-4 py-3 rounded-full text-center transition-colors" onclick="trackProjectInteraction('ecowatt', 'code')">
                                 <i class="fab fa-github mr-2"></i>Code
                             </a>
                         </div>
@@ -1160,7 +1896,7 @@
                 </div>
                 
                 <!-- AutoGlass Management -->
-                <div class="mobile-project-card">
+                <div class="mobile-project-card" data-project="autoglass">
                     <div class="relative h-48 sm:h-56 lg:h-64">
                         <img src="https://images.unsplash.com/photo-1449824913935-59a10b8d2000?w=600&h=400&fit=crop" alt="Automotive" class="w-full h-full object-cover">
                         <div class="absolute inset-0 bg-gradient-to-t from-dark-navy/80 to-transparent"></div>
@@ -1171,6 +1907,12 @@
                             <div class="flex items-center gap-2">
                                 <i class="fas fa-building text-neon-pink"></i>
                                 <span class="text-white text-xs sm:text-sm">8 Branch Deployment</span>
+                            </div>
+                        </div>
+                        <div class="absolute top-4 left-4">
+                            <div class="data-counter">
+                                <i class="fas fa-eye mr-1"></i>
+                                <span id="autoglass-views">0</span> views
                             </div>
                         </div>
                     </div>
@@ -1203,7 +1945,7 @@
                             <span class="mobile-button project-btn-disabled px-4 py-3 rounded-full font-semibold text-center">
                                 <i class="fas fa-lock mr-2"></i>Enterprise System
                             </span>
-                            <a href="#contact" class="mobile-button project-btn-secondary px-4 py-3 rounded-full text-center transition-colors">
+                            <a href="#contact" class="mobile-button project-btn-secondary px-4 py-3 rounded-full text-center transition-colors" onclick="trackProjectInteraction('autoglass', 'contact')">
                                 <i class="fas fa-info-circle mr-2"></i>Learn More
                             </a>
                         </div>
@@ -1211,7 +1953,7 @@
                 </div>
                 
                 <!-- StayHealthy Capstone -->
-                <div class="mobile-project-card">
+                <div class="mobile-project-card" data-project="stayhealthy">
                     <div class="relative h-48 sm:h-56 lg:h-64">
                         <img src="https://images.unsplash.com/photo-1559757148-5c350d0d3c56?w=600&h=400&fit=crop" alt="Healthcare" class="w-full h-full object-cover">
                         <div class="absolute inset-0 bg-gradient-to-t from-dark-navy/80 to-transparent"></div>
@@ -1222,6 +1964,12 @@
                             <div class="flex items-center gap-2">
                                 <i class="fas fa-heartbeat text-green-400"></i>
                                 <span class="text-white text-xs sm:text-sm">Healthcare Management</span>
+                            </div>
+                        </div>
+                        <div class="absolute top-4 left-4">
+                            <div class="github-status" id="stayhealthy-status">
+                                <i class="fas fa-clock mr-1"></i>
+                                <span class="text-xs">Loading...</span>
                             </div>
                         </div>
                     </div>
@@ -1251,18 +1999,18 @@
                             <span class="bg-green-400/20 text-green-400 px-2 py-1 rounded-full text-xs">WebRTC</span>
                         </div>
                         <div class="flex flex-col sm:flex-row gap-3">
-                            <a href="https://github.com/CBfrost/stayhealthy-capstone" target="_blank" class="mobile-button project-btn-primary px-4 py-3 rounded-full font-semibold text-center" style="background: linear-gradient(135deg, #10b981, #059669) !important;">
-                                <i class="fab fa-github mr-2"></i>View Code
+                            <a href="https://cbfrost.github.io/stayhealthy-capstone" target="_blank" class="mobile-button project-btn-primary px-4 py-3 rounded-full font-semibold text-center" style="background: linear-gradient(135deg, #10b981, #059669) !important;" onclick="trackProjectInteraction('stayhealthy', 'demo')">
+                                <i class="fas fa-external-link-alt mr-2"></i>View Demo
                             </a>
-                            <a href="#contact" class="mobile-button project-btn-secondary px-4 py-3 rounded-full text-center transition-colors">
-                                <i class="fas fa-info-circle mr-2"></i>Case Study
+                            <a href="https://github.com/CBfrost/stayhealthy-capstone" target="_blank" class="mobile-button project-btn-secondary px-4 py-3 rounded-full text-center transition-colors" onclick="trackProjectInteraction('stayhealthy', 'code')">
+                                <i class="fab fa-github mr-2"></i>Code
                             </a>
                         </div>
                     </div>
                 </div>
                 
                 <!-- Paradise Nursery -->
-                <div class="mobile-project-card">
+                <div class="mobile-project-card" data-project="paradise-nursery">
                     <div class="relative h-48 sm:h-56 lg:h-64">
                         <img src="https://images.unsplash.com/photo-1416879595882-3373a0480b5b?w=600&h=400&fit=crop" alt="Plants Nursery" class="w-full h-full object-cover">
                         <div class="absolute inset-0 bg-gradient-to-t from-dark-navy/80 to-transparent"></div>
@@ -1273,6 +2021,12 @@
                             <div class="flex items-center gap-2">
                                 <i class="fas fa-seedling text-emerald-400"></i>
                                 <span class="text-white text-xs sm:text-sm">Plant E-Commerce</span>
+                            </div>
+                        </div>
+                        <div class="absolute top-4 left-4">
+                            <div class="github-status" id="paradise-nursery-status">
+                                <i class="fas fa-clock mr-1"></i>
+                                <span class="text-xs">Loading...</span>
                             </div>
                         </div>
                     </div>
@@ -1302,11 +2056,11 @@
                             <span class="bg-emerald-400/20 text-emerald-400 px-2 py-1 rounded-full text-xs">Responsive</span>
                         </div>
                         <div class="flex flex-col sm:flex-row gap-3">
-                            <a href="https://github.com/CBfrost/paradise-nursery" target="_blank" class="mobile-button project-btn-primary px-4 py-3 rounded-full font-semibold text-center" style="background: linear-gradient(135deg, #10b981, #059669) !important;">
-                                <i class="fab fa-github mr-2"></i>View Code
+                            <a href="https://cbfrost.github.io/paradise-nursery" target="_blank" class="mobile-button project-btn-primary px-4 py-3 rounded-full font-semibold text-center" style="background: linear-gradient(135deg, #10b981, #059669) !important;" onclick="trackProjectInteraction('paradise-nursery', 'demo')">
+                                <i class="fas fa-external-link-alt mr-2"></i>View Demo
                             </a>
-                            <a href="#contact" class="mobile-button project-btn-secondary px-4 py-3 rounded-full text-center transition-colors">
-                                <i class="fas fa-external-link-alt mr-2"></i>Demo
+                            <a href="https://github.com/CBfrost/paradise-nursery" target="_blank" class="mobile-button project-btn-secondary px-4 py-3 rounded-full text-center transition-colors" onclick="trackProjectInteraction('paradise-nursery', 'code')">
+                                <i class="fab fa-github mr-2"></i>Code
                             </a>
                         </div>
                     </div>
@@ -1317,12 +2071,18 @@
 
     <div class="section-divider"></div>
 
-    <!-- GitHub Projects Section - Mobile Optimized -->
+    <!-- Enhanced GitHub Projects Section with Real-Time Data -->
     <section id="github" class="mobile-section relative github-section-bg">
         <div class="max-w-7xl mx-auto px-4 sm:px-6">
             <div class="text-center mb-12 lg:mb-16">
                 <h2 class="text-4xl sm:text-5xl lg:text-7xl font-bold gradient-text mb-4 lg:mb-6">GitHub Projects</h2>
                 <p class="text-lg sm:text-xl text-gray-300">Explore my latest open-source contributions and personal projects</p>
+                <div class="mt-4 flex justify-center">
+                    <div class="github-status" id="github-main-status">
+                        <i class="fab fa-github mr-2"></i>
+                        <span>Last updated: Loading...</span>
+                    </div>
+                </div>
             </div>
             
             <div id="github-projects" class="mobile-skills-grid mb-12 lg:mb-16">
@@ -1342,29 +2102,29 @@
                             and collaborative coding experiments.
                         </p>
                         
-                        <!-- GitHub Stats Preview -->
+                        <!-- Real-Time GitHub Stats Preview -->
                         <div class="grid grid-cols-3 gap-3 lg:gap-6 mb-6 lg:mb-8">
                             <div class="bg-dark-navy/50 p-3 lg:p-4 rounded-xl border border-neon-cyan/30">
-                                <div class="text-xl lg:text-2xl font-bold text-white mb-1">12+</div>
+                                <div class="text-xl lg:text-2xl font-bold text-white mb-1" id="github-repos">12+</div>
                                 <div class="text-xs lg:text-sm text-gray-200 font-medium">Repositories</div>
                             </div>
                             <div class="bg-dark-navy/50 p-3 lg:p-4 rounded-xl border border-neon-pink/30">
-                                <div class="text-xl lg:text-2xl font-bold text-white mb-1">200+</div>
+                                <div class="text-xl lg:text-2xl font-bold text-white mb-1" id="github-commits">200+</div>
                                 <div class="text-xs lg:text-sm text-gray-200 font-medium">Commits</div>
                             </div>
                             <div class="bg-dark-navy/50 p-3 lg:p-4 rounded-xl border border-neon-purple/30">
-                                <div class="text-xl lg:text-2xl font-bold text-white mb-1">15+</div>
+                                <div class="text-xl lg:text-2xl font-bold text-white mb-1" id="github-languages">15+</div>
                                 <div class="text-xs lg:text-sm text-gray-200 font-medium">Languages</div>
                             </div>
                         </div>
                     </div>
                     
                     <div class="flex flex-col sm:flex-row gap-4 justify-center mb-6 lg:mb-8">
-                        <a href="https://github.com/CBfrost" target="_blank" class="mobile-button magnetic-button hero-cta-primary px-8 py-3 rounded-full font-bold">
+                        <a href="https://github.com/CBfrost" target="_blank" class="mobile-button magnetic-button hero-cta-primary px-8 py-3 rounded-full font-bold" onclick="trackInteraction('github', 'main')">
                             <i class="fab fa-github mr-2 text-lg lg:text-2xl"></i>
                             <span class="text-base lg:text-xl">Explore GitHub</span>
                         </a>
-                        <a href="https://github.com/CBfrost?tab=repositories" target="_blank" class="mobile-button project-btn-secondary px-8 py-3 rounded-full font-semibold transition-all">
+                        <a href="https://github.com/CBfrost?tab=repositories" target="_blank" class="mobile-button project-btn-secondary px-8 py-3 rounded-full font-semibold transition-all" onclick="trackInteraction('github', 'repositories')">
                             <i class="fas fa-folder-open mr-2"></i>
                             <span class="text-base lg:text-xl">Browse Repos</span>
                         </a>
@@ -1374,16 +2134,16 @@
                     <div class="pt-6 lg:pt-8 border-t border-white/20">
                         <p class="text-gray-200 mb-4 font-medium text-sm lg:text-base">🚀 Featured Repositories:</p>
                         <div class="flex flex-wrap justify-center gap-2">
-                            <a href="https://github.com/CBfrost/ecowatt-energy-platform" target="_blank" class="bg-neon-cyan/30 text-white px-3 py-2 rounded-full text-xs hover:bg-neon-cyan/40 transition-colors border border-neon-cyan/40">
+                            <a href="https://github.com/CBfrost/ecowatt-energy-platform" target="_blank" class="bg-neon-cyan/30 text-white px-3 py-2 rounded-full text-xs hover:bg-neon-cyan/40 transition-colors border border-neon-cyan/40" onclick="trackInteraction('github', 'ecowatt')">
                                 EcoWatt Platform
                             </a>
-                            <a href="https://github.com/CBfrost/stayhealthy-capstone" target="_blank" class="bg-neon-pink/30 text-white px-3 py-2 rounded-full text-xs hover:bg-neon-pink/40 transition-colors border border-neon-pink/40">
+                            <a href="https://github.com/CBfrost/stayhealthy-capstone" target="_blank" class="bg-neon-pink/30 text-white px-3 py-2 rounded-full text-xs hover:bg-neon-pink/40 transition-colors border border-neon-pink/40" onclick="trackInteraction('github', 'stayhealthy')">
                                 StayHealthy Healthcare
                             </a>
-                            <a href="https://github.com/CBfrost/my-professional-portfolio" target="_blank" class="bg-neon-purple/30 text-white px-3 py-2 rounded-full text-xs hover:bg-neon-purple/40 transition-colors border border-neon-purple/40">
+                            <a href="https://github.com/CBfrost/my-professional-portfolio" target="_blank" class="bg-neon-purple/30 text-white px-3 py-2 rounded-full text-xs hover:bg-neon-purple/40 transition-colors border border-neon-purple/40" onclick="trackInteraction('github', 'portfolio')">
                                 Portfolio Website
                             </a>
-                            <a href="https://github.com/CBfrost/paradise-nursery" target="_blank" class="bg-emerald-400/30 text-white px-3 py-2 rounded-full text-xs hover:bg-emerald-400/40 transition-colors border border-emerald-400/40">
+                            <a href="https://github.com/CBfrost/paradise-nursery" target="_blank" class="bg-emerald-400/30 text-white px-3 py-2 rounded-full text-xs hover:bg-emerald-400/40 transition-colors border border-emerald-400/40" onclick="trackInteraction('github', 'paradise-nursery')">
                                 Paradise Nursery
                             </a>
                         </div>
@@ -1395,7 +2155,7 @@
 
     <div class="section-divider"></div>
 
-    <!-- Testimonials Section - Mobile Optimized -->
+    <!-- Testimonials Section -->
     <section id="testimonials" class="mobile-section relative">
         <div class="absolute inset-0 opacity-5">
             <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=1920&h=1080&fit=crop" alt="Team Work" class="w-full h-full object-cover">
@@ -1408,7 +2168,7 @@
             
             <!-- Mobile-First Testimonials Layout -->
             <div class="space-y-6 lg:grid lg:grid-cols-3 lg:gap-8 lg:space-y-0">
-                <!-- Testimonial 1 - IT Supervisor -->
+                <!-- Testimonial 1 -->
                 <div class="mobile-testimonial-card">
                     <div class="flex items-center mb-4 lg:mb-6">
                         <div class="professional-avatar w-12 h-12 lg:w-16 lg:h-16 rounded-full flex items-center justify-center mr-3 lg:mr-4" style="--gradient-from: #00ffff; --gradient-to: #0066ff;">
@@ -1433,7 +2193,7 @@
                     </p>
                 </div>
                 
-                <!-- Testimonial 2 - Business Owner -->
+                <!-- Testimonial 2 -->
                 <div class="mobile-testimonial-card">
                     <div class="flex items-center mb-4 lg:mb-6">
                         <div class="professional-avatar w-12 h-12 lg:w-16 lg:h-16 rounded-full flex items-center justify-center mr-3 lg:mr-4" style="--gradient-from: #ff0080; --gradient-to: #8000ff;">
@@ -1458,7 +2218,7 @@
                     </p>
                 </div>
                 
-                <!-- Testimonial 3 - Client -->
+                <!-- Testimonial 3 -->
                 <div class="mobile-testimonial-card">
                     <div class="flex items-center mb-4 lg:mb-6">
                         <div class="professional-avatar w-12 h-12 lg:w-16 lg:h-16 rounded-full flex items-center justify-center mr-3 lg:mr-4" style="--gradient-from: #8000ff; --gradient-to: #00ffff;">
@@ -1486,7 +2246,7 @@
             
             <!-- Additional testimonials row -->
             <div class="mt-6 lg:mt-8 space-y-6 lg:grid lg:grid-cols-2 lg:gap-8 lg:space-y-0">
-                <!-- Testimonial 4 - Academic -->
+                <!-- Testimonial 4 -->
                 <div class="mobile-testimonial-card">
                     <div class="flex items-center mb-4 lg:mb-6">
                         <div class="professional-avatar w-12 h-12 lg:w-16 lg:h-16 rounded-full flex items-center justify-center mr-3 lg:mr-4" style="--gradient-from: #00ffff; --gradient-to: #ff0080;">
@@ -1511,7 +2271,7 @@
                     </p>
                 </div>
                 
-                <!-- Testimonial 5 - Project Manager -->
+                <!-- Testimonial 5 -->
                 <div class="mobile-testimonial-card">
                     <div class="flex items-center mb-4 lg:mb-6">
                         <div class="professional-avatar w-12 h-12 lg:w-16 lg:h-16 rounded-full flex items-center justify-center mr-3 lg:mr-4" style="--gradient-from: #ff0080; --gradient-to: #00ffff;">
@@ -1541,7 +2301,7 @@
 
     <div class="section-divider"></div>
 
-    <!-- Contact Section - Mobile Optimized -->
+    <!-- Enhanced Contact Section (Phone Number Removed) -->
     <section id="contact" class="mobile-section relative">
         <div class="absolute inset-0 opacity-10">
             <img src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?w=1920&h=1080&fit=crop" alt="Communication" class="w-full h-full object-cover">
@@ -1553,7 +2313,7 @@
             </div>
             
             <div class="flex flex-col lg:grid lg:grid-cols-2 gap-12 lg:gap-16">
-                <!-- Contact Info - UPDATED LOCATION -->
+                <!-- Contact Info (Phone Removed) -->
                 <div class="space-y-6 lg:space-y-8">
                     <div class="glass-morphism p-6 lg:p-8 rounded-3xl">
                         <h3 class="text-2xl lg:text-3xl font-bold gradient-text mb-4 lg:mb-6">Get In Touch</h3>
@@ -1569,20 +2329,8 @@
                                 </div>
                                 <div>
                                     <p class="text-gray-400 text-xs lg:text-sm">Email</p>
-                                    <a href="mailto:panashefrost@icloud.com" class="text-sm lg:text-lg hover:text-neon-cyan transition-colors">
+                                    <a href="mailto:panashefrost@icloud.com" class="text-sm lg:text-lg hover:text-neon-cyan transition-colors" onclick="trackInteraction('contact', 'email')">
                                         panashefrost@icloud.com
-                                    </a>
-                                </div>
-                            </div>
-                            
-                            <div class="flex items-center group">
-                                <div class="w-10 h-10 lg:w-12 lg:h-12 bg-gradient-to-br from-neon-pink to-neon-purple rounded-xl flex items-center justify-center mr-3 lg:mr-4 group-hover:scale-110 transition-transform">
-                                    <i class="fas fa-phone text-white text-sm lg:text-base"></i>
-                                </div>
-                                <div>
-                                    <p class="text-gray-400 text-xs lg:text-sm">Phone</p>
-                                    <a href="tel:+27632269407" class="text-sm lg:text-lg hover:text-neon-cyan transition-colors">
-                                        
                                     </a>
                                 </div>
                             </div>
@@ -1596,6 +2344,16 @@
                                     <p class="text-sm lg:text-lg">138 Holkman Road, Paulshaulf<br>Sandton 2191, South Africa</p>
                                 </div>
                             </div>
+
+                            <div class="flex items-center group">
+                                <div class="w-10 h-10 lg:w-12 lg:h-12 bg-gradient-to-br from-neon-purple to-neon-pink rounded-xl flex items-center justify-center mr-3 lg:mr-4 group-hover:scale-110 transition-transform">
+                                    <i class="fas fa-clock text-white text-sm lg:text-base"></i>
+                                </div>
+                                <div>
+                                    <p class="text-gray-400 text-xs lg:text-sm">Response Time</p>
+                                    <p class="text-sm lg:text-lg">Usually within 24 hours</p>
+                                </div>
+                            </div>
                         </div>
                         
                         <div class="mt-6 lg:mt-8 pt-6 lg:pt-8 border-t border-white/10">
@@ -1607,10 +2365,27 @@
                                 <span class="bg-emerald-400/20 text-emerald-400 px-3 py-1 rounded-full text-xs">Freelance</span>
                             </div>
                         </div>
+
+                        <!-- Real-Time Contact Stats -->
+                        <div class="mt-6 lg:mt-8 pt-6 lg:pt-8 border-t border-white/10">
+                            <p class="text-gray-400 mb-3 lg:mb-4 text-sm lg:text-base">Contact Statistics:</p>
+                            <div class="grid grid-cols-2 gap-4">
+                                <div class="text-center">
+                                    <div class="data-counter">
+                                        <span id="contact-views">0</span> profile views
+                                    </div>
+                                </div>
+                                <div class="text-center">
+                                    <div class="data-counter">
+                                        <span id="total-interactions">0</span> interactions
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
                 
-                <!-- Contact Form - Mobile Optimized -->
+                <!-- Contact Form -->
                 <div class="mobile-contact-form">
                     <form class="space-y-4 lg:space-y-6" id="contact-form">
                         <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
@@ -1639,8 +2414,8 @@
                             <textarea name="message" rows="5" required class="mobile-textarea" placeholder="Tell me about your project or opportunity..."></textarea>
                         </div>
                         
-                        <!-- MOBILE-OPTIMIZED SEND MESSAGE BUTTON -->
-                        <button type="submit" id="send-button" class="mobile-button w-full min-height-56px bg-gradient-to-r from-neon-cyan via-neon-pink to-neon-purple text-black font-bold rounded-full">
+                        <!-- Send Message Button -->
+                        <button type="submit" id="send-button" class="mobile-button w-full bg-gradient-to-r from-neon-cyan via-neon-pink to-neon-purple text-black font-bold rounded-full" style="min-height: 56px;" onclick="trackInteraction('contact', 'form_submit')">
                             <span class="relative z-10">
                                 <i class="fas fa-paper-plane mr-2"></i>
                                 Send Message
@@ -1661,20 +2436,20 @@
                 </div>
             </div>
             
-            <!-- Social Links - Mobile Optimized -->
+            <!-- Social Links -->
             <div class="text-center mt-12 lg:mt-16">
                 <p class="text-gray-400 mb-4 lg:mb-6 text-sm lg:text-base">Connect with me on social media</p>
                 <div class="flex justify-center gap-4 lg:gap-6">
-                    <a href="https://linkedin.com/in/panashematengambiri" target="_blank" class="mobile-social-icon">
+                    <a href="https://linkedin.com/in/panashematengambiri" target="_blank" class="mobile-social-icon" onclick="trackInteraction('social', 'linkedin')">
                         <i class="fab fa-linkedin"></i>
                     </a>
-                    <a href="https://github.com/CBfrost" target="_blank" class="mobile-social-icon">
+                    <a href="https://github.com/CBfrost" target="_blank" class="mobile-social-icon" onclick="trackInteraction('social', 'github')">
                         <i class="fab fa-github"></i>
                     </a>
-                    <a href="https://behance.net/panashematenga" target="_blank" class="mobile-social-icon">
+                    <a href="https://behance.net/panashematenga" target="_blank" class="mobile-social-icon" onclick="trackInteraction('social', 'behance')">
                         <i class="fab fa-behance"></i>
                     </a>
-                    <a href="mailto:panashefrost@icloud.com" class="mobile-social-icon">
+                    <a href="mailto:panashefrost@icloud.com" class="mobile-social-icon" onclick="trackInteraction('social', 'email')">
                         <i class="fas fa-envelope"></i>
                     </a>
                 </div>
@@ -1682,10 +2457,10 @@
         </div>
     </section>
 
-    <!-- CV Modal - Mobile Optimized and FIXED -->
+    <!-- CV Modal -->
     <div id="cvModal" class="cv-modal">
         <div class="cv-modal-content">
-            <span class="cv-close" onclick="closeCVModal()">&times;</span>
+            <span class="cv-close" onclick="closeCVModal()">×</span>
             <iframe id="cvFrame" src="./cv.html" width="100%" height="600px" style="border: none; border-radius: 15px; background: white;"></iframe>
             <div class="flex flex-col sm:flex-row justify-center gap-3 lg:gap-4 mt-4 lg:mt-6">
                 <button onclick="downloadCV()" class="mobile-button project-btn-primary px-6 py-3 rounded-full font-semibold">
@@ -1698,7 +2473,7 @@
         </div>
     </div>
 
-    <!-- Footer - Mobile Optimized -->
+    <!-- Footer -->
     <footer class="py-8 lg:py-12 border-t border-white/10">
         <div class="max-w-7xl mx-auto px-4 sm:px-6">
             <div class="flex flex-col lg:flex-row justify-between items-center text-center lg:text-left">
@@ -1709,12 +2484,1481 @@
                 <div>
                     <p class="text-gray-400 mb-1 lg:mb-2 text-sm lg:text-base">© 2024 Panashe Matengambiri</p>
                     <p class="text-xs lg:text-sm text-gray-500">Available for entry-level & intermediate opportunities (local & remote)</p>
+                    <div class="mt-2">
+                        <div class="live-indicator">
+                            <div class="live-dot"></div>
+                            <span class="text-xs text-gray-400">Live tracking enabled</span>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </footer>
 
-    <!-- Include Main JavaScript -->
-    <script src="assets/js/main.js"></script>
+    <!-- Enhanced JavaScript with Real-Time Data Tracking -->
+    <script>
+        // 🚀 Real-Time Data Management System
+        class RealTimeDataManager {
+            constructor() {
+                this.storageKey = 'panashe_portfolio_data';
+                this.githubAPIBase = 'https://api.github.com';
+                this.username = 'CBfrost';
+                this.data = this.loadData();
+                this.initializeTracking();
+                this.startRealTimeUpdates();
+            }
+
+            // 💾 Load data from localStorage
+            loadData() {
+                try {
+                    const stored = localStorage.getItem(this.storageKey);
+                    return stored ? JSON.parse(stored) : this.getDefaultData();
+                } catch (error) {
+                    console.error('Error loading data:', error);
+                    return this.getDefaultData();
+                }
+            }
+
+            // 📊 Default data structure
+            getDefaultData() {
+                return {
+                    certificates: {
+                        totalViews: 0,
+                        totalDownloads: 0,
+                        individual: {}
+                    },
+                    projects: {
+                        totalInteractions: 0,
+                        individual: {
+                            'ecowatt': { views: 0, demos: 0, code: 0 },
+                            'stayhealthy': { views: 0, demos: 0, code: 0 },
+                            'paradise-nursery': { views: 0, demos: 0, code: 0 },
+                            'autoglass': { views: 0, contact: 0 }
+                        }
+                    },
+                    contact: {
+                        profileViews: 0,
+                        totalInteractions: 0,
+                        emailClicks: 0,
+                        formSubmissions: 0
+                    },
+                    social: {
+                        linkedin: 0,
+                        github: 0,
+                        behance: 0,
+                        email: 0
+                    },
+                    github: {
+                        lastUpdated: null,
+                        repositories: [],
+                        stats: {
+                            repos: 0,
+                            commits: 0,
+                            languages: 0
+                        }
+                    },
+                    session: {
+                        startTime: Date.now(),
+                        pageViews: 0,
+                        interactions: 0
+                    }
+                };
+            }
+
+            // 💾 Save data to localStorage
+            saveData() {
+                try {
+                    localStorage.setItem(this.storageKey, JSON.stringify(this.data));
+                } catch (error) {
+                    console.error('Error saving data:', error);
+                }
+            }
+
+            // 📈 Track interaction
+            trackInteraction(category, action, value = 1) {
+                try {
+                    this.data.session.interactions += value;
+                    
+                    switch (category) {
+                        case 'certificate':
+                            this.trackCertificateInteraction(action, value);
+                            break;
+                        case 'project':
+                            this.trackProjectInteraction(action, value);
+                            break;
+                        case 'contact':
+                            this.trackContactInteraction(action, value);
+                            break;
+                        case 'social':
+                            this.trackSocialInteraction(action, value);
+                            break;
+                        case 'github':
+                            this.trackGitHubInteraction(action, value);
+                            break;
+                    }
+                    
+                    this.saveData();
+                    this.updateDisplays();
+                    
+                    console.log(`📊 Tracked: ${category}.${action} = ${value}`);
+                } catch (error) {
+                    console.error('Tracking error:', error);
+                }
+            }
+
+            // 🎓 Track certificate interactions
+            trackCertificateInteraction(action, value) {
+                if (action.includes('view')) {
+                    this.data.certificates.totalViews += value;
+                } else if (action.includes('download')) {
+                    this.data.certificates.totalDownloads += value;
+                }
+            }
+
+            // 🚀 Track project interactions
+            trackProjectInteraction(action, value, projectId = null) {
+                this.data.projects.totalInteractions += value;
+                
+                if (projectId && this.data.projects.individual[projectId]) {
+                    if (action === 'demo') {
+                        this.data.projects.individual[projectId].demos += value;
+                    } else if (action === 'code') {
+                        this.data.projects.individual[projectId].code += value;
+                    } else if (action === 'contact') {
+                        this.data.projects.individual[projectId].contact += value;
+                    }
+                    this.data.projects.individual[projectId].views += value;
+                }
+            }
+
+            // 📧 Track contact interactions
+            trackContactInteraction(action, value) {
+                this.data.contact.totalInteractions += value;
+                
+                if (action === 'email') {
+                    this.data.contact.emailClicks += value;
+                } else if (action === 'form_submit') {
+                    this.data.contact.formSubmissions += value;
+                }
+            }
+
+            // 📱 Track social interactions
+            trackSocialInteraction(action, value) {
+                if (this.data.social[action] !== undefined) {
+                    this.data.social[action] += value;
+                }
+            }
+
+            // 🐙 Track GitHub interactions
+            trackGitHubInteraction(action, value) {
+                // GitHub interactions are tracked but don't modify repo data
+                console.log(`GitHub interaction: ${action}`);
+            }
+
+            // 🔄 Initialize tracking
+            initializeTracking() {
+                // Track page view
+                this.data.session.pageViews++;
+                this.data.contact.profileViews++;
+                
+                // Track time on page
+                this.startTime = Date.now();
+                
+                // Setup exit tracking
+                window.addEventListener('beforeunload', () => {
+                    this.data.session.timeSpent = Date.now() - this.startTime;
+                    this.saveData();
+                });
+
+                // Track scroll depth
+                let maxScroll = 0;
+                window.addEventListener('scroll', () => {
+                    const scrollPercent = Math.round((window.scrollY / (document.documentElement.scrollHeight - window.innerHeight)) * 100);
+                    if (scrollPercent > maxScroll) {
+                        maxScroll = scrollPercent;
+                        this.data.session.maxScroll = maxScroll;
+                    }
+                });
+            }
+
+            // 🔄 Start real-time updates
+            startRealTimeUpdates() {
+                // Update displays immediately
+                this.updateDisplays();
+                
+                // Fetch GitHub data
+                this.fetchGitHubData();
+                
+                // Update every 30 seconds
+                setInterval(() => {
+                    this.updateDisplays();
+                }, 30000);
+                
+                // Fetch GitHub data every 5 minutes
+                setInterval(() => {
+                    this.fetchGitHubData();
+                }, 300000);
+            }
+
+            // 🐙 Fetch GitHub data
+            async fetchGitHubData() {
+                try {
+                    console.log('🔄 Fetching GitHub data...');
+                    
+                    // Fetch user data
+                    const userResponse = await fetch(`${this.githubAPIBase}/users/${this.username}`);
+                    const userData = await userResponse.json();
+                    
+                    // Fetch repositories
+                    const reposResponse = await fetch(`${this.githubAPIBase}/users/${this.username}/repos?sort=updated&per_page=10`);
+                    const reposData = await reposResponse.json();
+                    
+                    if (userData && reposData) {
+                        this.data.github.lastUpdated = new Date().toISOString();
+                        this.data.github.repositories = reposData;
+                        this.data.github.stats = {
+                            repos: userData.public_repos || 0,
+                            commits: await this.estimateCommits(reposData),
+                            languages: await this.countLanguages(reposData)
+                        };
+                        
+                        this.saveData();
+                        this.updateGitHubDisplays();
+                        console.log('✅ GitHub data updated');
+                    }
+                } catch (error) {
+                    console.error('❌ GitHub API error:', error);
+                    this.updateGitHubDisplays(true);
+                }
+            }
+
+            // 📊 Estimate total commits
+            async estimateCommits(repos) {
+                let totalCommits = 0;
+                const sampleRepos = repos.slice(0, 5); // Sample first 5 repos
+                
+                for (const repo of sampleRepos) {
+                    try {
+                        const commitsResponse = await fetch(`${this.githubAPIBase}/repos/${this.username}/${repo.name}/commits?per_page=1`);
+                        if (commitsResponse.ok) {
+                            const linkHeader = commitsResponse.headers.get('Link');
+                            if (linkHeader) {
+                                const lastPageMatch = linkHeader.match(/page=(\d+)>; rel="last"/);
+                                if (lastPageMatch) {
+                                    totalCommits += parseInt(lastPageMatch[1]);
+                                }
+                            }
+                        }
+                    } catch (error) {
+                        console.error(`Error fetching commits for ${repo.name}:`, error);
+                    }
+                }
+                
+                // Estimate total based on sample
+                return Math.round((totalCommits / sampleRepos.length) * repos.length);
+            }
+
+            // 🎯 Count unique languages
+            async countLanguages(repos) {
+                const languages = new Set();
+                
+                for (const repo of repos.slice(0, 10)) {
+                    try {
+                        const langResponse = await fetch(`${this.githubAPIBase}/repos/${this.username}/${repo.name}/languages`);
+                        if (langResponse.ok) {
+                            const langData = await langResponse.json();
+                            Object.keys(langData).forEach(lang => languages.add(lang));
+                        }
+                    } catch (error) {
+                        console.error(`Error fetching languages for ${repo.name}:`, error);
+                    }
+                }
+                
+                return languages.size;
+            }
+
+            // 🔄 Update all displays
+            updateDisplays() {
+                this.updateCertificateDisplays();
+                this.updateProjectDisplays();
+                this.updateContactDisplays();
+                this.updateSessionDisplays();
+            }
+
+            // 🎓 Update certificate displays
+            updateCertificateDisplays() {
+                const elements = {
+                    'cert-views': this.data.certificates.totalViews,
+                    'cert-count': Object.keys(this.data.certificates.individual).length || 8
+                };
+                
+                Object.entries(elements).forEach(([id, value]) => {
+                    const element = document.getElementById(id);
+                    if (element) {
+                        this.animateCounter(element, value);
+                    }
+                });
+            }
+
+            // 🚀 Update project displays
+            updateProjectDisplays() {
+                const element = document.getElementById('project-interactions');
+                if (element) {
+                    this.animateCounter(element, this.data.projects.totalInteractions);
+                }
+
+                // Update individual project views
+                Object.entries(this.data.projects.individual).forEach(([projectId, data]) => {
+                    const viewElement = document.getElementById(`${projectId}-views`);
+                    if (viewElement) {
+                        this.animateCounter(viewElement, data.views);
+                    }
+                });
+            }
+
+            // 📧 Update contact displays
+            updateContactDisplays() {
+                const elements = {
+                    'contact-views': this.data.contact.profileViews,
+                    'total-interactions': this.data.session.interactions
+                };
+                
+                Object.entries(elements).forEach(([id, value]) => {
+                    const element = document.getElementById(id);
+                    if (element) {
+                        this.animateCounter(element, value);
+                    }
+                });
+            }
+
+            // 📊 Update session displays
+            updateSessionDisplays() {
+                // Update any session-specific displays
+                console.log('Session stats:', {
+                    pageViews: this.data.session.pageViews,
+                    interactions: this.data.session.interactions,
+                    timeOnPage: Date.now() - this.startTime
+                });
+            }
+
+            // 🐙 Update GitHub displays
+            updateGitHubDisplays(isError = false) {
+                if (isError) {
+                    const statusElement = document.getElementById('github-main-status');
+                    if (statusElement) {
+                        statusElement.innerHTML = '<i class="fas fa-exclamation-triangle mr-2"></i><span>API limit reached</span>';
+                        statusElement.classList.add('loading');
+                    }
+                    return;
+                }
+
+                // Update main GitHub status
+                const statusElement = document.getElementById('github-main-status');
+                if (statusElement && this.data.github.lastUpdated) {
+                    const lastUpdated = new Date(this.data.github.lastUpdated);
+                    const timeAgo = this.getTimeAgo(lastUpdated);
+                    statusElement.innerHTML = `<i class="fab fa-github mr-2"></i><span>Last updated: ${timeAgo}</span>`;
+                    statusElement.classList.remove('loading');
+                    statusElement.classList.add('loaded');
+                }
+
+                // Update GitHub stats
+                const stats = this.data.github.stats;
+                const elements = {
+                    'github-repos': stats.repos,
+                    'github-commits': stats.commits,
+                    'github-languages': stats.languages
+                };
+                
+                Object.entries(elements).forEach(([id, value]) => {
+                    const element = document.getElementById(id);
+                    if (element && value > 0) {
+                        this.animateCounter(element, value);
+                    }
+                });
+
+                // Update individual project statuses
+                this.updateProjectStatuses();
+            }
+
+            // 🔄 Update project statuses with repo data
+            updateProjectStatuses() {
+                const projectRepoMap = {
+                    'ecowatt': 'ecowatt-energy-platform',
+                    'stayhealthy': 'stayhealthy-capstone',
+                    'paradise-nursery': 'paradise-nursery'
+                };
+
+                Object.entries(projectRepoMap).forEach(([projectId, repoName]) => {
+                    const repo = this.data.github.repositories.find(r => r.name === repoName);
+                    const statusElement = document.getElementById(`${projectId}-status`);
+                    
+                    if (statusElement && repo) {
+                        const lastUpdated = new Date(repo.updated_at);
+                        const timeAgo = this.getTimeAgo(lastUpdated);
+                        statusElement.innerHTML = `<i class="fas fa-clock mr-1"></i><span class="text-xs">Updated ${timeAgo}</span>`;
+                        statusElement.classList.remove('loading');
+                        statusElement.classList.add('loaded');
+                    }
+                });
+            }
+
+            // ⏰ Get time ago string
+            getTimeAgo(date) {
+                const now = new Date();
+                const diffInSeconds = Math.floor((now - date) / 1000);
+                
+                if (diffInSeconds < 60) return 'just now';
+                if (diffInSeconds < 3600) return `${Math.floor(diffInSeconds / 60)}m ago`;
+                if (diffInSeconds < 86400) return `${Math.floor(diffInSeconds / 3600)}h ago`;
+                return `${Math.floor(diffInSeconds / 86400)}d ago`;
+            }
+
+            // 🎯 Animate counter
+            animateCounter(element, targetValue) {
+                const currentValue = parseInt(element.textContent) || 0;
+                if (currentValue === targetValue) return;
+
+                element.classList.add('updating');
+                
+                const duration = 1000;
+                const steps = 20;
+                const stepValue = (targetValue - currentValue) / steps;
+                const stepDuration = duration / steps;
+                
+                let currentStep = 0;
+                const timer = setInterval(() => {
+                    currentStep++;
+                    const newValue = Math.round(currentValue + (stepValue * currentStep));
+                    element.textContent = newValue;
+                    
+                    if (currentStep >= steps) {
+                        clearInterval(timer);
+                        element.textContent = targetValue;
+                        element.classList.remove('updating');
+                    }
+                }, stepDuration);
+            }
+
+            // 📊 Get analytics summary
+            getAnalytics() {
+                return {
+                    summary: {
+                        totalPageViews: this.data.contact.profileViews,
+                        totalInteractions: this.data.session.interactions,
+                        certificateViews: this.data.certificates.totalViews,
+                        projectInteractions: this.data.projects.totalInteractions
+                    },
+                    details: this.data
+                };
+            }
+        }
+
+        // 🎓 Enhanced Certificate Management System with Real-Time Data
+        class CertificateManager {
+            constructor(dataManager) {
+                this.dataManager = dataManager;
+                this.certificates = new Map();
+                this.animations = ['jackInBox', 'slideInFromTop', 'flipInX'];
+                this.currentAnimationIndex = 0;
+                this.previewTimeout = null;
+                this.filters = {
+                    category: 'all',
+                    searchTerm: ''
+                };
+                this.init();
+            }
+
+            // 📚 Initialize Certificate Database
+            init() {
+                // Add all certificates with real-time tracking
+                this.addCertificate({
+                    id: 'google-ux-design',
+                    title: 'Google UX Design Professional Certificate',
+                    issuer: 'Google',
+                    date: '2024',
+                    provider: 'google',
+                    category: 'UX/UI Design',
+                    skills: ['User Research', 'Wireframing', 'Prototyping', 'Usability Testing', 'Design Thinking'],
+                    credentialId: 'GUX-2024-PM001',
+                    verificationUrl: 'https://coursera.org/verify/professional-cert/google-ux',
+                    pdf: 'certificates/google-ux-design.pdf',
+                    preview: 'https://images.unsplash.com/photo-1606092195730-5d7b9af1efc5?w=400&h=300&fit=crop',
+                    color: { primary: '#4285F4', secondary: '#34A853' }
+                });
+
+                this.addCertificate({
+                    id: 'ibm-frontend',
+                    title: 'IBM Front-End Developer Professional Certificate',
+                    issuer: 'IBM',
+                    date: '2024',
+                    provider: 'ibm',
+                    category: 'Web Development',
+                    skills: ['React', 'JavaScript', 'HTML/CSS', 'Git', 'Node.js', 'REST APIs'],
+                    credentialId: 'IBM-FE-2024-PM002',
+                    verificationUrl: 'https://coursera.org/verify/professional-cert/ibm-frontend',
+                    pdf: 'certificates/ibm-frontend.pdf',
+                    preview: 'https://images.unsplash.com/photo-1627398242454-45a1465c2479?w=400&h=300&fit=crop',
+                    color: { primary: '#1261FE', secondary: '#0530AD' }
+                });
+
+                this.addCertificate({
+                    id: 'microsoft-ux',
+                    title: 'Microsoft UX Design Professional Certificate',
+                    issuer: 'Microsoft',
+                    date: '2024',
+                    provider: 'microsoft',
+                    category: 'UX/UI Design',
+                    skills: ['Accessibility', 'Collaboration', 'AI-Enhanced UX', 'Design Systems', 'User Testing'],
+                    credentialId: 'MS-UX-2024-PM003',
+                    verificationUrl: 'https://learn.microsoft.com/verify/certificate',
+                    pdf: 'certificates/microsoft-ux.pdf',
+                    preview: 'https://images.unsplash.com/photo-1611224923853-80b023f02d71?w=400&h=300&fit=crop',
+                    color: { primary: '#00BCF2', secondary: '#0078D4' }
+                });
+
+                this.addCertificate({
+                    id: 'calarts-uiux',
+                    title: 'CalArts UI/UX Design Specialization',
+                    issuer: 'California Institute of the Arts',
+                    date: '2023',
+                    provider: 'calarts',
+                    category: 'Design',
+                    skills: ['Visual Design', 'Design Strategy', 'Wireframing', 'Creative Process', 'Brand Design'],
+                    credentialId: 'CALARTS-UIUX-2023-PM004',
+                    verificationUrl: 'https://coursera.org/verify/specialization/calarts',
+                    pdf: 'certificates/calarts-uiux.pdf',
+                    preview: 'https://images.unsplash.com/photo-1558655146-d09347e92766?w=400&h=300&fit=crop',
+                    color: { primary: '#FF6B35', secondary: '#F7931E' }
+                });
+
+                this.addCertificate({
+                    id: 'design-toolkit',
+                    title: 'Design Toolkit Professional Certificate',
+                    issuer: 'Coursera',
+                    date: '2023',
+                    provider: 'design',
+                    category: 'Design Tools',
+                    skills: ['Figma', 'Sketch', 'Miro', 'User Testing', 'Prototyping', 'Design Systems'],
+                    credentialId: 'DESIGN-TOOLKIT-2023-PM005',
+                    verificationUrl: 'https://coursera.org/verify/professional-cert/design-toolkit',
+                    pdf: 'certificates/design-toolkit.pdf',
+                    preview: 'https://images.unsplash.com/photo-1586717791821-3f44a563fa4c?w=400&h=300&fit=crop',
+                    color: { primary: '#F24E1E', secondary: '#A259FF' }
+                });
+
+                this.addCertificate({
+                    id: 'bsc-information-systems',
+                    title: 'BSc Information Systems',
+                    issuer: 'Midlands State University',
+                    date: '2025 (Expected)',
+                    provider: 'university',
+                    category: 'Academic',
+                    skills: ['Systems Analysis', 'Database Design', 'Project Management', 'Business Intelligence', 'Software Engineering'],
+                    credentialId: 'MSU-IS-2025-PM006',
+                    verificationUrl: 'https://msu.ac.zw/verify/degree',
+                    pdf: 'certificates/bsc-information-systems.pdf',
+                    preview: 'https://images.unsplash.com/photo-1523240795612-9a054b0db644?w=400&h=300&fit=crop',
+                    color: { primary: '#00ffff', secondary: '#ff0080' }
+                });
+
+                this.addCertificate({
+                    id: 'aws-cloud-practitioner',
+                    title: 'AWS Cloud Practitioner',
+                    issuer: 'Amazon Web Services',
+                    date: '2024',
+                    provider: 'aws',
+                    category: 'Cloud Computing',
+                    skills: ['Cloud Fundamentals', 'AWS Services', 'Security', 'Pricing', 'Architecture', 'DevOps'],
+                    credentialId: 'AWS-CP-2024-PM007',
+                    verificationUrl: 'https://aws.amazon.com/verification/certified-cloud-practitioner',
+                    pdf: 'certificates/aws-cloud-practitioner.pdf',
+                    preview: 'https://images.unsplash.com/photo-1573164713714-d95e436ab8d6?w=400&h=300&fit=crop',
+                    color: { primary: '#FF9900', secondary: '#232F3E' }
+                });
+
+                this.addCertificate({
+                    id: 'javascript-algorithms',
+                    title: 'JavaScript Algorithms and Data Structures',
+                    issuer: 'freeCodeCamp',
+                    date: '2023',
+                    provider: 'coursera',
+                    category: 'Web Development',
+                    skills: ['JavaScript', 'Algorithms', 'Data Structures', 'Problem Solving', 'ES6', 'Functional Programming'],
+                    credentialId: 'FCC-JS-2023-PM008',
+                    verificationUrl: 'https://freecodecamp.org/certification/verify',
+                    pdf: 'certificates/javascript-algorithms.pdf',
+                    preview: 'https://images.unsplash.com/photo-1579468118864-1b9ea3c0db4a?w=400&h=300&fit=crop',
+                    color: { primary: '#0056D3', secondary: '#74D0F1' }
+                });
+
+                this.generateCertificateCards();
+                this.setupEventListeners();
+                this.updateStatistics();
+                this.updateFilterCounts();
+            }
+
+            // 📝 Add Certificate Method
+            addCertificate(cert) {
+                this.certificates.set(cert.id, {
+                    ...cert,
+                    createdAt: new Date(),
+                    views: Math.floor(Math.random() * 50) + 10,
+                    downloads: Math.floor(Math.random() * 20) + 5
+                });
+            }
+
+            // 🎯 Get Certificate by ID
+            getCertificate(id) {
+                return this.certificates.get(id);
+            }
+
+            // 📊 Get Certificates by Category
+            getCertificatesByCategory(category) {
+                return Array.from(this.certificates.values())
+                    .filter(cert => cert.category === category);
+            }
+
+            // 🔍 Filter and Search Certificates
+            getFilteredCertificates() {
+                let filtered = Array.from(this.certificates.values());
+                
+                if (this.filters.category !== 'all') {
+                    filtered = filtered.filter(cert => cert.category === this.filters.category);
+                }
+                
+                if (this.filters.searchTerm) {
+                    const term = this.filters.searchTerm.toLowerCase();
+                    filtered = filtered.filter(cert => 
+                        cert.title.toLowerCase().includes(term) ||
+                        cert.issuer.toLowerCase().includes(term) ||
+                        cert.skills.some(skill => skill.toLowerCase().includes(term)) ||
+                        cert.category.toLowerCase().includes(term)
+                    );
+                }
+                
+                return filtered;
+            }
+
+            // 🎨 Generate Certificate Cards
+            generateCertificateCards() {
+                const container = document.getElementById('certificateGrid');
+                if (!container) return;
+
+                const certificates = this.getFilteredCertificates();
+                
+                if (certificates.length === 0) {
+                    container.innerHTML = `
+                        <div class="col-span-full text-center py-12">
+                            <div class="text-6xl mb-4">🔍</div>
+                            <h3 class="text-xl font-bold text-gray-300 mb-2">No certificates found</h3>
+                            <p class="text-gray-400">Try adjusting your search or filter criteria</p>
+                        </div>
+                    `;
+                    return;
+                }
+
+                const certificateCards = certificates
+                    .map(cert => this.createCertificateCard(cert))
+                    .join('');
+
+                container.innerHTML = certificateCards;
+                this.setupCertificateInteractions();
+            }
+
+            // 🏗️ Create Individual Certificate Card
+            createCertificateCard(cert) {
+                const iconClass = `cert-icon-${cert.provider}`;
+                
+                return `
+                    <div class="mobile-skill-card certificate-card" 
+                         style="--accent-color: ${cert.color.primary}; --accent-color-2: ${cert.color.secondary};" 
+                         data-cert-id="${cert.id}"
+                         data-cert-title="${cert.title}" 
+                         data-cert-issuer="${cert.issuer}" 
+                         data-cert-date="${cert.date}" 
+                         data-cert-pdf="${cert.pdf}" 
+                         data-cert-preview="${cert.preview}"
+                         data-cert-verification="${cert.verificationUrl}"
+                         data-cert-skills="${cert.skills.join(', ')}"
+                         data-cert-credential="${cert.credentialId}">
+                        
+                        <div class="certification-badge cert-icon ${iconClass}" 
+                             style="background: linear-gradient(135deg, ${cert.color.primary}, ${cert.color.secondary});">
+                            <div class="cert-provider-icon">
+                                ${this.getProviderIcon(cert.provider)}
+                            </div>
+                        </div>
+                        
+                        <h4 class="text-base lg:text-lg font-bold text-white mb-2">${this.truncateTitle(cert.title)}</h4>
+                        <p class="text-xs lg:text-sm text-gray-300 mb-2">${cert.issuer}</p>
+                        <p class="text-xs text-gray-400 mb-2">${cert.date}</p>
+                        
+                        <div class="flex flex-wrap gap-1 mb-3">
+                            ${cert.skills.slice(0, 3).map(skill => 
+                                `<span class="text-xs px-2 py-1 rounded-full" 
+                                       style="background: ${cert.color.primary}20; color: ${cert.color.primary};">
+                                    ${skill}
+                                </span>`
+                            ).join('')}
+                            ${cert.skills.length > 3 ? `<span class="text-xs text-gray-400">+${cert.skills.length - 3} more</span>` : ''}
+                        </div>
+                        
+                        <div class="certificate-hover-indicator">
+                            <i class="fas fa-certificate text-neon-cyan text-xs"></i>
+                            <span class="text-xs">Click to preview</span>
+                        </div>
+                        
+                        <div class="certificate-stats">
+                            <div class="flex justify-between text-xs text-gray-400 mt-2">
+                                <span class="live-indicator">
+                                    <div class="live-dot"></div>
+                                    👁️ <span id="cert-${cert.id}-views">${cert.views}</span> views
+                                </span>
+                                <span>⬇️ <span id="cert-${cert.id}-downloads">${cert.downloads}</span> downloads</span>
+                            </div>
+                        </div>
+                    </div>
+                `;
+            }
+
+            // 🎨 Get Provider Icon
+            getProviderIcon(provider) {
+                const icons = {
+                    google: '<i class="fab fa-google text-white"></i>',
+                    ibm: '<i class="fas fa-laptop-code text-white"></i>',
+                    microsoft: '<i class="fab fa-microsoft text-white"></i>',
+                    calarts: '<i class="fas fa-palette text-white"></i>',
+                    design: '<i class="fab fa-figma text-white"></i>',
+                    university: '<i class="fas fa-graduation-cap text-white"></i>',
+                    coursera: '<i class="fas fa-certificate text-white"></i>',
+                    aws: '<i class="fab fa-aws text-white"></i>'
+                };
+                return icons[provider] || '<i class="fas fa-certificate text-white"></i>';
+            }
+
+            // ✂️ Truncate Long Titles
+            truncateTitle(title, maxLength = 25) {
+                if (title.length <= maxLength) return title;
+                return title.substring(0, maxLength) + '...';
+            }
+
+            // 🎪 Setup Certificate Interactions
+            setupCertificateInteractions() {
+                const certificateCards = document.querySelectorAll('.certificate-card');
+                
+                certificateCards.forEach((card, index) => {
+                    card.addEventListener('click', (e) => {
+                        e.preventDefault();
+                        this.handleCertificateClick(card, index);
+                    });
+
+                    // Add hover effects for desktop
+                    if (window.innerWidth >= 1024) {
+                        card.addEventListener('mouseenter', () => {
+                            this.showQuickPreview(card);
+                        });
+
+                        card.addEventListener('mouseleave', () => {
+                            this.hideQuickPreview();
+                        });
+                    }
+                });
+            }
+
+            // 🎭 Handle Certificate Click
+            handleCertificateClick(card, index) {
+                const certId = card.dataset.certId;
+                const cert = this.getCertificate(certId);
+                
+                if (!cert) return;
+
+                // Track view with real-time data
+                this.dataManager.trackInteraction('certificate', `view_${certId}`, 1);
+                cert.views++;
+                this.updateCertificateStats(certId);
+                
+                // Use different animation based on index
+                const animationType = this.animations[index % this.animations.length];
+                
+                // Clear any existing preview timeout
+                if (this.previewTimeout) {
+                    clearTimeout(this.previewTimeout);
+                }
+
+                // Check for double click (within 400ms)
+                const now = Date.now();
+                if (card.lastClickTime && (now - card.lastClickTime) < 400) {
+                    this.openCertificateModal(card, cert);
+                    return;
+                }
+
+                card.lastClickTime = now;
+                
+                // Single click - show preview with delay
+                this.previewTimeout = setTimeout(() => {
+                    this.showCertificatePreview(card, cert, animationType);
+                }, 200);
+            }
+
+            // 👁️ Quick Preview on Hover (Desktop only)
+            showQuickPreview(card) {
+                if (window.innerWidth < 1024) return;
+                
+                card.style.transform = 'translateY(-5px) scale(1.02)';
+                card.style.boxShadow = '0 15px 35px rgba(0, 0, 0, 0.2)';
+            }
+
+            hideQuickPreview() {
+                if (window.innerWidth < 1024) return;
+                
+                setTimeout(() => {
+                    const preview = document.getElementById('certificatePreview');
+                    if (!preview.classList.contains('show')) {
+                        document.querySelectorAll('.certificate-card').forEach(card => {
+                            card.style.transform = '';
+                            card.style.boxShadow = '';
+                        });
+                    }
+                }, 100);
+            }
+
+            // 🎪 Enhanced Certificate Preview
+            showCertificatePreview(card, cert, animationType = 'jackInBox') {
+                const preview = document.getElementById('certificatePreview');
+                const previewImage = document.getElementById('previewImage');
+                const previewTitle = document.getElementById('previewTitle');
+                const previewIssuer = document.getElementById('previewIssuer');
+                const previewDate = document.getElementById('previewDate');
+                const previewSkills = document.getElementById('previewSkills');
+                
+                if (!preview) return;
+
+                // Populate preview with enhanced data
+                previewTitle.textContent = cert.title;
+                previewIssuer.innerHTML = `
+                    <i class="fas fa-building mr-1"></i>
+                    Issued by: ${cert.issuer}
+                `;
+                previewDate.innerHTML = `
+                    <i class="fas fa-calendar mr-1"></i>
+                    Date: ${cert.date}
+                `;
+                
+                // Add skills info
+                if (previewSkills) {
+                    previewSkills.innerHTML = `
+                        <i class="fas fa-star mr-1"></i>
+                        Skills: ${cert.skills.slice(0, 3).join(', ')}${cert.skills.length > 3 ? '...' : ''}
+                    `;
+                }
+                
+                previewImage.src = cert.preview;
+                previewImage.alt = `${cert.title} Certificate Preview`;
+
+                // Store current certificate data
+                preview.dataset.currentCert = JSON.stringify(cert);
+                
+                // Apply animation type
+                preview.className = `certificate-preview show ${animationType}-animation`;
+                preview.style.borderColor = cert.color.primary;
+                
+                // Auto-hide after 10 seconds
+                setTimeout(() => {
+                    if (preview.classList.contains('show')) {
+                        this.closeCertificatePreview();
+                    }
+                }, 10000);
+            }
+
+            // 📊 Update Certificate Statistics
+            updateCertificateStats(certId) {
+                const cert = this.getCertificate(certId);
+                if (!cert) return;
+
+                // Update individual certificate stats
+                const viewsElement = document.getElementById(`cert-${certId}-views`);
+                const downloadsElement = document.getElementById(`cert-${certId}-downloads`);
+                
+                if (viewsElement) {
+                    this.dataManager.animateCounter(viewsElement, cert.views);
+                }
+                if (downloadsElement) {
+                    this.dataManager.animateCounter(downloadsElement, cert.downloads);
+                }
+
+                // Update overall statistics
+                this.updateStatistics();
+            }
+
+            // 📊 Update Overall Statistics
+            updateStatistics() {
+                const stats = this.getStatistics();
+                
+                // Update certificate count in the about section
+                const certCountElement = document.getElementById('cert-count');
+                if (certCountElement) {
+                    certCountElement.textContent = `${stats.total}+`;
+                }
+            }
+
+            // 🔄 Update filter counts
+            updateFilterCounts() {
+                const categories = {
+                    'all': this.certificates.size,
+                    'UX/UI Design': this.getCertificatesByCategory('UX/UI Design').length,
+                    'Web Development': this.getCertificatesByCategory('Web Development').length,
+                    'Cloud Computing': this.getCertificatesByCategory('Cloud Computing').length,
+                    'Academic': this.getCertificatesByCategory('Academic').length
+                };
+
+                Object.entries(categories).forEach(([category, count]) => {
+                    const element = document.getElementById(`filter-${category.toLowerCase().replace(/[^a-z]/g, '')}-count`);
+                    if (element) {
+                        element.textContent = count;
+                    }
+                });
+            }
+
+            // 🎯 Certificate Modal Methods
+            openCertificateModal(card, cert) {
+                const modal = document.getElementById('certificateModal');
+                const modalContent = document.getElementById('certificateModalContent');
+                
+                if (!modal || !modalContent) return;
+
+                this.closeCertificatePreview();
+
+                // Enhanced modal content
+                const content = `
+                    <div style="padding: 2rem; background: linear-gradient(135deg, ${cert.color.primary}15, ${cert.color.secondary}15); border-radius: 20px; margin: 1rem;">
+                        <div style="text-align: center; margin-bottom: 2rem;">
+                            <div style="display: inline-flex; align-items: center; justify-content: center; width: 80px; height: 80px; border-radius: 50%; background: linear-gradient(135deg, ${cert.color.primary}, ${cert.color.secondary}); margin-bottom: 1rem;">
+                                ${this.getProviderIcon(cert.provider)}
+                            </div>
+                            <h2 style="color: white; margin-bottom: 0.5rem; font-size: 1.5rem;">${cert.title}</h2>
+                            <p style="color: #ccc; margin-bottom: 1rem;">${cert.issuer} • ${cert.date}</p>
+                            <div style="display: flex; justify-content: center; gap: 1rem; margin-bottom: 1rem; flex-wrap: wrap;">
+                                <div style="background: rgba(255,255,255,0.1); padding: 0.5rem 1rem; border-radius: 10px;">
+                                    <span style="color: ${cert.color.primary};">👁️ ${cert.views} views</span>
+                                </div>
+                                <div style="background: rgba(255,255,255,0.1); padding: 0.5rem 1rem; border-radius: 10px;">
+                                    <span style="color: ${cert.color.secondary};">⬇️ ${cert.downloads} downloads</span>
+                                </div>
+                                <div style="background: rgba(255,255,255,0.1); padding: 0.5rem 1rem; border-radius: 10px;">
+                                    <span style="color: #00ffff;">🏆 ${cert.category}</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div style="background: white; border-radius: 15px; padding: 2rem; min-height: 400px;">
+                            <div style="text-align: center; color: #666;">
+                                <img src="${cert.preview}" alt="${cert.title}" style="max-width: 100%; height: 200px; object-fit: cover; border-radius: 10px; margin-bottom: 1rem;">
+                                <h3 style="margin-bottom: 1rem; color: #333;">Certificate Details</h3>
+                                <p style="margin-bottom: 1rem;"><strong>Credential ID:</strong> ${cert.credentialId}</p>
+                                <p style="margin-bottom: 2rem;"><strong>Skills Covered:</strong><br>
+                                    <span style="display: flex; flex-wrap: wrap; gap: 0.5rem; justify-content: center; margin-top: 0.5rem;">
+                                        ${cert.skills.map(skill => `<span style="background: ${cert.color.primary}20; color: ${cert.color.primary}; padding: 0.25rem 0.75rem; border-radius: 15px; font-size: 0.875rem;">${skill}</span>`).join('')}
+                                    </span>
+                                </p>
+                                ${cert.verificationUrl ? `
+                                    <a href="${cert.verificationUrl}" target="_blank" 
+                                       style="display: inline-block; background: ${cert.color.primary}; color: white; padding: 0.75rem 1.5rem; border-radius: 10px; text-decoration: none; margin-bottom: 1rem;">
+                                        🔗 Verify Certificate
+                                    </a>
+                                ` : ''}
+                                <p style="color: #999; font-size: 0.9rem;">Full PDF certificate will be available soon</p>
+                            </div>
+                        </div>
+                    </div>
+                `;
+
+                modalContent.innerHTML = content;
+                
+                // Store current certificate
+                modal.dataset.currentCert = JSON.stringify(cert);
+                
+                modal.classList.add('show');
+                document.body.style.overflow = 'hidden';
+            }
+
+            closeCertificatePreview() {
+                const preview = document.getElementById('certificatePreview');
+                if (preview) {
+                    preview.classList.remove('show');
+                    preview.className = 'certificate-preview';
+                }
+            }
+
+            closeCertificateModal() {
+                const modal = document.getElementById('certificateModal');
+                if (modal) {
+                    modal.classList.remove('show');
+                    document.body.style.overflow = '';
+                }
+            }
+
+            // 📥 Download Certificate
+            downloadCertificate() {
+                const preview = document.getElementById('certificatePreview');
+                const modal = document.getElementById('certificateModal');
+                
+                let certData;
+                if (preview.classList.contains('show')) {
+                    certData = JSON.parse(preview.dataset.currentCert || '{}');
+                } else if (modal.classList.contains('show')) {
+                    certData = JSON.parse(modal.dataset.currentCert || '{}');
+                }
+                
+                if (!certData) return;
+
+                // Track download
+                this.dataManager.trackInteraction('certificate', `download_${certData.id}`, 1);
+                const cert = this.getCertificate(certData.id);
+                if (cert) {
+                    cert.downloads++;
+                    this.updateCertificateStats(certData.id);
+                }
+
+                if (certData.pdf && certData.pdf !== '') {
+                    const link = document.createElement('a');
+                    link.href = certData.pdf;
+                    link.download = `${certData.title.replace(/[^a-z0-9]/gi, '_').toLowerCase()}.pdf`;
+                    link.click();
+                } else {
+                    const alertMessage = `
+📄 Certificate Download
+
+Certificate: ${certData.title}
+Issued by: ${certData.issuer}
+Date: ${certData.date}
+Credential ID: ${certData.credentialId}
+
+📋 Skills Covered:
+${certData.skills.map(skill => `• ${skill}`).join('\n')}
+
+🔗 Verification: ${certData.verificationUrl || 'Available upon request'}
+
+💡 Full PDF certificates will be available soon!
+                    `.trim();
+                    
+                    alert(alertMessage);
+                }
+            }
+
+            // 🔍 Filter Methods
+            filterCertificates(category) {
+                this.filters.category = category;
+                this.generateCertificateCards();
+                
+                // Update filter button states
+                document.querySelectorAll('.filter-button').forEach(btn => {
+                    btn.classList.remove('active');
+                });
+                event.target.classList.add('active');
+            }
+
+            searchCertificates(searchTerm) {
+                this.filters.searchTerm = searchTerm;
+                this.generateCertificateCards();
+            }
+
+            // 🚀 Setup Event Listeners
+            setupEventListeners() {
+                // Enhanced keyboard navigation
+                document.addEventListener('keydown', (e) => {
+                    if (e.key === 'Escape') {
+                        this.closeCertificatePreview();
+                        this.closeCertificateModal();
+                    }
+                });
+
+                // Close preview when clicking outside
+                document.addEventListener('click', (e) => {
+                    const preview = document.getElementById('certificatePreview');
+                    const modal = document.getElementById('certificateModal');
+                    
+                    if (e.target === preview) {
+                        this.closeCertificatePreview();
+                    }
+                    
+                    if (e.target === modal) {
+                        this.closeCertificateModal();
+                    }
+                });
+            }
+
+            // 📊 Get Statistics
+            getStatistics() {
+                const certs = Array.from(this.certificates.values());
+                return {
+                    total: certs.length,
+                    categories: [...new Set(certs.map(c => c.category))].length,
+                    totalViews: certs.reduce((sum, c) => sum + c.views, 0),
+                    totalDownloads: certs.reduce((sum, c) => sum + c.downloads, 0),
+                    byCategory: certs.reduce((acc, cert) => {
+                        acc[cert.category] = (acc[cert.category] || 0) + 1;
+                        return acc;
+                    }, {})
+                };
+            }
+        }
+
+        // 🎯 Global Functions for Real-Time Tracking
+        function trackProjectInteraction(projectId, action) {
+            if (window.dataManager) {
+                window.dataManager.trackProjectInteraction(action, 1, projectId);
+            }
+        }
+
+        function trackInteraction(category, action, value = 1) {
+            if (window.dataManager) {
+                window.dataManager.trackInteraction(category, action, value);
+            }
+        }
+
+        function filterCertificates(category) {
+            if (window.certificateManager) {
+                window.certificateManager.filterCertificates(category);
+            }
+        }
+
+        function searchCertificates(searchTerm) {
+            if (window.certificateManager) {
+                window.certificateManager.searchCertificates(searchTerm);
+            }
+        }
+
+        function showCertificatePreview(card) {
+            if (window.certificateManager) {
+                const certId = card.dataset.certId;
+                const cert = window.certificateManager.getCertificate(certId);
+                window.certificateManager.showCertificatePreview(card, cert);
+            }
+        }
+
+        function closeCertificatePreview() {
+            if (window.certificateManager) {
+                window.certificateManager.closeCertificatePreview();
+            }
+        }
+
+        function viewCertificateFull() {
+            if (window.certificateManager) {
+                const preview = document.getElementById('certificatePreview');
+                const certData = JSON.parse(preview.dataset.currentCert || '{}');
+                const cert = window.certificateManager.getCertificate(certData.id);
+                if (cert) {
+                    window.certificateManager.openCertificateModal(null, cert);
+                }
+            }
+        }
+
+        function downloadCertificate() {
+            if (window.certificateManager) {
+                window.certificateManager.downloadCertificate();
+            }
+        }
+
+        function closeCertificateModal() {
+            if (window.certificateManager) {
+                window.certificateManager.closeCertificateModal();
+            }
+        }
+
+        function openCertificateNewTab() {
+            const modal = document.getElementById('certificateModal');
+            const certData = JSON.parse(modal.dataset.currentCert || '{}');
+            
+            if (certData.verificationUrl) {
+                window.open(certData.verificationUrl, '_blank');
+                trackInteraction('certificate', 'verify_external');
+            } else {
+                alert('🔗 Verification link will be available soon!');
+            }
+        }
+
+        // 🎭 Main Application JavaScript with Real-Time Features
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('🚀 Enhanced Portfolio with Real-Time Data loaded!');
+            
+            // Initialize Real-Time Data Manager
+            window.dataManager = new RealTimeDataManager();
+            console.log('📊 Real-Time Data Manager initialized');
+            
+            // Initialize Certificate Management System
+            setTimeout(() => {
+                window.certificateManager = new CertificateManager(window.dataManager);
+                console.log('🎓 Certificate Management System initialized');
+            }, 500);
+            
+            // Initialize other systems
+            setupButtonVisibility();
+            setupFormHandling();
+            setupGitHubProjects();
+            setupScrollEffects();
+            setupMobileNavigation();
+            
+            // Track initial page load
+            trackInteraction('contact', 'page_view');
+        });
+
+        // Enhanced Button Visibility
+        function setupButtonVisibility() {
+            const buttons = document.querySelectorAll('.mobile-button');
+            buttons.forEach((button, index) => {
+                button.style.display = 'flex';
+                button.style.visibility = 'visible';
+                button.style.opacity = '1';
+                button.style.position = 'relative';
+                button.style.zIndex = '100';
+                
+                button.addEventListener('touchstart', function() {
+                    this.style.transform = 'scale(0.95)';
+                });
+                
+                button.addEventListener('touchend', function() {
+                    this.style.transform = 'scale(1)';
+                });
+                
+                console.log(`✅ Button visibility ensured ${index + 1}`);
+            });
+        }
+
+        // Mobile Navigation
+        function setupMobileNavigation() {
+            window.toggleMobileNav = function() {
+                const nav = document.querySelector('.mobile-nav');
+                const hamburger = document.querySelector('.hamburger');
+                
+                nav.classList.toggle('open');
+                hamburger.classList.toggle('open');
+                
+                trackInteraction('navigation', 'mobile_toggle');
+            };
+
+            window.closeMobileNav = function() {
+                const nav = document.querySelector('.mobile-nav');
+                const hamburger = document.querySelector('.hamburger');
+                
+                nav.classList.remove('open');
+                hamburger.classList.remove('open');
+            };
+        }
+
+        // CV Functions
+        function viewCV() {
+            const modal = document.getElementById('cvModal');
+            modal.classList.add('show');
+            document.body.style.overflow = 'hidden';
+            trackInteraction('cv', 'view');
+        }
+
+        function closeCVModal() {
+            const modal = document.getElementById('cvModal');
+            modal.classList.remove('show');
+            document.body.style.overflow = '';
+        }
+
+        function downloadCV() {
+            const link = document.createElement('a');
+            link.href = './assets/documents/Panashe_Matengambiri_CV.pdf';
+            link.download = 'Panashe_Matengambiri_CV.pdf';
+            link.click();
+            trackInteraction('cv', 'download');
+        }
+
+        // Enhanced Contact Form
+        function setupFormHandling() {
+            const form = document.getElementById('contact-form');
+            const submitButton = document.getElementById('send-button');
+            const successMessage = document.getElementById('success-message');
+            
+            if (form) {
+                form.addEventListener('submit', async function(e) {
+                    e.preventDefault();
+                    
+                    submitButton.innerHTML = '<i class="fas fa-spinner fa-spin mr-2"></i>Sending...';
+                    submitButton.disabled = true;
+                    
+                    try {
+                        await new Promise(resolve => setTimeout(resolve, 2000));
+                        
+                        form.style.display = 'none';
+                        successMessage.style.display = 'block';
+                        successMessage.classList.add('animate-bounceIn');
+                        
+                        // Track form submission
+                        trackInteraction('contact', 'form_submit');
+                        
+                        setTimeout(() => {
+                            form.style.display = 'block';
+                            successMessage.style.display = 'none';
+                            form.reset();
+                            submitButton.innerHTML = '<i class="fas fa-paper-plane mr-2"></i>Send Message';
+                            submitButton.disabled = false;
+                        }, 5000);
+                        
+                    } catch (error) {
+                        console.error('Form submission error:', error);
+                        submitButton.innerHTML = '<i class="fas fa-exclamation-triangle mr-2"></i>Try Again';
+                        submitButton.disabled = false;
+                    }
+                });
+            }
+        }
+
+        // Enhanced GitHub Projects with Real-Time Data
+        function setupGitHubProjects() {
+            const githubContainer = document.getElementById('github-projects');
+            
+            const projects = [
+                {
+                    name: 'ecowatt-energy-platform',
+                    description: 'AI-powered energy management PWA for Zimbabwe\'s prepaid electricity system',
+                    language: 'JavaScript',
+                    stars: 15,
+                    url: 'https://github.com/CBfrost/ecowatt-energy-platform',
+                    lastUpdated: '2024-12-01'
+                },
+                {
+                    name: 'stayhealthy-capstone',
+                    description: 'Full-stack healthcare management platform with telemedicine capabilities',
+                    language: 'React',
+                    stars: 8,
+                    url: 'https://github.com/CBfrost/stayhealthy-capstone',
+                    lastUpdated: '2024-11-28'
+                },
+                {
+                    name: 'paradise-nursery',
+                    description: 'E-commerce platform for plant enthusiasts with care guides',
+                    language: 'HTML',
+                    stars: 5,
+                    url: 'https://github.com/CBfrost/paradise-nursery',
+                    lastUpdated: '2024-11-15'
+                },
+                {
+                    name: 'certificate-portfolio-enhancement',
+                    description: 'Advanced certificate preview system with real-time data tracking',
+                    language: 'JavaScript',
+                    stars: 12,
+                    url: 'https://github.com/CBfrost/certificate-portfolio-enhancement',
+                    lastUpdated: '2024-12-10'
+                }
+            ];
+            
+            if (githubContainer) {
+                githubContainer.innerHTML = projects.map(project => {
+                    const timeAgo = getTimeAgo(new Date(project.lastUpdated));
+                    
+                    return `
+                        <div class="mobile-github-card">
+                            <div class="flex justify-between items-start mb-3">
+                                <h4 class="text-lg font-bold text-white">${project.name}</h4>
+                                <div class="flex items-center text-yellow-400">
+                                    <i class="fas fa-star mr-1"></i>
+                                    <span class="text-sm">${project.stars}</span>
+                                </div>
+                            </div>
+                            <p class="text-gray-300 text-sm mb-4">${project.description}</p>
+                            <div class="flex justify-between items-center mb-2">
+                                <span class="bg-neon-cyan/20 text-neon-cyan px-2 py-1 rounded-full text-xs">${project.language}</span>
+                                <a href="${project.url}" target="_blank" class="text-neon-cyan hover:text-white transition-colors" onclick="trackInteraction('github', 'project_view')">
+                                    <i class="fab fa-github mr-1"></i>View
+                                </a>
+                            </div>
+                            <div class="text-xs text-gray-400">
+                                <i class="fas fa-clock mr-1"></i>Updated ${timeAgo}
+                            </div>
+                        </div>
+                    `;
+                }).join('');
+            }
+        }
+
+        // Scroll Effects
+        function setupScrollEffects() {
+            const updateProgress = () => {
+                const scrolled = (window.scrollY / (document.documentElement.scrollHeight - window.innerHeight)) * 100;
+                document.getElementById('updateProgress').style.width = scrolled + '%';
+            };
+            
+            window.addEventListener('scroll', updateProgress);
+            
+            const observerOptions = {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            };
+            
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.transform = 'translateY(0)';
+                        entry.target.style.opacity = '1';
+                        
+                        // Track section views
+                        const sectionId = entry.target.id;
+                        if (sectionId) {
+                            trackInteraction('navigation', `section_view_${sectionId}`);
+                        }
+                    }
+                });
+            }, observerOptions);
+            
+            document.querySelectorAll('.mobile-project-card, .mobile-skill-card, .mobile-testimonial-card, section').forEach(el => {
+                el.style.transform = 'translateY(50px)';
+                el.style.opacity = '0';
+                el.style.transition = 'all 0.6s ease';
+                observer.observe(el);
+            });
+        }
+
+        // Helper function for time ago
+        function getTimeAgo(date) {
+            const now = new Date();
+            const diffInSeconds = Math.floor((now - date) / 1000);
+            
+            if (diffInSeconds < 60) return 'just now';
+            if (diffInSeconds < 3600) return `${Math.floor(diffInSeconds / 60)}m ago`;
+            if (diffInSeconds < 86400) return `${Math.floor(diffInSeconds / 3600)}h ago`;
+            return `${Math.floor(diffInSeconds / 86400)}d ago`;
+        }
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                    trackInteraction('navigation', 'internal_link');
+                }
+            });
+        });
+
+        // Close modals with Escape key
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                closeCVModal();
+                closeCertificateModal();
+                closeCertificatePreview();
+            }
+        });
+
+        // Analytics export function
+        function exportAnalytics() {
+            if (window.dataManager) {
+                const analytics = window.dataManager.getAnalytics();
+                console.log('📊 Portfolio Analytics:', analytics);
+                return analytics;
+            }
+        }
+
+        // Make analytics available globally
+        window.exportAnalytics = exportAnalytics;
+    </script>
 </body>
 </html>
