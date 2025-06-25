@@ -1,12 +1,10 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
+<!DOCTYPE html><html lang="en"><head><meta http-equiv="Content-Security-Policy" content="default-src 'self' 'unsafe-inline' 'unsafe-eval' data: blob: https://cdnjs.cloudflare.com https://cdn.jsdelivr.net https://code.jquery.com https://unpkg.com https://d3js.org https://threejs.org https://cdn.plot.ly https://stackpath.bootstrapcdn.com https://maps.googleapis.com https://cdn.tailwindcss.com https://ajax.googleapis.com https://kit.fontawesome.com https://cdn.datatables.net https://maxcdn.bootstrapcdn.com https://code.highcharts.com https://tako-static-assets-production.s3.amazonaws.com https://www.youtube.com https://fonts.googleapis.com https://fonts.gstatic.com https://pfst.cf2.poecdn.net https://puc.poecdn.net https://i.imgur.com https://wikimedia.org https://*.icons8.com https://*.giphy.com https://picsum.photos https://images.unsplash.com; frame-src 'self' https://www.youtube.com https://trytako.com; child-src 'self'; manifest-src 'self'; worker-src 'self'; upgrade-insecure-requests; block-all-mixed-content;">
     <meta http-equiv="Content-Security-Policy" content="default-src 'self' 'unsafe-inline' 'unsafe-eval' data: blob: https://cdnjs.cloudflare.com https://cdn.jsdelivr.net https://code.jquery.com https://unpkg.com https://d3js.org https://threejs.org https://cdn.plot.ly https://stackpath.bootstrapcdn.com https://maps.googleapis.com https://cdn.tailwindcss.com https://ajax.googleapis.com https://kit.fontawesome.com https://cdn.datatables.net https://maxcdn.bootstrapcdn.com https://code.highcharts.com https://tako-static-assets-production.s3.amazonaws.com https://www.youtube.com https://fonts.googleapis.com https://fonts.gstatic.com https://pfst.cf2.poecdn.net https://puc.poecdn.net https://i.imgur.com https://wikimedia.org https://*.icons8.com https://*.giphy.com https://picsum.photos https://images.unsplash.com https://api.github.com; frame-src 'self' https://www.youtube.com https://trytako.com; child-src 'self'; manifest-src 'self'; worker-src 'self'; upgrade-insecure-requests; block-all-mixed-content;">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Panashe Matengambiri - Creative Technologist</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&amp;family=JetBrains+Mono:wght@400;500;600&amp;family=Playfair+Display:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
@@ -930,24 +928,249 @@
             color: rgba(255, 255, 255, 0.5);
         }
 
-        /* Mobile Skills Grid */
+        /* Enhanced Square Certificate Tiles with Perfect Responsive Scaling */
         .mobile-skills-grid {
             display: grid;
             grid-template-columns: 1fr;
             gap: 1rem;
+            align-content: start;
+            width: 100%;
+            max-width: none;
+        }
+        
+        @media (min-width: 480px) {
+            .mobile-skills-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 1rem;
+                max-width: 600px;
+                margin: 0 auto;
+            }
         }
         
         @media (min-width: 640px) {
             .mobile-skills-grid {
                 grid-template-columns: repeat(2, 1fr);
+                gap: 1.25rem;
+                max-width: 650px;
+            }
+        }
+        
+        @media (min-width: 768px) {
+            .mobile-skills-grid {
+                grid-template-columns: repeat(3, 1fr);
                 gap: 1.5rem;
+                max-width: 750px;
             }
         }
         
         @media (min-width: 1024px) {
             .mobile-skills-grid {
                 grid-template-columns: repeat(3, 1fr);
+                gap: 1.75rem;
+                max-width: 900px;
+            }
+        }
+        
+        @media (min-width: 1280px) {
+            .mobile-skills-grid {
+                grid-template-columns: repeat(3, 1fr);
                 gap: 2rem;
+                max-width: 1000px;
+            }
+        }
+
+        /* Perfect Square Certificate Cards with Responsive Content */
+        .mobile-skill-card {
+            background: rgba(255, 255, 255, 0.08);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            border-radius: 1.5rem;
+            padding: 1rem;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            text-align: center;
+            aspect-ratio: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+            height: auto;
+        }
+        
+        @media (min-width: 480px) {
+            .mobile-skill-card {
+                padding: 1.1rem;
+            }
+        }
+        
+        @media (min-width: 640px) {
+            .mobile-skill-card {
+                padding: 1.2rem;
+            }
+        }
+        
+        @media (min-width: 768px) {
+            .mobile-skill-card {
+                padding: 1rem;
+            }
+        }
+        
+        @media (min-width: 1024px) {
+            .mobile-skill-card {
+                padding: 1.25rem;
+            }
+        }
+        
+        @media (min-width: 1280px) {
+            .mobile-skill-card {
+                padding: 1.5rem;
+            }
+        }
+
+        /* Responsive Certificate Content */
+        .mobile-skill-card h4 {
+            font-size: 0.9rem;
+            line-height: 1.2;
+            margin-bottom: 0.5rem;
+            flex-shrink: 0;
+        }
+
+        @media (min-width: 480px) {
+            .mobile-skill-card h4 {
+                font-size: 0.95rem;
+                margin-bottom: 0.6rem;
+            }
+        }
+
+        @media (min-width: 640px) {
+            .mobile-skill-card h4 {
+                font-size: 1rem;
+                margin-bottom: 0.7rem;
+            }
+        }
+
+        @media (min-width: 768px) {
+            .mobile-skill-card h4 {
+                font-size: 0.9rem;
+                margin-bottom: 0.5rem;
+            }
+        }
+
+        @media (min-width: 1024px) {
+            .mobile-skill-card h4 {
+                font-size: 1rem;
+                margin-bottom: 0.7rem;
+            }
+        }
+
+        @media (min-width: 1280px) {
+            .mobile-skill-card h4 {
+                font-size: 1.1rem;
+                margin-bottom: 0.8rem;
+            }
+        }
+
+        /* Certificate Badge Responsive Sizing */
+        .certification-badge {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            margin-bottom: 0.75rem;
+            position: relative;
+            overflow: hidden;
+            flex-shrink: 0;
+            width: 48px;
+            height: 48px;
+        }
+
+        @media (min-width: 480px) {
+            .certification-badge {
+                width: 52px;
+                height: 52px;
+                margin-bottom: 0.8rem;
+            }
+        }
+
+        @media (min-width: 640px) {
+            .certification-badge {
+                width: 56px;
+                height: 56px;
+                margin-bottom: 0.9rem;
+            }
+        }
+
+        @media (min-width: 768px) {
+            .certification-badge {
+                width: 48px;
+                height: 48px;
+                margin-bottom: 0.75rem;
+            }
+        }
+
+        @media (min-width: 1024px) {
+            .certification-badge {
+                width: 56px;
+                height: 56px;
+                margin-bottom: 0.9rem;
+            }
+        }
+
+        @media (min-width: 1280px) {
+            .certification-badge {
+                width: 64px;
+                height: 64px;
+                margin-bottom: 1rem;
+            }
+        }
+
+        /* Certificate Skills Section */
+        .certificate-skills {
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            margin-bottom: 0.75rem;
+        }
+
+        .certificate-stats {
+            flex-shrink: 0;
+            margin-top: auto;
+        }
+
+        /* Section Height Balance */
+        .about-section-container {
+            min-height: 100vh;
+            display: flex;
+            align-items: stretch;
+        }
+
+        .about-content-wrapper {
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+        }
+
+        @media (min-width: 1024px) {
+            .about-content-wrapper {
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+                gap: 4rem;
+                align-items: start;
+            }
+            
+            .journey-section,
+            .skills-section {
+                min-height: 600px;
+                display: flex;
+                flex-direction: column;
+            }
+            
+            .skills-section .mobile-skills-grid {
+                flex-grow: 1;
+                align-content: start;
             }
         }
         
@@ -1086,62 +1309,6 @@
             .floating-shape:nth-child(3) {
                 width: 100px;
                 height: 100px;
-            }
-        }
-
-        /* Enhanced Skill Certification Cards */
-        .mobile-skill-card {
-            background: rgba(255, 255, 255, 0.08);
-            backdrop-filter: blur(20px);
-            border: 1px solid rgba(255, 255, 255, 0.15);
-            border-radius: 1.5rem;
-            padding: 1.5rem;
-            transition: all 0.3s ease;
-            position: relative;
-            overflow: hidden;
-            text-align: center;
-        }
-        
-        @media (min-width: 768px) {
-            .mobile-skill-card {
-                padding: 2rem;
-            }
-        }
-
-        .mobile-skill-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 4px;
-            background: linear-gradient(90deg, var(--accent-color, #00ffff), var(--accent-color-2, #ff0080));
-        }
-
-        @media (min-width: 1024px) {
-            .mobile-skill-card:hover {
-                transform: translateY(-5px);
-                border-color: rgba(0, 255, 255, 0.4);
-                box-shadow: 0 10px 30px rgba(0, 255, 255, 0.2);
-            }
-        }
-
-        .certification-badge {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            margin-bottom: 1rem;
-            position: relative;
-            overflow: hidden;
-        }
-        
-        @media (min-width: 768px) {
-            .certification-badge {
-                width: 60px;
-                height: 60px;
             }
         }
 
@@ -1521,6 +1688,66 @@
             display: none;
             animation: bounceIn 0.6s ease-out;
         }
+
+        /* Filter Animation */
+        .filter-fade-in {
+            animation: fadeIn 0.5s ease-in-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Certificate Grid Animation */
+        .certificate-grid-item {
+            animation: slideInUp 0.6s ease-out;
+        }
+
+        @keyframes slideInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Enhanced filter counter styles */
+        .filter-counter {
+            background: rgba(0, 255, 255, 0.2);
+            color: #00ffff;
+            padding: 2px 6px;
+            border-radius: 10px;
+            font-size: 0.7rem;
+            margin-left: 4px;
+            font-weight: 600;
+        }
+
+        .filter-button.active .filter-counter {
+            background: rgba(0, 0, 0, 0.3);
+            color: #000;
+        }
+
+        /* Mobile optimization for certificates */
+        @media (max-width: 640px) {
+            .certificate-filter-bar {
+                gap: 0.5rem;
+                padding: 0.75rem;
+            }
+            
+            .filter-button {
+                padding: 0.375rem 0.75rem;
+                font-size: 0.8rem;
+            }
+            
+            .certificate-search {
+                min-width: 150px;
+                font-size: 0.8rem;
+            }
+        }
     </style>
 </head>
 <body class="text-white bg-dark-navy font-space">
@@ -1647,7 +1874,7 @@
                         </h1>
                         <h2 class="hero-subtitle font-light">MATENGAMBIRI</h2>
                         <div class="text-lg sm:text-xl lg:text-2xl text-gray-300 font-mono">
-                            Creative Technologist & UX Innovator
+                            Creative Technologist &amp; UX Innovator
                         </div>
                     </div>
                     
@@ -1698,7 +1925,7 @@
                 <div class="relative order-1 lg:order-2">
                     <div class="mobile-hero-image mx-auto relative">
                         <div class="absolute inset-0 bg-gradient-to-br from-neon-cyan via-neon-pink to-neon-purple rounded-full animate-glow"></div>
-                        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=400&fit=crop&crop=face" alt="Professional Portrait" class="w-full h-full object-cover rounded-full relative z-10 border-4 border-white/20" loading="lazy">
+                        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&amp;h=400&amp;fit=crop&amp;crop=face" alt="Professional Portrait" class="w-full h-full object-cover rounded-full relative z-10 border-4 border-white/20" loading="lazy">
                         
                         <!-- Floating Tech Icons -->
                         <div class="absolute -top-2 -right-2 sm:-top-4 sm:-right-4 w-12 h-12 sm:w-16 sm:h-16 glass-morphism rounded-full flex items-center justify-center animate-float">
@@ -1718,10 +1945,10 @@
 
     <div class="section-divider"></div>
 
-    <!-- Enhanced About Section with Real-Time Certificate System -->
-    <section id="about" class="mobile-section relative">
+    <!-- Enhanced About Section with Optimized Certificate System -->
+    <section id="about" class="mobile-section relative about-section-container">
         <div class="absolute inset-0 opacity-10">
-            <img src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=1920&h=1080&fit=crop" alt="Space Tech" class="w-full h-full object-cover">
+            <img src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=1920&amp;h=1080&amp;fit=crop" alt="Space Tech" class="w-full h-full object-cover">
         </div>
         <div class="max-w-7xl mx-auto px-4 sm:px-6 relative z-10">
             <div class="text-center mb-12 lg:mb-16">
@@ -1731,9 +1958,9 @@
                 </p>
             </div>
             
-            <div class="flex flex-col lg:grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+            <div class="about-content-wrapper">
                 <!-- Journey Content -->
-                <div class="space-y-6 lg:space-y-8">
+                <div class="journey-section space-y-6 lg:space-y-8">
                     <div class="glass-morphism p-6 lg:p-8 rounded-3xl">
                         <h3 class="text-2xl lg:text-3xl font-bold text-neon-cyan mb-4">My Journey</h3>
                         <p class="text-base lg:text-lg leading-relaxed text-gray-300 mb-4">
@@ -1786,27 +2013,41 @@
                 </div>
                 
                 <!-- Enhanced Skills & Certifications Section -->
-                <div class="space-y-6">
-                    <h3 class="text-2xl lg:text-3xl font-bold text-center gradient-text mb-6 lg:mb-8">Skills & Certifications</h3>
+                <div class="skills-section space-y-6">
+                    <h3 class="text-2xl lg:text-3xl font-bold text-center gradient-text mb-6 lg:mb-8">Skills &amp; Certifications</h3>
                     
-                    <!-- Real-Time Certificate Filter Bar -->
+                    <!-- Optimized Certificate Filter Bar -->
                     <div class="certificate-filter-bar">
-                        <button class="filter-button active" onclick="filterCertificates('all')">
-                            All <span class="data-counter" id="filter-all-count">8</span>
+                        <button class="filter-button active" onclick="filterCertificates('recent')" id="filter-recent">
+                            Recent <span class="filter-counter" id="filter-recent-count">6</span>
                         </button>
-                        <button class="filter-button" onclick="filterCertificates('UX/UI Design')">
-                            UX/UI <span class="data-counter" id="filter-ux-count">2</span>
+                        <button class="filter-button" onclick="filterCertificates('all')" id="filter-all">
+                            All <span class="filter-counter" id="filter-all-count">8</span>
                         </button>
-                        <button class="filter-button" onclick="filterCertificates('Web Development')">
-                            Development <span class="data-counter" id="filter-dev-count">2</span>
+                        <button class="filter-button" onclick="filterCertificates('UX/UI Design')" id="filter-ux">
+                            UX/UI <span class="filter-counter" id="filter-ux-count">3</span>
                         </button>
-                        <button class="filter-button" onclick="filterCertificates('Cloud Computing')">
-                            Cloud <span class="data-counter" id="filter-cloud-count">1</span>
+                        <button class="filter-button" onclick="filterCertificates('Web Development')" id="filter-dev">
+                            Development <span class="filter-counter" id="filter-dev-count">2</span>
                         </button>
-                        <button class="filter-button" onclick="filterCertificates('Academic')">
-                            Academic <span class="data-counter" id="filter-academic-count">1</span>
+                        <button class="filter-button" onclick="filterCertificates('Cloud Computing')" id="filter-cloud">
+                            Cloud <span class="filter-counter" id="filter-cloud-count">1</span>
+                        </button>
+                        <button class="filter-button" onclick="filterCertificates('Academic')" id="filter-academic">
+                            Academic <span class="filter-counter" id="filter-academic-count">1</span>
                         </button>
                         <input type="text" class="certificate-search" placeholder="🔍 Search certificates..." oninput="searchCertificates(this.value)">
+                    </div>
+                    
+                    <!-- Certificate Count Display -->
+                    <div class="text-center mb-4">
+                        <div class="inline-flex items-center gap-2 bg-dark-navy/50 px-4 py-2 rounded-xl border border-neon-cyan/30">
+                            <i class="fas fa-certificate text-neon-cyan"></i>
+                            <span class="text-white font-semibold">Showing: </span>
+                            <span class="data-counter" id="showing-certificates">6</span>
+                            <span class="text-white">of</span>
+                            <span class="data-counter" id="total-certificates">8</span>
+                        </div>
                     </div>
                     
                     <!-- Dynamic Certificate Grid -->
@@ -1823,7 +2064,7 @@
     <!-- Enhanced Featured Projects Section with Live Data -->
     <section id="projects" class="mobile-section relative">
         <div class="absolute inset-0 opacity-5">
-            <img src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=1920&h=1080&fit=crop" alt="Abstract Tech" class="w-full h-full object-cover">
+            <img src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=1920&amp;h=1080&amp;fit=crop" alt="Abstract Tech" class="w-full h-full object-cover">
         </div>
         <div class="max-w-7xl mx-auto px-4 sm:px-6 relative z-10">
             <div class="text-center mb-12 lg:mb-16">
@@ -1841,7 +2082,7 @@
                 <!-- EcoWatt Project -->
                 <div class="mobile-project-card" data-project="ecowatt">
                     <div class="relative h-48 sm:h-56 lg:h-64">
-                        <img src="https://images.unsplash.com/photo-1559827260-dc66d52bef19?w=600&h=400&fit=crop" alt="Energy Management" class="w-full h-full object-cover">
+                        <img src="https://images.unsplash.com/photo-1559827260-dc66d52bef19?w=600&amp;h=400&amp;fit=crop" alt="Energy Management" class="w-full h-full object-cover">
                         <div class="absolute inset-0 bg-gradient-to-t from-dark-navy/80 to-transparent"></div>
                         <div class="absolute top-4 right-4">
                             <span class="bg-gradient-to-r from-green-400 to-blue-500 px-3 py-1 rounded-full text-xs sm:text-sm font-semibold">Personal Project</span>
@@ -1898,7 +2139,7 @@
                 <!-- AutoGlass Management -->
                 <div class="mobile-project-card" data-project="autoglass">
                     <div class="relative h-48 sm:h-56 lg:h-64">
-                        <img src="https://images.unsplash.com/photo-1449824913935-59a10b8d2000?w=600&h=400&fit=crop" alt="Automotive" class="w-full h-full object-cover">
+                        <img src="https://images.unsplash.com/photo-1449824913935-59a10b8d2000?w=600&amp;h=400&amp;fit=crop" alt="Automotive" class="w-full h-full object-cover">
                         <div class="absolute inset-0 bg-gradient-to-t from-dark-navy/80 to-transparent"></div>
                         <div class="absolute top-4 right-4">
                             <span class="bg-gradient-to-r from-purple-400 to-pink-500 px-3 py-1 rounded-full text-xs sm:text-sm font-semibold">Enterprise Project</span>
@@ -1955,7 +2196,7 @@
                 <!-- StayHealthy Capstone -->
                 <div class="mobile-project-card" data-project="stayhealthy">
                     <div class="relative h-48 sm:h-56 lg:h-64">
-                        <img src="https://images.unsplash.com/photo-1559757148-5c350d0d3c56?w=600&h=400&fit=crop" alt="Healthcare" class="w-full h-full object-cover">
+                        <img src="https://images.unsplash.com/photo-1559757148-5c350d0d3c56?w=600&amp;h=400&amp;fit=crop" alt="Healthcare" class="w-full h-full object-cover">
                         <div class="absolute inset-0 bg-gradient-to-t from-dark-navy/80 to-transparent"></div>
                         <div class="absolute top-4 right-4">
                             <span class="bg-gradient-to-r from-green-400 to-teal-500 px-3 py-1 rounded-full text-xs sm:text-sm font-semibold">Capstone Project</span>
@@ -2012,7 +2253,7 @@
                 <!-- Paradise Nursery -->
                 <div class="mobile-project-card" data-project="paradise-nursery">
                     <div class="relative h-48 sm:h-56 lg:h-64">
-                        <img src="https://images.unsplash.com/photo-1416879595882-3373a0480b5b?w=600&h=400&fit=crop" alt="Plants Nursery" class="w-full h-full object-cover">
+                        <img src="https://images.unsplash.com/photo-1416879595882-3373a0480b5b?w=600&amp;h=400&amp;fit=crop" alt="Plants Nursery" class="w-full h-full object-cover">
                         <div class="absolute inset-0 bg-gradient-to-t from-dark-navy/80 to-transparent"></div>
                         <div class="absolute top-4 right-4">
                             <span class="bg-gradient-to-r from-emerald-400 to-green-500 px-3 py-1 rounded-full text-xs sm:text-sm font-semibold">E-Commerce</span>
@@ -2044,7 +2285,7 @@
                             <h4 class="text-emerald-400 font-semibold mb-2 text-sm lg:text-base">Features:</h4>
                             <ul class="text-xs lg:text-sm text-gray-300 space-y-1">
                                 <li>• Interactive plant catalog</li>
-                                <li>• Shopping cart & checkout system</li>
+                                <li>• Shopping cart &amp; checkout system</li>
                                 <li>• Plant care reminder system</li>
                                 <li>• Customer review system</li>
                             </ul>
@@ -2158,7 +2399,7 @@
     <!-- Testimonials Section -->
     <section id="testimonials" class="mobile-section relative">
         <div class="absolute inset-0 opacity-5">
-            <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=1920&h=1080&fit=crop" alt="Team Work" class="w-full h-full object-cover">
+            <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=1920&amp;h=1080&amp;fit=crop" alt="Team Work" class="w-full h-full object-cover">
         </div>
         <div class="max-w-7xl mx-auto px-4 sm:px-6 relative z-10">
             <div class="text-center mb-12 lg:mb-16">
@@ -2301,10 +2542,10 @@
 
     <div class="section-divider"></div>
 
-    <!-- Enhanced Contact Section (Phone Number Removed) -->
+    <!-- Enhanced Contact Section -->
     <section id="contact" class="mobile-section relative">
         <div class="absolute inset-0 opacity-10">
-            <img src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?w=1920&h=1080&fit=crop" alt="Communication" class="w-full h-full object-cover">
+            <img src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?w=1920&amp;h=1080&amp;fit=crop" alt="Communication" class="w-full h-full object-cover">
         </div>
         <div class="max-w-7xl mx-auto px-4 sm:px-6 relative z-10">
             <div class="text-center mb-12 lg:mb-16">
@@ -2313,7 +2554,7 @@
             </div>
             
             <div class="flex flex-col lg:grid lg:grid-cols-2 gap-12 lg:gap-16">
-                <!-- Contact Info (Phone Removed) -->
+                <!-- Contact Info -->
                 <div class="space-y-6 lg:space-y-8">
                     <div class="glass-morphism p-6 lg:p-8 rounded-3xl">
                         <h3 class="text-2xl lg:text-3xl font-bold gradient-text mb-4 lg:mb-6">Get In Touch</h3>
@@ -2391,27 +2632,27 @@
                         <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
                             <div>
                                 <label class="block text-sm font-semibold text-gray-300 mb-2">First Name</label>
-                                <input type="text" name="firstName" required class="mobile-input" placeholder="John">
+                                <input type="text" name="firstName" required="" class="mobile-input" placeholder="John">
                             </div>
                             <div>
                                 <label class="block text-sm font-semibold text-gray-300 mb-2">Last Name</label>
-                                <input type="text" name="lastName" required class="mobile-input" placeholder="Doe">
+                                <input type="text" name="lastName" required="" class="mobile-input" placeholder="Doe">
                             </div>
                         </div>
                         
                         <div>
                             <label class="block text-sm font-semibold text-gray-300 mb-2">Email</label>
-                            <input type="email" name="email" required class="mobile-input" placeholder="john@company.com">
+                            <input type="email" name="email" required="" class="mobile-input" placeholder="john@company.com">
                         </div>
                         
                         <div>
                             <label class="block text-sm font-semibold text-gray-300 mb-2">Subject</label>
-                            <input type="text" name="subject" required class="mobile-input" placeholder="Let's work together">
+                            <input type="text" name="subject" required="" class="mobile-input" placeholder="Let's work together">
                         </div>
                         
                         <div>
                             <label class="block text-sm font-semibold text-gray-300 mb-2">Message</label>
-                            <textarea name="message" rows="5" required class="mobile-textarea" placeholder="Tell me about your project or opportunity..."></textarea>
+                            <textarea name="message" rows="5" required="" class="mobile-textarea" placeholder="Tell me about your project or opportunity..."></textarea>
                         </div>
                         
                         <!-- Send Message Button -->
@@ -2479,11 +2720,11 @@
             <div class="flex flex-col lg:flex-row justify-between items-center text-center lg:text-left">
                 <div class="mb-4 lg:mb-0">
                     <div class="font-mono text-xl lg:text-2xl font-bold gradient-text mb-2">PANASHE MATENGAMBIRI</div>
-                    <p class="text-gray-400 text-sm lg:text-base">Creative Technologist & UX Innovator</p>
+                    <p class="text-gray-400 text-sm lg:text-base">Creative Technologist &amp; UX Innovator</p>
                 </div>
                 <div>
                     <p class="text-gray-400 mb-1 lg:mb-2 text-sm lg:text-base">© 2024 Panashe Matengambiri</p>
-                    <p class="text-xs lg:text-sm text-gray-500">Available for entry-level & intermediate opportunities (local & remote)</p>
+                    <p class="text-xs lg:text-sm text-gray-500">Available for entry-level &amp; intermediate opportunities (local &amp; remote)</p>
                     <div class="mt-2">
                         <div class="live-indicator">
                             <div class="live-dot"></div>
@@ -2495,7 +2736,7 @@
         </div>
     </footer>
 
-    <!-- Enhanced JavaScript with Real-Time Data Tracking -->
+    <!-- Enhanced JavaScript with Optimized Certificate System -->
     <script>
         // 🚀 Real-Time Data Management System
         class RealTimeDataManager {
@@ -2651,26 +2892,21 @@
 
             // 🐙 Track GitHub interactions
             trackGitHubInteraction(action, value) {
-                // GitHub interactions are tracked but don't modify repo data
                 console.log(`GitHub interaction: ${action}`);
             }
 
             // 🔄 Initialize tracking
             initializeTracking() {
-                // Track page view
                 this.data.session.pageViews++;
                 this.data.contact.profileViews++;
                 
-                // Track time on page
                 this.startTime = Date.now();
                 
-                // Setup exit tracking
                 window.addEventListener('beforeunload', () => {
                     this.data.session.timeSpent = Date.now() - this.startTime;
                     this.saveData();
                 });
 
-                // Track scroll depth
                 let maxScroll = 0;
                 window.addEventListener('scroll', () => {
                     const scrollPercent = Math.round((window.scrollY / (document.documentElement.scrollHeight - window.innerHeight)) * 100);
@@ -2683,18 +2919,13 @@
 
             // 🔄 Start real-time updates
             startRealTimeUpdates() {
-                // Update displays immediately
                 this.updateDisplays();
-                
-                // Fetch GitHub data
                 this.fetchGitHubData();
                 
-                // Update every 30 seconds
                 setInterval(() => {
                     this.updateDisplays();
                 }, 30000);
                 
-                // Fetch GitHub data every 5 minutes
                 setInterval(() => {
                     this.fetchGitHubData();
                 }, 300000);
@@ -2705,11 +2936,9 @@
                 try {
                     console.log('🔄 Fetching GitHub data...');
                     
-                    // Fetch user data
                     const userResponse = await fetch(`${this.githubAPIBase}/users/${this.username}`);
                     const userData = await userResponse.json();
                     
-                    // Fetch repositories
                     const reposResponse = await fetch(`${this.githubAPIBase}/users/${this.username}/repos?sort=updated&per_page=10`);
                     const reposData = await reposResponse.json();
                     
@@ -2735,7 +2964,7 @@
             // 📊 Estimate total commits
             async estimateCommits(repos) {
                 let totalCommits = 0;
-                const sampleRepos = repos.slice(0, 5); // Sample first 5 repos
+                const sampleRepos = repos.slice(0, 5);
                 
                 for (const repo of sampleRepos) {
                     try {
@@ -2754,7 +2983,6 @@
                     }
                 }
                 
-                // Estimate total based on sample
                 return Math.round((totalCommits / sampleRepos.length) * repos.length);
             }
 
@@ -2807,7 +3035,6 @@
                     this.animateCounter(element, this.data.projects.totalInteractions);
                 }
 
-                // Update individual project views
                 Object.entries(this.data.projects.individual).forEach(([projectId, data]) => {
                     const viewElement = document.getElementById(`${projectId}-views`);
                     if (viewElement) {
@@ -2833,7 +3060,6 @@
 
             // 📊 Update session displays
             updateSessionDisplays() {
-                // Update any session-specific displays
                 console.log('Session stats:', {
                     pageViews: this.data.session.pageViews,
                     interactions: this.data.session.interactions,
@@ -2852,7 +3078,6 @@
                     return;
                 }
 
-                // Update main GitHub status
                 const statusElement = document.getElementById('github-main-status');
                 if (statusElement && this.data.github.lastUpdated) {
                     const lastUpdated = new Date(this.data.github.lastUpdated);
@@ -2862,7 +3087,6 @@
                     statusElement.classList.add('loaded');
                 }
 
-                // Update GitHub stats
                 const stats = this.data.github.stats;
                 const elements = {
                     'github-repos': stats.repos,
@@ -2877,7 +3101,6 @@
                     }
                 });
 
-                // Update individual project statuses
                 this.updateProjectStatuses();
             }
 
@@ -2954,7 +3177,7 @@
             }
         }
 
-        // 🎓 Enhanced Certificate Management System with Real-Time Data
+        // 🎓 Optimized Certificate Management System
         class CertificateManager {
             constructor(dataManager) {
                 this.dataManager = dataManager;
@@ -2963,15 +3186,15 @@
                 this.currentAnimationIndex = 0;
                 this.previewTimeout = null;
                 this.filters = {
-                    category: 'all',
+                    category: 'recent',
                     searchTerm: ''
                 };
                 this.init();
             }
 
-            // 📚 Initialize Certificate Database
+            // 📚 Initialize Certificate Database with Proper File Paths
             init() {
-                // Add all certificates with real-time tracking
+                // Add certificates with proper file paths in assets folder
                 this.addCertificate({
                     id: 'google-ux-design',
                     title: 'Google UX Design Professional Certificate',
@@ -2982,9 +3205,10 @@
                     skills: ['User Research', 'Wireframing', 'Prototyping', 'Usability Testing', 'Design Thinking'],
                     credentialId: 'GUX-2024-PM001',
                     verificationUrl: 'https://coursera.org/verify/professional-cert/google-ux',
-                    pdf: 'certificates/google-ux-design.pdf',
-                    preview: 'https://images.unsplash.com/photo-1606092195730-5d7b9af1efc5?w=400&h=300&fit=crop',
-                    color: { primary: '#4285F4', secondary: '#34A853' }
+                    pdf: './assets/certificates/google-ux-design.pdf',
+                    preview: './assets/certificates/images/google-ux-design.jpg',
+                    color: { primary: '#4285F4', secondary: '#34A853' },
+                    priority: 1
                 });
 
                 this.addCertificate({
@@ -2997,9 +3221,10 @@
                     skills: ['React', 'JavaScript', 'HTML/CSS', 'Git', 'Node.js', 'REST APIs'],
                     credentialId: 'IBM-FE-2024-PM002',
                     verificationUrl: 'https://coursera.org/verify/professional-cert/ibm-frontend',
-                    pdf: 'certificates/ibm-frontend.pdf',
-                    preview: 'https://images.unsplash.com/photo-1627398242454-45a1465c2479?w=400&h=300&fit=crop',
-                    color: { primary: '#1261FE', secondary: '#0530AD' }
+                    pdf: './assets/certificates/ibm-frontend.pdf',
+                    preview: './assets/certificates/images/ibm-frontend.jpg',
+                    color: { primary: '#1261FE', secondary: '#0530AD' },
+                    priority: 2
                 });
 
                 this.addCertificate({
@@ -3012,9 +3237,10 @@
                     skills: ['Accessibility', 'Collaboration', 'AI-Enhanced UX', 'Design Systems', 'User Testing'],
                     credentialId: 'MS-UX-2024-PM003',
                     verificationUrl: 'https://learn.microsoft.com/verify/certificate',
-                    pdf: 'certificates/microsoft-ux.pdf',
-                    preview: 'https://images.unsplash.com/photo-1611224923853-80b023f02d71?w=400&h=300&fit=crop',
-                    color: { primary: '#00BCF2', secondary: '#0078D4' }
+                    pdf: './assets/certificates/microsoft-ux.pdf',
+                    preview: './assets/certificates/images/microsoft-ux.jpg',
+                    color: { primary: '#00BCF2', secondary: '#0078D4' },
+                    priority: 3
                 });
 
                 this.addCertificate({
@@ -3023,13 +3249,14 @@
                     issuer: 'California Institute of the Arts',
                     date: '2023',
                     provider: 'calarts',
-                    category: 'Design',
+                    category: 'UX/UI Design',
                     skills: ['Visual Design', 'Design Strategy', 'Wireframing', 'Creative Process', 'Brand Design'],
                     credentialId: 'CALARTS-UIUX-2023-PM004',
                     verificationUrl: 'https://coursera.org/verify/specialization/calarts',
-                    pdf: 'certificates/calarts-uiux.pdf',
-                    preview: 'https://images.unsplash.com/photo-1558655146-d09347e92766?w=400&h=300&fit=crop',
-                    color: { primary: '#FF6B35', secondary: '#F7931E' }
+                    pdf: './assets/certificates/calarts-uiux.pdf',
+                    preview: './assets/certificates/images/calarts-uiux.jpg',
+                    color: { primary: '#FF6B35', secondary: '#F7931E' },
+                    priority: 4
                 });
 
                 this.addCertificate({
@@ -3042,9 +3269,10 @@
                     skills: ['Figma', 'Sketch', 'Miro', 'User Testing', 'Prototyping', 'Design Systems'],
                     credentialId: 'DESIGN-TOOLKIT-2023-PM005',
                     verificationUrl: 'https://coursera.org/verify/professional-cert/design-toolkit',
-                    pdf: 'certificates/design-toolkit.pdf',
-                    preview: 'https://images.unsplash.com/photo-1586717791821-3f44a563fa4c?w=400&h=300&fit=crop',
-                    color: { primary: '#F24E1E', secondary: '#A259FF' }
+                    pdf: './assets/certificates/design-toolkit.pdf',
+                    preview: './assets/certificates/images/design-toolkit.jpg',
+                    color: { primary: '#F24E1E', secondary: '#A259FF' },
+                    priority: 5
                 });
 
                 this.addCertificate({
@@ -3057,9 +3285,10 @@
                     skills: ['Systems Analysis', 'Database Design', 'Project Management', 'Business Intelligence', 'Software Engineering'],
                     credentialId: 'MSU-IS-2025-PM006',
                     verificationUrl: 'https://msu.ac.zw/verify/degree',
-                    pdf: 'certificates/bsc-information-systems.pdf',
-                    preview: 'https://images.unsplash.com/photo-1523240795612-9a054b0db644?w=400&h=300&fit=crop',
-                    color: { primary: '#00ffff', secondary: '#ff0080' }
+                    pdf: './assets/certificates/bsc-information-systems.pdf',
+                    preview: './assets/certificates/images/bsc-information-systems.jpg',
+                    color: { primary: '#00ffff', secondary: '#ff0080' },
+                    priority: 6
                 });
 
                 this.addCertificate({
@@ -3072,9 +3301,10 @@
                     skills: ['Cloud Fundamentals', 'AWS Services', 'Security', 'Pricing', 'Architecture', 'DevOps'],
                     credentialId: 'AWS-CP-2024-PM007',
                     verificationUrl: 'https://aws.amazon.com/verification/certified-cloud-practitioner',
-                    pdf: 'certificates/aws-cloud-practitioner.pdf',
-                    preview: 'https://images.unsplash.com/photo-1573164713714-d95e436ab8d6?w=400&h=300&fit=crop',
-                    color: { primary: '#FF9900', secondary: '#232F3E' }
+                    pdf: './assets/certificates/aws-cloud-practitioner.pdf',
+                    preview: './assets/certificates/images/aws-cloud-practitioner.jpg',
+                    color: { primary: '#FF9900', secondary: '#232F3E' },
+                    priority: 7
                 });
 
                 this.addCertificate({
@@ -3087,9 +3317,10 @@
                     skills: ['JavaScript', 'Algorithms', 'Data Structures', 'Problem Solving', 'ES6', 'Functional Programming'],
                     credentialId: 'FCC-JS-2023-PM008',
                     verificationUrl: 'https://freecodecamp.org/certification/verify',
-                    pdf: 'certificates/javascript-algorithms.pdf',
-                    preview: 'https://images.unsplash.com/photo-1579468118864-1b9ea3c0db4a?w=400&h=300&fit=crop',
-                    color: { primary: '#0056D3', secondary: '#74D0F1' }
+                    pdf: './assets/certificates/javascript-algorithms.pdf',
+                    preview: './assets/certificates/images/javascript-algorithms.jpg',
+                    color: { primary: '#0056D3', secondary: '#74D0F1' },
+                    priority: 8
                 });
 
                 this.generateCertificateCards();
@@ -3119,11 +3350,26 @@
                     .filter(cert => cert.category === category);
             }
 
+            // 📅 Get Recent Certificates (last 6 by priority/date)
+            getRecentCertificates() {
+                return Array.from(this.certificates.values())
+                    .sort((a, b) => {
+                        // Sort by priority first, then by date
+                        if (a.priority !== b.priority) {
+                            return a.priority - b.priority;
+                        }
+                        return new Date(b.date) - new Date(a.date);
+                    })
+                    .slice(0, 6);
+            }
+
             // 🔍 Filter and Search Certificates
             getFilteredCertificates() {
                 let filtered = Array.from(this.certificates.values());
                 
-                if (this.filters.category !== 'all') {
+                if (this.filters.category === 'recent') {
+                    filtered = this.getRecentCertificates();
+                } else if (this.filters.category !== 'all') {
                     filtered = filtered.filter(cert => cert.category === this.filters.category);
                 }
                 
@@ -3140,16 +3386,19 @@
                 return filtered;
             }
 
-            // 🎨 Generate Certificate Cards
+            // 🎨 Generate Certificate Cards with Animation
             generateCertificateCards() {
                 const container = document.getElementById('certificateGrid');
                 if (!container) return;
 
                 const certificates = this.getFilteredCertificates();
                 
+                // Update counter displays
+                this.updateCertificateCounters(certificates.length);
+                
                 if (certificates.length === 0) {
                     container.innerHTML = `
-                        <div class="col-span-full text-center py-12">
+                        <div class="col-span-full text-center py-12 filter-fade-in">
                             <div class="text-6xl mb-4">🔍</div>
                             <h3 class="text-xl font-bold text-gray-300 mb-2">No certificates found</h3>
                             <p class="text-gray-400">Try adjusting your search or filter criteria</p>
@@ -3159,19 +3408,28 @@
                 }
 
                 const certificateCards = certificates
-                    .map(cert => this.createCertificateCard(cert))
+                    .map((cert, index) => this.createCertificateCard(cert, index))
                     .join('');
 
                 container.innerHTML = certificateCards;
+                container.classList.add('filter-fade-in');
+                
+                // Add staggered animation to cards
+                setTimeout(() => {
+                    container.querySelectorAll('.certificate-grid-item').forEach((card, index) => {
+                        card.style.animationDelay = `${index * 0.1}s`;
+                    });
+                }, 100);
+                
                 this.setupCertificateInteractions();
             }
 
             // 🏗️ Create Individual Certificate Card
-            createCertificateCard(cert) {
+            createCertificateCard(cert, index) {
                 const iconClass = `cert-icon-${cert.provider}`;
                 
                 return `
-                    <div class="mobile-skill-card certificate-card" 
+                    <div class="mobile-skill-card certificate-card certificate-grid-item" 
                          style="--accent-color: ${cert.color.primary}; --accent-color-2: ${cert.color.secondary};" 
                          data-cert-id="${cert.id}"
                          data-cert-title="${cert.title}" 
@@ -3190,36 +3448,52 @@
                             </div>
                         </div>
                         
-                        <h4 class="text-base lg:text-lg font-bold text-white mb-2">${this.truncateTitle(cert.title)}</h4>
-                        <p class="text-xs lg:text-sm text-gray-300 mb-2">${cert.issuer}</p>
-                        <p class="text-xs text-gray-400 mb-2">${cert.date}</p>
+                        <div class="certificate-skills">
+                            <h4 class="text-white font-bold mb-2">${this.truncateTitle(cert.title)}</h4>
+                            <p class="text-gray-300 text-sm mb-1">${cert.issuer}</p>
+                            <p class="text-gray-400 text-xs mb-2">${cert.date}</p>
+                            
+                            <div class="flex flex-wrap gap-1 mb-2">
+                                ${cert.skills.slice(0, 3).map(skill => 
+                                    `<span class="text-xs px-2 py-1 rounded-full" 
+                                           style="background: ${cert.color.primary}20; color: ${cert.color.primary};">
+                                        ${skill}
+                                    </span>`
+                                ).join('')}
+                                ${cert.skills.length > 3 ? `<span class="text-xs text-gray-400">+${cert.skills.length - 3}</span>` : ''}
+                            </div>
+                        </div>
                         
-                        <div class="flex flex-wrap gap-1 mb-3">
-                            ${cert.skills.slice(0, 3).map(skill => 
-                                `<span class="text-xs px-2 py-1 rounded-full" 
-                                       style="background: ${cert.color.primary}20; color: ${cert.color.primary};">
-                                    ${skill}
-                                </span>`
-                            ).join('')}
-                            ${cert.skills.length > 3 ? `<span class="text-xs text-gray-400">+${cert.skills.length - 3} more</span>` : ''}
+                        <div class="certificate-stats">
+                            <div class="flex justify-between text-xs text-gray-400">
+                                <span class="live-indicator">
+                                    <div class="live-dot"></div>
+                                    👁️ <span id="cert-${cert.id}-views">${cert.views}</span>
+                                </span>
+                                <span>⬇️ <span id="cert-${cert.id}-downloads">${cert.downloads}</span></span>
+                            </div>
                         </div>
                         
                         <div class="certificate-hover-indicator">
                             <i class="fas fa-certificate text-neon-cyan text-xs"></i>
                             <span class="text-xs">Click to preview</span>
                         </div>
-                        
-                        <div class="certificate-stats">
-                            <div class="flex justify-between text-xs text-gray-400 mt-2">
-                                <span class="live-indicator">
-                                    <div class="live-dot"></div>
-                                    👁️ <span id="cert-${cert.id}-views">${cert.views}</span> views
-                                </span>
-                                <span>⬇️ <span id="cert-${cert.id}-downloads">${cert.downloads}</span> downloads</span>
-                            </div>
-                        </div>
                     </div>
                 `;
+            }
+
+            // 📊 Update Certificate Counters
+            updateCertificateCounters(showingCount) {
+                const showingElement = document.getElementById('showing-certificates');
+                const totalElement = document.getElementById('total-certificates');
+                
+                if (showingElement) {
+                    this.dataManager.animateCounter(showingElement, showingCount);
+                }
+                
+                if (totalElement) {
+                    this.dataManager.animateCounter(totalElement, this.certificates.size);
+                }
             }
 
             // 🎨 Get Provider Icon
@@ -3253,7 +3527,6 @@
                         this.handleCertificateClick(card, index);
                     });
 
-                    // Add hover effects for desktop
                     if (window.innerWidth >= 1024) {
                         card.addEventListener('mouseenter', () => {
                             this.showQuickPreview(card);
@@ -3273,20 +3546,16 @@
                 
                 if (!cert) return;
 
-                // Track view with real-time data
                 this.dataManager.trackInteraction('certificate', `view_${certId}`, 1);
                 cert.views++;
                 this.updateCertificateStats(certId);
                 
-                // Use different animation based on index
                 const animationType = this.animations[index % this.animations.length];
                 
-                // Clear any existing preview timeout
                 if (this.previewTimeout) {
                     clearTimeout(this.previewTimeout);
                 }
 
-                // Check for double click (within 400ms)
                 const now = Date.now();
                 if (card.lastClickTime && (now - card.lastClickTime) < 400) {
                     this.openCertificateModal(card, cert);
@@ -3295,7 +3564,6 @@
 
                 card.lastClickTime = now;
                 
-                // Single click - show preview with delay
                 this.previewTimeout = setTimeout(() => {
                     this.showCertificatePreview(card, cert, animationType);
                 }, 200);
@@ -3334,7 +3602,6 @@
                 
                 if (!preview) return;
 
-                // Populate preview with enhanced data
                 previewTitle.textContent = cert.title;
                 previewIssuer.innerHTML = `
                     <i class="fas fa-building mr-1"></i>
@@ -3345,7 +3612,6 @@
                     Date: ${cert.date}
                 `;
                 
-                // Add skills info
                 if (previewSkills) {
                     previewSkills.innerHTML = `
                         <i class="fas fa-star mr-1"></i>
@@ -3356,14 +3622,11 @@
                 previewImage.src = cert.preview;
                 previewImage.alt = `${cert.title} Certificate Preview`;
 
-                // Store current certificate data
                 preview.dataset.currentCert = JSON.stringify(cert);
                 
-                // Apply animation type
                 preview.className = `certificate-preview show ${animationType}-animation`;
                 preview.style.borderColor = cert.color.primary;
                 
-                // Auto-hide after 10 seconds
                 setTimeout(() => {
                     if (preview.classList.contains('show')) {
                         this.closeCertificatePreview();
@@ -3376,7 +3639,6 @@
                 const cert = this.getCertificate(certId);
                 if (!cert) return;
 
-                // Update individual certificate stats
                 const viewsElement = document.getElementById(`cert-${certId}-views`);
                 const downloadsElement = document.getElementById(`cert-${certId}-downloads`);
                 
@@ -3387,7 +3649,6 @@
                     this.dataManager.animateCounter(downloadsElement, cert.downloads);
                 }
 
-                // Update overall statistics
                 this.updateStatistics();
             }
 
@@ -3395,7 +3656,6 @@
             updateStatistics() {
                 const stats = this.getStatistics();
                 
-                // Update certificate count in the about section
                 const certCountElement = document.getElementById('cert-count');
                 if (certCountElement) {
                     certCountElement.textContent = `${stats.total}+`;
@@ -3405,6 +3665,7 @@
             // 🔄 Update filter counts
             updateFilterCounts() {
                 const categories = {
+                    'recent': 6,
                     'all': this.certificates.size,
                     'UX/UI Design': this.getCertificatesByCategory('UX/UI Design').length,
                     'Web Development': this.getCertificatesByCategory('Web Development').length,
@@ -3413,9 +3674,10 @@
                 };
 
                 Object.entries(categories).forEach(([category, count]) => {
-                    const element = document.getElementById(`filter-${category.toLowerCase().replace(/[^a-z]/g, '')}-count`);
-                    if (element) {
-                        element.textContent = count;
+                    const button = document.getElementById(`filter-${category.toLowerCase().replace(/[^a-z]/g, '')}`);
+                    const counterElement = button?.querySelector('.filter-counter');
+                    if (counterElement) {
+                        counterElement.textContent = count;
                     }
                 });
             }
@@ -3429,7 +3691,6 @@
 
                 this.closeCertificatePreview();
 
-                // Enhanced modal content
                 const content = `
                     <div style="padding: 2rem; background: linear-gradient(135deg, ${cert.color.primary}15, ${cert.color.secondary}15); border-radius: 20px; margin: 1rem;">
                         <div style="text-align: center; margin-bottom: 2rem;">
@@ -3467,17 +3728,14 @@
                                         🔗 Verify Certificate
                                     </a>
                                 ` : ''}
-                                <p style="color: #999; font-size: 0.9rem;">Full PDF certificate will be available soon</p>
+                                <p style="color: #999; font-size: 0.9rem;">Full PDF certificate available for download</p>
                             </div>
                         </div>
                     </div>
                 `;
 
                 modalContent.innerHTML = content;
-                
-                // Store current certificate
                 modal.dataset.currentCert = JSON.stringify(cert);
-                
                 modal.classList.add('show');
                 document.body.style.overflow = 'hidden';
             }
@@ -3512,7 +3770,6 @@
                 
                 if (!certData) return;
 
-                // Track download
                 this.dataManager.trackInteraction('certificate', `download_${certData.id}`, 1);
                 const cert = this.getCertificate(certData.id);
                 if (cert) {
@@ -3520,42 +3777,34 @@
                     this.updateCertificateStats(certData.id);
                 }
 
+                // Try to download the PDF file
                 if (certData.pdf && certData.pdf !== '') {
                     const link = document.createElement('a');
                     link.href = certData.pdf;
                     link.download = `${certData.title.replace(/[^a-z0-9]/gi, '_').toLowerCase()}.pdf`;
                     link.click();
                 } else {
-                    const alertMessage = `
-📄 Certificate Download
-
-Certificate: ${certData.title}
-Issued by: ${certData.issuer}
-Date: ${certData.date}
-Credential ID: ${certData.credentialId}
-
-📋 Skills Covered:
-${certData.skills.map(skill => `• ${skill}`).join('\n')}
-
-🔗 Verification: ${certData.verificationUrl || 'Available upon request'}
-
-💡 Full PDF certificates will be available soon!
-                    `.trim();
-                    
-                    alert(alertMessage);
+                    alert(`📄 Certificate: ${certData.title}\n\n🏢 Issued by: ${certData.issuer}\n📅 Date: ${certData.date}\n🆔 Credential ID: ${certData.credentialId}\n\n🔗 Verification: ${certData.verificationUrl || 'Available upon request'}\n\n💡 PDF download will be available soon!`);
                 }
             }
 
-            // 🔍 Filter Methods
+            // 🔍 Filter Methods with Enhanced Animation
             filterCertificates(category) {
                 this.filters.category = category;
-                this.generateCertificateCards();
                 
-                // Update filter button states
+                // Update active filter button
                 document.querySelectorAll('.filter-button').forEach(btn => {
                     btn.classList.remove('active');
                 });
-                event.target.classList.add('active');
+                
+                // Find and activate the clicked button
+                const activeButton = document.querySelector(`#filter-${category.toLowerCase().replace(/[^a-z]/g, '')}`);
+                if (activeButton) {
+                    activeButton.classList.add('active');
+                }
+                
+                // Generate cards with animation
+                this.generateCertificateCards();
             }
 
             searchCertificates(searchTerm) {
@@ -3565,7 +3814,6 @@ ${certData.skills.map(skill => `• ${skill}`).join('\n')}
 
             // 🚀 Setup Event Listeners
             setupEventListeners() {
-                // Enhanced keyboard navigation
                 document.addEventListener('keydown', (e) => {
                     if (e.key === 'Escape') {
                         this.closeCertificatePreview();
@@ -3573,7 +3821,6 @@ ${certData.skills.map(skill => `• ${skill}`).join('\n')}
                     }
                 });
 
-                // Close preview when clicking outside
                 document.addEventListener('click', (e) => {
                     const preview = document.getElementById('certificatePreview');
                     const modal = document.getElementById('certificateModal');
@@ -3678,18 +3925,18 @@ ${certData.skills.map(skill => `• ${skill}`).join('\n')}
             }
         }
 
-        // 🎭 Main Application JavaScript with Real-Time Features
+        // 🎭 Main Application JavaScript with Optimized Certificate System
         document.addEventListener('DOMContentLoaded', function() {
-            console.log('🚀 Enhanced Portfolio with Real-Time Data loaded!');
+            console.log('🚀 Enhanced Portfolio with Optimized Certificate System loaded!');
             
             // Initialize Real-Time Data Manager
             window.dataManager = new RealTimeDataManager();
             console.log('📊 Real-Time Data Manager initialized');
             
-            // Initialize Certificate Management System
+            // Initialize Optimized Certificate Management System
             setTimeout(() => {
                 window.certificateManager = new CertificateManager(window.dataManager);
-                console.log('🎓 Certificate Management System initialized');
+                console.log('🎓 Optimized Certificate Management System initialized');
             }, 500);
             
             // Initialize other systems
@@ -3788,7 +4035,6 @@ ${certData.skills.map(skill => `• ${skill}`).join('\n')}
                         successMessage.style.display = 'block';
                         successMessage.classList.add('animate-bounceIn');
                         
-                        // Track form submission
                         trackInteraction('contact', 'form_submit');
                         
                         setTimeout(() => {
@@ -3838,11 +4084,11 @@ ${certData.skills.map(skill => `• ${skill}`).join('\n')}
                     lastUpdated: '2024-11-15'
                 },
                 {
-                    name: 'certificate-portfolio-enhancement',
-                    description: 'Advanced certificate preview system with real-time data tracking',
+                    name: 'my-professional-portfolio',
+                    description: 'Advanced portfolio with real-time data tracking and certificate system',
                     language: 'JavaScript',
                     stars: 12,
-                    url: 'https://github.com/CBfrost/certificate-portfolio-enhancement',
+                    url: 'https://github.com/CBfrost/my-professional-portfolio',
                     lastUpdated: '2024-12-10'
                 }
             ];
@@ -3896,7 +4142,6 @@ ${certData.skills.map(skill => `• ${skill}`).join('\n')}
                         entry.target.style.transform = 'translateY(0)';
                         entry.target.style.opacity = '1';
                         
-                        // Track section views
                         const sectionId = entry.target.id;
                         if (sectionId) {
                             trackInteraction('navigation', `section_view_${sectionId}`);
@@ -3957,8 +4202,9 @@ ${certData.skills.map(skill => `• ${skill}`).join('\n')}
             }
         }
 
-        // Make analytics available globally
         window.exportAnalytics = exportAnalytics;
     </script>
-</body>
-</html>
+
+
+
+</body></html>
