@@ -1,15 +1,7 @@
-// Firebase Integration
-import FirebaseManager from './firebase-manager.js';
-import CertificateViewer from './certificate-viewer.js';
-
 // EmailJS Configuration - WORKING CONFIG
 (function() {
     emailjs.init("0ddIwmOm8C-CfECw1");
 })();
-
-// Global Firebase instances
-let firebaseManager;
-let certificateViewer;
 
 // Mobile-first GSAP Animations
 gsap.registerPlugin(ScrollTrigger);
@@ -119,11 +111,6 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
                 top: targetPosition,
                 behavior: 'smooth'
             });
-
-            // Track navigation
-            if (firebaseManager) {
-                firebaseManager.trackInteraction('navigation', { target: targetId });
-            }
         }
     });
 });
@@ -175,11 +162,6 @@ function toggleMobileNav() {
     } else {
         document.body.style.overflow = 'auto';
     }
-
-    // Track mobile nav usage
-    if (firebaseManager) {
-        firebaseManager.trackInteraction('navigation', { type: 'mobile_toggle' });
-    }
 }
 
 function closeMobileNav() {
@@ -191,80 +173,87 @@ function closeMobileNav() {
     document.body.style.overflow = 'auto';
 }
 
-// Enhanced GitHub Projects Integration with Firebase
+// GitHub Projects Integration - Mobile Optimized
 async function loadGitHubProjects() {
     const container = document.getElementById('github-projects');
     
     if (!container) return;
     
-    try {
-        // Get projects from Firebase
-        let projects;
-        if (firebaseManager) {
-            projects = await firebaseManager.getProjects();
-            projects = Object.values(projects).filter(p => p.isActive);
-        } else {
-            // Fallback to static data
-            projects = [
-                {
-                    id: 'ecowatt',
-                    name: 'ecowatt-energy-platform',
-                    description: 'AI-powered energy management PWA for Zimbabwe\'s prepaid electricity system',
-                    language: 'JavaScript',
-                    stars: 15,
-                    forks: 6,
-                    url: 'https://github.com/CBfrost/ecowatt-energy-platform',
-                    updated: '2 days ago'
-                },
-                {
-                    id: 'stayhealthy',
-                    name: 'stayhealthy-capstone',
-                    description: 'Healthcare management system capstone project',
-                    language: 'JavaScript',
-                    stars: 9,
-                    forks: 2,
-                    url: 'https://github.com/CBfrost/stayhealthy-capstone',
-                    updated: '13 hours ago'
-                },
-                {
-                    id: 'paradise-nursery',
-                    name: 'paradise-nursery',
-                    description: 'Plant nursery e-commerce with shopping cart',
-                    language: 'JavaScript',
-                    stars: 11,
-                    forks: 4,
-                    url: 'https://github.com/CBfrost/paradise-nursery',
-                    updated: 'yesterday'
-                },
-                {
-                    id: 'portfolio',
-                    name: 'my-professional-portfolio',
-                    description: 'Mobile-first portfolio with Firebase integration and real-time analytics',
-                    language: 'HTML',
-                    stars: 12,
-                    forks: 3,
-                    url: 'https://github.com/CBfrost/my-professional-portfolio',
-                    updated: 'just now'
-                }
-            ];
+    // Your actual GitHub repositories
+    const projects = [
+        {
+            name: 'my-professional-portfolio',
+            description: 'Mobile-first portfolio with glassmorphism design and advanced animations',
+            language: 'HTML',
+            stars: 1,
+            forks: 0,
+            url: 'https://github.com/CBfrost/my-professional-portfolio',
+            updated: 'just now'
+        },
+        {
+            name: 'alex-styles-portfolio',
+            description: 'Modern portfolio showcasing creative design and development skills',
+            language: 'CSS',
+            stars: 12,
+            forks: 3,
+            url: 'https://github.com/CBfrost/alex-styles-portfolio',
+            updated: '5 hours ago'
+        },
+        {
+            name: 'stayhealthy-capstone',
+            description: 'Healthcare management system capstone project',
+            language: 'JavaScript',
+            stars: 9,
+            forks: 2,
+            url: 'https://github.com/CBfrost/stayhealthy-capstone',
+            updated: '13 hours ago'
+        },
+        {
+            name: 'eventease-blazor-project',
+            description: 'Event management platform built with Blazor',
+            language: 'HTML',
+            stars: 7,
+            forks: 1,
+            url: 'https://github.com/CBfrost/eventease-blazor-project',
+            updated: '15 hours ago'
+        },
+        {
+            name: 'paradise-nursery',
+            description: 'Plant nursery e-commerce with shopping cart',
+            language: 'JavaScript',
+            stars: 11,
+            forks: 4,
+            url: 'https://github.com/CBfrost/paradise-nursery',
+            updated: 'yesterday'
+        },
+        {
+            name: 'ecowatt-energy-platform',
+            description: 'AI-powered energy management for Zimbabwe',
+            language: 'JavaScript',
+            stars: 15,
+            forks: 6,
+            url: 'https://github.com/CBfrost/ecowatt-energy-platform',
+            updated: '2 days ago'
         }
-        
-        const languageColors = {
-            'JavaScript': '#f1e05a',
-            'HTML': '#e34c26',
-            'React': '#61dafb',
-            'TypeScript': '#3178c6',
-            'Python': '#3776ab',
-            'CSS': '#1572b6'
-        };
-        
+    ];
+    
+    const languageColors = {
+        'JavaScript': '#f1e05a',
+        'HTML': '#e34c26',
+        'React': '#61dafb',
+        'TypeScript': '#3178c6',
+        'Python': '#3776ab',
+        'CSS': '#1572b6'
+    };
+    
+    try {
         container.innerHTML = projects.map(project => `
-            <div class="mobile-github-card" data-project="${project.id}">
+            <div class="mobile-github-card">
                 <div class="flex items-start justify-between mb-3 lg:mb-4">
                     <h3 class="text-base lg:text-lg font-bold text-white hover:text-neon-cyan transition-colors">
-                        <a href="${project.url || project.githubUrl}" target="_blank" class="block truncate pr-2" onclick="trackProjectClick('${project.id}', 'github')">${project.name || project.title}</a>
+                        <a href="${project.url}" target="_blank" class="block truncate pr-2">${project.name}</a>
                     </h3>
-                    <a href="${project.url || project.githubUrl}" target="_blank" class="text-gray-400 hover:text-white transition-colors flex-shrink-0" onclick="trackProjectClick('${project.id}', 'github')">
+                    <a href="${project.url}" target="_blank" class="text-gray-400 hover:text-white transition-colors flex-shrink-0">
                         <i class="fab fa-github text-lg lg:text-xl"></i>
                     </a>
                 </div>
@@ -281,12 +270,12 @@ async function loadGitHubProjects() {
                         </div>
                         <div class="flex items-center gap-1">
                             <i class="fas fa-code-branch text-blue-400"></i>
-                            <span>${project.forks || 0}</span>
+                            <span>${project.forks}</span>
                         </div>
                     </div>
                 </div>
                 <div class="text-xs text-gray-500">
-                    Updated ${project.updated || 'recently'}
+                    Updated ${project.updated}
                 </div>
             </div>
         `).join('');
@@ -296,35 +285,23 @@ async function loadGitHubProjects() {
     }
 }
 
-// Track project interactions
-function trackProjectClick(projectId, action) {
-    if (firebaseManager) {
-        firebaseManager.trackProjectInteraction(projectId, action);
-    }
-}
-
 // =====================================================
-// ENHANCED CV FUNCTIONALITY WITH FIREBASE TRACKING
+// FIXED CV FUNCTIONALITY - WORKING FUNCTIONS
 // =====================================================
 
-// View CV Function - Enhanced with Firebase
+// View CV Function - FIXED
 function viewCV() {
     const modal = document.getElementById('cvModal');
     if (modal) {
         modal.classList.add('show');
         document.body.style.overflow = 'hidden';
         console.log('✅ CV Modal opened successfully');
-        
-        // Track CV view
-        if (firebaseManager) {
-            firebaseManager.trackInteraction('cv', { action: 'view' });
-        }
     } else {
         console.error('❌ CV Modal not found');
     }
 }
 
-// Close CV Modal Function
+// Close CV Modal Function - FIXED
 function closeCVModal() {
     const modal = document.getElementById('cvModal');
     if (modal) {
@@ -334,7 +311,7 @@ function closeCVModal() {
     }
 }
 
-// Enhanced CV Download with Firebase Tracking
+// COMPLETELY FIXED PDF DOWNLOAD FUNCTION
 async function downloadCV() {
     const progressBar = document.getElementById('updateProgress');
     
@@ -342,12 +319,7 @@ async function downloadCV() {
         // Show progress
         if (progressBar) progressBar.style.width = '20%';
         
-        console.log('🔄 Starting CV download...');
-        
-        // Track download attempt
-        if (firebaseManager) {
-            firebaseManager.trackInteraction('cv', { action: 'download_attempt' });
-        }
+        console.log('🔄 Starting PDF download...');
         
         // Check device type and capabilities
         const isMobile = window.innerWidth < 768;
@@ -362,15 +334,12 @@ async function downloadCV() {
             
             if (progressBar) progressBar.style.width = '70%';
             
+            // For mobile devices, open in new tab for better UX
             const newTab = window.open('./cv.html', '_blank');
             
             if (progressBar) progressBar.style.width = '100%';
             
-            // Track successful mobile CV open
-            if (firebaseManager) {
-                firebaseManager.trackInteraction('cv', { action: 'download_mobile', device: 'mobile' });
-            }
-            
+            // Show user instruction after delay
             setTimeout(() => {
                 if (confirm('📱 CV opened in new tab!\n\nTo save as PDF:\n• iOS: Tap share → Print → Pinch to zoom → Share as PDF\n• Android: Tap menu → Print → Save as PDF\n• Desktop: Press Ctrl+P → Save as PDF\n\nClick OK to continue.')) {
                     console.log('✅ User acknowledged mobile PDF instructions');
@@ -381,22 +350,209 @@ async function downloadCV() {
             return;
         }
         
-        // Desktop handling with direct PDF download
+        // Desktop handling with html2pdf
+        if (typeof html2pdf === 'undefined') {
+            console.warn('⚠️ html2pdf not available on desktop - fallback to new tab');
+            window.open('./cv.html', '_blank');
+            if (progressBar) progressBar.style.width = '0%';
+            return;
+        }
+        
+        if (progressBar) progressBar.style.width = '60%';
+        
+        // Create a simple printable version for PDF generation
+        const printableContent = `
+            <!DOCTYPE html>
+            <html>
+            <head>
+                <meta charset="UTF-8">
+                <title>Panashe Matengambiri - CV</title>
+                <style>
+                    body { 
+                        font-family: 'Arial', sans-serif; 
+                        line-height: 1.4; 
+                        color: #333; 
+                        max-width: 800px; 
+                        margin: 0 auto; 
+                        padding: 20px;
+                        background: white;
+                    }
+                    h1 { color: #2563eb; font-size: 28px; margin-bottom: 5px; }
+                    h2 { color: #1e40af; font-size: 22px; margin-top: 25px; margin-bottom: 10px; border-bottom: 2px solid #e5e7eb; padding-bottom: 5px; }
+                    h3 { color: #374151; font-size: 18px; margin-top: 20px; margin-bottom: 8px; }
+                    .contact-info { background: #f8fafc; padding: 15px; border-radius: 8px; margin-bottom: 20px; }
+                    .contact-info div { margin-bottom: 5px; }
+                    .section { margin-bottom: 25px; }
+                    .experience-item { margin-bottom: 20px; padding-left: 15px; border-left: 3px solid #3b82f6; }
+                    .experience-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 5px; }
+                    .company { font-weight: 600; color: #1f2937; }
+                    .date { color: #6b7280; font-size: 14px; }
+                    .skills-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 10px; }
+                    .skill-item { background: #f1f5f9; padding: 8px 12px; border-radius: 5px; font-size: 14px; }
+                    ul { margin: 8px 0; padding-left: 20px; }
+                    li { margin-bottom: 3px; }
+                    .text-sm { font-size: 14px; }
+                    .text-gray-600 { color: #6b7280; }
+                    .mb-2 { margin-bottom: 8px; }
+                    .mb-4 { margin-bottom: 16px; }
+                </style>
+            </head>
+            <body>
+                <h1>PANASHE MATENGAMBIRI</h1>
+                <p style="font-size: 18px; color: #374151; margin-bottom: 20px;">Creative Technologist & UX Innovator</p>
+                
+                <div class="contact-info">
+                    <div><strong>Email:</strong> panashefrost@icloud.com</div>
+                    <div><strong>Phone:</strong> +27 632 269 407</div>
+                    <div><strong>Location:</strong> 138 Holkman Road, Paulshaulf, Sandton 2191, South Africa</div>
+                    <div><strong>LinkedIn:</strong> linkedin.com/in/panashematengambiri</div>
+                    <div><strong>GitHub:</strong> github.com/CBfrost</div>
+                </div>
+
+                <h2>PROFESSIONAL SUMMARY</h2>
+                <p>Passionate Information Systems student with hands-on experience in enterprise solutions, full-stack development, and user experience design. Seeking entry-level and intermediate opportunities to contribute innovative solutions while continuing professional growth.</p>
+
+                <h2>EDUCATION</h2>
+                <div class="experience-item">
+                    <div class="experience-header">
+                        <h3>BSc Information Systems</h3>
+                        <span class="date">Nov 2021 - Nov 2025 (Expected)</span>
+                    </div>
+                    <div class="company">Midlands State University, Zimbabwe</div>
+                    <ul>
+                        <li>Focus: Systems Analysis, Database Design, Software Development</li>
+                        <li>Relevant Coursework: Enterprise Systems, UX Design, Project Management</li>
+                        <li>Practical Experience: 3+ Industrial Attachments</li>
+                    </ul>
+                </div>
+
+                <h2>PROFESSIONAL EXPERIENCE</h2>
+                
+                <div class="experience-item">
+                    <div class="experience-header">
+                        <h3>Systems Development Intern</h3>
+                        <span class="date">May 2024 - Aug 2024</span>
+                    </div>
+                    <div class="company">DM Windscreens • Harare, Zimbabwe</div>
+                    <ul>
+                        <li><strong>ERP Implementation:</strong> Participated in Odoo ERP customization and deployment across 8 branch locations</li>
+                        <li><strong>UI/UX Design:</strong> Designed user-friendly interfaces reducing staff training time by 50%</li>
+                        <li><strong>Process Automation:</strong> Automated inventory management eliminating 80% of manual data entry</li>
+                        <li><strong>System Integration:</strong> Developed custom modules using Python and XML for automotive industry workflows</li>
+                        <li><strong>Training & Documentation:</strong> Created comprehensive user guides and conducted staff training sessions</li>
+                    </ul>
+                </div>
+
+                <div class="experience-item">
+                    <div class="experience-header">
+                        <h3>Freelance Web Developer & Designer</h3>
+                        <span class="date">Jan 2023 - Present</span>
+                    </div>
+                    <div class="company">Self-Employed • Remote</div>
+                    <ul>
+                        <li><strong>Client Projects:</strong> Delivered 15+ successful web development and design projects</li>
+                        <li><strong>Brand Development:</strong> Created complete brand identities including logos, color schemes, and style guides</li>
+                        <li><strong>Responsive Development:</strong> Built mobile-first websites with 99.9% uptime and optimal performance</li>
+                        <li><strong>Client Management:</strong> Maintained excellent client relationships with 100% project completion rate</li>
+                        <li><strong>Technology Stack:</strong> Specialized in React, Node.js, WordPress, and modern CSS frameworks</li>
+                    </ul>
+                </div>
+
+                <h2>KEY PROJECTS</h2>
+                
+                <div class="experience-item">
+                    <h3>EcoWatt AI Energy Platform</h3>
+                    <div class="text-sm text-gray-600 mb-2">Personal Project • 2024</div>
+                    <p>Progressive Web App for Zimbabwe's prepaid electricity management with AI-powered consumption forecasting, Bluetooth smart meter integration, and offline functionality.</p>
+                    <p><strong>Impact:</strong> Designed for 60K+ target users • 60% reduction in task completion time</p>
+                </div>
+
+                <div class="experience-item">
+                    <h3>AutoGlass Pro Platform</h3>
+                    <div class="text-sm text-gray-600 mb-2">Enterprise Project • DM Windscreens • 2024</div>
+                    <p>Comprehensive service management platform with real-time booking, mobile technician interfaces, and automated inventory tracking across 8 branch locations.</p>
+                    <p><strong>Impact:</strong> 70% booking time reduction • 35% customer satisfaction increase</p>
+                </div>
+
+                <h2>TECHNICAL SKILLS</h2>
+                <div class="skills-grid">
+                    <div class="skill-item"><strong>Languages:</strong> JavaScript/TypeScript, Python, HTML5/CSS3, SQL</div>
+                    <div class="skill-item"><strong>Frameworks:</strong> React/Next.js, Node.js/Express, TailwindCSS</div>
+                    <div class="skill-item"><strong>Design Tools:</strong> Figma, Sketch, Miro, Adobe Creative Suite</div>
+                    <div class="skill-item"><strong>Databases:</strong> PostgreSQL, MongoDB, MySQL</div>
+                    <div class="skill-item"><strong>Other:</strong> Git/GitHub, Odoo ERP, REST APIs, WebRTC</div>
+                </div>
+
+                <h2>CERTIFICATIONS</h2>
+                <ul>
+                    <li>Google UX Design Professional Certificate (Coursera, 2023)</li>
+                    <li>IBM Front-End Developer Professional Certificate (2024)</li>
+                    <li>Microsoft UX Design Professional Certificate (2024)</li>
+                    <li>CalArts UI/UX Design Specialization (2024)</li>
+                    <li>Figma, Sketch & Miro for UX Design (2024)</li>
+                </ul>
+
+                <h2>ACHIEVEMENTS</h2>
+                <ul>
+                    <li>Dean's List Recognition - Academic excellence in Information Systems (2023)</li>
+                    <li>Best Innovation Project - University Tech Competition (EcoWatt Platform, 2024)</li>
+                    <li>Outstanding Intern Award - DM Windscreens (Summer 2024)</li>
+                    <li>6+ Professional Certifications from Google, IBM, Microsoft, CalArts & more</li>
+                </ul>
+
+                <h2>LANGUAGES</h2>
+                <div class="skills-grid">
+                    <div class="skill-item">English (Native)</div>
+                    <div class="skill-item">Shona (Native)</div>
+                    <div class="skill-item">Afrikaans (Conversational)</div>
+                </div>
+            </body>
+            </html>
+        `;
+        
         if (progressBar) progressBar.style.width = '80%';
         
-        // Direct PDF download
-        const link = document.createElement('a');
-        link.href = './assets/documents/Panashe_Matengambiri_CV.pdf';
-        link.download = 'Panashe_Matengambiri_CV.pdf';
-        link.click();
+        // Create temporary element for PDF generation
+        const tempElement = document.createElement('div');
+        tempElement.innerHTML = printableContent;
+        tempElement.style.position = 'absolute';
+        tempElement.style.left = '-9999px';
+        tempElement.style.top = '-9999px';
+        tempElement.style.width = '210mm';
+        tempElement.style.background = 'white';
+        
+        document.body.appendChild(tempElement);
+        
+        // PDF generation options
+        const opt = {
+            margin: [15, 15, 15, 15],
+            filename: 'Panashe_Matengambiri_CV.pdf',
+            image: { type: 'jpeg', quality: 0.92 },
+            html2canvas: { 
+                scale: 1.2,
+                useCORS: true,
+                allowTaint: true,
+                backgroundColor: '#ffffff',
+                logging: false,
+                width: 794,
+                height: 1123
+            },
+            jsPDF: { 
+                unit: 'mm', 
+                format: 'a4', 
+                orientation: 'portrait',
+                compress: true
+            }
+        };
+        
+        // Generate and download PDF
+        await html2pdf().set(opt).from(tempElement.firstElementChild).save();
+        
+        // Clean up
+        document.body.removeChild(tempElement);
         
         if (progressBar) progressBar.style.width = '100%';
-        console.log('✅ CV PDF downloaded successfully');
-        
-        // Track successful download
-        if (firebaseManager) {
-            firebaseManager.trackInteraction('cv', { action: 'download_success', device: 'desktop' });
-        }
+        console.log('✅ CV PDF generated and downloaded successfully');
         
         // Reset progress bar
         setTimeout(() => {
@@ -404,16 +560,11 @@ async function downloadCV() {
         }, 1500);
         
     } catch (error) {
-        console.error('❌ Error downloading CV:', error);
-        
-        // Track download error
-        if (firebaseManager) {
-            firebaseManager.trackInteraction('cv', { action: 'download_error', error: error.message });
-        }
+        console.error('❌ Error generating PDF:', error);
         
         // Fallback: Open CV in new tab
         console.log('🔄 Falling back to opening in new tab');
-        alert('PDF download encountered an issue. Opening CV in new tab instead.\n\nYou can use your browser\'s print function (Ctrl+P) to save as PDF.');
+        alert('PDF generation encountered an issue. Opening CV in new tab instead.\n\nYou can use your browser\'s print function (Ctrl+P) to save as PDF.');
         window.open('./cv.html', '_blank');
         
         // Reset progress bar
@@ -421,436 +572,7 @@ async function downloadCV() {
     }
 }
 
-// Enhanced Certificate Management with Firebase
-class EnhancedCertificateManager {
-    constructor(firebaseManager) {
-        this.firebaseManager = firebaseManager;
-        this.certificates = new Map();
-        this.animations = ['jackInBox', 'slideInFromTop', 'flipInX'];
-        this.currentAnimationIndex = 0;
-        this.previewTimeout = null;
-        this.filters = {
-            category: 'recent',
-            searchTerm: ''
-        };
-        this.init();
-    }
-
-    async init() {
-        try {
-            // Load certificates from Firebase
-            const certificatesData = await this.firebaseManager.getCertificates();
-            
-            // Convert to Map for easier management
-            Object.entries(certificatesData).forEach(([id, cert]) => {
-                this.certificates.set(id, cert);
-            });
-            
-            this.generateCertificateCards();
-            this.setupEventListeners();
-            this.updateStatistics();
-            this.updateFilterCounts();
-            
-            console.log('✅ Enhanced Certificate Manager initialized with Firebase');
-        } catch (error) {
-            console.error('❌ Error initializing certificate manager:', error);
-            // Fallback to static data if Firebase fails
-            this.initializeStaticCertificates();
-        }
-    }
-
-    // Fallback to static certificates if Firebase is unavailable
-    initializeStaticCertificates() {
-        const staticCertificates = [
-            {
-                id: 'google-ux-design',
-                title: 'Google UX Design Professional Certificate',
-                issuer: 'Google',
-                date: '2024',
-                provider: 'google',
-                category: 'UX/UI Design',
-                skills: ['User Research', 'Wireframing', 'Prototyping', 'Usability Testing', 'Design Thinking'],
-                credentialId: 'GUX-2024-PM001',
-                verificationUrl: 'https://coursera.org/verify/professional-cert/google-ux',
-                pdf: './assets/certificates/pdfs/google-ux-design.pdf',
-                htmlViewer: './assets/certificates/html/google-ux-design.html',
-                preview: './assets/certificates/images/google-ux-design.jpg',
-                color: { primary: '#4285F4', secondary: '#34A853' },
-                priority: 1,
-                views: 45,
-                downloads: 12
-            },
-            // Add other static certificates here...
-        ];
-
-        staticCertificates.forEach(cert => {
-            this.certificates.set(cert.id, cert);
-        });
-
-        this.generateCertificateCards();
-        this.setupEventListeners();
-        this.updateStatistics();
-        this.updateFilterCounts();
-    }
-
-    // Handle certificate clicks with Firebase tracking
-    async handleCertificateClick(card, index) {
-        const certId = card.dataset.certId;
-        
-        if (this.firebaseManager) {
-            await this.firebaseManager.trackCertificateView(certId);
-        }
-        
-        // Show certificate in enhanced viewer
-        if (window.certificateViewer) {
-            window.certificateViewer.viewCertificate(certId);
-        }
-    }
-
-    // Get certificates by category for filtering
-    getCertificatesByCategory(category) {
-        return Array.from(this.certificates.values())
-            .filter(cert => cert.category === category);
-    }
-
-    // Get recent certificates
-    getRecentCertificates() {
-        return Array.from(this.certificates.values())
-            .sort((a, b) => {
-                if (a.priority !== b.priority) {
-                    return a.priority - b.priority;
-                }
-                return new Date(b.date) - new Date(a.date);
-            })
-            .slice(0, 6);
-    }
-
-    // Filter and search certificates
-    getFilteredCertificates() {
-        let filtered = Array.from(this.certificates.values());
-        
-        if (this.filters.category === 'recent') {
-            filtered = this.getRecentCertificates();
-        } else if (this.filters.category !== 'all') {
-            filtered = filtered.filter(cert => cert.category === this.filters.category);
-        }
-        
-        if (this.filters.searchTerm) {
-            const term = this.filters.searchTerm.toLowerCase();
-            filtered = filtered.filter(cert => 
-                cert.title.toLowerCase().includes(term) ||
-                cert.issuer.toLowerCase().includes(term) ||
-                cert.skills.some(skill => skill.toLowerCase().includes(term)) ||
-                cert.category.toLowerCase().includes(term)
-            );
-        }
-        
-        return filtered;
-    }
-
-    // Generate certificate cards with Firebase data
-    generateCertificateCards() {
-        const container = document.getElementById('certificateGrid');
-        if (!container) return;
-
-        const certificates = this.getFilteredCertificates();
-        
-        // Update counter displays
-        this.updateCertificateCounters(certificates.length);
-        
-        if (certificates.length === 0) {
-            container.innerHTML = `
-                <div class="col-span-full text-center py-12 filter-fade-in">
-                    <div class="text-6xl mb-4">🔍</div>
-                    <h3 class="text-xl font-bold text-gray-300 mb-2">No certificates found</h3>
-                    <p class="text-gray-400">Try adjusting your search or filter criteria</p>
-                </div>
-            `;
-            return;
-        }
-
-        const certificateCards = certificates
-            .map((cert, index) => this.createCertificateCard(cert, index))
-            .join('');
-
-        container.innerHTML = certificateCards;
-        container.classList.add('filter-fade-in');
-        
-        // Add staggered animation to cards
-        setTimeout(() => {
-            container.querySelectorAll('.certificate-grid-item').forEach((card, index) => {
-                card.style.animationDelay = `${index * 0.1}s`;
-            });
-        }, 100);
-        
-        this.setupCertificateInteractions();
-    }
-
-    // Create individual certificate card with enhanced Firebase data
-    createCertificateCard(cert, index) {
-        const iconClass = `cert-icon-${cert.provider}`;
-        const shortTitle = this.truncateTitle(cert.title, 35);
-        const topSkills = cert.skills.slice(0, 2);
-        
-        return `
-            <div class="cert-card-optimized certificate-grid-item" 
-                 style="--accent-color: ${cert.color.primary}; --accent-color-2: ${cert.color.secondary};" 
-                 data-cert-id="${cert.id}"
-                 data-cert-title="${cert.title}" 
-                 data-cert-issuer="${cert.issuer}" 
-                 data-cert-date="${cert.date}" 
-                 data-cert-pdf="${cert.pdf}" 
-                 data-cert-preview="${cert.preview}"
-                 data-cert-verification="${cert.verificationUrl}"
-                 data-cert-skills="${cert.skills.join(', ')}"
-                 data-cert-credential="${cert.credentialId}">
-                
-                <!-- Header with Icon and Live Status -->
-                <div class="cert-header">
-                    <div class="cert-icon-compact ${iconClass}">
-                        ${this.getProviderIcon(cert.provider)}
-                    </div>
-                    <div class="cert-status">
-                        <div class="live-dot"></div>
-                        <span class="cert-views" id="cert-${cert.id}-views">${cert.views || 0}</span>
-                    </div>
-                </div>
-                
-                <!-- Content -->
-                <div class="cert-content">
-                    <h4 class="cert-title" title="${cert.title}">${shortTitle}</h4>
-                    <p class="cert-issuer">${cert.issuer}</p>
-                    <p class="cert-date">${cert.date}</p>
-                    
-                    <!-- Skills Tags -->
-                    <div class="cert-skills">
-                        ${topSkills.map(skill => 
-                            `<span class="skill-tag" style="background: ${cert.color.primary}15; color: ${cert.color.primary}; border-color: ${cert.color.primary}30;">${skill}</span>`
-                        ).join('')}
-                        ${cert.skills.length > 2 ? `<span class="skill-more">+${cert.skills.length - 2}</span>` : ''}
-                    </div>
-                </div>
-                
-                <!-- Footer Stats -->
-                <div class="cert-footer">
-                    <div class="cert-stat">
-                        <i class="fas fa-eye"></i>
-                        <span id="cert-${cert.id}-views-footer">${cert.views || 0}</span>
-                    </div>
-                    <div class="cert-stat">
-                        <i class="fas fa-download"></i>
-                        <span id="cert-${cert.id}-downloads">${cert.downloads || 0}</span>
-                    </div>
-                    <div class="cert-category" style="color: ${cert.color.primary};">
-                        ${cert.category.split(' ')[0]}
-                    </div>
-                </div>
-                
-                <!-- Hover Overlay -->
-                <div class="cert-overlay">
-                    <div class="cert-overlay-content">
-                        <i class="fas fa-certificate"></i>
-                        <span>Click to view</span>
-                    </div>
-                </div>
-            </div>
-        `;
-    }
-
-    // Get provider icon
-    getProviderIcon(provider) {
-        const icons = {
-            google: '<i class="fab fa-google text-white"></i>',
-            ibm: '<i class="fas fa-laptop-code text-white"></i>',
-            microsoft: '<i class="fab fa-microsoft text-white"></i>',
-            calarts: '<i class="fas fa-palette text-white"></i>',
-            design: '<i class="fab fa-figma text-white"></i>',
-            university: '<i class="fas fa-graduation-cap text-white"></i>',
-            coursera: '<i class="fas fa-certificate text-white"></i>',
-            aws: '<i class="fab fa-aws text-white"></i>'
-        };
-        return icons[provider] || '<i class="fas fa-certificate text-white"></i>';
-    }
-
-    // Truncate long titles
-    truncateTitle(title, maxLength = 25) {
-        if (title.length <= maxLength) return title;
-        return title.substring(0, maxLength) + '...';
-    }
-
-    // Setup certificate interactions
-    setupCertificateInteractions() {
-        const certificateCards = document.querySelectorAll('.cert-card-optimized');
-        
-        certificateCards.forEach((card, index) => {
-            card.addEventListener('click', (e) => {
-                e.preventDefault();
-                this.handleCertificateClick(card, index);
-            });
-
-            if (window.innerWidth >= 1024) {
-                card.addEventListener('mouseenter', () => {
-                    this.showQuickPreview(card);
-                });
-
-                card.addEventListener('mouseleave', () => {
-                    this.hideQuickPreview();
-                });
-            }
-        });
-    }
-
-    // Quick preview on hover (desktop only)
-    showQuickPreview(card) {
-        if (window.innerWidth < 1024) return;
-        
-        card.style.transform = 'translateY(-5px) scale(1.02)';
-        card.style.boxShadow = '0 15px 35px rgba(0, 0, 0, 0.2)';
-    }
-
-    hideQuickPreview() {
-        if (window.innerWidth < 1024) return;
-        
-        setTimeout(() => {
-            document.querySelectorAll('.cert-card-optimized').forEach(card => {
-                card.style.transform = '';
-                card.style.boxShadow = '';
-            });
-        }, 100);
-    }
-
-    // Update certificate counters
-    updateCertificateCounters(showingCount) {
-        const showingElement = document.getElementById('showing-certificates');
-        const totalElement = document.getElementById('total-certificates');
-        
-        if (showingElement) {
-            this.animateCounter(showingElement, showingCount);
-        }
-        
-        if (totalElement) {
-            this.animateCounter(totalElement, this.certificates.size);
-        }
-    }
-
-    // Update filter counts
-    updateFilterCounts() {
-        const categories = {
-            'recent': 6,
-            'all': this.certificates.size,
-            'UX/UI Design': this.getCertificatesByCategory('UX/UI Design').length,
-            'Web Development': this.getCertificatesByCategory('Web Development').length,
-            'Cloud Computing': this.getCertificatesByCategory('Cloud Computing').length,
-            'Academic': this.getCertificatesByCategory('Academic').length
-        };
-
-        Object.entries(categories).forEach(([category, count]) => {
-            const button = document.getElementById(`filter-${category.toLowerCase().replace(/[^a-z]/g, '')}`);
-            const counterElement = button?.querySelector('.filter-counter');
-            if (counterElement) {
-                counterElement.textContent = count;
-            }
-        });
-    }
-
-    // Filter certificates
-    filterCertificates(category) {
-        this.filters.category = category;
-        
-        // Update active filter button
-        document.querySelectorAll('.filter-button').forEach(btn => {
-            btn.classList.remove('active');
-        });
-        
-        const activeButton = document.querySelector(`#filter-${category.toLowerCase().replace(/[^a-z]/g, '')}`);
-        if (activeButton) {
-            activeButton.classList.add('active');
-        }
-        
-        // Track filter usage
-        if (this.firebaseManager) {
-            this.firebaseManager.trackInteraction('certificates', { action: 'filter', category });
-        }
-        
-        this.generateCertificateCards();
-    }
-
-    // Search certificates
-    searchCertificates(searchTerm) {
-        this.filters.searchTerm = searchTerm;
-        
-        // Track search usage
-        if (this.firebaseManager) {
-            this.firebaseManager.trackInteraction('certificates', { action: 'search', term: searchTerm });
-        }
-        
-        this.generateCertificateCards();
-    }
-
-    // Update statistics
-    updateStatistics() {
-        const stats = this.getStatistics();
-        
-        const certCountElement = document.getElementById('cert-count');
-        if (certCountElement) {
-            certCountElement.textContent = `${stats.total}+`;
-        }
-    }
-
-    // Get statistics
-    getStatistics() {
-        const certs = Array.from(this.certificates.values());
-        return {
-            total: certs.length,
-            categories: [...new Set(certs.map(c => c.category))].length,
-            totalViews: certs.reduce((sum, c) => sum + (c.views || 0), 0),
-            totalDownloads: certs.reduce((sum, c) => sum + (c.downloads || 0), 0),
-            byCategory: certs.reduce((acc, cert) => {
-                acc[cert.category] = (acc[cert.category] || 0) + 1;
-                return acc;
-            }, {})
-        };
-    }
-
-    // Setup event listeners
-    setupEventListeners() {
-        document.addEventListener('keydown', (e) => {
-            if (e.key === 'Escape') {
-                if (window.certificateViewer) {
-                    window.certificateViewer.closeCertificateModal();
-                }
-            }
-        });
-    }
-
-    // Animate counter
-    animateCounter(element, targetValue) {
-        const currentValue = parseInt(element.textContent) || 0;
-        if (currentValue === targetValue) return;
-
-        element.classList.add('updating');
-        
-        const duration = 1000;
-        const steps = 20;
-        const stepValue = (targetValue - currentValue) / steps;
-        const stepDuration = duration / steps;
-        
-        let currentStep = 0;
-        const timer = setInterval(() => {
-            currentStep++;
-            const newValue = Math.round(currentValue + (stepValue * currentStep));
-            element.textContent = newValue;
-            
-            if (currentStep >= steps) {
-                clearInterval(timer);
-                element.textContent = targetValue;
-                element.classList.remove('updating');
-            }
-        }, stepDuration);
-    }
-}
-
-// Form validation functions - Enhanced with Firebase
+// Form validation functions - Mobile Optimized
 function validateEmail(email) {
     const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     return re.test(String(email).toLowerCase());
@@ -924,68 +646,16 @@ function clearFieldError(fieldName) {
     }
 }
 
-// Enhanced Contact Form with Firebase Integration
-document.addEventListener('DOMContentLoaded', async function() {
-    console.log('🚀 Enhanced Portfolio with Firebase Integration loading...');
+// Enhanced Contact Form Submission with EmailJS - WORKING VERSION
+document.addEventListener('DOMContentLoaded', function() {
+    // Load GitHub projects
+    loadGitHubProjects();
     
-    // Initialize Firebase Manager first
-    try {
-        firebaseManager = new FirebaseManager();
-        await firebaseManager.initializeData();
-        
-        // Setup real-time listeners
-        firebaseManager.setupRealTimeListeners();
-        
-        // Track page view
-        await firebaseManager.trackPageView();
-        
-        console.log('✅ Firebase Manager initialized');
-    } catch (error) {
-        console.error('❌ Error initializing Firebase:', error);
-        console.log('📱 Continuing with offline functionality...');
-    }
-    
-    // Initialize Certificate Viewer
-    try {
-        certificateViewer = new CertificateViewer(firebaseManager);
-        window.certificateViewer = certificateViewer;
-        console.log('✅ Certificate Viewer initialized');
-    } catch (error) {
-        console.error('❌ Error initializing Certificate Viewer:', error);
-    }
-    
-    // Initialize Enhanced Certificate Manager
-    try {
-        const enhancedCertificateManager = new EnhancedCertificateManager(firebaseManager);
-        window.enhancedCertificateManager = enhancedCertificateManager;
-        console.log('✅ Enhanced Certificate Manager initialized');
-    } catch (error) {
-        console.error('❌ Error initializing Enhanced Certificate Manager:', error);
-    }
-    
-    // Load profile data from Firebase
-    try {
-        if (firebaseManager) {
-            const profile = await firebaseManager.getProfile();
-            if (profile && profile.profileImage) {
-                // Update profile image
-                const profileImages = document.querySelectorAll('.professional-avatar img, .mobile-hero-image img');
-                profileImages.forEach(img => {
-                    img.src = profile.profileImage;
-                    img.alt = profile.name;
-                });
-            }
-        }
-    } catch (error) {
-        console.error('❌ Error loading profile data:', error);
-    }
-    
-    // Contact Form Setup
-    const contactForm = document.getElementById('contact-form');
+    const contactForm = document.getElementById('contactForm') || document.getElementById('contact-form');
     const submitButton = document.getElementById('send-button');
-    const successMessage = document.getElementById('success-message');
+    const successMessage = document.getElementById('successMessage') || document.getElementById('success-message');
     
-    // Enhanced button visibility
+    // Force button visibility on load with multiple checks
     function ensureButtonVisibility() {
         if (submitButton) {
             submitButton.style.display = 'flex';
@@ -996,19 +666,25 @@ document.addEventListener('DOMContentLoaded', async function() {
             submitButton.removeAttribute('hidden');
             submitButton.classList.remove('hidden');
             console.log('✅ Send button visibility ensured');
+        } else {
+            console.error('❌ Send button not found');
         }
     }
     
+    // Initial check
     ensureButtonVisibility();
+    
+    // Double-check after a delay
     setTimeout(ensureButtonVisibility, 500);
+    
+    // Triple-check after page fully loads
     window.addEventListener('load', ensureButtonVisibility);
     
     if (!contactForm || !submitButton) {
-        console.error('❌ Contact form elements not found');
+        console.error('Contact form elements not found');
         return;
     }
     
-    // Enhanced form submission with Firebase tracking
     contactForm.addEventListener('submit', async function(e) {
         e.preventDefault();
         console.log('📨 Form submitted');
@@ -1018,6 +694,7 @@ document.addEventListener('DOMContentLoaded', async function() {
             firstName: contactForm.firstName?.value || '',
             lastName: contactForm.lastName?.value || '',
             email: contactForm.email?.value || '',
+            company: contactForm.company?.value || '',
             subject: contactForm.subject?.value || '',
             message: contactForm.message?.value || ''
         };
@@ -1032,15 +709,12 @@ document.addEventListener('DOMContentLoaded', async function() {
         
         if (Object.keys(errors).length > 0) {
             console.log('❌ Form validation failed:', errors);
+            // Show errors
             Object.keys(errors).forEach(key => {
                 showFieldError(key, errors[key]);
             });
             
-            // Track validation failure
-            if (firebaseManager) {
-                firebaseManager.trackInteraction('contact', { action: 'validation_failed', errors: Object.keys(errors) });
-            }
-            
+            // Focus first error field on mobile
             const firstErrorField = document.querySelector('.input-error');
             if (firstErrorField && window.innerWidth < 768) {
                 firstErrorField.scrollIntoView({ behavior: 'smooth', block: 'center' });
@@ -1058,19 +732,14 @@ document.addEventListener('DOMContentLoaded', async function() {
         try {
             console.log('📧 Sending email via EmailJS...');
             
-            // Track form submission attempt
-            if (firebaseManager) {
-                firebaseManager.trackContactFormSubmission(formData);
-                firebaseManager.trackInteraction('contact', { action: 'form_submitted' });
-            }
-            
-            // Send email using EmailJS
+            // Send email using EmailJS - WORKING CONFIGURATION
             const result = await emailjs.send(
-                'service_jx2p8ct',
-                'template_nkq8aon',
+                'service_jx2p8ct',  // Your service ID
+                'template_nkq8aon', // Your template ID
                 {
                     from_name: `${formData.firstName} ${formData.lastName}`,
                     from_email: formData.email,
+                    company: formData.company,
                     subject: formData.subject,
                     message: formData.message,
                     to_email: 'panashefrost@icloud.com'
@@ -1078,11 +747,6 @@ document.addEventListener('DOMContentLoaded', async function() {
             );
             
             console.log('✅ Email sent successfully:', result);
-            
-            // Track successful submission
-            if (firebaseManager) {
-                firebaseManager.trackInteraction('contact', { action: 'form_success' });
-            }
             
             // Success state
             submitButton.innerHTML = '<i class="fas fa-check mr-2"></i>Message Sent!';
@@ -1093,6 +757,7 @@ document.addEventListener('DOMContentLoaded', async function() {
             if (successMessage) {
                 successMessage.classList.add('show');
                 
+                // Scroll to success message on mobile
                 if (window.innerWidth < 768) {
                     successMessage.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
                 }
@@ -1110,20 +775,17 @@ document.addEventListener('DOMContentLoaded', async function() {
                     successMessage.classList.remove('show');
                 }
                 
+                // Clear field success styling
                 Object.keys(formData).forEach(key => {
                     const field = document.querySelector(`[name="${key}"]`);
                     if (field) field.classList.remove('input-success');
                 });
-            }, 4000);
+            }, 4000); // Longer delay for mobile users to read
             
         } catch (error) {
             console.error('❌ Error sending email:', error);
             
-            // Track form error
-            if (firebaseManager) {
-                firebaseManager.trackInteraction('contact', { action: 'form_error', error: error.message });
-            }
-            
+            // Error state
             submitButton.innerHTML = '<i class="fas fa-exclamation-triangle mr-2"></i>Error - Try Again';
             submitButton.classList.remove('loading');
             submitButton.classList.add('error');
@@ -1142,6 +804,7 @@ document.addEventListener('DOMContentLoaded', async function() {
     Object.keys({firstName: '', lastName: '', email: '', subject: '', message: ''}).forEach(fieldName => {
         const field = document.querySelector(`[name="${fieldName}"]`);
         if (field) {
+            // Blur validation
             field.addEventListener('blur', function() {
                 const value = this.value.trim();
                 if (value) {
@@ -1149,6 +812,7 @@ document.addEventListener('DOMContentLoaded', async function() {
                 }
             });
             
+            // Input validation (debounced)
             field.addEventListener('input', function() {
                 clearTimeout(validationTimeouts[fieldName]);
                 validationTimeouts[fieldName] = setTimeout(() => {
@@ -1158,7 +822,7 @@ document.addEventListener('DOMContentLoaded', async function() {
                     } else {
                         clearFieldError(fieldName);
                     }
-                }, 500);
+                }, 500); // 500ms debounce
             });
         }
     });
@@ -1181,19 +845,12 @@ document.addEventListener('DOMContentLoaded', async function() {
         }
     }
     
-    // Load GitHub projects
-    loadGitHubProjects();
-    
-    // Setup other functionality
-    setupButtonVisibility();
-    setupScrollEffects();
-    setupMobileNavigation();
-    
-    // Handle orientation and resize
+    // Handle orientation change
     window.addEventListener('orientationchange', function() {
         setTimeout(ensureButtonVisibility, 200);
     });
     
+    // Handle window resize
     let resizeTimeout;
     window.addEventListener('resize', function() {
         clearTimeout(resizeTimeout);
@@ -1204,117 +861,210 @@ document.addEventListener('DOMContentLoaded', async function() {
             }
         }, 250);
     });
-    
-    console.log('🚀 Enhanced Portfolio fully loaded!');
 });
 
-// Enhanced Button Visibility
-function setupButtonVisibility() {
-    const buttons = document.querySelectorAll('.mobile-button');
-    buttons.forEach((button, index) => {
-        button.style.display = 'flex';
-        button.style.visibility = 'visible';
-        button.style.opacity = '1';
-        button.style.position = 'relative';
-        button.style.zIndex = '100';
-        
-        button.addEventListener('touchstart', function() {
-            this.style.transform = 'scale(0.95)';
+// Enhanced Suggestion System with EmailJS
+function setupSuggestionSystem() {
+    // Character counter for quick suggestion
+    const quickSuggestion = document.getElementById('quickSuggestion');
+    const charCount = document.getElementById('charCount');
+    
+    if (quickSuggestion && charCount) {
+        quickSuggestion.addEventListener('input', (e) => {
+            const count = e.target.value.length;
+            charCount.textContent = `${count}/280 characters`;
+            charCount.style.color = count > 250 ? '#EF4444' : '#9CA3AF';
         });
-        
-        button.addEventListener('touchend', function() {
-            this.style.transform = 'scale(1)';
-        });
-    });
-}
+    }
+    
+ // For detailed suggestions
+await emailjs.send(
+    'service_jx2p8ct',
+    'template_suggestions', // Use suggestions template
+    {
+        from_name: email ? email : 'Portfolio Visitor (Anonymous)',
+        from_email: email || 'noreply@portfolio.com',
+        category: category,
+        priority: priority,
+        message: suggestion,
+        to_email: 'panashefrost@icloud.com'
+    }
+);
 
-// Mobile Navigation
-function setupMobileNavigation() {
-    window.toggleMobileNav = toggleMobileNav;
-    window.closeMobileNav = closeMobileNav;
-}
+// For quick suggestions
+await emailjs.send(
+    'service_jx2p8ct',
+    'template_suggestions', // Use suggestions template
+    {
+        from_name: 'Portfolio Visitor (Anonymous)',
+        from_email: 'noreply@portfolio.com',
+        category: 'general',
+        priority: 'medium',
+        message: suggestion,
+        to_email: 'panashefrost@icloud.com'
+    }
+);
 
-// Scroll Effects
-function setupScrollEffects() {
-    const updateProgress = () => {
-        const scrolled = (window.scrollY / (document.documentElement.scrollHeight - window.innerHeight)) * 100;
-        document.getElementById('updateProgress').style.width = scrolled + '%';
-    };
+async function submitQuickSuggestion() {
+    const textarea = document.getElementById('quickSuggestion');
+    const button = document.getElementById('submitSuggestion');
+    const suggestion = textarea.value.trim();
     
-    window.addEventListener('scroll', updateProgress);
+    if (!suggestion) return;
     
-    const observerOptions = {
-        threshold: 0.1,
-        rootMargin: '0px 0px -50px 0px'
-    };
+    // Show loading state
+    const originalText = button.innerHTML;
+    button.disabled = true;
+    button.innerHTML = '<div class="loading-spinner"></div><span>Sending...</span>';
     
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.style.transform = 'translateY(0)';
-                entry.target.style.opacity = '1';
-                
-                const sectionId = entry.target.id;
-                if (sectionId && firebaseManager) {
-                    firebaseManager.trackInteraction('section_view', { section: sectionId });
-                }
+    try {
+        // Send suggestion via EmailJS
+        await emailjs.send(
+            'service_jx2p8ct',
+            'template_nkq8aon',
+            {
+                from_name: 'Portfolio Visitor (Anonymous)',
+                from_email: 'noreply@portfolio.com',
+                subject: 'Quick Portfolio Suggestion',
+                message: `Quick suggestion from portfolio visitor:\n\n${suggestion}`,
+                to_email: 'panashefrost@icloud.com'
             }
-        });
-    }, observerOptions);
-    
-    document.querySelectorAll('.mobile-project-card, .mobile-skill-card, .mobile-testimonial-card, section').forEach(el => {
-        el.style.transform = 'translateY(50px)';
-        el.style.opacity = '0';
-        el.style.transition = 'all 0.6s ease';
-        observer.observe(el);
-    });
+        );
+        
+        // Success animation
+        textarea.value = '';
+        document.getElementById('charCount').textContent = '0/280 characters';
+        
+        button.innerHTML = '<i class="fas fa-check"></i><span>Thank You!</span>';
+        button.classList.add('bg-green-600');
+        
+        // Update suggestion count
+        const countElement = document.getElementById('suggestionCount');
+        if (countElement) {
+            const currentCount = parseInt(countElement.textContent);
+            countElement.textContent = currentCount + 1;
+        }
+        
+        console.log('✅ Quick suggestion sent successfully');
+        
+        // Reset button after delay
+        setTimeout(() => {
+            button.disabled = false;
+            button.innerHTML = originalText;
+            button.classList.remove('bg-green-600');
+        }, 3000);
+        
+    } catch (error) {
+        console.error('❌ Error sending suggestion:', error);
+        button.innerHTML = '<i class="fas fa-exclamation-triangle"></i><span>Try Again</span>';
+        button.disabled = false;
+    }
 }
 
-// Global function exports for HTML onclick handlers
-window.toggleMobileNav = toggleMobileNav;
-window.closeMobileNav = closeMobileNav;
-window.viewCV = viewCV;
-window.closeCVModal = closeCVModal;
-window.downloadCV = downloadCV;
-
-// Enhanced filter functions for certificates
-window.filterCertificates = function(category) {
-    if (window.enhancedCertificateManager) {
-        window.enhancedCertificateManager.filterCertificates(category);
+async function submitDetailedSuggestion() {
+    const form = document.getElementById('detailedSuggestionForm');
+    const button = form.querySelector('button[type="submit"]');
+    
+    const category = document.getElementById('suggestionCategory').value;
+    const priority = form.querySelector('input[name="priority"]:checked')?.value || 'medium';
+    const suggestion = document.getElementById('detailedSuggestion').value;
+    const email = document.getElementById('suggestionEmail').value;
+    
+    if (!category || !suggestion) {
+        alert('Please fill in all required fields.');
+        return;
     }
-};
+    
+    // Show loading state
+    const originalText = button.innerHTML;
+    button.disabled = true;
+    button.innerHTML = '<div class="loading-spinner"></div><span>Submitting...</span>';
+    
+    try {
+        // Send detailed suggestion via EmailJS
+        await emailjs.send(
+            'service_jx2p8ct',
+            'template_nkq8aon',
+            {
+                from_name: email ? email : 'Portfolio Visitor (Anonymous)',
+                from_email: email || 'noreply@portfolio.com',
+                subject: `Portfolio Feedback - ${category.charAt(0).toUpperCase() + category.slice(1)}`,
+                message: `Detailed feedback from portfolio visitor:
 
-window.searchCertificates = function(searchTerm) {
-    if (window.enhancedCertificateManager) {
-        window.enhancedCertificateManager.searchCertificates(searchTerm);
-    }
-};
+Category: ${category}
+Priority: ${priority}
+Contact Email: ${email || 'Not provided'}
 
-// Close modals with Escape key
-document.addEventListener('keydown', function(event) {
-    if (event.key === 'Escape') {
-        closeCVModal();
-        if (window.certificateViewer) {
-            window.certificateViewer.closeCertificateModal();
-        }
+Feedback:
+${suggestion}`,
+                to_email: 'panashefrost@icloud.com'
+            }
+        );
+        
+        // Success state
+        button.innerHTML = '<i class="fas fa-check"></i><span>Submitted!</span>';
+        button.classList.add('bg-green-600');
+        
+        console.log('✅ Detailed suggestion sent successfully');
+        
+        // Close modal after delay
+        setTimeout(() => {
+            closeSuggestionModal();
+            button.disabled = false;
+            button.innerHTML = originalText;
+            button.classList.remove('bg-green-600');
+        }, 2000);
+        
+    } catch (error) {
+        console.error('❌ Error sending detailed suggestion:', error);
+        button.innerHTML = '<i class="fas fa-exclamation-triangle"></i><span>Try Again</span>';
+        button.disabled = false;
     }
+}
+
+function openSuggestionModal(category = '') {
+    const modal = document.getElementById('suggestionModal');
+    const categorySelect = document.getElementById('suggestionCategory');
+    const modalTitle = document.getElementById('suggestionModalTitle');
+    
+    if (category) {
+        categorySelect.value = category;
+        modalTitle.textContent = `Submit ${category.charAt(0).toUpperCase() + category.slice(1)} Feedback`;
+    }
+    
+    modal.classList.add('show');
+    document.body.style.overflow = 'hidden';
+}
+
+function closeSuggestionModal() {
+    const modal = document.getElementById('suggestionModal');
+    modal.classList.remove('show');
+    document.body.style.overflow = '';
+    // Reset form
+    document.getElementById('detailedSuggestionForm').reset();
+}
+
+// Initialize suggestion system when DOM is loaded
+document.addEventListener('DOMContentLoaded', function() {
+    setupSuggestionSystem();
 });
 
 // Close modal when clicking outside
 window.addEventListener('click', function(event) {
-    const cvModal = document.getElementById('cvModal');
-    const certModal = document.getElementById('certificateModal');
-    
-    if (event.target === cvModal) {
+    const modal = document.getElementById('cvModal');
+    if (event.target === modal) {
         closeCVModal();
-    }
-    
-    if (event.target === certModal && window.certificateViewer) {
-        window.certificateViewer.closeCertificateModal();
     }
 });
 
-// Optimized parallax effect (desktop only)
+// Close modal with Escape key
+document.addEventListener('keydown', function(event) {
+    if (event.key === 'Escape') {
+        closeCVModal();
+    }
+});
+
+// Optimized parallax effect (desktop only, reduce for performance)
 if (window.innerWidth >= 1024 && !prefersReducedMotion) {
     gsap.utils.toArray('section').forEach(section => {
         const bg = section.querySelector('img');
@@ -1354,9 +1104,8 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // Preload critical resources
     const criticalImages = [
-        './assets/images/profile/profile.jpg',
-        './assets/certificates/images/google-ux-design.jpg',
-        './assets/certificates/images/ibm-frontend.jpg'
+        './assets/images/profile.jpg',
+        'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=400&fit=crop&crop=face'
     ];
     
     criticalImages.forEach(src => {
@@ -1368,18 +1117,19 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 });
 
-// Analytics export function
-window.exportAnalytics = function() {
-    if (firebaseManager) {
-        const analytics = firebaseManager.getAnalytics();
-        console.log('📊 Portfolio Analytics:', analytics);
-        return analytics;
-    }
-    return null;
-};
+// Export functions for global use
+window.toggleMobileNav = toggleMobileNav;
+window.closeMobileNav = closeMobileNav;
+window.viewCV = viewCV;
+window.closeCVModal = closeCVModal;
+window.downloadCV = downloadCV;
+window.openSuggestionModal = openSuggestionModal;
+window.closeSuggestionModal = closeSuggestionModal;
+window.submitQuickSuggestion = submitQuickSuggestion;
+window.submitDetailedSuggestion = submitDetailedSuggestion;
 
-console.log('🚀 Enhanced Portfolio JavaScript with Firebase Integration loaded successfully!');
-console.log('📧 Contact form ready with Firebase tracking');
-console.log('📄 CV functions initialized with analytics');
-console.log('🎓 Certificate system enhanced with Firebase');
-console.log('🔥 Firebase real-time data management active');
+console.log('🚀 Portfolio JavaScript loaded successfully!');
+console.log('📧 Contact form ready with EmailJS');
+console.log('📄 CV functions initialized');
+console.log('💡 Suggestion system ready');
+console.log('🔧 Button visibility enhanced');

@@ -1,0 +1,922 @@
+/* ============================================================================
+   SUGGESTION SYSTEM COMPREHENSIVE STYLES
+   Mobile-First, Accessible, Professional Design
+   ============================================================================ */
+
+/* ===========================================
+   BASE SUGGESTION CONTAINER STYLES
+   =========================================== */
+.suggestion-container {
+    background: rgba(255, 255, 255, 0.05) !important;
+    backdrop-filter: blur(24px) saturate(180%) !important;
+    border: 1px solid rgba(255, 255, 255, 0.1) !important;
+    border-radius: 1.5rem !important;
+    padding: 2rem !important;
+    box-sizing: border-box !important;
+    position: relative !important;
+    overflow: hidden !important;
+}
+
+.suggestion-container::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(93, 92, 222, 0.5), transparent);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.suggestion-container:hover::before {
+    opacity: 1;
+}
+
+/* ===========================================
+   SUGGESTION BUTTON GRID STYLES
+   =========================================== */
+.suggestion-btn {
+    background: rgba(255, 255, 255, 0.03) !important;
+    backdrop-filter: blur(20px) !important;
+    border: 1px solid rgba(255, 255, 255, 0.08) !important;
+    border-radius: 16px !important;
+    padding: 20px 16px !important;
+    text-align: center !important;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1) !important;
+    color: white !important;
+    cursor: pointer !important;
+    min-height: 100px !important;
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: center !important;
+    align-items: center !important;
+    position: relative !important;
+    overflow: hidden !important;
+    text-decoration: none !important;
+    outline: none !important;
+    user-select: none !important;
+    -webkit-tap-highlight-color: transparent !important;
+    box-sizing: border-box !important;
+}
+
+/* Gradient border animation */
+.suggestion-btn::before {
+    content: '';
+    position: absolute;
+    inset: -2px;
+    background: linear-gradient(45deg, #5D5CDE, #8B5CF6, #06B6D4, #10B981);
+    border-radius: 18px;
+    opacity: 0;
+    z-index: -1;
+    transition: opacity 0.4s ease;
+}
+
+/* Hover effects */
+.suggestion-btn:hover {
+    transform: translateY(-6px) scale(1.03) !important;
+    background: rgba(255, 255, 255, 0.08) !important;
+    border-color: rgba(93, 92, 222, 0.3) !important;
+    box-shadow: 
+        0 20px 40px rgba(0, 0, 0, 0.3),
+        0 0 0 1px rgba(93, 92, 222, 0.2) !important;
+}
+
+.suggestion-btn:hover::before {
+    opacity: 1;
+}
+
+/* Active/Focus states */
+.suggestion-btn:active {
+    transform: translateY(-2px) scale(1.01) !important;
+}
+
+.suggestion-btn:focus-visible {
+    outline: 2px solid #5D5CDE !important;
+    outline-offset: 2px !important;
+}
+
+/* Icon styles within buttons */
+.suggestion-btn i {
+    font-size: 1.5rem !important;
+    margin-bottom: 0.75rem !important;
+    transition: all 0.3s ease !important;
+}
+
+.suggestion-btn:hover i {
+    transform: scale(1.1) !important;
+    filter: drop-shadow(0 0 8px currentColor) !important;
+}
+
+/* Text styles within buttons */
+.suggestion-btn span {
+    font-size: 0.875rem !important;
+    font-weight: 600 !important;
+    letter-spacing: 0.025em !important;
+    transition: all 0.3s ease !important;
+}
+
+/* ===========================================
+   QUICK SUGGESTION FORM STYLES
+   =========================================== */
+.quick-suggestion-form {
+    background: rgba(255, 255, 255, 0.05) !important;
+    backdrop-filter: blur(20px) !important;
+    border: 1px solid rgba(255, 255, 255, 0.1) !important;
+    border-radius: 1rem !important;
+    padding: 1.5rem !important;
+    transition: all 0.3s ease !important;
+    box-sizing: border-box !important;
+}
+
+.quick-suggestion-form:hover {
+    border-color: rgba(93, 92, 222, 0.3) !important;
+    background: rgba(255, 255, 255, 0.08) !important;
+}
+
+/* Quick suggestion textarea */
+.quick-suggestion-textarea {
+    width: 100% !important;
+    min-height: 100px !important;
+    padding: 1rem 1.25rem !important;
+    font-size: 16px !important;
+    background: rgba(255, 255, 255, 0.05) !important;
+    border: 1px solid rgba(255, 255, 255, 0.15) !important;
+    border-radius: 12px !important;
+    color: white !important;
+    resize: none !important;
+    transition: all 0.3s ease !important;
+    outline: none !important;
+    font-family: 'Inter', sans-serif !important;
+    line-height: 1.6 !important;
+    box-sizing: border-box !important;
+}
+
+.quick-suggestion-textarea:focus {
+    border-color: #5D5CDE !important;
+    box-shadow: 0 0 0 1px #5D5CDE, 0 0 20px rgba(93, 92, 222, 0.2) !important;
+    background: rgba(255, 255, 255, 0.08) !important;
+}
+
+.quick-suggestion-textarea::placeholder {
+    color: rgba(255, 255, 255, 0.5) !important;
+    opacity: 1 !important;
+}
+
+/* Character counter */
+.char-counter {
+    font-size: 0.75rem !important;
+    color: rgba(255, 255, 255, 0.6) !important;
+    transition: color 0.3s ease !important;
+}
+
+.char-counter.warning {
+    color: #F59E0B !important;
+}
+
+.char-counter.danger {
+    color: #EF4444 !important;
+}
+
+/* Quick submit button */
+.quick-submit-btn {
+    background: linear-gradient(135deg, #5D5CDE 0%, #8B5CF6 100%) !important;
+    color: white !important;
+    border: none !important;
+    border-radius: 12px !important;
+    padding: 12px 24px !important;
+    font-size: 16px !important;
+    font-weight: 600 !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    gap: 8px !important;
+    cursor: pointer !important;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+    text-decoration: none !important;
+    outline: none !important;
+    min-height: 48px !important;
+    box-shadow: 0 4px 15px rgba(93, 92, 222, 0.3) !important;
+    position: relative !important;
+    overflow: hidden !important;
+    user-select: none !important;
+    box-sizing: border-box !important;
+}
+
+/* Button shine effect */
+.quick-submit-btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transition: left 0.5s;
+}
+
+.quick-submit-btn:hover {
+    transform: translateY(-2px) scale(1.02) !important;
+    box-shadow: 0 8px 25px rgba(93, 92, 222, 0.4) !important;
+}
+
+.quick-submit-btn:hover::before {
+    left: 100%;
+}
+
+.quick-submit-btn:active {
+    transform: translateY(0) scale(0.98) !important;
+}
+
+.quick-submit-btn:focus-visible {
+    outline: 2px solid rgba(93, 92, 222, 0.5) !important;
+    outline-offset: 2px !important;
+}
+
+/* Button loading state */
+.quick-submit-btn.loading {
+    pointer-events: none !important;
+    opacity: 0.8 !important;
+    background: linear-gradient(135deg, #6B7280, #374151) !important;
+}
+
+.quick-submit-btn.loading::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 16px;
+    height: 16px;
+    margin: -8px 0 0 -8px;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    border-top: 2px solid white;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* Button success state */
+.quick-submit-btn.success {
+    background: linear-gradient(135deg, #10B981, #059669) !important;
+    animation: successPulse 0.6s ease-in-out;
+}
+
+@keyframes successPulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+    100% { transform: scale(1); }
+}
+
+/* ===========================================
+   SUGGESTION MODAL STYLES
+   =========================================== */
+.suggestion-modal {
+    display: none !important;
+    position: fixed !important;
+    z-index: 1000 !important;
+    left: 0 !important;
+    top: 0 !important;
+    width: 100% !important;
+    height: 100% !important;
+    background-color: rgba(0, 0, 0, 0.85) !important;
+    backdrop-filter: blur(15px) !important;
+    overflow-y: auto !important;
+    box-sizing: border-box !important;
+}
+
+.suggestion-modal.show {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    padding: 24px !important;
+}
+
+.suggestion-modal-content {
+    background: linear-gradient(145deg, #0A0A0F 0%, #1A1A2E 100%) !important;
+    border: 1px solid rgba(93, 92, 222, 0.3) !important;
+    border-radius: 24px !important;
+    padding: 32px !important;
+    max-width: 600px !important;
+    width: 100% !important;
+    max-height: 85vh !important;
+    overflow-y: auto !important;
+    position: relative !important;
+    box-shadow: 
+        0 40px 80px rgba(0, 0, 0, 0.5),
+        0 0 0 1px rgba(255, 255, 255, 0.05) !important;
+    box-sizing: border-box !important;
+}
+
+/* Modal close button */
+.suggestion-modal-close {
+    position: absolute !important;
+    top: 20px !important;
+    right: 24px !important;
+    color: #fff !important;
+    font-size: 28px !important;
+    font-weight: bold !important;
+    cursor: pointer !important;
+    width: 44px !important;
+    height: 44px !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    border-radius: 50% !important;
+    background: rgba(255, 255, 255, 0.1) !important;
+    backdrop-filter: blur(10px) !important;
+    transition: all 0.3s ease !important;
+    z-index: 1001 !important;
+    border: none !important;
+    outline: none !important;
+}
+
+.suggestion-modal-close:hover {
+    background: rgba(93, 92, 222, 0.3) !important;
+    transform: scale(1.1) !important;
+    color: #5D5CDE !important;
+}
+
+.suggestion-modal-close:focus-visible {
+    outline: 2px solid #5D5CDE !important;
+    outline-offset: 2px !important;
+}
+
+/* Modal title */
+.suggestion-modal-title {
+    color: white !important;
+    font-size: 1.875rem !important;
+    font-weight: 700 !important;
+    margin-bottom: 1.5rem !important;
+    padding-right: 60px !important;
+    line-height: 1.2 !important;
+}
+
+/* ===========================================
+   DETAILED SUGGESTION FORM STYLES
+   =========================================== */
+.detailed-suggestion-form {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 1.5rem !important;
+}
+
+/* Form labels */
+.suggestion-label {
+    display: block !important;
+    color: rgba(255, 255, 255, 0.9) !important;
+    font-weight: 600 !important;
+    font-size: 1rem !important;
+    margin-bottom: 0.75rem !important;
+    transition: color 0.3s ease !important;
+}
+
+/* Form inputs and selects */
+.suggestion-input,
+.suggestion-select,
+.suggestion-textarea {
+    width: 100% !important;
+    padding: 12px 16px !important;
+    font-size: 16px !important;
+    background: rgba(255, 255, 255, 0.05) !important;
+    border: 1px solid rgba(255, 255, 255, 0.15) !important;
+    border-radius: 12px !important;
+    color: white !important;
+    transition: all 0.3s ease !important;
+    outline: none !important;
+    font-family: 'Inter', sans-serif !important;
+    box-sizing: border-box !important;
+}
+
+.suggestion-input:focus,
+.suggestion-select:focus,
+.suggestion-textarea:focus {
+    border-color: #5D5CDE !important;
+    box-shadow: 0 0 0 1px #5D5CDE, 0 0 20px rgba(93, 92, 222, 0.2) !important;
+    background: rgba(255, 255, 255, 0.08) !important;
+}
+
+.suggestion-input::placeholder,
+.suggestion-textarea::placeholder {
+    color: rgba(255, 255, 255, 0.5) !important;
+    opacity: 1 !important;
+}
+
+/* Select dropdown styling */
+.suggestion-select {
+    cursor: pointer !important;
+    appearance: none !important;
+    -webkit-appearance: none !important;
+    -moz-appearance: none !important;
+    background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6,9 12,15 18,9'%3e%3c/polyline%3e%3c/svg%3e") !important;
+    background-repeat: no-repeat !important;
+    background-position: right 12px center !important;
+    background-size: 16px !important;
+    padding-right: 40px !important;
+}
+
+.suggestion-select option {
+    background: #1A1A2E !important;
+    color: white !important;
+    padding: 8px 12px !important;
+}
+
+/* Textarea specific styling */
+.suggestion-textarea {
+    min-height: 120px !important;
+    resize: vertical !important;
+    line-height: 1.6 !important;
+}
+
+/* ===========================================
+   PRIORITY SELECTION STYLES
+   =========================================== */
+.priority-selection-grid {
+    display: grid !important;
+    grid-template-columns: repeat(3, 1fr) !important;
+    gap: 0.75rem !important;
+}
+
+.priority-option {
+    position: relative !important;
+    cursor: pointer !important;
+}
+
+.priority-option input[type="radio"] {
+    position: absolute !important;
+    opacity: 0 !important;
+    width: 0 !important;
+    height: 0 !important;
+}
+
+.priority-card {
+    background: rgba(255, 255, 255, 0.05) !important;
+    border: 1px solid rgba(255, 255, 255, 0.1) !important;
+    border-radius: 12px !important;
+    padding: 1rem !important;
+    text-align: center !important;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+    cursor: pointer !important;
+    min-height: 80px !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    justify-content: center !important;
+    position: relative !important;
+    overflow: hidden !important;
+    box-sizing: border-box !important;
+}
+
+.priority-card:hover {
+    background: rgba(255, 255, 255, 0.08) !important;
+    border-color: rgba(93, 92, 222, 0.3) !important;
+    transform: translateY(-2px) !important;
+}
+
+.priority-option input[type="radio"]:checked + .priority-card {
+    border-color: #5D5CDE !important;
+    background: rgba(93, 92, 222, 0.15) !important;
+    transform: scale(1.02) !important;
+}
+
+.priority-option input[type="radio"]:checked + .priority-card::before {
+    content: '';
+    position: absolute;
+    inset: -1px;
+    background: linear-gradient(45deg, #5D5CDE, #8B5CF6);
+    border-radius: 12px;
+    z-index: -1;
+    animation: priorityGlow 0.5s ease-out;
+}
+
+@keyframes priorityGlow {
+    0% { opacity: 0; transform: scale(0.9); }
+    100% { opacity: 1; transform: scale(1); }
+}
+
+.priority-card i {
+    font-size: 1.25rem !important;
+    margin-bottom: 0.5rem !important;
+    transition: all 0.3s ease !important;
+}
+
+.priority-card span {
+    font-size: 0.875rem !important;
+    font-weight: 600 !important;
+    color: white !important;
+}
+
+/* ===========================================
+   COMMUNITY STATS STYLES
+   =========================================== */
+.community-stats {
+    border-top: 1px solid rgba(255, 255, 255, 0.1) !important;
+    padding-top: 1.5rem !important;
+    margin-top: 1.5rem !important;
+}
+
+.stats-grid {
+    display: grid !important;
+    grid-template-columns: repeat(3, 1fr) !important;
+    gap: 1rem !important;
+}
+
+.stat-item {
+    text-align: center !important;
+    padding: 1rem 0.5rem !important;
+    background: rgba(255, 255, 255, 0.03) !important;
+    border-radius: 12px !important;
+    transition: all 0.3s ease !important;
+    cursor: default !important;
+}
+
+.stat-item:hover {
+    background: rgba(255, 255, 255, 0.06) !important;
+    transform: translateY(-1px) !important;
+}
+
+.stat-number {
+    font-size: 1.75rem !important;
+    font-weight: 900 !important;
+    color: #5D5CDE !important;
+    margin-bottom: 0.25rem !important;
+    display: block !important;
+    background: linear-gradient(135deg, #5D5CDE 0%, #8B5CF6 100%) !important;
+    -webkit-background-clip: text !important;
+    -webkit-text-fill-color: transparent !important;
+    background-clip: text !important;
+}
+
+.stat-label {
+    font-size: 0.75rem !important;
+    color: rgba(255, 255, 255, 0.7) !important;
+    line-height: 1.3 !important;
+}
+
+/* ===========================================
+   SUCCESS ANIMATIONS & STATES
+   =========================================== */
+.suggestion-success {
+    background: linear-gradient(135deg, #10B981 0%, #059669 100%) !important;
+    border: 1px solid #34D399 !important;
+    border-radius: 12px !important;
+    padding: 1rem 1.25rem !important;
+    margin-top: 1rem !important;
+    color: white !important;
+    display: none !important;
+    align-items: center !important;
+    gap: 0.75rem !important;
+    box-shadow: 0 4px 15px rgba(16, 185, 129, 0.3) !important;
+}
+
+.suggestion-success.show {
+    display: flex !important;
+    animation: successSlide 0.5s ease-out;
+}
+
+@keyframes successSlide {
+    from {
+        opacity: 0;
+        transform: translateY(-12px) scale(0.95);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+.suggestion-success i {
+    font-size: 1.5rem !important;
+    color: #34D399 !important;
+}
+
+.suggestion-success-content {
+    flex: 1 !important;
+}
+
+.suggestion-success-title {
+    font-weight: 700 !important;
+    font-size: 1rem !important;
+    margin-bottom: 0.25rem !important;
+}
+
+.suggestion-success-message {
+    font-size: 0.875rem !important;
+    opacity: 0.9 !important;
+}
+
+/* ===========================================
+   RESPONSIVE DESIGN
+   =========================================== */
+@media (max-width: 768px) {
+    .suggestion-container {
+        padding: 1.5rem !important;
+        border-radius: 1.25rem !important;
+    }
+    
+    .suggestion-modal-content {
+        padding: 24px !important;
+        margin: 16px !important;
+        border-radius: 20px !important;
+        max-height: 90vh !important;
+    }
+    
+    .suggestion-modal-title {
+        font-size: 1.5rem !important;
+        padding-right: 50px !important;
+    }
+    
+    .priority-selection-grid {
+        gap: 0.5rem !important;
+    }
+    
+    .priority-card {
+        padding: 0.75rem !important;
+        min-height: 70px !important;
+    }
+    
+    .priority-card i {
+        font-size: 1rem !important;
+    }
+    
+    .priority-card span {
+        font-size: 0.75rem !important;
+    }
+    
+    .stats-grid {
+        gap: 0.75rem !important;
+    }
+    
+    .stat-number {
+        font-size: 1.5rem !important;
+    }
+}
+
+@media (max-width: 480px) {
+    .suggestion-container {
+        padding: 1rem !important;
+        border-radius: 1rem !important;
+    }
+    
+    .suggestion-btn {
+        min-height: 85px !important;
+        padding: 16px 12px !important;
+    }
+    
+    .suggestion-btn i {
+        font-size: 1.25rem !important;
+        margin-bottom: 0.5rem !important;
+    }
+    
+    .suggestion-btn span {
+        font-size: 0.75rem !important;
+    }
+    
+    .quick-suggestion-form {
+        padding: 1rem !important;
+    }
+    
+    .quick-suggestion-textarea {
+        min-height: 80px !important;
+        padding: 0.75rem 1rem !important;
+        font-size: 16px !important;
+    }
+    
+    .suggestion-modal-content {
+        padding: 20px !important;
+        margin: 12px !important;
+    }
+    
+    .suggestion-modal-title {
+        font-size: 1.375rem !important;
+    }
+    
+    .detailed-suggestion-form {
+        gap: 1.25rem !important;
+    }
+    
+    .suggestion-input,
+    .suggestion-select,
+    .suggestion-textarea {
+        padding: 10px 14px !important;
+        font-size: 16px !important;
+    }
+}
+
+/* ===========================================
+   ACCESSIBILITY ENHANCEMENTS
+   =========================================== */
+@media (prefers-reduced-motion: reduce) {
+    .suggestion-btn,
+    .quick-submit-btn,
+    .suggestion-modal-content,
+    .priority-card,
+    .stat-item {
+        animation: none !important;
+        transition: none !important;
+    }
+    
+    .suggestion-btn:hover,
+    .quick-submit-btn:hover,
+    .priority-card:hover,
+    .stat-item:hover {
+        transform: none !important;
+    }
+}
+
+@media (prefers-contrast: high) {
+    .suggestion-btn,
+    .quick-suggestion-form,
+    .suggestion-input,
+    .suggestion-select,
+    .suggestion-textarea,
+    .priority-card {
+        border: 2px solid white !important;
+        background: rgba(0, 0, 0, 0.8) !important;
+    }
+    
+    .quick-submit-btn {
+        border: 2px solid white !important;
+        background: #0066ff !important;
+    }
+}
+
+/* Focus indicators for keyboard navigation */
+.suggestion-btn:focus-visible,
+.quick-submit-btn:focus-visible,
+.suggestion-input:focus-visible,
+.suggestion-select:focus-visible,
+.suggestion-textarea:focus-visible,
+.priority-card:focus-visible {
+    outline: 3px solid #5D5CDE !important;
+    outline-offset: 2px !important;
+}
+
+/* Print styles */
+@media print {
+    .suggestion-modal {
+        display: none !important;
+    }
+}
+
+/* Dark theme adjustments */
+@media (prefers-color-scheme: light) {
+    .suggestion-container,
+    .quick-suggestion-form,
+    .suggestion-modal-content {
+        background: rgba(255, 255, 255, 0.95) !important;
+        color: #333 !important;
+    }
+    
+    .suggestion-label {
+        color: #333 !important;
+    }
+    
+    .suggestion-input,
+    .suggestion-select,
+    .suggestion-textarea {
+        background: rgba(0, 0, 0, 0.05) !important;
+        color: #333 !important;
+        border-color: rgba(0, 0, 0, 0.2) !important;
+    }
+    
+    .suggestion-input::placeholder,
+    .suggestion-textarea::placeholder {
+        color: rgba(0, 0, 0, 0.5) !important;
+    }
+}
+
+/* ===========================================
+   LOADING STATES & MICRO-INTERACTIONS
+   =========================================== */
+.suggestion-loading {
+    position: relative !important;
+    pointer-events: none !important;
+    opacity: 0.7 !important;
+}
+
+.suggestion-loading::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 20px;
+    height: 20px;
+    margin: -10px 0 0 -10px;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    border-top: 2px solid #5D5CDE;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+    z-index: 100;
+}
+
+/* Button ripple effect */
+.suggestion-btn,
+.quick-submit-btn {
+    position: relative !important;
+    overflow: hidden !important;
+}
+
+.suggestion-btn::after,
+.quick-submit-btn::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.3);
+    transform: translate(-50%, -50%);
+    transition: width 0.3s, height 0.3s;
+    pointer-events: none;
+}
+
+.suggestion-btn:active::after,
+.quick-submit-btn:active::after {
+    width: 200px;
+    height: 200px;
+}
+
+/* ===========================================
+   UTILITY CLASSES
+   =========================================== */
+.suggestion-hidden {
+    display: none !important;
+}
+
+.suggestion-visible {
+    display: block !important;
+}
+
+.suggestion-fade-in {
+    animation: fadeInUp 0.5s ease-out;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.suggestion-scale-in {
+    animation: scaleIn 0.3s ease-out;
+}
+
+@keyframes scaleIn {
+    from {
+        opacity: 0;
+        transform: scale(0.9);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+/* ===========================================
+   ENHANCED GLASS EFFECTS
+   =========================================== */
+.suggestion-glass {
+    background: rgba(255, 255, 255, 0.05) !important;
+    backdrop-filter: blur(24px) saturate(180%) !important;
+    border: 1px solid rgba(255, 255, 255, 0.1) !important;
+}
+
+.suggestion-glass-hover:hover {
+    background: rgba(255, 255, 255, 0.08) !important;
+    border-color: rgba(93, 92, 222, 0.3) !important;
+}
+
+/* ===========================================
+   ICON ANIMATIONS
+   =========================================== */
+.suggestion-icon-bounce {
+    animation: iconBounce 2s ease-in-out infinite;
+}
+
+@keyframes iconBounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-5px); }
+}
+
+.suggestion-icon-pulse {
+    animation: iconPulse 2s ease-in-out infinite;
+}
+
+@keyframes iconPulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.1); }
+}
+
+/* ===========================================
+   END OF SUGGESTION SYSTEM STYLES
+   =========================================== */

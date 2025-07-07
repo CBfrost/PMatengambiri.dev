@@ -5,156 +5,111 @@
 [![CSS3](https://img.shields.io/badge/CSS3-1572B6?style=flat&logo=css3&logoColor=white)](https://developer.mozilla.org/en-US/docs/Web/CSS)
 [![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=flat&logo=javascript&logoColor=black)](https://developer.mozilla.org/en-US/docs/Web/JavaScript)
 [![TailwindCSS](https://img.shields.io/badge/Tailwind%20CSS-38B2AC?style=flat&logo=tailwind-css&logoColor=white)](https://tailwindcss.com/)
+[![EmailJS](https://img.shields.io/badge/EmailJS-Integration-blue)](https://www.emailjs.com/)
+[![GSAP](https://img.shields.io/badge/GSAP-Animations-green)](https://greensock.com/gsap/)
 
 ## 🚀 Live Demo
 
-Visit the live portfolio: **[https://CBfrost.github.io/my-professional-portfolio](https://CBfrost.github.io/my-professional-portfolio)**
+Visit the live portfolio: **[https://cbfrost.github.io/PMatengambiri.dev/](https://cbfrost.github.io/PMatengambiri.dev/)**
 
 ## 📋 About
 
-Professional portfolio website showcasing my skills as a Creative Technologist and UX Innovator. Built with modern web technologies and featuring glassmorphism design, smooth animations, and full responsiveness.
+Professional portfolio website showcasing my journey as a Creative Technologist and UX Innovator. Built with modern web technologies, featuring premium glassmorphism design, smooth GSAP animations, and enterprise-level functionality including working contact forms and AI-powered feedback systems.
 
-## ✨ Features
+## ✨ Key Features
 
-- **🎨 Modern Design**: Glassmorphism UI with neon color scheme
-- **📱 Fully Responsive**: Optimized for all device sizes
-- **⚡ Performance Optimized**: Fast loading and smooth animations
-- **🎯 Interactive Elements**: GSAP animations and hover effects
-- **📝 Working Contact Form**: Integrated with EmailJS
-- **📄 PDF CV Download**: Generate and download CV as PDF
-- **♿ Accessible**: WCAG compliant design
-- **🌙 Dark Mode**: Automatic dark/light mode detection
+### 🎨 **Premium Design & UX**
+- **Glassmorphism UI**: Modern frosted glass effects with gradient overlays
+- **Professional Color Scheme**: Purple, cyan, and accent gradients
+- **Responsive Design**: Optimized for all devices (mobile-first approach)
+- **Dark Mode Support**: Automatic system preference detection
+- **Smooth Animations**: GSAP-powered scroll triggers and hover effects
 
-## 🛠️ Technologies Used
+### 📧 **Advanced Communication System**
+- **Working Contact Form**: Professional EmailJS integration with validation
+- **Smart Feedback System**: Anonymous and detailed suggestion forms
+- **Email Templates**: Beautifully designed HTML email templates matching portfolio aesthetics
+- **Form Validation**: Real-time validation with user-friendly error messages
+- **Success Animations**: Interactive feedback for successful submissions
 
-- **Frontend**: HTML5, CSS3, JavaScript (ES6+)
-- **Styling**: TailwindCSS, Custom CSS
-- **Animations**: GSAP (GreenSock)
-- **Icons**: Font Awesome
-- **Forms**: EmailJS integration
-- **PDF Generation**: html2pdf.js
-- **Deployment**: GitHub Pages
+### 🎯 **Interactive Elements**
+- **Certificate Previews**: Modal-based certificate viewing system
+- **Project Showcases**: Interactive project cards with live demos
+- **Skills Visualization**: Animated progress bars and skill cards
+- **CV Integration**: Embedded CV viewer with download functionality
+- **Navigation**: Smooth scroll navigation with active state indicators
 
-## 🎯 Sections
+### ⚡ **Performance & Accessibility**
+- **Lighthouse Score**: 95+ across all metrics
+- **Mobile Optimized**: Touch-friendly interfaces and gestures
+- **SEO Optimized**: Semantic HTML and comprehensive meta tags
+- **Fast Loading**: Optimized assets and code splitting
+- **WCAG Compliant**: Accessibility-first design principles
 
-1. **Hero Section**: Introduction with animated elements
-2. **About**: Personal journey and achievements
-3. **Skills & Certifications**: Professional credentials with visual cards
-4. **Projects**: Featured project showcases
-5. **GitHub**: Repository showcase and links
-6. **Testimonials**: Client and colleague feedback
-7. **Contact**: Working contact form with validation
+## 🛠️ Technology Stack
+
+### **Frontend Technologies**
+- **HTML5**: Semantic markup and modern web standards
+- **CSS3**: Advanced styling with custom properties and animations
+- **JavaScript ES6+**: Modern JavaScript with classes and async/await
+- **TailwindCSS**: Utility-first CSS framework for rapid development
+
+### **Libraries & Frameworks**
+- **GSAP**: Professional-grade animation library
+- **EmailJS**: Client-side email integration service
+- **Font Awesome**: Comprehensive icon library
+- **Google Fonts**: Inter, JetBrains Mono, and Playfair Display
+
+### **Development Tools**
+- **GitHub Pages**: Static site hosting
+- **Git**: Version control and collaboration
+- **VS Code**: Development environment
+- **Browser DevTools**: Debugging and optimization
+
+## 🎯 Portfolio Sections
+
+### 1. **Hero Section**
+- Animated introduction with floating tech icons
+- Professional status indicator
+- CTA buttons for hiring and CV download
+- Social media links with hover effects
+
+### 2. **About Me**
+- Professional journey narrative
+- Key achievements with animated metrics
+- Technology stack visualization
+- Core competencies breakdown
+
+### 3. **Professional Experience**
+- Timeline-based experience showcase
+- Impact metrics and business results
+- Technology stack per role
+- Company information and project details
+
+### 4. **Featured Projects**
+- **EcoWatt AI Energy Platform**: 60K+ user impact, AI-powered energy management
+- **StayHealthy Healthcare Platform**: HIPAA-compliant telemedicine solution
+- **Paradise Nursery E-Commerce**: Interactive plant shopping experience
+- **AutoGlass Pro Platform**: Enterprise service management system
+
+### 5. **Skills & Certifications**
+- Interactive skill level visualizations
+- Professional certification gallery with modal previews
+- Certificate download functionality
+- Continuous learning tracker
+
+### 6. **Contact & Feedback**
+- Professional contact form with EmailJS integration
+- Quick suggestion system for portfolio feedback
+- Detailed feedback forms with priority levels
+- Response time commitments and availability status
 
 ## 📦 Installation & Setup
 
-### Prerequisites
-- Git installed on your machine
-- GitHub account
+### **Prerequisites**
+```bash
+# Required software
+- Git (latest version)
+- Modern web browser (Chrome, Firefox, Safari, Edge)
 - Text editor (VS Code recommended)
-
-### Quick Start
-
-# Clone the repository
-git clone https://github.com/CBfrost/my-professional-portfolio.git
-
-# Navigate to project directory
-cd my-professional-portfolio
-
-# Open in browser
-open index.html
-
-
-EmailJS Setup (Optional)
-
-    Create account at EmailJS
-    Create email service and template
-    Replace placeholders in assets/js/main.js:
-        YOUR_PUBLIC_KEY
-        YOUR_SERVICE_ID
-        YOUR_TEMPLATE_ID
-
-🚀 Deployment
-GitHub Pages
-
-    Push code to GitHub repository
-    Go to repository Settings
-    Navigate to Pages section
-    Select source: Deploy from branch
-    Choose branch: main
-    Save and wait for deployment
-
-Your site will be available at: https://yourusername.github.io/my-professional-portfolio
-
-📁 Project Structure
-
-my-professional-portfolio/
-├── index.html              # Main portfolio page
-|
-├── cv.html                 # CV/Resume page
-|
-├── README.md               # Project documentation
-|
-├── .gitignore             # Git ignore file
-|
-└── assets/
-    |
-    ├── css/
-    |   |
-    │   └── contact-form.css # Contact form styles 
-    |   |
-    ├── js/
-    │   └── main.js         # Main JavaScript file
-    └── images/             # Image assets (optional)
-
-🎨 Customization
-Colors
-
-Update the color scheme in the Tailwind config:
-javascript
-
-colors: {
-    'neon-cyan': '#00ffff',
-    'neon-pink': '#ff0080',
-    'neon-purple': '#8000ff',
-    'dark-navy': '#0a0e27',
-    'electric-blue': '#0066ff',
-}
-
-Content
-
-    Update personal information in both index.html and cv.html
-    Replace project details with your own
-    Update social media links
-    Modify testimonials section
-
-Images
-
-    Replace Unsplash placeholder images with your own
-    Update professional portrait
-    Add project screenshots
-
-📊 Performance
-
-    Lighthouse Score: 95+ (Performance, Accessibility, Best Practices, SEO)
-    Mobile-First: Optimized for mobile devices
-    Fast Loading: Optimized assets and code splitting
-    SEO Friendly: Semantic HTML and meta tags
-
-🤝 Contributing
-
-    Fork the repository
-    Create feature branch (git checkout -b feature/improvement)
-    Commit changes (git commit -am 'Add improvement')
-    Push to branch (git push origin feature/improvement)
-    Create Pull Request
-
-📄 License
-
-This project is open source and available under the MIT License.
-📞 Contact
-
-    Email: panashefrost@icloud.com
-    LinkedIn: linkedin.com/in/panashematengambiri
-    GitHub: github.com/CBfrost
-
-⭐ If you find this portfolio helpful, please give it a star!
+- GitHub account for deployment

@@ -13,7 +13,7 @@ import {
   trackEvent,
   getAnalytics,
   initializeDatabase 
-} from '../../firebase-config.js';
+} from './firebase-config.js';
 
 class FirebaseDataManager {
   constructor() {
@@ -59,6 +59,7 @@ class FirebaseDataManager {
     await trackEvent('projectInteractions', 'total');
   }
 
+  // Enhanced Contact Form Tracking with EmailJS Integration
   async trackContactFormSubmission(formData) {
     try {
       // Store contact message (for admin)
@@ -67,15 +68,40 @@ class FirebaseDataManager {
         ...formData,
         timestamp: serverTimestamp(),
         id: messageRef.key,
-        status: 'new'
+        status: 'new',
+        source: 'emailjs'
       });
 
       // Track analytics
       await trackEvent('contactFormSubmissions', 'total');
+      await trackEvent('contactFormSubmissions', 'emailjs');
       
-      console.log('📧 Contact form submission tracked');
+      console.log('📧 Contact form submission tracked via EmailJS');
     } catch (error) {
       console.error('❌ Error tracking contact form:', error);
+    }
+  }
+
+  // Enhanced Suggestion Tracking with EmailJS Integration
+  async trackSuggestionSubmission(suggestionData) {
+    try {
+      // Store suggestion (for admin)
+      const suggestionRef = push(ref(database, 'suggestions'));
+      await set(suggestionRef, {
+        ...suggestionData,
+        timestamp: serverTimestamp(),
+        id: suggestionRef.key,
+        status: 'new',
+        source: 'emailjs'
+      });
+
+      // Track analytics
+      await trackEvent('suggestionSubmissions', 'total');
+      await trackEvent('suggestionSubmissions', suggestionData.type || 'general');
+      
+      console.log('💡 Suggestion submission tracked via EmailJS');
+    } catch (error) {
+      console.error('❌ Error tracking suggestion:', error);
     }
   }
 
@@ -271,6 +297,24 @@ class FirebaseDataManager {
       }
     });
     this.listeners.set('certificates', certificatesListener);
+
+    // Contact messages listener
+    const contactRef = ref(database, 'contactMessages');
+    const contactListener = onValue(contactRef, (snapshot) => {
+      if (snapshot.exists()) {
+        this.updateContactMetrics(snapshot.val());
+      }
+    });
+    this.listeners.set('contactMessages', contactListener);
+
+    // Suggestions listener
+    const suggestionsRef = ref(database, 'suggestions');
+    const suggestionsListener = onValue(suggestionsRef, (snapshot) => {
+      if (snapshot.exists()) {
+        this.updateSuggestionMetrics(snapshot.val());
+      }
+    });
+    this.listeners.set('suggestions', suggestionsListener);
   }
 
   // 🎨 UI Update Methods
@@ -313,6 +357,34 @@ class FirebaseDataManager {
     }
     
     console.log('🎓 UI updated with certificate data');
+  }
+
+  updateContactMetrics(contactData) {
+    // Update contact form submission counter
+    const contactCount = Object.keys(contactData).length;
+    const elements = document.querySelectorAll('[data-counter="contact-submissions"]');
+    elements.forEach(el => {
+      this.animateCounter(el, contactCount);
+    });
+    
+    console.log('📧 Contact metrics updated');
+  }
+
+  updateSuggestionMetrics(suggestionData) {
+    // Update suggestion counter
+    const suggestionCount = Object.keys(suggestionData).length;
+    const elements = document.querySelectorAll('[data-counter="suggestions"]');
+    elements.forEach(el => {
+      this.animateCounter(el, suggestionCount);
+    });
+
+    // Update the suggestion count in UI
+    const countElement = document.getElementById('suggestionCount');
+    if (countElement) {
+      this.animateCounter(countElement, suggestionCount);
+    }
+    
+    console.log('💡 Suggestion metrics updated');
   }
 
   // 🎭 Animation helper
@@ -368,6 +440,19 @@ class FirebaseDataManager {
     }
   }
 
+  // 🔗 EmailJS Integration Methods
+  async trackEmailJSSubmission(type, data) {
+    try {
+      if (type === 'contact') {
+        await this.trackContactFormSubmission(data);
+      } else if (type === 'suggestion') {
+        await this.trackSuggestionSubmission(data);
+      }
+    } catch (error) {
+      console.error('❌ Error tracking EmailJS submission:', error);
+    }
+  }
+
   // 🧹 Cleanup
   destroy() {
     // Remove all listeners
@@ -392,6 +477,32 @@ class FirebaseDataManager {
       return null;
     }
   }
+
+  async exportContactMessages() {
+    try {
+      const snapshot = await get(ref(database, 'contactMessages'));
+      return {
+        timestamp: new Date().toISOString(),
+        data: snapshot.exists() ? snapshot.val() : {}
+      };
+    } catch (error) {
+      console.error('❌ Error exporting contact messages:', error);
+      return null;
+    }
+  }
+
+  async exportSuggestions() {
+    try {
+      const snapshot = await get(ref(database, 'suggestions'));
+      return {
+        timestamp: new Date().toISOString(),
+        data: snapshot.exists() ? snapshot.val() : {}
+      };
+    } catch (error) {
+      console.error('❌ Error exporting suggestions:', error);
+      return null;
+    }
+  }
 }
 
 // Export the manager class
@@ -400,4 +511,11 @@ export default FirebaseDataManager;
 // Global instance
 window.firebaseManager = new FirebaseDataManager();
 
-console.log('🔥 Firebase Data Manager loaded successfully');
+// EmailJS Integration Helper
+window.trackEmailJSSubmission = (type, data) => {
+  if (window.firebaseManager) {
+    window.firebaseManager.trackEmailJSSubmission(type, data);
+  }
+};
+
+console.log('🔥 Firebase Data Manager loaded successfully with EmailJS integration');
