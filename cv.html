@@ -171,16 +171,15 @@
 
     <!-- Print Button -->
     <div class="no-print fixed top-6 right-6 z-50">
-        <button onclick="window.print()" class="glass-morphism px-6 py-3 rounded-full text-white font-semibold hover:bg-white/10 transition-all">
-            <i class="fas fa-print mr-2"></i>
-            Print CV
-        </button>
+       <button id="printPDF" class="glass-morphism px-6 py-3 rounded-full text-white font-semibold hover:bg-white/10 transition-all">
+    <i class="fas fa-print mr-2"></i> Print CV PDF 
+	</button>
     </div>
 
     <!-- CV Container -->
     <div class="max-w-4xl mx-auto p-6 min-h-screen">
         
-        <!-- Header Section - FIXED PROFILE IMAGE PATH -->
+        <!-- Header Section -->
         <header class="glass-morphism rounded-3xl p-8 mb-8">
             <div class="grid md:grid-cols-3 gap-8 items-center">
                 <div class="md:col-span-2">
@@ -188,13 +187,16 @@
                         PANASHE MATENGAMBIRI
                     </h1>
                     <h2 class="text-xl md:text-2xl text-gray-300 font-light mb-4">
-                        Creative Technologist & UX Innovator
+                        Frontend Developer | UX Designer | Information Systems Graduate
                     </h2>
-                    <p class="text-gray-300 leading-relaxed max-w-xl">
-                        Passionate Information Systems student with hands-on experience in enterprise solutions, 
-                        full-stack development, and user experience design. Seeking entry-level and intermediate 
-                        opportunities to contribute innovative solutions while continuing professional growth.
-                    </p>
+                    <div class="text-gray-300 mb-4 text-base">
+                        <p class="leading-relaxed">
+                            Final-year Information Systems student with practical experience in full-stack development, 
+                            UX design, and enterprise systems. Comfortable working on both the frontend and backend of 
+                            scalable web applications. Eager to contribute to real-world software teams in UX, web development, 
+                            or systems roles.
+                        </p>
+                    </div>
                 </div>
                 <div class="text-center md:text-right">
                     <img src="./assets/images/profile.jpg" 
@@ -205,19 +207,17 @@
                     <div class="space-y-2 text-sm text-gray-300">
                         <div class="flex items-center justify-center md:justify-end">
                             <i class="fas fa-envelope w-4 text-neon-cyan mr-2"></i>
-                            <span>panashefrost@icloud.com</span>
+                           <a href="mailto:panashefrost@icloud.com">panashefrost@icloud.com</a>
                         </div>
                         <div class="flex items-center justify-center md:justify-end">
                             <i class="fas fa-map-marker-alt w-4 text-neon-purple mr-2"></i>
-                            <span class="text-center md:text-right">138 Holkman Road, Paulshaulf<br>Sandton 2191, South Africa</span>
+                            <span class="text-center md:text-right">138 Holkam Road Paulshof, Sandton 2191, South Africa<br>Open to remote work</span>
                         </div>
                         <div class="flex items-center justify-center md:justify-end">
-                            <i class="fab fa-linkedin w-4 text-neon-cyan mr-2"></i>
-                            <span>linkedin.com/in/panashematengambiri</span>
-                        </div>
-                        <div class="flex items-center justify-center md:justify-end">
+                            <i class="fab fa-linkedin w-4 text-neon-cyan mr-2"></i><sp>
+                            <a href="https://linkedin.com/in/panashematengambiri" target="_blank">LinkedIn</a>    
                             <i class="fab fa-github w-4 text-neon-pink mr-2"></i>
-                            <span>github.com/CBfrost</span>
+                            <a href="https://github.com/CBfrost" target="_blank">Github</a>
                         </div>
                     </div>
                 </div>
@@ -231,7 +231,7 @@
             <div class="space-y-6">
                 <div class="border-l-4 border-neon-cyan pl-6">
                     <h4 class="text-xl font-semibold text-white mb-2">
-                        BSc Information Systems
+                        Bcom Information Systems
                     </h4>
                     <div class="text-neon-cyan font-medium mb-1">
                         Midlands State University, Zimbabwe
@@ -240,9 +240,10 @@
                         November 2021 - November 2025 (Expected)
                     </div>
                     <ul class="text-gray-300 text-sm space-y-1">
-                        <li>• Focus: Systems Analysis, Database Design, Software Development</li>
-                        <li>• Relevant Coursework: Enterprise Systems, UX Design, Project Management</li>
-                        <li>• Practical Experience: 3+ Industrial Attachments</li>
+                        <li>• Focus: Cloud Computing, Web Development, Project Management, Database Design, Human Computer Interaction</li>
+                        <li>• Relevant Coursework: Enterprise Systems, Web Development, Project Management</li>
+                        <li>• Practical Experience: 2 completed industrial attachments</li>
+                        <li>• Dissertation Project: EcoWatt Mobile app for prepaid electricity management in Zimbabwe. Built with React-Native, Chart.js, and Service Workers. Features offline functionality, usage analytics, and multilingual interface</li>
                     </ul>
                 </div>
 
@@ -252,24 +253,24 @@
                     </h4>
                     <div class="grid md:grid-cols-2 gap-4 text-sm">
                         <div class="bg-dark-navy/30 p-3 rounded-lg">
-                            <div class="text-neon-cyan font-medium">Google UX Design Professional Certificate</div>
-                            <div class="text-gray-400">Coursera • December 2023</div>
+                            <div class="text-neon-cyan font-medium">Google UX Design Professional</div>
+                            <div class="text-gray-400">Google • 2023</div>
                         </div>
                         <div class="bg-dark-navy/30 p-3 rounded-lg">
-                            <div class="text-neon-pink font-medium">IBM Front-End Developer</div>
+                            <div class="text-neon-pink font-medium">IBM Frontend Developer Professional</div>
                             <div class="text-gray-400">IBM • 2025</div>
                         </div>
                         <div class="bg-dark-navy/30 p-3 rounded-lg">
-                            <div class="text-neon-purple font-medium">Microsoft UX Design</div>
+                            <div class="text-neon-purple font-medium">Microsoft UX Design Professional</div>
                             <div class="text-gray-400">Microsoft • 2025</div>
                         </div>
                         <div class="bg-dark-navy/30 p-3 rounded-lg">
-                            <div class="text-neon-cyan font-medium">CalArts UI/UX Design Specialization</div>
-                            <div class="text-gray-400">California Institute of the Arts • 2025</div>
+                            <div class="text-neon-cyan font-medium">AWS Cloud Practitioner</div>
+                            <div class="text-gray-400">Amazon Web Services • 2025</div>
                         </div>
                         <div class="bg-dark-navy/30 p-3 rounded-lg">
-                            <div class="text-neon-pink font-medium">Figma, Sketch & Miro for UX Design</div>
-                            <div class="text-gray-400">UX Design Toolkit • 2025</div>
+                            <div class="text-neon-pink font-medium">Microsoft Frontend Developer Professional</div>
+                            <div class="text-gray-400">Microsoft • 2025</div>
                         </div>
                     </div>
                 </div>
@@ -281,85 +282,86 @@
             <h3 class="text-2xl font-bold gradient-text section-title">PROFESSIONAL EXPERIENCE</h3>
             
             <div class="space-y-8">
-                <!-- Industrial Attachment 1 -->
+                <!-- DM Windscreens Experience -->
                 <div class="border-l-4 border-neon-cyan pl-6">
                     <div class="flex flex-col md:flex-row md:items-center md:justify-between mb-2">
                         <h4 class="text-xl font-semibold text-white">
-                            Systems Development Intern
+                            IT Systems Developer Intern
                         </h4>
                         <span class="text-neon-cyan text-sm font-medium">
                             February 2023 - December 2023
                         </span>
                     </div>
                     <div class="text-gray-300 font-medium mb-3">
-                        DM Windscreens • Harare, Zimbabwe
+                        DM Windscreens (8 Branches) • Harare, Zimbabwe
                     </div>
                     <ul class="text-gray-300 text-sm space-y-2 mb-4">
                         <li>• <strong>ERP Implementation:</strong> Participated in Odoo ERP customization and deployment across 8 branch locations</li>
-                        <li>• <strong>UI/UX Design:</strong> Designed user-friendly interfaces reducing staff training time by 50%</li>
+                        <li>• <strong>System Development:</strong> Built service management platform reducing booking time from 15 to 4 minutes</li>
                         <li>• <strong>Process Automation:</strong> Automated inventory management eliminating 80% of manual data entry</li>
-                        <li>• <strong>System Integration:</strong> Developed custom modules using Python and XML for automotive industry workflows</li>
-                        <li>• <strong>Training & Documentation:</strong> Created comprehensive user guides and conducted staff training sessions</li>
+                        <li>• <strong>Technical Training:</strong> Created user manuals and conducted staff training sessions for new systems</li>
+                        <li>• <strong>Web Development:</strong> Updated and maintained company website using HTML, CSS, and JavaScript</li>
                     </ul>
                     <div class="flex flex-wrap gap-2">
                         <span class="bg-neon-cyan/20 text-neon-cyan px-3 py-1 rounded-full text-xs">Odoo ERP</span>
                         <span class="bg-neon-cyan/20 text-neon-cyan px-3 py-1 rounded-full text-xs">Python</span>
                         <span class="bg-neon-cyan/20 text-neon-cyan px-3 py-1 rounded-full text-xs">PostgreSQL</span>
-                        <span class="bg-neon-cyan/20 text-neon-cyan px-3 py-1 rounded-full text-xs">XML/QWeb</span>
+                        <span class="bg-neon-cyan/20 text-neon-cyan px-3 py-1 rounded-full text-xs">QuickBooks</span>
+                    </div>
+                </div>
+
+                <!-- RNC Windscreens Experience -->
+                <div class="border-l-4 border-neon-pink pl-6">
+                    <div class="flex flex-col md:flex-row md:items-center md:justify-between mb-2">
+                        <h4 class="text-xl font-semibold text-white">
+                            UX Designer & Frontend Developer Intern
+                        </h4>
+                        <span class="text-neon-pink text-sm font-medium">
+                            Jan 2024 - May 2024
+                        </span>
+                    </div>
+                    <div class="text-gray-300 font-medium mb-3">
+                        RNC Windscreens (Startup) • Gweru, Zimbabwe
+                    </div>
+                    <ul class="text-gray-300 text-sm space-y-2 mb-4">
+                        <li>• <strong>Brand Development:</strong> Designed complete brand identity and digital presence for startup</li>
+                        <li>• <strong>UX Design:</strong> Created wireframes, prototypes, and conducted usability testing</li>
+                        <li>• <strong>Website Development:</strong> Built responsive website with modern UI/UX principles</li>
+                        <li>• <strong>Digital Marketing:</strong> Contributed to content strategy and social media campaigns</li>
+                        <li>• <strong>IT Solutions:</strong> Set up QuickBooks database and inventory management systems</li>
+                    </ul>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="bg-neon-pink/20 text-neon-pink px-3 py-1 rounded-full text-xs">Figma</span>
+                        <span class="bg-neon-pink/20 text-neon-pink px-3 py-1 rounded-full text-xs">HTML/CSS</span>
+                        <span class="bg-neon-pink/20 text-neon-pink px-3 py-1 rounded-full text-xs">JavaScript</span>
+                        <span class="bg-neon-pink/20 text-neon-pink px-3 py-1 rounded-full text-xs">QuickBooks</span>
                     </div>
                 </div>
 
                 <!-- Freelance Work -->
-                <div class="border-l-4 border-neon-pink pl-6">
+                <div class="border-l-4 border-neon-purple pl-6">
                     <div class="flex flex-col md:flex-row md:items-center md:justify-between mb-2">
                         <h4 class="text-xl font-semibold text-white">
                             Freelance Web Developer & Designer
                         </h4>
-                        <span class="text-neon-pink text-sm font-medium">
-                            January 2024 - Present
+                        <span class="text-neon-purple text-sm font-medium">
+                            2024 - Present
                         </span>
                     </div>
                     <div class="text-gray-300 font-medium mb-3">
                         Self-Employed • Remote
                     </div>
                     <ul class="text-gray-300 text-sm space-y-2 mb-4">
-                        <li>• <strong>Client Projects:</strong> Delivered 15+ successful web development and design projects</li>
-                        <li>• <strong>Brand Development:</strong> Created complete brand identities including logos, color schemes, and style guides</li>
-                        <li>• <strong>Responsive Development:</strong> Built mobile-first websites with 99.9% uptime and optimal performance</li>
-                        <li>• <strong>Client Management:</strong> Maintained excellent client relationships with 100% project completion rate</li>
-                        <li>• <strong>Technology Stack:</strong> Specialized in React, Node.js, WordPress, and modern CSS frameworks</li>
+                        <li>• <strong>Client Projects:</strong> Completed 15+ web development and design projects</li>
+                        <li>• <strong>Brand Development:</strong> Created logos, style guides, and marketing materials</li>
+                        <li>• <strong>Responsive Development:</strong> Built mobile-first websites with modern frameworks</li>
+                        <li>• <strong>Client Management:</strong> Maintained positive relationships with consistent project delivery</li>
                     </ul>
                     <div class="flex flex-wrap gap-2">
-                        <span class="bg-neon-pink/20 text-neon-pink px-3 py-1 rounded-full text-xs">React</span>
-                        <span class="bg-neon-pink/20 text-neon-pink px-3 py-1 rounded-full text-xs">Node.js</span>
-                        <span class="bg-neon-pink/20 text-neon-pink px-3 py-1 rounded-full text-xs">WordPress</span>
-                        <span class="bg-neon-pink/20 text-neon-pink px-3 py-1 rounded-full text-xs">Figma</span>
-                    </div>
-                </div>
-
-                <!-- Previous Internship -->
-                <div class="border-l-4 border-neon-purple pl-6">
-                    <div class="flex flex-col md:flex-row md:items-center md:justify-between mb-2">
-                        <h4 class="text-xl font-semibold text-white">
-                            IT Support & Development Intern
-                        </h4>
-                        <span class="text-neon-purple text-sm font-medium">
-                            March 2024 - May 2024
-                        </span>
-                    </div>
-                    <div class="text-gray-300 font-medium mb-3">
-                        TechFlow Solutions • Harare, Zimbabwe
-                    </div>
-                    <ul class="text-gray-300 text-sm space-y-2 mb-4">
-                        <li>• <strong>Database Management:</strong> Optimized SQL queries improving system performance by 35%</li>
-                        <li>• <strong>User Support:</strong> Provided technical support to 100+ users across multiple departments</li>
-                        <li>• <strong>Web Development:</strong> Built responsive company intranet using HTML5, CSS3, and JavaScript</li>
-                        <li>• <strong>Documentation:</strong> Created comprehensive IT procedures and troubleshooting guides</li>
-                    </ul>
-                    <div class="flex flex-wrap gap-2">
-                        <span class="bg-neon-purple/20 text-neon-purple px-3 py-1 rounded-full text-xs">SQL</span>
-                        <span class="bg-neon-purple/20 text-neon-purple px-3 py-1 rounded-full text-xs">JavaScript</span>
-                        <span class="bg-neon-purple/20 text-neon-purple px-3 py-1 rounded-full text-xs">Technical Support</span>
+                        <span class="bg-neon-purple/20 text-neon-purple px-3 py-1 rounded-full text-xs">React</span>
+                        <span class="bg-neon-purple/20 text-neon-purple px-3 py-1 rounded-full text-xs">Node.js</span>
+                        <span class="bg-neon-purple/20 text-neon-purple px-3 py-1 rounded-full text-xs">WordPress</span>
+                        <span class="bg-neon-purple/20 text-neon-purple px-3 py-1 rounded-full text-xs">Figma</span>
                     </div>
                 </div>
             </div>
@@ -370,118 +372,169 @@
             <h3 class="text-2xl font-bold gradient-text section-title">TECHNICAL SKILLS</h3>
             
             <div class="grid md:grid-cols-2 gap-8">
-                <!-- Programming Languages -->
+                <!-- Frontend Development -->
                 <div>
-                    <h4 class="text-lg font-semibold text-neon-cyan mb-4">Programming Languages</h4>
+                    <h4 class="text-lg font-semibold text-neon-cyan mb-4">Frontend Development</h4>
                     <div class="space-y-4">
                         <div>
                             <div class="flex justify-between mb-1">
-                                <span class="text-white text-sm">JavaScript/TypeScript</span>
-                                <span class="text-gray-400 text-sm">90%</span>
-                            </div>
-                            <div class="skill-bar">
-                                <div class="skill-progress" style="width: 90%"></div>
-                            </div>
-                        </div>
-                        <div>
-                            <div class="flex justify-between mb-1">
-                                <span class="text-white text-sm">Python</span>
-                                <span class="text-gray-400 text-sm">85%</span>
-                            </div>
-                            <div class="skill-bar">
-                                <div class="skill-progress" style="width: 85%"></div>
-                            </div>
-                        </div>
-                        <div>
-                            <div class="flex justify-between mb-1">
-                                <span class="text-white text-sm">HTML5/CSS3</span>
-                                <span class="text-gray-400 text-sm">95%</span>
-                            </div>
-                            <div class="skill-bar">
-                                <div class="skill-progress" style="width: 95%"></div>
-                            </div>
-                        </div>
-                        <div>
-                            <div class="flex justify-between mb-1">
-                                <span class="text-white text-sm">SQL</span>
-                                <span class="text-gray-400 text-sm">80%</span>
+                                <span class="text-white text-sm">HTML/CSS/JavaScript</span>
+                                <span class="text-gray-400 text-sm">Proficient</span>
                             </div>
                             <div class="skill-bar">
                                 <div class="skill-progress" style="width: 80%"></div>
                             </div>
                         </div>
+                        <div>
+                            <div class="flex justify-between mb-1">
+                                <span class="text-white text-sm">React/TypeScript</span>
+                                <span class="text-gray-400 text-sm">Intermediate</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="width: 70%"></div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between mb-1">
+                                <span class="text-white text-sm">Tailwind CSS</span>
+                                <span class="text-gray-400 text-sm">Proficient</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="width: 75%"></div>
+                            </div>
+                        </div>
                     </div>
                 </div>
 
-                <!-- Frameworks & Tools -->
+                <!-- Backend & Database -->
                 <div>
-                    <h4 class="text-lg font-semibold text-neon-pink mb-4">Frameworks & Tools</h4>
+                    <h4 class="text-lg font-semibold text-neon-pink mb-4">Backend & Database</h4>
                     <div class="space-y-4">
                         <div>
                             <div class="flex justify-between mb-1">
-                                <span class="text-white text-sm">React/Next.js</span>
-                                <span class="text-gray-400 text-sm">88%</span>
+                                <span class="text-white text-sm">REST APIs</span>
+                                <span class="text-gray-400 text-sm">Familiar</span>
                             </div>
                             <div class="skill-bar">
-                                <div class="skill-progress" style="width: 88%"></div>
+                                <div class="skill-progress" style="width: 50%"></div>
                             </div>
                         </div>
                         <div>
                             <div class="flex justify-between mb-1">
-                                <span class="text-white text-sm">Node.js/Express</span>
-                                <span class="text-gray-400 text-sm">82%</span>
+                                <span class="text-white text-sm">Node.js</span>
+                                <span class="text-gray-400 text-sm">Proficient</span>
                             </div>
                             <div class="skill-bar">
-                                <div class="skill-progress" style="width: 82%"></div>
+                                <div class="skill-progress" style="width: 75%"></div>
                             </div>
                         </div>
                         <div>
                             <div class="flex justify-between mb-1">
-                                <span class="text-white text-sm">Figma/Sketch/Miro</span>
-                                <span class="text-gray-400 text-sm">90%</span>
+                                <span class="text-white text-sm">SQL/PostgreSQL/MongoDB</span>
+                                <span class="text-gray-400 text-sm">Intermediate</span>
                             </div>
                             <div class="skill-bar">
-                                <div class="skill-progress" style="width: 90%"></div>
-                            </div>
-                        </div>
-                        <div>
-                            <div class="flex justify-between mb-1">
-                                <span class="text-white text-sm">Git/GitHub</span>
-                                <span class="text-gray-400 text-sm">85%</span>
-                            </div>
-                            <div class="skill-bar">
-                                <div class="skill-progress" style="width: 85%"></div>
+                                <div class="skill-progress" style="width: 65%"></div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
 
-            <!-- Additional Skills -->
+            <!-- UX/UI Design & Tools -->
+            <div class="grid md:grid-cols-2 gap-8 mt-8">
+                <div>
+                    <h4 class="text-lg font-semibold text-neon-purple mb-4">UX/UI Design</h4>
+                    <div class="space-y-4">
+                        <div>
+                            <div class="flex justify-between mb-1">
+                                <span class="text-white text-sm">Figma</span>
+                                <span class="text-gray-400 text-sm">Proficient</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="width: 85%"></div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between mb-1">
+                                <span class="text-white text-sm">User Research</span>
+                                <span class="text-gray-400 text-sm">Intermediate</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="width: 65%"></div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between mb-1">
+                                <span class="text-white text-sm">Prototyping</span>
+                                <span class="text-gray-400 text-sm">Proficient</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="width: 75%"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div>
+                    <h4 class="text-lg font-semibold text-electric-blue mb-4">Enterprise Systems</h4>
+                    <div class="space-y-4">
+                        <div>
+                            <div class="flex justify-between mb-1">
+                                <span class="text-white text-sm">Odoo ERP</span>
+                                <span class="text-gray-400 text-sm">Intermediate</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="width: 70%"></div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between mb-1">
+                                <span class="text-white text-sm">QuickBooks</span>
+                                <span class="text-gray-400 text-sm">Intermediate</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="width: 70%"></div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between mb-1">
+                                <span class="text-white text-sm">Git/GitHub</span>
+                                <span class="text-gray-400 text-sm">Intermediate</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="width: 75%"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Core Competencies -->
             <div class="mt-8">
-                <h4 class="text-lg font-semibold text-neon-purple mb-4">Core Competencies</h4>
+                <h4 class="text-lg font-semibold text-neon-cyan mb-4">Core Competencies</h4>
                 <div class="grid md:grid-cols-3 gap-4">
                     <div class="bg-dark-navy/30 p-4 rounded-lg">
-                        <h5 class="text-neon-cyan font-medium mb-2">Enterprise Systems</h5>
+                        <h5 class="text-neon-cyan font-medium mb-2">Systems Development</h5>
                         <ul class="text-gray-300 text-sm space-y-1">
-                            <li>• ERP Implementation (Odoo)</li>
-                            <li>• System Integration</li>
+                            <li>• ERP Implementation</li>
+                            <li>• Database Design</li>
                             <li>• Process Automation</li>
                         </ul>
                     </div>
                     <div class="bg-dark-navy/30 p-4 rounded-lg">
-                        <h5 class="text-neon-pink font-medium mb-2">UI/UX Design</h5>
+                        <h5 class="text-neon-pink font-medium mb-2">User Experience</h5>
                         <ul class="text-gray-300 text-sm space-y-1">
-                            <li>• User Research & Testing</li>
-                            <li>• Wireframing & Prototyping</li>
-                            <li>• Design Systems</li>
+                            <li>• User Interface Design</li>
+                            <li>• Usability Testing</li>
+                            <li>• Responsive Design</li>
                         </ul>
                     </div>
                     <div class="bg-dark-navy/30 p-4 rounded-lg">
                         <h5 class="text-neon-purple font-medium mb-2">Project Management</h5>
                         <ul class="text-gray-300 text-sm space-y-1">
-                            <li>• Agile Methodologies</li>
-                            <li>• Client Communication</li>
+                            <li>• Requirements Gathering</li>
+                            <li>• Team Collaboration</li>
                             <li>• Technical Documentation</li>
                         </ul>
                     </div>
@@ -496,58 +549,57 @@
             <div class="space-y-6">
                 <div class="border-l-4 border-neon-cyan pl-6">
                     <h4 class="text-lg font-semibold text-white mb-2">
-                        EcoWatt AI Energy Platform
+                        EcoWatt Energy Management Platform
                     </h4>
-                    <div class="text-neon-cyan text-sm mb-2">Personal Project • 2024</div>
+                    <div class="text-neon-cyan text-sm mb-2">Personal Project • 2025</div>
                     <p class="text-gray-300 text-sm mb-3">
-                        Progressive Web App for Zimbabwe's prepaid electricity management with AI-powered consumption 
-                        forecasting, Bluetooth smart meter integration, and offline functionality.
+                        Progressive Web App for Zimbabwe's prepaid electricity management with AI-powered 
+                        consumption forecasting and Bluetooth smart meter integration.
                     </p>
                     <div class="text-gray-400 text-sm mb-3">
-                        <strong>Impact:</strong> Designed for 60K+ target users • 60% reduction in task completion time
+                        <strong>Features:</strong> Offline functionality, multi-language support, real-time analytics
                     </div>
                     <div class="flex flex-wrap gap-2">
-                        <span class="bg-neon-cyan/20 text-neon-cyan px-2 py-1 rounded text-xs">PWA</span>
+                        <span class="bg-neon-cyan/20 text-neon-cyan px-2 py-1 rounded text-xs">React</span>
                         <span class="bg-neon-cyan/20 text-neon-cyan px-2 py-1 rounded text-xs">Chart.js</span>
-                        <span class="bg-neon-cyan/20 text-neon-cyan px-2 py-1 rounded text-xs">Bluetooth API</span>
+                        <span class="bg-neon-cyan/20 text-neon-cyan px-2 py-1 rounded text-xs">PWA</span>
+                    </div>
+                </div>
+
+
+                <div class="border-l-4 border-neon-purple pl-6">
+                    <h4 class="text-lg font-semibold text-white mb-2">
+                        StayHealthy Healthcare Platform
+                    </h4>
+                    <div class="text-neon-purple text-sm mb-2">Capstone Project • 2025</div>
+                    <p class="text-gray-300 text-sm mb-3">
+                        Healthcare management system with telemedicine capabilities and appointment scheduling.
+                    </p>
+                    <div class="text-gray-400 text-sm mb-3">
+                        <strong>Features:</strong> Video consultations, patient records, real-time scheduling
+                    </div>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="bg-neon-purple/20 text-neon-purple px-2 py-1 rounded text-xs">React</span>
+                        <span class="bg-neon-purple/20 text-neon-purple px-2 py-1 rounded text-xs">Node.js</span>
+                        <span class="bg-neon-purple/20 text-neon-purple px-2 py-1 rounded text-xs">MongoDB</span>
                     </div>
                 </div>
 
                 <div class="border-l-4 border-neon-pink pl-6">
                     <h4 class="text-lg font-semibold text-white mb-2">
-                        AutoGlass Pro Platform
+                        Enterprise Service Management System
                     </h4>
-                    <div class="text-neon-pink text-sm mb-2">Enterprise Project • DM Windscreens • 2024</div>
+                    <div class="text-neon-pink text-sm mb-2">DM Windscreens • 2023</div>
                     <p class="text-gray-300 text-sm mb-3">
-                        Comprehensive service management platform with real-time booking, mobile technician interfaces, 
-                        and automated inventory tracking across 8 branch locations.
+                        Comprehensive booking and inventory management platform for multi-branch operations.
                     </p>
                     <div class="text-gray-400 text-sm mb-3">
-                        <strong>Impact:</strong> 70% booking time reduction • 35% customer satisfaction increase
+                        <strong>Impact:</strong> Reduced booking time by 70%, improved customer satisfaction
                     </div>
                     <div class="flex flex-wrap gap-2">
-                        <span class="bg-neon-pink/20 text-neon-pink px-2 py-1 rounded text-xs">React</span>
-                        <span class="bg-neon-pink/20 text-neon-pink px-2 py-1 rounded text-xs">Node.js</span>
+                        <span class="bg-neon-pink/20 text-neon-pink px-2 py-1 rounded text-xs">Odoo ERP</span>
+                        <span class="bg-neon-pink/20 text-neon-pink px-2 py-1 rounded text-xs">Python</span>
                         <span class="bg-neon-pink/20 text-neon-pink px-2 py-1 rounded text-xs">PostgreSQL</span>
-                    </div>
-                </div>
-
-                <div class="border-l-4 border-neon-purple pl-6">
-                    <h4 class="text-lg font-semibold text-white mb-2">
-                        Multi-Branch ERP Implementation
-                    </h4>
-                    <div class="text-neon-purple text-sm mb-2">Production System • 2024</div>
-                    <p class="text-gray-300 text-sm mb-3">
-                        Customized Odoo ERP deployment with industry-specific modules, automated workflows, 
-                        and real-time multi-location reporting.
-                    </p>
-                    <div class="text-gray-400 text-sm mb-3">
-                        <strong>Impact:</strong> 60% process automation • 50% training time reduction
-                    </div>
-                    <div class="flex flex-wrap gap-2">
-                        <span class="bg-neon-purple/20 text-neon-purple px-2 py-1 rounded text-xs">Odoo</span>
-                        <span class="bg-neon-purple/20 text-neon-purple px-2 py-1 rounded text-xs">Python</span>
-                        <span class="bg-neon-purple/20 text-neon-purple px-2 py-1 rounded text-xs">XML/QWeb</span>
                     </div>
                 </div>
             </div>
@@ -563,29 +615,29 @@
                     <div class="flex items-start">
                         <i class="fas fa-trophy text-neon-cyan mt-1 mr-3"></i>
                         <div>
-                            <h4 class="text-white font-medium">Dean's List Recognition</h4>
-                            <p class="text-gray-400 text-sm">Academic excellence in Information Systems • 2023</p>
+                            <h4 class="text-white font-medium">Academic Excellence</h4>
+                            <p class="text-gray-400 text-sm">Consistent performance in Information Systems program</p>
                         </div>
                     </div>
                     <div class="flex items-start">
                         <i class="fas fa-award text-neon-pink mt-1 mr-3"></i>
                         <div>
-                            <h4 class="text-white font-medium">Best Innovation Project</h4>
-                            <p class="text-gray-400 text-sm">University Tech Competition • EcoWatt Platform • 2024</p>
+                            <h4 class="text-white font-medium">Successful Internships</h4>
+                            <p class="text-gray-400 text-sm">Completed 2 industrial attachments with positive feedback</p>
                         </div>
                     </div>
                     <div class="flex items-start">
-                        <i class="fas fa-star text-neon-purple mt-1 mr-3"></i>
+                        <i class="fas fa-certificate text-neon-purple mt-1 mr-3"></i>
                         <div>
-                            <h4 class="text-white font-medium">Outstanding Intern Award</h4>
-                            <p class="text-gray-400 text-sm">DM Windscreens • Summer 2024</p>
+                            <h4 class="text-white font-medium">Professional Certifications</h4>
+                            <p class="text-gray-400 text-sm">Google UX Design, IBM Frontend Developer, Microsoft Frontend Developer, and others</p>
                         </div>
                     </div>
                     <div class="flex items-start">
-                        <i class="fas fa-certificate text-neon-cyan mt-1 mr-3"></i>
+                        <i class="fas fa-users text-neon-cyan mt-1 mr-3"></i>
                         <div>
-                            <h4 class="text-white font-medium">6+ Professional Certifications</h4>
-                            <p class="text-gray-400 text-sm">Google, IBM, Microsoft, CalArts & more</p>
+                            <h4 class="text-white font-medium">Client Project Success</h4>
+                            <p class="text-gray-400 text-sm">Completed 15+ freelance projects with positive client reviews</p>
                         </div>
                     </div>
                 </div>
@@ -609,7 +661,7 @@
                             </div>
                             <div class="flex justify-between">
                                 <span class="text-white">Afrikaans</span>
-                                <span class="text-gray-400 text-sm">Conversational</span>
+                                <span class="text-gray-400 text-sm">Basic</span>
                             </div>
                         </div>
                     </div>
@@ -617,11 +669,19 @@
                     <div>
                         <h4 class="text-lg font-semibold text-neon-pink mb-3">Professional Interests</h4>
                         <div class="flex flex-wrap gap-2">
+                            <span class="bg-neon-pink/20 text-neon-pink px-3 py-1 rounded-full text-xs">UX Research</span>
+                            <span class="bg-neon-cyan/20 text-neon-cyan px-3 py-1 rounded-full text-xs">Enterprise Systems</span>
+                            <span class="bg-neon-purple/20 text-neon-purple px-3 py-1 rounded-full text-xs">Web Development</span>
                             <span class="bg-neon-pink/20 text-neon-pink px-3 py-1 rounded-full text-xs">AI/ML</span>
-                            <span class="bg-neon-cyan/20 text-neon-cyan px-3 py-1 rounded-full text-xs">UX Research</span>
-                            <span class="bg-neon-purple/20 text-neon-purple px-3 py-1 rounded-full text-xs">IoT</span>
-                            <span class="bg-neon-pink/20 text-neon-pink px-3 py-1 rounded-full text-xs">Cloud Computing</span>
-                            <span class="bg-neon-cyan/20 text-neon-cyan px-3 py-1 rounded-full text-xs">Design Systems</span>
+                        </div>
+                    </div>
+
+                    <div>
+                        <h4 class="text-lg font-semibold text-neon-purple mb-3">Currently Learning</h4>
+                        <div class="space-y-1 text-sm text-gray-300">
+                            <p>• Advanced React Patterns</p>
+                            <p>• Cloud Computing (AWS)</p>
+                            <p>• Advance System Design </p>
                         </div>
                     </div>
                 </div>
@@ -632,7 +692,7 @@
         <footer class="text-center py-8 no-print">
             <div class="glass-morphism rounded-2xl p-6 inline-block">
                 <p class="text-gray-300 mb-2">
-                    Available for entry-level & intermediate opportunities (local & remote)
+                    Available for entry-level opportunities • Remote work welcome • Immediate start possible
                 </p>
                 <div class="flex justify-center gap-4 text-sm">
                     <a href="mailto:panashefrost@icloud.com" class="text-neon-cyan hover:text-white transition-colors">
@@ -647,30 +707,42 @@
                         <i class="fab fa-github mr-1"></i>
                         GitHub
                     </a>
+                    <a href="https://behance.net/panashematenga" class="text-electric-blue hover:text-white transition-colors">
+                        <i class="fab fa-behance mr-1"></i>
+                        Behance
+                    </a>
                 </div>
             </div>
         </footer>
     </div>
-
-    <script>
-        // Animate skill bars on load
-        document.addEventListener('DOMContentLoaded', function() {
-            const skillBars = document.querySelectorAll('.skill-progress');
-            skillBars.forEach((bar, index) => {
-                setTimeout(() => {
-                    bar.style.width = bar.style.width || '0%';
-                }, index * 200);
-            });
+<script>
+    // Animate skill bars on load
+    document.addEventListener('DOMContentLoaded', function () {
+        const skillBars = document.querySelectorAll('.skill-progress');
+        skillBars.forEach((bar, index) => {
+            setTimeout(() => {
+                bar.style.width = bar.style.width || '0%';
+            }, index * 200);
         });
+    });
 
-        // Print functionality
-        window.addEventListener('beforeprint', function() {
-            document.body.classList.add('printing');
-        });
+    // Print PDF functionality
+    document.getElementById('printPDF').addEventListener('click', function () {
+        const pdfUrl = './assets/cv/Panashe_Matengambiri_CV.pdf';
+        const win = window.open(pdfUrl, '_blank');
 
-        window.addEventListener('afterprint', function() {
-            document.body.classList.remove('printing');
-        });
-    </script>
+        // Fallback if pop-up is blocked
+        if (!win) {
+            alert("Please allow pop-ups in your browser to print the CV.");
+            return;
+        }
+
+        // Attempt to trigger print when PDF loads
+        win.onload = function () {
+            win.focus();
+            win.print();
+        };
+    });
+</script>
 </body>
 </html>
